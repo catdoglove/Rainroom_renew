@@ -95,6 +95,10 @@ public class SleepEvt : MonoBehaviour
         
     }
 
+    void sleepMove()
+    {
+
+    }
     
 
 }

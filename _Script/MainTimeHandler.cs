@@ -62,7 +62,7 @@ public class MainTimeHandler : MonoBehaviour {
         if (getRain > 10080)//7200
         {//7일치 이상 모았을때
                 getRain = 0;
-            warring_obj.SetActive(true);
+            //warring_obj.SetActive(true);
         }
         coldRain_i = coldRain_i + getRain;
 		PlayerPrefs.SetInt (str + "c", coldRain_i);
