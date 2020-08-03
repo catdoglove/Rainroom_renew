@@ -30,9 +30,9 @@ public class MainTime : MonoBehaviour
                 PlayerPrefs.SetInt(str + "r", 999999);
             }
 
-            if (PlayerPrefs.GetInt(str + "ht", 0) > 99999)
+            if (PlayerPrefs.GetInt(str + "h", 0) > 99999)
             {
-                PlayerPrefs.SetInt(str + "ht", 99999);
+                PlayerPrefs.SetInt(str + "h", 99999);
             }
             
             PlayerPrefs.Save();

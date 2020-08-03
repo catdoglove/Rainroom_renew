@@ -39,7 +39,7 @@ public class MainTimeHandler : MonoBehaviour {
 	void collectRain(){
 
         string str = PlayerPrefs.GetString("code", "");
-        coldRain_i = PlayerPrefs.GetInt(str + "c", 0);
+        coldRain_i = PlayerPrefs.GetInt(str + "r", 0);
         hotRain_i = PlayerPrefs.GetInt(str + "h", 0);
         
 
@@ -65,7 +65,7 @@ public class MainTimeHandler : MonoBehaviour {
             //warring_obj.SetActive(true);
         }
         coldRain_i = coldRain_i + getRain;
-		PlayerPrefs.SetInt (str + "c", coldRain_i);
+		PlayerPrefs.SetInt (str + "r", coldRain_i);
 		//rainNum.text = coldRain_i.ToString();
 		PlayerPrefs.SetString("lastTime",dateTimenow.ToString());
 		PlayerPrefs.Save ();
@@ -73,7 +73,7 @@ public class MainTimeHandler : MonoBehaviour {
         //빗물이 마이너스일때
         if (coldRain_i<0)
         {
-            PlayerPrefs.SetInt(str + "c", -9);
+            PlayerPrefs.SetInt(str + "r", -9);
             PlayerPrefs.Save();
         }
 	}
