@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class MainShop : MonoBehaviour
 {
     //방업그레이드
-    public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, sleep_obj, seedBtn_obj, glassBtn_obj, desk_obj, today_obj, sleepBtn_obj;
+    public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, bed_obj, seedBtn_obj, cupBtn_obj, desk_obj, today_obj, bedBtn_obj;
     public Text txt;
     public Sprite[] spr_wall, spr_window, spr_book, spr_light, spr_seed, spr_sleep, spr_glass, spr_desk;
     public int[] cost_wall, cost_window, cost_book, cost_light;
     public int[] upCk;
     public int item_num;
 
-    public Text[] txt_window, txt_wall, txt_book, txt_light, txt_turtle, txt_seed, txt_sleep, txt_glass;
+    public Text[] txt_window, txt_wall, txt_book, txt_light, txt_turtle, txt_seed, txt_bed, txt_cup;
     public string[] window_name, wall_name, book_name, light_name;
     public Text txt_rain, txt_heart;
     public GameObject shopWin_obj, shopPopup_obj;
@@ -25,13 +25,80 @@ public class MainShop : MonoBehaviour
     
     private void Awake()
     {
-        first();
+        First();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         str_Code = PlayerPrefs.GetString("code", "");
+        //가격과 이름
+        setPrice();
+        Setf();
+        
+    }
+
+    void Setf()
+    {
+
+        if (PlayerPrefs.GetInt("turtlelv", 0) == 1)
+        {
+            //레벨
+            txt_turtle[0].text = "Lv.MAX";
+            //이름
+            txt_turtle[1].text = "거북이";
+            //물
+            txt_turtle[2].text = "0";
+            //마음
+            txt_turtle[3].text = "0";
+            turtle_obj.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("seedlv", 0) == 1)
+        {
+            //레벨
+            txt_seed[0].text = "Lv.MAX";
+            //이름
+            txt_seed[1].text = "씨앗";
+            //물
+            txt_seed[2].text = "0";
+            //마음
+            txt_seed[3].text = "0";
+            seed_obj.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("bedlv", 0) == 1)
+        {
+            //레벨
+            txt_bed[0].text = "Lv.MAX";
+            //이름
+            txt_bed[1].text = "이불";
+            //물
+            txt_bed[2].text = "0";
+            //마음
+            txt_bed[3].text = "0";
+            bed_obj.SetActive(true);
+            bedBtn_obj.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("cuplv", 0) == 1)
+        {
+            //레벨
+            txt_cup[0].text = "Lv.MAX";
+            //이름
+            txt_cup[1].text = "물컵";
+            //물
+            txt_cup[2].text = "0";
+            //마음
+            txt_cup[3].text = "0";
+            cupBtn_obj.SetActive(true);
+        }
+        level = PlayerPrefs.GetInt("windowlv", 0);
+        window_obj.GetComponent<SpriteRenderer>().sprite = spr_window[level];
+        level = PlayerPrefs.GetInt("walllv", 0);
+        wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wall[level];
+        level = PlayerPrefs.GetInt("booklv", 0);
+        book_obj.GetComponent<SpriteRenderer>().sprite = spr_book[level];
+        level = PlayerPrefs.GetInt("lightlv", 0);
+        light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[level];
     }
 
 
@@ -49,6 +116,9 @@ public class MainShop : MonoBehaviour
             txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
             WindowRe();
+            WallRe();
+            BookRe();
+            LightRe();
         }
 
     }
@@ -56,88 +126,112 @@ public class MainShop : MonoBehaviour
     void setPrice()
     {
         //물마음-창문
+        window_name[0] = "깨진창문";
         cost_window[0]=0;
         cost_window[1] = 15;
 
+        window_name[1] = "보수된창문";
         cost_window[2] = 60;
         cost_window[3] = 30;
 
+        window_name[2] = "보수된창문+";
         cost_window[4] = 500;
         cost_window[5] = 100;
-        
+
+        window_name[3] = "창문";
         cost_window[6] = 1000;
         cost_window[7] = 120;
-        
+
+        window_name[4] = "스티커붙이기";
         cost_window[8] = 2000;
         cost_window[9] = 150;
 
+        window_name[5] = "스티커붙이기+";
         cost_window[10] = 5000;
         cost_window[11] = 190;
 
+        window_name[6] = "커튼달린창문";
         cost_window[12] = 9000;
         cost_window[13] = 240;
 
+        window_name[7] = "밝은커튼";
         cost_window[14] = 15000;
         cost_window[15] = 400;
 
+        window_name[8] = "예쁜커튼";
         cost_window[16] = 0;
         cost_window[17] = 0;
 
         //물마음-벽
+        wall_name[0] = "습기찬벽지";
         cost_wall[0] = 4000;
         cost_wall[1] = 300;
 
+        wall_name[1] = "보수된벽지";
         cost_wall[2] = 15000;
         cost_wall[3] = 500;
 
+        wall_name[2] = "깨끗한벽지";
         cost_wall[4] = 0;
         cost_wall[5] = 0;
 
 
         //물마음-책
+        book_name[0] = "전단지";
         cost_book[0] = 0;
         cost_book[1] = 10;
 
+        book_name[1] = "신문";
         cost_book[2] = 50;
         cost_book[3] = 20;
 
+        book_name[2] = "찢어진 잡지";
         cost_book[4] = 300;
         cost_book[5] = 50;
 
+        book_name[3] = "위인전";
         cost_book[6] = 1000;
         cost_book[7] = 70;
 
+        book_name[4] = "요리책";
         cost_book[8] = 2000;
         cost_book[9] = 100;
 
+        book_name[5] = "동화책";
         cost_book[10] = 5000;
         cost_book[11] = 130;
 
+        book_name[6] = "유머책";
         cost_book[12] = 9000;
         cost_book[13] = 160;
 
+        book_name[7] = "만화책";
         cost_book[14] = 15000;
         cost_book[15] = 200;
 
+        book_name[8] = "소설책";
         cost_book[16] = 30000;
         cost_book[17] = 450;
-        
-        cost_book[16] = 0;
-        cost_book[17] = 0;
+
+        book_name[9] = "책장";
+        cost_book[18] = 0;
+        cost_book[19] = 0;
 
         //물마음-전등
+        light_name[0] = "깨진 전구";
         cost_light[0] = 10000;
         cost_light[1] = 100;
 
+        light_name[1] = "전구";
         cost_light[2] = 15000;
         cost_light[3] = 200;
 
-        cost_wall[4] = 0;
-        cost_wall[5] = 0;
-
+        light_name[2] = "불켜진 전구";
+        cost_light[4] = 0;
+        cost_light[5] = 0;
     }
 
-    public void buyWindow()
+    public void BuyWindow()
     {
         WindowRe();
         if (level >= 8) { }
@@ -152,6 +246,9 @@ public class MainShop : MonoBehaviour
                     level++;
                     PlayerPrefs.SetInt("windowlv", level);
                     WindowRe();
+
+                    window_obj.GetComponent<SpriteRenderer>().sprite = spr_window[level];
+                    PlayerPrefs.Save();
                 }
                 else
                 {
@@ -164,71 +261,352 @@ public class MainShop : MonoBehaviour
             }
         }
     }
+
+    public void BuyWall()
+    {
+        WallRe();
+        if (level >= 2) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("walllv", level);
+                    WallRe();
+
+                    wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wall[level];
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+
+    public void BuyBook()
+    {
+        BookRe();
+        if (level >= 9) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("booklv", level);
+                    BookRe();
+
+                    book_obj.GetComponent<SpriteRenderer>().sprite = spr_book[level];
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+
+    public void BuyLight()
+    {
+        LightRe();
+        if (level >= 2) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("lightlv", level);
+                    LightRe();
+
+                    light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[level];
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+
+    public void BuyTurtle()
+    {
+        level = PlayerPrefs.GetInt("turtlelv", 0);
+        if (level >= 1) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_r = 8000;
+            cost_h = 250;
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("turtlelv", level);
+                    calc();
+                    //레벨
+                    txt_turtle[0].text = "Lv.MAX";
+                    //이름
+                    txt_turtle[1].text = "거북이";
+                    //물
+                    txt_turtle[2].text = "0";
+                    //마음
+                    txt_turtle[3].text = "0";
+
+                    turtle_obj.SetActive(true);
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+
+    public void BuySeed()
+    {
+        level = PlayerPrefs.GetInt("seedlv", 0);
+        if (level >= 1) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_r = 2000;
+            cost_h = 100;
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("seedlv", level);
+                    calc();
+                    //레벨
+                    txt_seed[0].text = "Lv.MAX";
+                    //이름
+                    txt_seed[1].text = "씨앗";
+                    //물
+                    txt_seed[2].text = "0";
+                    //마음
+                    txt_seed[3].text = "0";
+                    seed_obj.SetActive(true);
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+    public void Buybed()
+    {
+        level = PlayerPrefs.GetInt("bedlv", 0);
+        if (level >= 1) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_r = 19000;
+            cost_h = 290;
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("bedlv", level);
+                    calc();
+                    //레벨
+                    txt_bed[0].text = "Lv.MAX";
+                    //이름
+                    txt_bed[1].text = "이불";
+                    //물
+                    txt_bed[2].text = "0";
+                    //마음
+                    txt_bed[3].text = "0";
+                    bed_obj.SetActive(true);
+                    bedBtn_obj.SetActive(true);
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+    public void BuyCup()
+    {
+        level = PlayerPrefs.GetInt("cuplv", 0);
+        if (level >= 1) { }
+        else
+        {
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_r = 2000;
+            cost_h = 100;
+            if (have_r >= cost_r)
+            {
+                if (have_h >= cost_h)
+                {
+                    level++;
+                    PlayerPrefs.SetInt("cuplv", level);
+                    calc();
+                    //레벨
+                    txt_cup[0].text = "Lv.MAX";
+                    //이름
+                    txt_cup[1].text = "물컵";
+                    //물
+                    txt_cup[2].text = "0";
+                    //마음
+                    txt_cup[3].text = "0";
+                    cupBtn_obj.SetActive(true);
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    shopPopup_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+            }
+        }
+    }
+
     void WindowRe()
     {
         level = PlayerPrefs.GetInt("windowlv", 0);
+        sum = level * 2;
+        cost_r = cost_window[sum];
+        cost_h = cost_window[sum + 1];
         calc();
         //레벨
-        txt_window[0].text = "" + level;
+        txt_window[0].text = "Lv." + level;
         //이름
-        txt_window[1].text = "";
+        txt_window[1].text = window_name[level];
         //물
         txt_window[2].text = "" + cost_r;
         //마음
         txt_window[3].text = "" + cost_h;
 
+        if (level >= 8)
+        {
+            txt_window[0].text = "Lv.MAX";
+        }
     }
 
-    void wallRe()
+    void WallRe()
     {
         level = PlayerPrefs.GetInt("walllv", 0);
+        sum = level * 2;
+        cost_r = cost_wall[sum];
+        cost_h = cost_wall[sum + 1];
         calc();
         //레벨
-        txt_wall[0].text = "" + level;
+        txt_wall[0].text = "Lv." + level;
         //이름
-        txt_wall[1].text = "";
+        txt_wall[1].text = wall_name[level];
         //물
         txt_wall[2].text = "" + cost_r;
         //마음
         txt_wall[3].text = "" + cost_h;
 
+        if (level >= 2)
+        {
+            txt_wall[0].text = "Lv.MAX";
+        }
     }
-    void bookRe()
+    void BookRe()
     {
         level = PlayerPrefs.GetInt("booklv", 0);
+        sum = level * 2;
+        cost_r = cost_book[sum];
+        cost_h = cost_book[sum + 1];
         calc();
         //레벨
-        txt_book[0].text = "" + level;
+        txt_book[0].text = "Lv." + level;
         //이름
-        txt_book[1].text = "";
+        txt_book[1].text = book_name[level];
         //물
         txt_book[2].text = "" + cost_r;
         //마음
         txt_book[3].text = "" + cost_h;
 
+        if (level >= 9)
+        {
+            txt_book[0].text = "Lv.MAX";
+        }
     }
 
-    void lightRe()
+    void LightRe()
     {
         level = PlayerPrefs.GetInt("lightlv", 0);
+        sum = level * 2;
+        cost_r = cost_light[sum];
+        cost_h = cost_light[sum + 1];
         calc();
         //레벨
-        txt_light[0].text = "" + level;
+        txt_light[0].text = "Lv." + level;
         //이름
-        txt_light[1].text = "";
+        txt_light[1].text = light_name[level];
         //물
         txt_light[2].text = "" + cost_r;
         //마음
         txt_light[3].text = "" + cost_h;
+        if (level >= 2)
+        {
+            txt_light[0].text = "Lv.MAX";
+        }
     }
 
     void calc()
     {
-        sum = level * 2;
-        cost_r = cost_window[sum];
-        cost_h = cost_window[sum + 1];
-        PlayerPrefs.SetInt(str_Code + "r", have_r - cost_r);
-        PlayerPrefs.SetInt(str_Code + "h", have_h - cost_h);
+        have_r = have_r - cost_r;
+        have_h = have_h - cost_h;
+        PlayerPrefs.SetInt(str_Code + "r", have_r);
+        PlayerPrefs.SetInt(str_Code + "h", have_h);
         txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
         txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
     }
@@ -238,7 +616,7 @@ public class MainShop : MonoBehaviour
         shopPopup_obj.SetActive(false);
     }
 
-    void first()
+    void First()
     {
         #region
         int c = 0;
@@ -302,7 +680,6 @@ public class MainShop : MonoBehaviour
                         break;
                 }
             }
-
             PlayerPrefs.SetString("code", str);
             PlayerPrefs.SetInt("first", 1);
             PlayerPrefs.Save();
