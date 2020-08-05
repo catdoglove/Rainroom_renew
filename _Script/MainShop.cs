@@ -22,7 +22,17 @@ public class MainShop : MonoBehaviour
 
     string str_Code;
 
-    
+    //MAX용
+    public GameObject btn_memoBook, btn_memoWindow, btn_memoSeed, btn_memoLight, btn_memoWall, btn_colorWindow, btn_colorWall, btn_colorLight, btn_colorBed, btn_colorBook;
+    public GameObject btn_colorClock, btn_colorDraw, btn_colorFrame, btn_colorDesk, btn_memoClock, btn_memoDraw, btn_boxFrame, btn_boxDesk;
+    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg;
+    int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum;
+    public Text[] txt_memoName;
+    public GameObject memoImg;
+
+    //외출
+    public GameObject outItem_obj;
+
     private void Awake()
     {
         First();
@@ -112,7 +122,6 @@ public class MainShop : MonoBehaviour
         else
         {
             shopWin_obj.SetActive(true);
-
             txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
             WindowRe();
@@ -120,7 +129,6 @@ public class MainShop : MonoBehaviour
             BookRe();
             LightRe();
         }
-
     }
 
     void setPrice()
@@ -534,6 +542,9 @@ public class MainShop : MonoBehaviour
         if (level >= 8)
         {
             txt_window[0].text = "Lv.MAX";
+            btn_memoWindow.SetActive(true);
+            btn_colorWindow.SetActive(true);
+
         }
     }
 
@@ -552,10 +563,11 @@ public class MainShop : MonoBehaviour
         txt_wall[2].text = "" + cost_r;
         //마음
         txt_wall[3].text = "" + cost_h;
-
         if (level >= 2)
         {
             txt_wall[0].text = "Lv.MAX";
+            btn_memoWall.SetActive(true);
+            btn_colorWall.SetActive(true);
         }
     }
     void BookRe()
@@ -573,10 +585,11 @@ public class MainShop : MonoBehaviour
         txt_book[2].text = "" + cost_r;
         //마음
         txt_book[3].text = "" + cost_h;
-
         if (level >= 9)
         {
             txt_book[0].text = "Lv.MAX";
+            btn_memoBook.SetActive(true);
+            btn_colorBook.SetActive(true);
         }
     }
 
@@ -598,6 +611,8 @@ public class MainShop : MonoBehaviour
         if (level >= 2)
         {
             txt_light[0].text = "Lv.MAX";
+            btn_memoLight.SetActive(true);
+            btn_colorLight.SetActive(true);
         }
     }
 
@@ -615,6 +630,286 @@ public class MainShop : MonoBehaviour
     {
         shopPopup_obj.SetActive(false);
     }
+
+
+    public void ActoutItem()
+    {
+        if (shopWin_obj.activeSelf)
+        {
+            outItem_obj.SetActive(false);
+        }
+        else
+        {
+            outItem_obj.SetActive(true);
+
+            btn_colorClock.SetActive(true);
+            btn_colorDraw.SetActive(true);
+            btn_colorFrame.SetActive(true);
+            btn_colorDesk.SetActive(true);
+            btn_memoClock.SetActive(true);
+            btn_memoDraw.SetActive(true);
+            btn_boxFrame.SetActive(true);
+            btn_boxDesk.SetActive(true);
+        }
+    }
+
+
+
+
+    public void showBookAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "책에 대하여";
+        memoFalse();
+        txt_memoName[1].gameObject.SetActive(true);
+    }
+
+    public void showWindowAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "창문에 대하여";
+        memoFalse();
+        txt_memoName[2].gameObject.SetActive(true);
+    }
+
+    public void showSeedAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "씨앗에 대하여";
+        memoFalse();
+        txt_memoName[3].gameObject.SetActive(true);
+    }
+
+    public void showLightAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "전등에 대하여";
+        memoFalse();
+        txt_memoName[4].gameObject.SetActive(true);
+        memoImg.SetActive(true);
+
+    }
+
+    public void showWallAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "벽지에 대하여";
+        memoFalse();
+        txt_memoName[5].gameObject.SetActive(true);
+
+    }
+    public void showClockAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "시계에 대하여";
+        memoFalse();
+        txt_memoName[6].gameObject.SetActive(true);
+    }
+
+    public void showPictureAllTxt()
+    {
+        memoImg.SetActive(true);
+        txt_memoName[0].text = "그림에 대하여";
+        memoFalse();
+        txt_memoName[7].gameObject.SetActive(true);
+    }
+
+
+    public void closeMemo()
+    {
+        memoImg.SetActive(false);
+    }
+
+
+    void memoFalse()
+    {
+        for(int i = 1; i <= 7; i++)
+        {
+            txt_memoName[i].gameObject.SetActive(false);
+        }
+        memoImg.SetActive(true);
+    }
+
+
+
+    public void changeWindowColor()
+    {
+        if (wincolNum < 9)
+        { //10개
+            wincolNum = PlayerPrefs.GetInt("windowColor", 0) + 1;
+            window_obj.GetComponent<SpriteRenderer>().sprite = spr_windowColorImg[wincolNum];
+            PlayerPrefs.SetInt("windowColor", wincolNum);
+        }
+        else
+        {
+            wincolNum = 0;
+            window_obj.GetComponent<SpriteRenderer>().sprite = spr_windowColorImg[wincolNum];
+            PlayerPrefs.SetInt("windowColor", 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+
+    public void changeRoomColor()
+    {
+        if (wallcolNum < 3)
+        { //4개
+            wallcolNum = PlayerPrefs.GetInt("wallColor", 0) + 1;
+            wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wallColorImg[wallcolNum];
+            PlayerPrefs.SetInt("wallColor", wallcolNum);
+        }
+        else
+        {
+            wallcolNum = 0;
+            wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wallColorImg[wallcolNum];
+            PlayerPrefs.SetInt("wallColor", 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+
+    public void changeLightColor()
+    {
+        if (lightcolNum < 5)
+        { //3~5까지
+            lightcolNum = PlayerPrefs.GetInt("lightColor", 3) + 1;
+            light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[lightcolNum];
+            PlayerPrefs.SetInt("lightColor", lightcolNum);
+        }
+        else
+        {
+            lightcolNum = 3;
+            light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[lightcolNum];
+            PlayerPrefs.SetInt("lightColor", 3);
+        }
+        PlayerPrefs.Save();
+    }
+
+
+    public void changeBedColor()
+    {
+        if (sleepcolNum < 4)
+        { //5까지
+            sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0) + 1;
+            bed_obj.GetComponent<SpriteRenderer>().sprite = spr_sleepColorImg[sleepcolNum];
+            PlayerPrefs.SetInt("sleepColor", sleepcolNum);
+        }
+        else
+        {
+            sleepcolNum = 0;
+            bed_obj.GetComponent<SpriteRenderer>().sprite = spr_sleepColorImg[sleepcolNum];
+            PlayerPrefs.SetInt("sleepColor", 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+    public void changeBookColor()
+    {
+        if (bookcolNum < 4)
+        { //5개
+            bookcolNum = PlayerPrefs.GetInt("bookColor", 0) + 1;
+            book_obj.GetComponent<SpriteRenderer>().sprite = spr_bookColorImg[bookcolNum];
+            PlayerPrefs.SetInt("bookColor", bookcolNum);
+        }
+        else
+        {
+            bookcolNum = 0;
+            book_obj.GetComponent<SpriteRenderer>().sprite = spr_bookColorImg[bookcolNum];
+            PlayerPrefs.SetInt("bookColor", 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+
+    public void changeSeedColor()
+    {
+        if (seedcolNum < 4)
+        { //5개
+            seedcolNum = PlayerPrefs.GetInt("seedColor", 0) + 1;
+            seed_obj.GetComponent<SpriteRenderer>().sprite = spr_seedColorImg[seedcolNum];
+            PlayerPrefs.SetInt("seedColor", seedcolNum);
+        }
+        else
+        {
+            seedcolNum = 0;
+            seed_obj.GetComponent<SpriteRenderer>().sprite = spr_seedColorImg[seedcolNum];
+            PlayerPrefs.SetInt("seedColor", 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+    /*
+    public void changeClockColor()
+    {
+        if (clockcolNum < 7)
+        { 
+            clockcolNum = PlayerPrefs.GetInt("clockColors", 0) + 1;
+            clockImg.GetComponent<SpriteRenderer>().sprite = spr_clockColorImg[clockcolNum];
+            PlayerPrefs.SetInt("clockColors", clockcolNum);
+        }
+        else
+        {
+            clockcolNum = 0;
+            clockImg.GetComponent<SpriteRenderer>().sprite = spr_clockColorImg[clockcolNum];
+            PlayerPrefs.SetInt("clockColors", 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+    public void changeDrawColor()
+    {
+        if (drawcolNum < 9)
+        { 
+            drawcolNum = PlayerPrefs.GetInt("drawColors", 0) + 1;
+            drawImg.GetComponent<SpriteRenderer>().sprite = spr_draw[drawcolNum];
+            PlayerPrefs.SetInt("drawColors", drawcolNum);
+        }
+        else
+        {
+            drawcolNum = 1;
+            drawImg.GetComponent<SpriteRenderer>().sprite = spr_draw[drawcolNum];
+            PlayerPrefs.SetInt("drawColors", 1);
+        }
+        PlayerPrefs.Save();
+    }
+
+    public void changeFrameColor()
+    {
+        if (framecolNum < 5)
+        { 
+            framecolNum = PlayerPrefs.GetInt("frameColors", 0) + 1;
+            frameImg.GetComponent<SpriteRenderer>().sprite = spr_frameColorImg[framecolNum];
+            PlayerPrefs.SetInt("frameColors", framecolNum);
+        }
+        else
+        {
+            framecolNum = 0;
+            frameImg.GetComponent<SpriteRenderer>().sprite = spr_frameColorImg[framecolNum];
+            PlayerPrefs.SetInt("frameColors", 0);
+        }
+        PlayerPrefs.Save();
+    }
+    
+
+
+
+    public void changeDeskColor()
+    {
+        if (deskcolNum < 3)
+        { 
+            deskcolNum = PlayerPrefs.GetInt("deskColors", 0) + 1;
+            desk.GetComponent<SpriteRenderer>().sprite = spr_deskColorImg[deskcolNum];
+            PlayerPrefs.SetInt("deskColors", deskcolNum);
+        }
+        else
+        {
+            deskcolNum = 0;
+            desk.GetComponent<SpriteRenderer>().sprite = spr_deskColorImg[deskcolNum];
+            PlayerPrefs.SetInt("deskColors", 0);
+        }
+        PlayerPrefs.Save();
+    }
+    */
 
     void First()
     {
