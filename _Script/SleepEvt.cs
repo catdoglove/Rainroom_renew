@@ -7,15 +7,31 @@ public class SleepEvt : MonoBehaviour
 {
 
     public int minute, hours;
-    string lastTime;
+    string lastTime, str_Code;
     public Text sleepTime_txt;
-    public GameObject dreamWin_obj,sleepYN_obj,sleepBack_obj;
+    public GameObject dreamWin_obj,sleepYN_obj,sleepBack_obj,dreamnote_obj;
+    public GameObject sleepDown_obj, sleepUp_obj;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("SleepTime");
 
+        str_Code = PlayerPrefs.GetString("code", "");
+
+        StartCoroutine("SleepTime");
+        if(PlayerPrefs.GetInt("sleeping", 0) == 0)
+        {
+            if (PlayerPrefs.GetInt("sleepdream", 0) == 1)
+            {
+                dreamnote_obj.SetActive(true);
+            }
+        }
+        else
+        {
+
+            sleepBack_obj.SetActive(true);
+            sleepMove();
+        }
     }
 
 
@@ -25,7 +41,8 @@ public class SleepEvt : MonoBehaviour
         int a = 0;
         while (a == 0)
         {
-
+            if (PlayerPrefs.GetInt("sleeping", 0) == 1)
+            {
 
             SleepTimeFlow();
             if (minute <= 0 && hours == 0)
@@ -37,14 +54,15 @@ public class SleepEvt : MonoBehaviour
             if (hours <= 0)
             {
                 sleepTime_txt.text = "00:00";
+                PlayerPrefs.SetInt("sleeping", 0);
             }
             else
             {
                 sleepTime_txt.text = str;
             }
-
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
+            }
         }
 
     }
@@ -71,9 +89,12 @@ public class SleepEvt : MonoBehaviour
     //잘까?
     public void SleepY()
     {
+        PlayerPrefs.SetString("sleepLastTime", System.DateTime.Now.ToString());
         sleepYN_obj.SetActive(false);
         sleepBack_obj.SetActive(true);
         PlayerPrefs.SetInt("sleeping", 1);
+        PlayerPrefs.SetInt("sleepdream", 1);
+        sleepMove();
     }
 
     public void SleepN()
@@ -91,13 +112,27 @@ public class SleepEvt : MonoBehaviour
         else
         {
             dreamWin_obj.SetActive(true);
+            PlayerPrefs.SetInt("sleepdream", 0);
+            int r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            int h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            r = r + 400;
+            h = h + 27;
+            PlayerPrefs.SetInt(str_Code + "r", r);
+            PlayerPrefs.SetInt(str_Code + "h", h);
         }
-        
     }
 
+    //잠잘때 애니메이션 띄우기
     void sleepMove()
     {
-
+        if (PlayerPrefs.GetInt("bedlv", 0)==1)
+        {
+            sleepDown_obj.SetActive(true);
+        }
+        else
+        {
+            sleepUp_obj.SetActive(true);
+        }
     }
     
 
