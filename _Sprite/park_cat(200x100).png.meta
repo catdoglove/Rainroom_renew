@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -2579386031647542987
     second: park_cat(200x100)_2
+  - first:
+      213: 2437806759533207409
+    second: park_cat(200x100)_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,7 +97,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: 47
     textureCompression: 1
@@ -112,9 +115,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
-        width: 200
-        height: 100
+        y: 0
+        width: 160
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,10 +135,10 @@ TextureImporter:
       name: park_cat(200x100)_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 200
-        height: 100
+        x: 160
+        y: 0
+        width: 160
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +156,10 @@ TextureImporter:
       name: park_cat(200x100)_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 320
         y: 0
-        width: 200
-        height: 100
+        width: 160
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5313b05021e243cd0800000000000000
-      internalID: -2579386031647542987
+      spriteID: 17fd50de454d4d120800000000000000
+      internalID: 2437806759533207409
       vertices: []
       indices: 
       edges: []
