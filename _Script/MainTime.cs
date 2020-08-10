@@ -62,7 +62,7 @@ public class MainTime : MonoBehaviour
                 PlayerPrefs.SetInt(str + "h", 99999);
             }
 
-            //BaquiWep();
+            BaquiWep();
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
         }
@@ -102,7 +102,7 @@ public class MainTime : MonoBehaviour
         }
         else
         {
-            wepRnd = Random.Range(0, 300);
+            wepRnd = Random.Range(0, 5);
             moveX = Random.Range(-7.1f, 7.1f);
             moveY = Random.Range(-4.1f, 4.1f);
             wep_obj.SetActive (false);
@@ -118,10 +118,10 @@ public class MainTime : MonoBehaviour
 
             baques_obj.transform.position = new Vector3(b_moveX, b_moveY, baques_obj.transform.position.z);
 
-            baqueRnd = Random.Range(0, 300);
+            baqueRnd = Random.Range(0, 5);
             if (baqueRnd == 1)
             {
-                baqueShow = 1;
+                //baqueShow = 1;
             }
         }
         else

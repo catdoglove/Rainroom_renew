@@ -102,13 +102,13 @@ public class MainShop : MonoBehaviour
             cupBtn_obj.SetActive(true);
         }
         level = PlayerPrefs.GetInt("windowlv", 0);
-        window_obj.GetComponent<SpriteRenderer>().sprite = spr_window[level];
+        window_obj.GetComponent<Image>().sprite = spr_window[level];
         level = PlayerPrefs.GetInt("walllv", 0);
-        wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wall[level];
+        wall_obj.GetComponent<Image>().sprite = spr_wall[level];
         level = PlayerPrefs.GetInt("booklv", 0);
-        book_obj.GetComponent<SpriteRenderer>().sprite = spr_book[level];
+        book_obj.GetComponent<Image>().sprite = spr_book[level];
         level = PlayerPrefs.GetInt("lightlv", 0);
-        light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[level];
+        light_obj.GetComponent<Image>().sprite = spr_light[level];
     }
 
 
@@ -255,7 +255,7 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt("windowlv", level);
                     WindowRe();
 
-                    window_obj.GetComponent<SpriteRenderer>().sprite = spr_window[level];
+                    window_obj.GetComponent<Image>().sprite = spr_window[level];
                     PlayerPrefs.Save();
                 }
                 else
@@ -286,7 +286,7 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt("walllv", level);
                     WallRe();
 
-                    wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wall[level];
+                    wall_obj.GetComponent<Image>().sprite = spr_wall[level];
                     PlayerPrefs.Save();
                 }
                 else
@@ -317,7 +317,7 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt("booklv", level);
                     BookRe();
 
-                    book_obj.GetComponent<SpriteRenderer>().sprite = spr_book[level];
+                    book_obj.GetComponent<Image>().sprite = spr_book[level];
                     PlayerPrefs.Save();
                 }
                 else
@@ -348,7 +348,7 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt("lightlv", level);
                     LightRe();
 
-                    light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[level];
+                    light_obj.GetComponent<Image>().sprite = spr_light[level];
                     PlayerPrefs.Save();
                 }
                 else
@@ -737,13 +737,13 @@ public class MainShop : MonoBehaviour
         if (wincolNum < 9)
         { //10개
             wincolNum = PlayerPrefs.GetInt("windowColor", 0) + 1;
-            window_obj.GetComponent<SpriteRenderer>().sprite = spr_windowColorImg[wincolNum];
+            window_obj.GetComponent<Image>().sprite = spr_windowColorImg[wincolNum];
             PlayerPrefs.SetInt("windowColor", wincolNum);
         }
         else
         {
             wincolNum = 0;
-            window_obj.GetComponent<SpriteRenderer>().sprite = spr_windowColorImg[wincolNum];
+            window_obj.GetComponent<Image>().sprite = spr_windowColorImg[wincolNum];
             PlayerPrefs.SetInt("windowColor", 0);
         }
         PlayerPrefs.Save();
@@ -755,13 +755,13 @@ public class MainShop : MonoBehaviour
         if (wallcolNum < 3)
         { //4개
             wallcolNum = PlayerPrefs.GetInt("wallColor", 0) + 1;
-            wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wallColorImg[wallcolNum];
+            wall_obj.GetComponent<Image>().sprite = spr_wallColorImg[wallcolNum];
             PlayerPrefs.SetInt("wallColor", wallcolNum);
         }
         else
         {
             wallcolNum = 0;
-            wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wallColorImg[wallcolNum];
+            wall_obj.GetComponent<Image>().sprite = spr_wallColorImg[wallcolNum];
             PlayerPrefs.SetInt("wallColor", 0);
         }
         PlayerPrefs.Save();
@@ -773,13 +773,13 @@ public class MainShop : MonoBehaviour
         if (lightcolNum < 5)
         { //3~5까지
             lightcolNum = PlayerPrefs.GetInt("lightColor", 3) + 1;
-            light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[lightcolNum];
+            light_obj.GetComponent<Image>().sprite = spr_light[lightcolNum];
             PlayerPrefs.SetInt("lightColor", lightcolNum);
         }
         else
         {
             lightcolNum = 3;
-            light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[lightcolNum];
+            light_obj.GetComponent<Image>().sprite = spr_light[lightcolNum];
             PlayerPrefs.SetInt("lightColor", 3);
         }
         PlayerPrefs.Save();
@@ -791,13 +791,13 @@ public class MainShop : MonoBehaviour
         if (sleepcolNum < 4)
         { //5까지
             sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0) + 1;
-            bed_obj.GetComponent<SpriteRenderer>().sprite = spr_sleepColorImg[sleepcolNum];
+            bed_obj.GetComponent<Image>().sprite = spr_sleepColorImg[sleepcolNum];
             PlayerPrefs.SetInt("sleepColor", sleepcolNum);
         }
         else
         {
             sleepcolNum = 0;
-            bed_obj.GetComponent<SpriteRenderer>().sprite = spr_sleepColorImg[sleepcolNum];
+            bed_obj.GetComponent<Image>().sprite = spr_sleepColorImg[sleepcolNum];
             PlayerPrefs.SetInt("sleepColor", 0);
         }
         PlayerPrefs.Save();
@@ -808,13 +808,13 @@ public class MainShop : MonoBehaviour
         if (bookcolNum < 4)
         { //5개
             bookcolNum = PlayerPrefs.GetInt("bookColor", 0) + 1;
-            book_obj.GetComponent<SpriteRenderer>().sprite = spr_bookColorImg[bookcolNum];
+            book_obj.GetComponent<Image>().sprite = spr_bookColorImg[bookcolNum];
             PlayerPrefs.SetInt("bookColor", bookcolNum);
         }
         else
         {
             bookcolNum = 0;
-            book_obj.GetComponent<SpriteRenderer>().sprite = spr_bookColorImg[bookcolNum];
+            book_obj.GetComponent<Image>().sprite = spr_bookColorImg[bookcolNum];
             PlayerPrefs.SetInt("bookColor", 0);
         }
         PlayerPrefs.Save();
@@ -826,13 +826,13 @@ public class MainShop : MonoBehaviour
         if (seedcolNum < 4)
         { //5개
             seedcolNum = PlayerPrefs.GetInt("seedColor", 0) + 1;
-            seed_obj.GetComponent<SpriteRenderer>().sprite = spr_seedColorImg[seedcolNum];
+            seed_obj.GetComponent<Image>().sprite = spr_seedColorImg[seedcolNum];
             PlayerPrefs.SetInt("seedColor", seedcolNum);
         }
         else
         {
             seedcolNum = 0;
-            seed_obj.GetComponent<SpriteRenderer>().sprite = spr_seedColorImg[seedcolNum];
+            seed_obj.GetComponent<Image>().sprite = spr_seedColorImg[seedcolNum];
             PlayerPrefs.SetInt("seedColor", 0);
         }
         PlayerPrefs.Save();
@@ -844,13 +844,13 @@ public class MainShop : MonoBehaviour
         if (clockcolNum < 7)
         { 
             clockcolNum = PlayerPrefs.GetInt("clockColors", 0) + 1;
-            clockImg.GetComponent<SpriteRenderer>().sprite = spr_clockColorImg[clockcolNum];
+            clockImg.GetComponent<Image>().sprite = spr_clockColorImg[clockcolNum];
             PlayerPrefs.SetInt("clockColors", clockcolNum);
         }
         else
         {
             clockcolNum = 0;
-            clockImg.GetComponent<SpriteRenderer>().sprite = spr_clockColorImg[clockcolNum];
+            clockImg.GetComponent<Image>().sprite = spr_clockColorImg[clockcolNum];
             PlayerPrefs.SetInt("clockColors", 0);
         }
         PlayerPrefs.Save();
@@ -861,13 +861,13 @@ public class MainShop : MonoBehaviour
         if (drawcolNum < 9)
         { 
             drawcolNum = PlayerPrefs.GetInt("drawColors", 0) + 1;
-            drawImg.GetComponent<SpriteRenderer>().sprite = spr_draw[drawcolNum];
+            drawImg.GetComponent<Image>().sprite = spr_draw[drawcolNum];
             PlayerPrefs.SetInt("drawColors", drawcolNum);
         }
         else
         {
             drawcolNum = 1;
-            drawImg.GetComponent<SpriteRenderer>().sprite = spr_draw[drawcolNum];
+            drawImg.GetComponent<Image>().sprite = spr_draw[drawcolNum];
             PlayerPrefs.SetInt("drawColors", 1);
         }
         PlayerPrefs.Save();
@@ -878,13 +878,13 @@ public class MainShop : MonoBehaviour
         if (framecolNum < 5)
         { 
             framecolNum = PlayerPrefs.GetInt("frameColors", 0) + 1;
-            frameImg.GetComponent<SpriteRenderer>().sprite = spr_frameColorImg[framecolNum];
+            frameImg.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
             PlayerPrefs.SetInt("frameColors", framecolNum);
         }
         else
         {
             framecolNum = 0;
-            frameImg.GetComponent<SpriteRenderer>().sprite = spr_frameColorImg[framecolNum];
+            frameImg.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
             PlayerPrefs.SetInt("frameColors", 0);
         }
         PlayerPrefs.Save();
@@ -898,13 +898,13 @@ public class MainShop : MonoBehaviour
         if (deskcolNum < 3)
         { 
             deskcolNum = PlayerPrefs.GetInt("deskColors", 0) + 1;
-            desk.GetComponent<SpriteRenderer>().sprite = spr_deskColorImg[deskcolNum];
+            desk.GetComponent<Image>().sprite = spr_deskColorImg[deskcolNum];
             PlayerPrefs.SetInt("deskColors", deskcolNum);
         }
         else
         {
             deskcolNum = 0;
-            desk.GetComponent<SpriteRenderer>().sprite = spr_deskColorImg[deskcolNum];
+            desk.GetComponent<Image>().sprite = spr_deskColorImg[deskcolNum];
             PlayerPrefs.SetInt("deskColors", 0);
         }
         PlayerPrefs.Save();
