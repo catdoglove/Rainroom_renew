@@ -28,6 +28,7 @@ public class MainShop : MonoBehaviour
     public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg;
     int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum;
     public Text[] txt_memoName;
+    public string[] str_memo;
     public GameObject memoImg;
 
     //외출
@@ -88,6 +89,10 @@ public class MainShop : MonoBehaviour
             txt_bed[3].text = "0";
             bed_obj.SetActive(true);
             bedBtn_obj.SetActive(true);
+            sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0);
+            bed_obj.GetComponent<SpriteRenderer>().sprite = spr_sleepColorImg[sleepcolNum];
+            btn_colorBed.SetActive(true);
+
         }
         if (PlayerPrefs.GetInt("cuplv", 0) == 1)
         {
@@ -103,12 +108,39 @@ public class MainShop : MonoBehaviour
         }
         level = PlayerPrefs.GetInt("windowlv", 0);
         window_obj.GetComponent<Image>().sprite = spr_window[level];
+        if (level >= 8)
+        {
+
+            wincolNum = PlayerPrefs.GetInt("windowColor", 0);
+            window_obj.GetComponent<SpriteRenderer>().sprite = spr_windowColorImg[wincolNum];
+        }
+  
         level = PlayerPrefs.GetInt("walllv", 0);
         wall_obj.GetComponent<Image>().sprite = spr_wall[level];
+        if (level >= 2)
+        {
+
+            wallcolNum = PlayerPrefs.GetInt("wallColor", 0);
+            wall_obj.GetComponent<SpriteRenderer>().sprite = spr_wallColorImg[wallcolNum];
+        }
+
         level = PlayerPrefs.GetInt("booklv", 0);
         book_obj.GetComponent<Image>().sprite = spr_book[level];
+        if (level >= 9)
+        {
+
+            bookcolNum = PlayerPrefs.GetInt("bookColor", 0);
+            book_obj.GetComponent<SpriteRenderer>().sprite = spr_bookColorImg[bookcolNum];
+        }
+
         level = PlayerPrefs.GetInt("lightlv", 0);
         light_obj.GetComponent<Image>().sprite = spr_light[level];
+        if (level >= 2)
+        {
+            lightcolNum = PlayerPrefs.GetInt("lightColor", 0);
+            light_obj.GetComponent<SpriteRenderer>().sprite = spr_light[lightcolNum];
+        }
+
     }
 
 
@@ -124,10 +156,13 @@ public class MainShop : MonoBehaviour
             shopWin_obj.SetActive(true);
             txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
-            WindowRe();
-            WallRe();
-            BookRe();
-            LightRe();
+            have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_r = 0;
+            cost_h = 0;
+            set();
+            Setf();
+
         }
     }
 
@@ -241,10 +276,14 @@ public class MainShop : MonoBehaviour
 
     public void BuyWindow()
     {
-        WindowRe();
         if (level >= 8) { }
         else
         {
+            
+            level = PlayerPrefs.GetInt("windowlv", 0);
+            sum = level * 2;
+            cost_r = cost_window[sum];
+            cost_h = cost_window[sum + 1];
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
             if (have_r >= cost_r)
@@ -272,10 +311,13 @@ public class MainShop : MonoBehaviour
 
     public void BuyWall()
     {
-        WallRe();
         if (level >= 2) { }
         else
         {
+            level = PlayerPrefs.GetInt("walllv", 0);
+            sum = level * 2;
+            cost_r = cost_wall[sum];
+            cost_h = cost_wall[sum + 1];
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
             if (have_r >= cost_r)
@@ -303,10 +345,13 @@ public class MainShop : MonoBehaviour
 
     public void BuyBook()
     {
-        BookRe();
         if (level >= 9) { }
         else
         {
+            level = PlayerPrefs.GetInt("booklv", 0);
+            sum = level * 2;
+            cost_r = cost_book[sum];
+            cost_h = cost_book[sum + 1];
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
             if (have_r >= cost_r)
@@ -334,10 +379,14 @@ public class MainShop : MonoBehaviour
 
     public void BuyLight()
     {
-        LightRe();
         if (level >= 2) { }
         else
         {
+
+            level = PlayerPrefs.GetInt("lightlv", 0);
+            sum = level * 2;
+            cost_r = cost_light[sum];
+            cost_h = cost_light[sum + 1];
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
             if (have_r >= cost_r)
@@ -483,6 +532,7 @@ public class MainShop : MonoBehaviour
             }
         }
     }
+
     public void BuyCup()
     {
         level = PlayerPrefs.GetInt("cuplv", 0);
@@ -626,6 +676,52 @@ public class MainShop : MonoBehaviour
         txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
     }
 
+    void set()
+    {
+        int ll;
+
+        ll = PlayerPrefs.GetInt("booklv", 0);
+        //레벨
+        txt_book[0].text = "Lv." + ll;
+        //이름
+        txt_book[1].text = book_name[ll];
+        //물
+        txt_book[2].text = "" + cost_r;
+        //마음
+        txt_book[3].text = "" + cost_h;
+
+        ll = PlayerPrefs.GetInt("lightlv", 0);
+        //레벨
+        txt_light[0].text = "Lv." + ll;
+        //이름
+        txt_light[1].text = light_name[ll];
+        //물
+        txt_light[2].text = "" + cost_r;
+        //마음
+        txt_light[3].text = "" + cost_h;
+
+        ll = PlayerPrefs.GetInt("walllv", 0);
+        calc();
+        //레벨
+        txt_wall[0].text = "Lv." + ll;
+        //이름
+        txt_wall[1].text = wall_name[ll];
+        //물
+        txt_wall[2].text = "" + cost_r;
+        //마음
+        txt_wall[3].text = "" + cost_h;
+
+        ll = PlayerPrefs.GetInt("windowlv", 0);
+        //레벨
+        txt_window[0].text = "Lv." + ll;
+        //이름
+        txt_window[1].text = window_name[ll];
+        //물
+        txt_window[2].text = "" + cost_r;
+        //마음
+        txt_window[3].text = "" + cost_h;
+    }
+
     public void closePop()
     {
         shopPopup_obj.SetActive(false);
@@ -661,7 +757,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "책에 대하여";
         memoFalse();
-        txt_memoName[1].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[0];
     }
 
     public void showWindowAllTxt()
@@ -669,7 +765,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "창문에 대하여";
         memoFalse();
-        txt_memoName[2].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[1];
     }
 
     public void showSeedAllTxt()
@@ -677,7 +773,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "씨앗에 대하여";
         memoFalse();
-        txt_memoName[3].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[2];
     }
 
     public void showLightAllTxt()
@@ -685,7 +781,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "전등에 대하여";
         memoFalse();
-        txt_memoName[4].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[3];
         memoImg.SetActive(true);
 
     }
@@ -695,7 +791,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "벽지에 대하여";
         memoFalse();
-        txt_memoName[5].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[4];
 
     }
     public void showClockAllTxt()
@@ -703,7 +799,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "시계에 대하여";
         memoFalse();
-        txt_memoName[6].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[5];
     }
 
     public void showPictureAllTxt()
@@ -711,7 +807,7 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
         txt_memoName[0].text = "그림에 대하여";
         memoFalse();
-        txt_memoName[7].gameObject.SetActive(true);
+        txt_memoName[1].text = str_memo[6];
     }
 
 

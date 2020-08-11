@@ -34,7 +34,7 @@ public class MainInfo : MonoBehaviour
         else
         {
             infoWin_obj.SetActive(true);
-            txt_lv.text = "" + PlayerPrefs.GetInt("likelv", 0);
+            //txt_lv.text = "" + PlayerPrefs.GetInt("likelv", 0);
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
         }
     }

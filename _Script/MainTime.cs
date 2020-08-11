@@ -40,6 +40,7 @@ public class MainTime : MonoBehaviour
         //업데이트대신쓴다
         str = PlayerPrefs.GetString("code", "");
         StartCoroutine("updateSec");
+        StartCoroutine("MoveB");
 
         talk = PlayerPrefs.GetInt("talk", 5);
     }
@@ -116,28 +117,16 @@ public class MainTime : MonoBehaviour
             baqueRnd = 0;
             b_moveX = -14.5f;
 
-            baques_obj.transform.position = new Vector3(b_moveX, b_moveY, baques_obj.transform.position.z);
+            baques_obj.transform.position = new Vector3(b_moveX, baques_obj.transform.position.y, baques_obj.transform.position.z);
 
             baqueRnd = Random.Range(0, 5);
             if (baqueRnd == 1)
             {
-                //baqueShow = 1;
+                baqueShow = 1;
             }
         }
         else
         {
-            b_moveX = baques_obj.transform.position.x + (0.02f);//(1.5f * Time.deltaTime);
-            baques_obj.transform.position = new Vector3(b_moveX, baques_obj.transform.position.y + 0.001f, baques_obj.transform.position.z);
-            if (b_moveX > 14)
-            {
-                baqueShow = 0;
-            }
-            if (baqueShow == 0)
-            {
-                baqueRnd = 0;
-                b_moveX = -14.5f;
-                baques_obj.transform.position = new Vector3(b_moveX, b_moveY, baques_obj.transform.position.z);
-            }
         }
         
     }
@@ -195,6 +184,32 @@ public class MainTime : MonoBehaviour
             btn_paper.GetComponent<Button>().interactable = false;
             string stru = string.Format(@"{0:00}" + ":", hGp) + string.Format(@"{0:00}", mGp);
             txt_paper.text = stru;
+        }
+    }
+
+
+
+    IEnumerator MoveB()
+    {
+        int a = 0;
+        while (a == 0)
+        {
+            if (baqueShow == 1)
+            {
+                b_moveX = baques_obj.transform.position.x + (0.1f);//(1.5f * Time.deltaTime);
+                baques_obj.transform.position = new Vector3(b_moveX, baques_obj.transform.position.y, baques_obj.transform.position.z);
+                if (b_moveX > 14)
+                {
+                    baqueShow = 0;
+                }
+                if (baqueShow == 0)
+                {
+                    baqueRnd = 0;
+                    b_moveX = -14.5f;
+                    baques_obj.transform.position = new Vector3(b_moveX, baques_obj.transform.position.y, baques_obj.transform.position.z);
+                }
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
