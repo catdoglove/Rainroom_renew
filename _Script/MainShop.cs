@@ -16,7 +16,7 @@ public class MainShop : MonoBehaviour
     public Text[] txt_window, txt_wall, txt_book, txt_light, txt_turtle, txt_seed, txt_bed, txt_cup;
     public string[] window_name, wall_name, book_name, light_name;
     public Text txt_rain, txt_heart;
-    public GameObject shopWin_obj, shopPopup_obj;
+    public GameObject shopWin_obj, shopPopup_obj,shopWinYN_obj;
 
     int cost_r, cost_h, level, sum, have_r, have_h;
 
@@ -25,7 +25,7 @@ public class MainShop : MonoBehaviour
     //MAX용
     public GameObject btn_memoBook, btn_memoWindow, btn_memoSeed, btn_memoLight, btn_memoWall, btn_colorWindow, btn_colorWall, btn_colorLight, btn_colorBed, btn_colorBook;
     public GameObject btn_colorClock, btn_colorDraw, btn_colorFrame, btn_colorDesk, btn_memoClock, btn_memoDraw, btn_boxFrame, btn_boxDesk;
-    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg;
+    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg, spr_clockColorImg;
     int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum;
     public Text[] txt_memoName;
     public string[] str_memo;
@@ -44,6 +44,8 @@ public class MainShop : MonoBehaviour
     {
         
         str_Code = PlayerPrefs.GetString("code", "");
+        //PlayerPrefs.SetInt(str_Code + "h", 9999);
+        //PlayerPrefs.SetInt(str_Code + "r", 99999);
         //가격과 이름
         setPrice();
         Setf();
@@ -158,12 +160,26 @@ public class MainShop : MonoBehaviour
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            set();
+
             cost_r = 0;
             cost_h = 0;
-            set();
             Setf();
 
         }
+    }
+
+    public void ShopBuyYN()
+    {
+        shopWinYN_obj.SetActive(true);
+    }
+    public void ShopBuyY()
+    {
+        shopWinYN_obj.SetActive(false);
+    }
+    public void ShopBuyN()
+    {
+        shopWinYN_obj.SetActive(false);
     }
 
     void setPrice()
@@ -681,6 +697,9 @@ public class MainShop : MonoBehaviour
         int ll;
 
         ll = PlayerPrefs.GetInt("booklv", 0);
+        sum = level * 2;
+        cost_r = cost_book[sum];
+        cost_h = cost_book[sum + 1];
         //레벨
         txt_book[0].text = "Lv." + ll;
         //이름
@@ -691,6 +710,9 @@ public class MainShop : MonoBehaviour
         txt_book[3].text = "" + cost_h;
 
         ll = PlayerPrefs.GetInt("lightlv", 0);
+        sum = level * 2;
+        cost_r = cost_light[sum];
+        cost_h = cost_light[sum + 1];
         //레벨
         txt_light[0].text = "Lv." + ll;
         //이름
@@ -701,7 +723,9 @@ public class MainShop : MonoBehaviour
         txt_light[3].text = "" + cost_h;
 
         ll = PlayerPrefs.GetInt("walllv", 0);
-        calc();
+        sum = level * 2;
+        cost_r = cost_wall[sum];
+        cost_h = cost_wall[sum + 1];
         //레벨
         txt_wall[0].text = "Lv." + ll;
         //이름
@@ -712,6 +736,9 @@ public class MainShop : MonoBehaviour
         txt_wall[3].text = "" + cost_h;
 
         ll = PlayerPrefs.GetInt("windowlv", 0);
+        sum = level * 2;
+        cost_r = cost_window[sum];
+        cost_h = cost_window[sum + 1];
         //레벨
         txt_window[0].text = "Lv." + ll;
         //이름
@@ -738,6 +765,7 @@ public class MainShop : MonoBehaviour
         {
             outItem_obj.SetActive(true);
 
+            /*
             btn_colorClock.SetActive(true);
             btn_colorDraw.SetActive(true);
             btn_colorFrame.SetActive(true);
@@ -746,6 +774,7 @@ public class MainShop : MonoBehaviour
             btn_memoDraw.SetActive(true);
             btn_boxFrame.SetActive(true);
             btn_boxDesk.SetActive(true);
+            */
         }
     }
 

@@ -6,6 +6,8 @@ public class TouchEvt : MonoBehaviour
 {
     string str_Code;
     int h, r;
+
+    public GameObject wep_obj, baques_obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,8 @@ public class TouchEvt : MonoBehaviour
     public void sTouch()
     {
 
+        wep_obj.SetActive(false);
+        MainTime.wepRnd = 0;
         h = PlayerPrefs.GetInt(str_Code + "h", 0);
         r = PlayerPrefs.GetInt(str_Code + "r", 0);
         h = h + 3;

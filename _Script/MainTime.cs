@@ -8,7 +8,7 @@ public class MainTime : MonoBehaviour
     string str;
     int talk;
 
-    int wepRnd, wepShow, baqueRnd, baqueShow;
+    public static int wepRnd, wepShow, baqueRnd, baqueShow;
     float moveX, moveY, b_moveX, b_moveY;
     public GameObject wep_obj, baques_obj;
 
@@ -90,13 +90,6 @@ public class MainTime : MonoBehaviour
         //거미줄
         if (wepRnd == 1)
         {
-            if (wepShow == 0)
-            {
-                moveX = -8f;
-                moveY = -8f;
-                wepRnd = 0;
-            }
-            wepShow = 1;
             wep_obj.SetActive (true);
             wep_obj.transform.position = new Vector3(moveX, moveY, wep_obj.transform.position.z);
 
@@ -105,7 +98,7 @@ public class MainTime : MonoBehaviour
         {
             wepRnd = Random.Range(0, 5);
             moveX = Random.Range(-7.1f, 7.1f);
-            moveY = Random.Range(-4.1f, 4.1f);
+            moveY = Random.Range(4.1f, 1.1f);
             wep_obj.SetActive (false);
         }
 
