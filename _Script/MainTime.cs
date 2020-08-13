@@ -20,6 +20,12 @@ public class MainTime : MonoBehaviour
     System.DateTime lastDateGudog;
     System.TimeSpan compareGudog;
     string lastGudog;
+    int i_news;
+    public GameObject news_obj;
+
+
+    int h;
+    int r,like;
 
 
     //전단지
@@ -33,6 +39,18 @@ public class MainTime : MonoBehaviour
     string lastPaper;
     public Sprite[] spr_paperFood;
 
+    //물컵
+    public GameObject glassBtn;
+    public Sprite[] spr_glass;
+    public int glassWater,w;
+
+
+    //전단지
+    public GameObject heartpaperImg, btn_heartHelp;
+    public GameObject heartpaperEatBtn;
+    public GameObject heartpaperChoice;
+    public Text heartNotE;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +80,15 @@ public class MainTime : MonoBehaviour
             {
                 PlayerPrefs.SetInt(str + "h", 99999);
             }
-
+            glassWater++;
+            if (glassWater >= 30)
+            {
+                cup();
+                glassWater = 0;
+            }
             BaquiWep();
+            News();
+            food();
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
         }
@@ -152,6 +177,25 @@ public class MainTime : MonoBehaviour
         }
     }
 
+
+    public void gudocOpen()
+    {
+        news_obj.SetActive(true);
+        PlayerPrefs.SetString("saveGudoc", System.DateTime.Now.ToString());
+        h = PlayerPrefs.GetInt(str + "h", 0);
+        r = PlayerPrefs.GetInt(str + "r", 0);
+        h = h + 50;
+        r = r + 500;
+        PlayerPrefs.SetInt(str + "r", r);
+        PlayerPrefs.SetInt(str + "h", h);
+    }
+
+
+    public void gudocClose()
+    {
+        news_obj.SetActive(false);
+    }
+
     void food()
     {
 
@@ -177,6 +221,165 @@ public class MainTime : MonoBehaviour
             btn_paper.GetComponent<Button>().interactable = false;
             string stru = string.Format(@"{0:00}" + ":", hGp) + string.Format(@"{0:00}", mGp);
             txt_paper.text = stru;
+        }
+    }
+
+    
+    public void heartpaperY()
+    {//먹는다
+
+        
+        h = PlayerPrefs.GetInt(str + "h", 0);
+        r = PlayerPrefs.GetInt(str + "r", 0);
+        like =PlayerPrefs.GetInt("likelv", 0);
+
+        heartpaperEatBtn.SetActive(true);
+        heartpaperEatBtn.GetComponent<Image>().sprite = spr_paperFood[PlayerPrefs.GetInt("heartpaper", 0)];
+        switch (PlayerPrefs.GetInt("heartpaper", 0))
+        {
+            case 1: //짜
+                if (h >= 50)
+                {
+                    h = h - 50;
+                    like = like + 7;
+                    PlayerPrefs.SetInt(str + "h", h);
+                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.Save();
+                    heartpaperChoice.SetActive(false);
+                }
+                else
+                {
+                    heartNotE.text = "마음이 부족하다.";
+                    heartpaperEatBtn.SetActive(false);
+                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                }
+                break;
+
+            case 2: //볶
+                if (h >= 50)
+                {
+                    h = h - 50;
+                    like = like + 7;
+                    PlayerPrefs.SetInt(str + "h", h);
+                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.Save();
+                    heartpaperChoice.SetActive(false);
+                }
+                else
+                {
+                    heartNotE.text = "마음이 부족하다.";
+                    heartpaperEatBtn.SetActive(false);
+                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                }
+                break;
+
+            case 3: //우
+                if (h >= 60)
+                {
+                    h = h - 60;
+                    like = like + 9;
+                    PlayerPrefs.SetInt(str + "h", h);
+                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.Save();
+                    heartpaperChoice.SetActive(false);
+                }
+                else
+                {
+                    heartNotE.text = "마음이 부족하다.";
+                    heartpaperEatBtn.SetActive(false);
+                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                }
+                break;
+
+            case 4: //짬
+                if (h >= 60)
+                {
+                    h = h - 60;
+                    like = like + 9;
+                    PlayerPrefs.SetInt(str + "h", h);
+                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.Save();
+                    heartpaperChoice.SetActive(false);
+                }
+                else
+                {
+                    heartNotE.text = "마음이 부족하다.";
+                    heartpaperEatBtn.SetActive(false);
+                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public void heartpaperN()
+    {//안
+        heartpaperChoice.SetActive(false);
+    }
+
+    public void food1()
+    {//짜장
+        PlayerPrefs.SetInt("heartpaper", 1);
+    }
+    public void food2()
+    {//볶음밥
+        PlayerPrefs.SetInt("heartpaper", 2);
+    }
+    public void food3()
+    {//짬뽕
+        PlayerPrefs.SetInt("heartpaper", 3);
+    }
+    public void food4()
+    {//우동
+        PlayerPrefs.SetInt("heartpaper", 4);
+    }
+    
+
+    void cup()
+    {
+
+        //if (PlayerPrefs.GetInt("glass", 0) == 1)
+        //{
+            w = PlayerPrefs.GetInt("water", 0);
+            if (w < 1)
+            { //0
+                glassBtn.GetComponent<Image>().sprite = spr_glass[0];
+            }
+            else if (w < 49)
+            { //1~249
+                glassBtn.GetComponent<Image>().sprite = spr_glass[1];
+            }
+            else
+            { //250
+                glassBtn.GetComponent<Image>().sprite = spr_glass[2];
+            }
+            if(w > 49)
+            {
+                w = 49;
+            }
+            PlayerPrefs.SetInt("water", w + 1);
+        //}
+    }
+
+
+    public void getGlassWater()
+    {
+        if (PlayerPrefs.GetInt("glass", 0) == 0)
+        {
+        }
+        else
+        {
+            int w = PlayerPrefs.GetInt("water", 0) * 5;
+            //upgrade.rain = upgrade.rain + w;
+            //PlayerPrefs.SetInt("rain", upgrade.rain);
+            PlayerPrefs.SetInt("water", 0);
+           // btn_glassShow.SetActive(true);
+            //txt_glassShow.text = "물을 " + w + "만큼 모았다.";
         }
     }
 

@@ -1075,7 +1075,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuyWindow
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetWindow4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2645,7 +2656,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuyLight
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetLight7
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4256,12 +4278,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wep_obj: {fileID: 1952141105}
   baques_obj: {fileID: 2145766737}
-  btn_gudoc: {fileID: 0}
-  txt_gudoc: {fileID: 0}
+  btn_gudoc: {fileID: 2014613897}
+  txt_gudoc: {fileID: 253592532}
+  news_obj: {fileID: 0}
   lastgd: 0
-  btn_paper: {fileID: 0}
-  txt_paper: {fileID: 0}
+  btn_paper: {fileID: 632258294}
+  txt_paper: {fileID: 1785268944}
   spr_paperFood: []
+  glassBtn: {fileID: 538554748}
+  spr_glass:
+  - {fileID: 3523114616419831798, guid: c2bf34245688f7149b890e3dbb70d6b2, type: 3}
+  - {fileID: 5303812114018794553, guid: c2bf34245688f7149b890e3dbb70d6b2, type: 3}
+  - {fileID: -3841029393584359808, guid: c2bf34245688f7149b890e3dbb70d6b2, type: 3}
+  glassWater: 0
+  w: 0
 --- !u!4 &300375160
 Transform:
   m_ObjectHideFlags: 0
@@ -4290,7 +4320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall_obj: {fileID: 91671138}
   window_obj: {fileID: 1300448989}
-  turtle_obj: {fileID: 0}
+  turtle_obj: {fileID: 1159093358}
   book_obj: {fileID: 694477859}
   light_obj: {fileID: 522623283}
   seed_obj: {fileID: 216770031}
@@ -4395,10 +4425,10 @@ MonoBehaviour:
   - {fileID: 1777959662}
   - {fileID: 585631481}
   txt_bed:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 468584377}
+  - {fileID: 338703015}
+  - {fileID: 1172175050}
+  - {fileID: 58584869}
   txt_cup:
   - {fileID: 1667142801}
   - {fileID: 1760778462}
@@ -4459,7 +4489,7 @@ MonoBehaviour:
   txt_heart: {fileID: 561789019}
   shopWin_obj: {fileID: 1604754612}
   shopPopup_obj: {fileID: 695030164}
-  shopWinYN_obj: {fileID: 0}
+  shopWinYN_obj: {fileID: 704173230}
   btn_memoBook: {fileID: 0}
   btn_memoWindow: {fileID: 0}
   btn_memoSeed: {fileID: 0}
@@ -7155,7 +7185,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuyWall
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetWall6
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7626,7 +7667,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuySeed
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetSeed3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7797,7 +7849,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuyBook
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetBook5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8125,6 +8188,7 @@ GameObject:
   - component: {fileID: 538554749}
   - component: {fileID: 538554751}
   - component: {fileID: 538554750}
+  - component: {fileID: 538554752}
   m_Layer: 5
   m_Name: "\uCEF5"
   m_TagString: Untagged
@@ -8189,6 +8253,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538554748}
   m_CullTransparentMesh: 0
+--- !u!114 &538554752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538554748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 538554750}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 300375159}
+        m_MethodName: getGlassWater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &553235523
 GameObject:
   m_ObjectHideFlags: 0
@@ -10521,7 +10639,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f0de2aaf72dabf6458c9bc42d5868aaf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10781,7 +10899,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuyCup
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetCup1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13331,7 +13460,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: Buybed
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: Setbed8
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19383,7 +19523,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1296042385}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375161}
+        m_MethodName: closeMemo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1296042385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22967,7 +23118,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: BuyTurtle
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375161}
+        m_MethodName: SetTurtle2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24480,7 +24642,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1847297762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375161}
+        m_MethodName: ShopBuyN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1847297762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26351,7 +26524,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2014613898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375159}
+        m_MethodName: gudocOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2014613898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26935,7 +27119,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2071195099}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375161}
+        m_MethodName: ShopBuyY
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2071195099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27682,7 +27877,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2138673761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375159}
+        m_MethodName: gudocClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2138673761
 MonoBehaviour:
   m_ObjectHideFlags: 0
