@@ -17,7 +17,8 @@ public class MainShop : MonoBehaviour
     public string[] window_name, wall_name, book_name, light_name;
     public Text txt_rain, txt_heart;
     public GameObject shopWin_obj, shopPopup_obj,shopWinYN_obj;
-
+    public GameObject bedBox_obj;
+    public Sprite spr_boxOpen, spr_boxClose;
 
 
     int cost_r, cost_h, level, sum, have_r, have_h;
@@ -840,6 +841,7 @@ public class MainShop : MonoBehaviour
     }
 
 
+    //상점외출물건
     public void ActoutItem()
     {
         if (shopWin_obj.activeSelf)
@@ -849,20 +851,27 @@ public class MainShop : MonoBehaviour
         else
         {
             outItem_obj.SetActive(true);
-
-            /*
-            btn_colorClock.SetActive(true);
-            btn_colorDraw.SetActive(true);
-            btn_colorFrame.SetActive(true);
-            btn_colorDesk.SetActive(true);
-            btn_memoClock.SetActive(true);
-            btn_memoDraw.SetActive(true);
-            btn_boxFrame.SetActive(true);
-            btn_boxDesk.SetActive(true);
-            */
+            
         }
     }
 
+    /// <summary>
+    /// 시계 그림 책상 액자
+    /// </summary>
+    void SetOutItem()
+    {
+        if (PlayerPrefs.GetInt("desklv",0)>=1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+        }
+        btn_boxFrame.GetComponent<Button>().interactable = false;
+        btn_colorFrame.GetComponent<Button>().interactable = false;
+        btn_colorDesk.GetComponent<Button>().interactable = false;
+        btn_colorClock.GetComponent<Button>().interactable = false;
+        btn_colorDraw.GetComponent<Button>().interactable = false;
+        btn_memoClock.GetComponent<Button>().interactable = false;
+        btn_memoDraw.GetComponent<Button>().interactable = false;
+    }
 
 
 
@@ -1189,6 +1198,18 @@ public class MainShop : MonoBehaviour
         #endregion
     }
 
-
+    public void BedBox()
+    {
+        if (PlayerPrefs.GetInt("bedbox", 0) == 0)
+        {
+            bedBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            PlayerPrefs.SetInt("bedbox", 1);
+        }
+        else
+        {
+            bedBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            PlayerPrefs.SetInt("bedbox", 0);
+        }
+    }
     
 }
