@@ -4447,6 +4447,9 @@ MonoBehaviour:
   heartpaperEatBtn: {fileID: 0}
   heartpaperChoice: {fileID: 0}
   heartNotE: {fileID: 0}
+  gobok: {fileID: 0}
+  btn_gobok: {fileID: 0}
+  img_bless: {fileID: 0}
 --- !u!4 &300375160
 Transform:
   m_ObjectHideFlags: 0
@@ -5002,6 +5005,7 @@ MonoBehaviour:
   sleepYN_obj: {fileID: 0}
   sleepBack_obj: {fileID: 0}
   dreamnote_obj: {fileID: 0}
+  bedWin_obj: {fileID: 0}
   sleepDown_obj: {fileID: 0}
   sleepUp_obj: {fileID: 0}
 --- !u!1 &319229059
