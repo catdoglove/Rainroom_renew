@@ -9,7 +9,7 @@ public class SleepEvt : MonoBehaviour
     public int minute, hours;
     string lastTime, str_Code;
     public Text sleepTime_txt;
-    public GameObject dreamWin_obj,sleepYN_obj,sleepBack_obj,dreamnote_obj;
+    public GameObject dreamWin_obj,sleepYN_obj,sleepBack_obj,dreamnote_obj,bedWin_obj;
     public GameObject sleepDown_obj, sleepUp_obj;
 
     // Start is called before the first frame update
@@ -84,6 +84,19 @@ public class SleepEvt : MonoBehaviour
         if (minute < 0)
         {
         }
+    }
+    public void OpenSleepYN()
+    {
+        bedWin_obj.SetActive(true);
+    }
+    public void OpenSleepYNY()
+    {
+        sleepYN_obj.SetActive(true);
+        bedWin_obj.SetActive(false);
+    }
+    public void OpenSleepYNN()
+    {
+        bedWin_obj.SetActive(false);
     }
 
     //잘까?

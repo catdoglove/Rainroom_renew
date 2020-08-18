@@ -50,7 +50,10 @@ public class MainTime : MonoBehaviour
     public GameObject heartpaperEatBtn;
     public GameObject heartpaperChoice;
     public Text heartNotE;
-    
+
+    //거북이
+    public GameObject gobok, btn_gobok, img_bless;
+    int beuk;
 
     // Start is called before the first frame update
     void Start()
@@ -381,6 +384,40 @@ public class MainTime : MonoBehaviour
            // btn_glassShow.SetActive(true);
             //txt_glassShow.text = "물을 " + w + "만큼 모았다.";
         }
+    }
+
+    void tutle()
+    {
+        if (PlayerPrefs.GetInt("sleepmotion", 0) == 1)
+        {
+            //img_bless.SetActive(false);
+        }
+
+        if (moveX <= -5)
+        {
+            beuk = 1;
+            gobok.transform.rotation = Quaternion.Euler(0, 180, 0);
+            btn_gobok.transform.Rotate(new Vector3(0, 180, 0));
+            //btn_giveWater.transform.Rotate(new Vector3 (0,180,0));
+            img_bless.transform.Rotate(new Vector3(0, 180, 0));
+        }
+        else if (moveX >= 6.5)
+        {
+            beuk = 0;
+            gobok.transform.rotation = Quaternion.Euler(0, 0, 0);
+            btn_gobok.transform.Rotate(new Vector3(0, -180, 0));
+            //btn_giveWater.transform.Rotate(new Vector3 (0,-180,0));
+            img_bless.transform.Rotate(new Vector3(0, -180, 0));
+        }
+        if (beuk == 1)
+        {
+            moveX = moveX + 0.001f;
+        }
+        else
+        {
+            moveX = moveX - 0.001f;
+        }
+        gobok.transform.position = new Vector3(moveX, moveY, gobok.transform.position.z);
     }
 
 
