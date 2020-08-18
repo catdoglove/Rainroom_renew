@@ -40,9 +40,10 @@ public class MainTime : MonoBehaviour
     public Sprite[] spr_paperFood;
 
     //물컵
-    public GameObject glassBtn;
+    public GameObject glassBtn, btn_glassShow;
     public Sprite[] spr_glass;
     public int glassWater,w;
+    public Text txt_glassShow, txt_rain;
 
 
     //전단지
@@ -54,7 +55,7 @@ public class MainTime : MonoBehaviour
     //거북이
     public GameObject gobok, btn_gobok, img_bless;
     int beuk;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -372,18 +373,17 @@ public class MainTime : MonoBehaviour
 
     public void getGlassWater()
     {
-        if (PlayerPrefs.GetInt("glass", 0) == 0)
-        {
-        }
-        else
-        {
-            int w = PlayerPrefs.GetInt("water", 0) * 5;
-            //upgrade.rain = upgrade.rain + w;
-            //PlayerPrefs.SetInt("rain", upgrade.rain);
-            PlayerPrefs.SetInt("water", 0);
-           // btn_glassShow.SetActive(true);
-            //txt_glassShow.text = "물을 " + w + "만큼 모았다.";
-        }
+        int k = 0;
+        k = PlayerPrefs.GetInt("water", 0) * 5;
+        txt_glassShow.text = "물을 " + k + "만큼 모았다.";
+        k = PlayerPrefs.GetInt(str + "r", 0) + k;
+        PlayerPrefs.SetInt(str + "r", k);
+        PlayerPrefs.SetInt("water", 0);
+        PlayerPrefs.Save();
+        glassBtn.GetComponent<Image>().sprite = spr_glass[0];
+        btn_glassShow.SetActive(true);
+        txt_rain.text = "" + PlayerPrefs.GetInt(str + "r", 0);
+
     }
 
     void tutle()
@@ -445,4 +445,5 @@ public class MainTime : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+    
 }

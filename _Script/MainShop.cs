@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MainShop : MonoBehaviour
 {
     //방업그레이드
-    public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, bed_obj, seedBtn_obj, cupBtn_obj, desk_obj, today_obj, bedBtn_obj;
+    public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, bed_obj, seedBtn_obj, cupBtn_obj, desk_obj, today_obj;
     public Text txt;
     public Sprite[] spr_wall, spr_window, spr_book, spr_light, spr_seed, spr_sleep, spr_glass, spr_desk;
     public int[] cost_wall, cost_window, cost_book, cost_light;
@@ -15,7 +15,7 @@ public class MainShop : MonoBehaviour
 
     public Text[] txt_window, txt_wall, txt_book, txt_light, txt_turtle, txt_seed, txt_bed, txt_cup;
     public string[] window_name, wall_name, book_name, light_name;
-    public Text txt_rain, txt_heart;
+    public Text txt_rain, txt_heart, txt_Popup;
     public GameObject shopWin_obj, shopPopup_obj,shopWinYN_obj;
     public GameObject bedBox_obj;
     public Sprite spr_boxOpen, spr_boxClose;
@@ -36,7 +36,7 @@ public class MainShop : MonoBehaviour
 
     //외출
     public GameObject outItem_obj;
-
+    
     private void Awake()
     {
         First();
@@ -82,7 +82,8 @@ public class MainShop : MonoBehaviour
             txt_seed[3].text = "0";
             seed_obj.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("bedlv", 0) == 1)
+
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 1)
         {
             //레벨
             txt_bed[0].text = "Lv.MAX";
@@ -93,12 +94,12 @@ public class MainShop : MonoBehaviour
             //마음
             txt_bed[3].text = "0";
             bed_obj.SetActive(true);
-            bedBtn_obj.SetActive(true);
             sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0);
+            bed_obj.GetComponent<Image>().sprite = spr_sleep[PlayerPrefs.GetInt("bedlv", 0)-1];
             //bed_obj.GetComponent<Image>().sprite = spr_sleepColorImg[sleepcolNum];
             //btn_colorBed.SetActive(true);
-
         }
+
         if (PlayerPrefs.GetInt("cuplv", 0) == 1)
         {
             //레벨
@@ -111,6 +112,7 @@ public class MainShop : MonoBehaviour
             txt_cup[3].text = "0";
             cupBtn_obj.SetActive(true);
         }
+
         level = PlayerPrefs.GetInt("windowlv", 0);
         window_obj.GetComponent<Image>().sprite = spr_window[level];
         if (level >= 8)
@@ -381,11 +383,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -415,11 +419,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -449,11 +455,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -484,11 +492,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -528,11 +538,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -571,11 +583,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -608,17 +622,18 @@ public class MainShop : MonoBehaviour
                     //마음
                     txt_bed[3].text = "0";
                     bed_obj.SetActive(true);
-                    bedBtn_obj.SetActive(true);
                     PlayerPrefs.Save();
                 }
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }
@@ -658,11 +673,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
+                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
+                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
             }
         }
     }

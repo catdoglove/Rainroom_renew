@@ -9,6 +9,10 @@ public class MoveOut : MonoBehaviour
     string str_Code;
     public GameObject toast;
     public Text toastTxt;
+
+
+    public Text txt_Popup;
+    public GameObject shopPopup_obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +58,11 @@ public class MoveOut : MonoBehaviour
             toast.SetActive(true);
             toastTxt.text = "마음이 부족하다.";
         }
+    }
+    public void GoOutYN()
+    {
+        shopPopup_obj.SetActive(true);
+        txt_Popup.text = "별로 나가고 싶지 않은 것 같다.\n더 친해지면 나갈지도 모른다.";
     }
 
 

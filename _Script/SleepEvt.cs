@@ -10,7 +10,8 @@ public class SleepEvt : MonoBehaviour
     string lastTime, str_Code;
     public Text sleepTime_txt;
     public GameObject dreamWin_obj,sleepYN_obj,sleepBack_obj,dreamnote_obj,bedWin_obj;
-    public GameObject sleepDown_obj, sleepUp_obj;
+    public GameObject sleepDown_obj, sleepUp_obj, bed_obj;
+    public Animator Ani_sleep;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class SleepEvt : MonoBehaviour
         str_Code = PlayerPrefs.GetString("code", "");
 
         StartCoroutine("SleepTime");
-        if(PlayerPrefs.GetInt("sleeping", 0) == 0)
+        if (PlayerPrefs.GetInt("sleeping", 0) == 0)
         {
             if (PlayerPrefs.GetInt("sleepdream", 0) == 1)
             {
@@ -30,7 +31,16 @@ public class SleepEvt : MonoBehaviour
         {
 
             sleepBack_obj.SetActive(true);
+            bed_obj.SetActive(false);
             sleepMove();
+        }
+    }
+
+    void SleepAni()
+    {
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 3)
+        {
+            Ani_sleep.Play("sleep");
         }
     }
 
@@ -50,7 +60,7 @@ public class SleepEvt : MonoBehaviour
                 hours = -1;
             }
 
-            string str = string.Format(@"{0:00}" + ":", hours) + string.Format(@"{0:00}", minute);
+            string str = string.Format(@"{00:00}" + ":", hours) + string.Format(@"{00:00}", minute);
             if (hours <= 0)
             {
                 sleepTime_txt.text = "00:00";
@@ -61,8 +71,8 @@ public class SleepEvt : MonoBehaviour
                 sleepTime_txt.text = str;
             }
             PlayerPrefs.Save();
-            yield return new WaitForSeconds(1f);
             }
+            yield return new WaitForSeconds(1f);
         }
 
     }
@@ -145,8 +155,9 @@ public class SleepEvt : MonoBehaviour
         else
         {
             sleepUp_obj.SetActive(true);
+            bed_obj.SetActive(true);
         }
     }
     
-
+    
 }
