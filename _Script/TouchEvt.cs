@@ -27,4 +27,17 @@ public class TouchEvt : MonoBehaviour
         PlayerPrefs.SetInt(str_Code + "r", r);
         PlayerPrefs.SetInt(str_Code + "h", h);
     }
+
+    private void OnMouseDown()
+    {
+        baques_obj.SetActive(false);
+        MainTime.baqueRnd = 0;
+        MainTime.baqueShow = 0;
+        h = PlayerPrefs.GetInt(str_Code + "h", 0);
+        r = PlayerPrefs.GetInt(str_Code + "r", 0);
+        h = h + 3;
+        r = r + 25;
+        PlayerPrefs.SetInt(str_Code + "r", r);
+        PlayerPrefs.SetInt(str_Code + "h", h);
+    }
 }

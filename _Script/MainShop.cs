@@ -7,8 +7,9 @@ public class MainShop : MonoBehaviour
 {
     //방업그레이드
     public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, bed_obj, seedBtn_obj, cupBtn_obj, desk_obj, today_obj;
+    public GameObject clock_obj,draw_obj,frame_obj;
     public Text txt;
-    public Sprite[] spr_wall, spr_window, spr_book, spr_light, spr_seed, spr_sleep, spr_glass, spr_desk;
+    public Sprite[] spr_wall, spr_window, spr_book, spr_light, spr_seed, spr_sleep, spr_glass, spr_desk, spr_draw, spr_clock;
     public int[] cost_wall, cost_window, cost_book, cost_light;
     public int[] upCk;
     public int item_num;
@@ -28,8 +29,8 @@ public class MainShop : MonoBehaviour
     //MAX용
     public GameObject btn_memoBook, btn_memoWindow, btn_memoSeed, btn_memoLight, btn_memoWall, btn_colorWindow, btn_colorWall, btn_colorLight, btn_colorBed, btn_colorBook;
     public GameObject btn_colorClock, btn_colorDraw, btn_colorFrame, btn_colorDesk, btn_memoClock, btn_memoDraw, btn_boxFrame, btn_boxDesk;
-    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg, spr_clockColorImg;
-    int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum;
+    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg, spr_clockColorImg, spr_frameColorImg;
+    int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum, clockcolNum, drawcolNum, framecolNum;
     public Text[] txt_memoName;
     public string[] str_memo;
     public GameObject memoImg;
@@ -96,9 +97,13 @@ public class MainShop : MonoBehaviour
             bed_obj.SetActive(true);
             sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0);
             bed_obj.GetComponent<Image>().sprite = spr_sleep[PlayerPrefs.GetInt("bedlv", 0)-1];
-            //bed_obj.GetComponent<Image>().sprite = spr_sleepColorImg[sleepcolNum];
-            //btn_colorBed.SetActive(true);
-        }
+
+            if (PlayerPrefs.GetInt("bedlv", 0) >= 4)
+            {
+            }
+                bed_obj.GetComponent<Image>().sprite = spr_sleepColorImg[sleepcolNum];
+                //btn_colorBed.SetActive(true);
+            }
 
         if (PlayerPrefs.GetInt("cuplv", 0) == 1)
         {
@@ -1070,19 +1075,18 @@ public class MainShop : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    /*
     public void changeClockColor()
     {
         if (clockcolNum < 7)
         { 
             clockcolNum = PlayerPrefs.GetInt("clockColors", 0) + 1;
-            clockImg.GetComponent<Image>().sprite = spr_clockColorImg[clockcolNum];
+            clock_obj.GetComponent<Image>().sprite = spr_clockColorImg[clockcolNum];
             PlayerPrefs.SetInt("clockColors", clockcolNum);
         }
         else
         {
             clockcolNum = 0;
-            clockImg.GetComponent<Image>().sprite = spr_clockColorImg[clockcolNum];
+            clock_obj.GetComponent<Image>().sprite = spr_clockColorImg[clockcolNum];
             PlayerPrefs.SetInt("clockColors", 0);
         }
         PlayerPrefs.Save();
@@ -1093,13 +1097,13 @@ public class MainShop : MonoBehaviour
         if (drawcolNum < 9)
         { 
             drawcolNum = PlayerPrefs.GetInt("drawColors", 0) + 1;
-            drawImg.GetComponent<Image>().sprite = spr_draw[drawcolNum];
+            draw_obj.GetComponent<Image>().sprite = spr_draw[drawcolNum];
             PlayerPrefs.SetInt("drawColors", drawcolNum);
         }
         else
         {
             drawcolNum = 1;
-            drawImg.GetComponent<Image>().sprite = spr_draw[drawcolNum];
+            draw_obj.GetComponent<Image>().sprite = spr_draw[drawcolNum];
             PlayerPrefs.SetInt("drawColors", 1);
         }
         PlayerPrefs.Save();
@@ -1110,21 +1114,22 @@ public class MainShop : MonoBehaviour
         if (framecolNum < 5)
         { 
             framecolNum = PlayerPrefs.GetInt("frameColors", 0) + 1;
-            frameImg.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
+            frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
             PlayerPrefs.SetInt("frameColors", framecolNum);
         }
         else
         {
             framecolNum = 0;
-            frameImg.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
+            frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
             PlayerPrefs.SetInt("frameColors", 0);
         }
         PlayerPrefs.Save();
     }
-    
 
 
 
+
+    /*
     public void changeDeskColor()
     {
         if (deskcolNum < 3)

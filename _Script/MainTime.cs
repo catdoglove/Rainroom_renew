@@ -55,6 +55,9 @@ public class MainTime : MonoBehaviour
     //거북이
     public GameObject gobok, btn_gobok, img_bless;
     int beuk;
+
+    //씨앗
+    public GameObject seed_obj;
     
     // Start is called before the first frame update
     void Start()
@@ -145,6 +148,7 @@ public class MainTime : MonoBehaviour
             if (baqueRnd == 1)
             {
                 baqueShow = 1;
+                baques_obj.SetActive(true);
             }
         }
         else
@@ -176,7 +180,7 @@ public class MainTime : MonoBehaviour
         else
         {
             btn_gudoc.GetComponent<Button>().interactable = false;
-            string stru = string.Format(@"{0:00}" + ":", hG) + string.Format(@"{0:00}", mG);
+            string stru = string.Format(@"{00:00}" + ":", hG) + string.Format(@"{00:00}", mG);
             txt_gudoc.text = stru;
         }
     }
@@ -420,6 +424,14 @@ public class MainTime : MonoBehaviour
         gobok.transform.position = new Vector3(moveX, moveY, gobok.transform.position.z);
     }
 
+
+    //씨앗 자라게
+    void GrowSeed()
+    {
+
+        PlayerPrefs.GetInt("seedlv", 0);
+        PlayerPrefs.GetInt("seedgrow", 0);
+    }
 
 
     IEnumerator MoveB()

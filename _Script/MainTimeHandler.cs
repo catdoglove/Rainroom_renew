@@ -16,6 +16,7 @@ public class MainTimeHandler : MonoBehaviour {
 
     //경고
     public GameObject warring_obj;
+    public Text warningTxt;
 
     // Use this for initialization
     void Start () {
@@ -33,7 +34,25 @@ public class MainTimeHandler : MonoBehaviour {
         }
     }
 
-
+    void Warring()
+    {
+        //부정행위방지
+        if (getRain > 36000)
+        {//5일치 이상 모았을때
+            if (getRain > 100000)
+            {//2주일 되었을 때
+                getRain = 0;
+                warningTxt.text = "빗물이 너무 모여 물탱크가 터져버렸다." + "\n겨우 수리했다.";
+                warring_obj.SetActive(true);
+            }
+            else
+            {
+                getRain = 36000; //물탱크가 꽉 찼다
+                warningTxt.text = "장기간 방치로 인해 물탱크기능이 멈췄다." + "\n이제 작동한다.";
+                warring_obj.SetActive(true);
+            }
+        }
+    }
 
 
 	void collectRain(){
@@ -57,13 +76,8 @@ public class MainTimeHandler : MonoBehaviour {
         //최초실행
         //if(PlayerPrefs.GetInt("coin",-1)==-1&&getRain>20000){
         //	getRain = 0;
-        //}
-        //부정행위방지
-        if (getRain > 10080)//7200
-        {//7일치 이상 모았을때
-                getRain = 0;
-            //warring_obj.SetActive(true);
-        }
+        //
+        Warring();
         coldRain_i = coldRain_i + getRain;
 		PlayerPrefs.SetInt (str + "r", coldRain_i);
 		//rainNum.text = coldRain_i.ToString();

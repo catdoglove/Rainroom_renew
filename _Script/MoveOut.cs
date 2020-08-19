@@ -33,7 +33,7 @@ public class MoveOut : MonoBehaviour
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
             PlayerPrefs.SetInt("scene", 3);
 
-            SceneManager.LoadSceneAsync("city");
+            SceneManager.LoadSceneAsync("City");
         }
         else
         {
@@ -51,13 +51,18 @@ public class MoveOut : MonoBehaviour
             PlayerPrefs.SetInt(str_Code + "h", h);
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
             PlayerPrefs.SetInt("scene", 2);
-            SceneManager.LoadSceneAsync("park");
+            SceneManager.LoadSceneAsync("Park");
         }
         else
         {
             toast.SetActive(true);
             toastTxt.text = "마음이 부족하다.";
         }
+    }
+
+    public void GoBack()
+    {
+        SceneManager.LoadSceneAsync("Main");
     }
     public void GoOutYN()
     {
