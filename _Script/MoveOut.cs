@@ -12,7 +12,7 @@ public class MoveOut : MonoBehaviour
 
 
     public Text txt_Popup;
-    public GameObject shopPopup_obj;
+    public GameObject shopPopup_obj,goOutYN_obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +32,7 @@ public class MoveOut : MonoBehaviour
             PlayerPrefs.SetInt("gocitysuccess", 1);
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
             PlayerPrefs.SetInt("scene", 3);
-
-            SceneManager.LoadSceneAsync("City");
+            SceneManager.LoadSceneAsync("Load");
         }
         else
         {
@@ -51,7 +50,7 @@ public class MoveOut : MonoBehaviour
             PlayerPrefs.SetInt(str_Code + "h", h);
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
             PlayerPrefs.SetInt("scene", 2);
-            SceneManager.LoadSceneAsync("Park");
+            SceneManager.LoadSceneAsync("Load");
         }
         else
         {
@@ -62,13 +61,25 @@ public class MoveOut : MonoBehaviour
 
     public void GoBack()
     {
-        SceneManager.LoadSceneAsync("Main");
+        SceneManager.LoadSceneAsync("Load");
+        PlayerPrefs.SetInt("scene", 0);
     }
     public void GoOutYN()
     {
-        shopPopup_obj.SetActive(true);
-        txt_Popup.text = "별로 나가고 싶지 않은 것 같다.\n더 친해지면 나갈지도 모른다.";
+        if (PlayerPrefs.GetInt("likelv", 0) >= 5)
+        {
+            goOutYN_obj.SetActive(true);
+        }
+        else
+        {
+            shopPopup_obj.SetActive(true);
+            txt_Popup.text = "별로 나가고 싶지 않은 것 같다.\n더 친해지면 나갈지도 모른다.";
+        }
     }
 
+    public void CloseGoOutYN()
+    {
+        goOutYN_obj.SetActive(false);
+    }
 
 }

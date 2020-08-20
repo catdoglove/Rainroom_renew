@@ -57,8 +57,18 @@ public class MainTime : MonoBehaviour
     int beuk;
 
     //씨앗
-    public GameObject seed_obj;
-    
+    public GameObject seed_obj, seedYN_obj;
+    string seedlastTime;
+    int now, grow, shours, sminute;
+    public Text seedTime_txt;
+    public Sprite[] spr_seed;
+    public GameObject popUpTime_obj;
+    public Text txt_popUpTime;
+
+
+    public GameObject popUp_obj;
+    public Text txt_popUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +78,21 @@ public class MainTime : MonoBehaviour
         StartCoroutine("MoveB");
 
         talk = PlayerPrefs.GetInt("talk", 5);
+
+        //구독전단버튼시간태그로불러오기
+
+        if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            GameObject g;
+            g = GameObject.FindGameObjectWithTag("구독");
+            btn_gudoc = g.GetComponent<Button>();
+            g = GameObject.FindGameObjectWithTag("구독T");
+            txt_gudoc = g.GetComponent<Text>();
+            g = GameObject.FindGameObjectWithTag("전단");
+            btn_paper = g.GetComponent<Button>();
+            g = GameObject.FindGameObjectWithTag("전단T");
+            txt_paper = g.GetComponent<Text>();
+        }
     }
 
 
@@ -96,6 +121,7 @@ public class MainTime : MonoBehaviour
             BaquiWep();
             News();
             food();
+            SeedTimeFlow();
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
         }
@@ -227,7 +253,7 @@ public class MainTime : MonoBehaviour
         else
         {
             btn_paper.GetComponent<Button>().interactable = false;
-            string stru = string.Format(@"{0:00}" + ":", hGp) + string.Format(@"{0:00}", mGp);
+            string stru = string.Format(@"{00:00}" + ":", hGp) + string.Format(@"{00:00}", mGp);
             txt_paper.text = stru;
         }
     }
@@ -424,13 +450,111 @@ public class MainTime : MonoBehaviour
         gobok.transform.position = new Vector3(moveX, moveY, gobok.transform.position.z);
     }
 
-
-    //씨앗 자라게
-    void GrowSeed()
+    public void ActBeadal()
     {
 
-        PlayerPrefs.GetInt("seedlv", 0);
-        PlayerPrefs.GetInt("seedgrow", 0);
+    }
+
+
+    //씨앗 자라게 텍스트 출력 끝나고 나온다
+    public void GrowSeed()
+    {
+        now = PlayerPrefs.GetInt("seedlv", 0);
+        grow = PlayerPrefs.GetInt("seedgrow", 1);
+        //만렙인가? 아니면
+        //12시간이지났는가?
+        if (now > grow)
+        {
+            //물을 줄수 없음
+
+            popUpTime_obj.SetActive(true);
+            txt_popUpTime.text = "아직 축축하다.";
+        }
+        else
+        {
+            //물을 줄수 있음
+            seedYN_obj.SetActive(true);
+            //txt_seedW.text = "물을 " + PlayerPrefs.GetInt("seedlv", 0) * 1000 + " 줄까?";
+        }
+
+    }
+
+    public void SeedY()
+    {
+
+        int fl;
+        fl = PlayerPrefs.GetInt("seedlv", 1);
+        if (fl >= 9)
+        {
+
+        }
+        else
+        {
+            
+            r = PlayerPrefs.GetInt(str + "r", 0);
+            fl = fl * 1000;
+            if (r >= fl)
+            {//돈이있니?
+                r = r - fl;
+                fl = PlayerPrefs.GetInt("seedlv", 0);
+                PlayerPrefs.SetInt("seedlv", fl + 1);
+                PlayerPrefs.SetInt(str + "r", r);
+
+                PlayerPrefs.SetString("seedLastTime", System.DateTime.Now.ToString());
+
+                PlayerPrefs.SetInt("like", PlayerPrefs.GetInt("like", 0) + 4);
+            }
+            else
+            {
+                popUp_obj.SetActive(true);
+                txt_popUp.text = "물이 부족해..";
+            }
+
+        }//end of else
+
+        seedYN_obj.SetActive(false);
+    }
+    public void SeedN()
+    {
+
+        seedYN_obj.SetActive(false);
+    }
+
+
+    void SeedTimeFlow()
+    {
+        now = PlayerPrefs.GetInt("seedlv", 0);
+        grow = PlayerPrefs.GetInt("seedWater", 1);
+        System.DateTime d = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        seedlastTime = PlayerPrefs.GetString("seedLastTime", d.ToString());
+        System.DateTime lastDateTime = System.DateTime.Parse(seedlastTime);
+        System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
+        shours = (int)compareTime.TotalHours;
+        sminute = (int)compareTime.TotalMinutes;
+        sminute = sminute - (sminute / 60) * 60;
+        sminute = 59 - sminute;
+        shours = 11 - shours;
+
+
+        string strb = string.Format(@"{00:00}" + ":", shours) + string.Format(@"{00:00}", sminute);
+        seedTime_txt.text = strb;
+        if (sminute <= 0 && shours == 0)
+        {
+            shours = -1;
+        }
+        if (shours < 0)
+        {
+            seedTime_txt.text = "00:00";
+            if (grow > now)
+            {
+                now = PlayerPrefs.GetInt("seedlv", 0);
+                now++;
+                PlayerPrefs.SetInt("seedlv", now);
+                seed_obj.GetComponent<Image>().sprite = spr_seed[now];
+                PlayerPrefs.Save();
+            }
+        }
+        seed_obj.GetComponent<Image>().sprite = spr_seed[now];
     }
 
 

@@ -152,7 +152,10 @@ public class MainShop : MonoBehaviour
             lightcolNum = PlayerPrefs.GetInt("lightColor", 0);
             light_obj.GetComponent<Image>().sprite = spr_light[lightcolNum];
         }
+        
 
+        seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];
+        //컬러
     }
 
 
