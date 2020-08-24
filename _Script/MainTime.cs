@@ -55,7 +55,7 @@ public class MainTime : MonoBehaviour
     //거북이
     public GameObject gobok, btn_gobok, img_bless;
     int beuk;
-
+    public float gmoveY, gmoveX;
     //씨앗
     public GameObject seed_obj, seedYN_obj;
     string seedlastTime;
@@ -69,9 +69,15 @@ public class MainTime : MonoBehaviour
     public GameObject popUp_obj;
     public Text txt_popUp;
 
+    public GameObject g;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        gmoveY = gobok.transform.position.y;
+        gmoveX = gobok.transform.position.y;
+
         //업데이트대신쓴다
         str = PlayerPrefs.GetString("code", "");
         StartCoroutine("updateSec");
@@ -83,8 +89,11 @@ public class MainTime : MonoBehaviour
 
         if (PlayerPrefs.GetInt("scene", 0) == 0)
         {
-            GameObject g;
+
+            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(true);
+
             g = GameObject.FindGameObjectWithTag("구독");
+            //btn_gudoc = GameObject.FindGameObjectWithTag("구독").GetComponent<Button>();
             btn_gudoc = g.GetComponent<Button>();
             g = GameObject.FindGameObjectWithTag("구독T");
             txt_gudoc = g.GetComponent<Text>();
@@ -92,6 +101,8 @@ public class MainTime : MonoBehaviour
             btn_paper = g.GetComponent<Button>();
             g = GameObject.FindGameObjectWithTag("전단T");
             txt_paper = g.GetComponent<Text>();
+
+            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
         }
     }
 
@@ -420,34 +431,28 @@ public class MainTime : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("sleepmotion", 0) == 1)
         {
-            //img_bless.SetActive(false);
+            
         }
 
-        if (moveX <= -5)
+        if (gmoveX <= -5)
         {
             beuk = 1;
-            gobok.transform.rotation = Quaternion.Euler(0, 180, 0);
-            btn_gobok.transform.Rotate(new Vector3(0, 180, 0));
-            //btn_giveWater.transform.Rotate(new Vector3 (0,180,0));
-            img_bless.transform.Rotate(new Vector3(0, 180, 0));
+            gobok.GetComponent<SpriteRenderer>().flipX = true;
         }
-        else if (moveX >= 6.5)
+        else if (gmoveX >= 6.5)
         {
             beuk = 0;
-            gobok.transform.rotation = Quaternion.Euler(0, 0, 0);
-            btn_gobok.transform.Rotate(new Vector3(0, -180, 0));
-            //btn_giveWater.transform.Rotate(new Vector3 (0,-180,0));
-            img_bless.transform.Rotate(new Vector3(0, -180, 0));
+            gobok.GetComponent<SpriteRenderer>().flipX = false;
         }
         if (beuk == 1)
         {
-            moveX = moveX + 0.001f;
+            gmoveX = gmoveX + 0.01f;
         }
         else
         {
-            moveX = moveX - 0.001f;
+            gmoveX = gmoveX - 0.01f;
         }
-        gobok.transform.position = new Vector3(moveX, moveY, gobok.transform.position.z);
+        gobok.transform.position = new Vector3(gmoveX, gmoveY, gobok.transform.position.z);
     }
 
     public void ActBeadal()
@@ -557,12 +562,18 @@ public class MainTime : MonoBehaviour
         seed_obj.GetComponent<Image>().sprite = spr_seed[now];
     }
 
+    public void ClosePopUpTime()
+    {
+        popUpTime_obj.SetActive(false);
+    }
+
 
     IEnumerator MoveB()
     {
         int a = 0;
         while (a == 0)
         {
+            tutle();
             if (baqueShow == 1)
             {
                 b_moveX = baques_obj.transform.position.x + (0.1f);//(1.5f * Time.deltaTime);

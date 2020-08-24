@@ -134,4 +134,26 @@ public class MainMenuEvt : MonoBehaviour
         }
         PlayerPrefs.Save();
     }
+
+
+    /*
+    public void changeToastTxt()
+    {
+        if (endck == 1)
+        {
+            endTxt.text = "종료메세지A";
+            AndroidDialogAndToastBinding.instance.toastShort("기본인사로 변경되었습니다.");
+            endck = 2;
+            Movebtn.opOp = 0;
+        }
+        else if (endck == 2)
+        {
+            endTxt.text = "종료메세지B";
+            AndroidDialogAndToastBinding.instance.toastShort("호감도에 따른 인사로 변경되었습니다.");
+            endck = 1;
+            Movebtn.opOp = 0;
+        }
+        PlayerPrefs.SetInt("endck", endck);
+    }
+    */
 }

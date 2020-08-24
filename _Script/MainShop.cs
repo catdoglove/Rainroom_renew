@@ -33,7 +33,7 @@ public class MainShop : MonoBehaviour
     int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum, clockcolNum, drawcolNum, framecolNum;
     public Text[] txt_memoName;
     public string[] str_memo;
-    public GameObject memoImg;
+    public GameObject memoImg, switchImg;
 
     //외출
     public GameObject outItem_obj;
@@ -153,8 +153,8 @@ public class MainShop : MonoBehaviour
             light_obj.GetComponent<Image>().sprite = spr_light[lightcolNum];
         }
         
-
-        seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];
+        //씨앗맥스
+       // seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];
         //컬러
     }
 
@@ -496,6 +496,14 @@ public class MainShop : MonoBehaviour
 
                     light_obj.GetComponent<Image>().sprite = spr_light[level];
                     PlayerPrefs.Save();
+
+                    if (item_num >= 2)
+                    {
+                        txt_light[0].text = "Lv.MAX";
+                        //스위치트루
+                        switchImg.SetActive(false);
+                    }
+
                 }
                 else
                 {
@@ -869,14 +877,13 @@ public class MainShop : MonoBehaviour
     //상점외출물건
     public void ActoutItem()
     {
-        if (shopWin_obj.activeSelf)
+        if (outItem_obj.activeSelf)
         {
             outItem_obj.SetActive(false);
         }
         else
         {
             outItem_obj.SetActive(true);
-            
         }
     }
 
@@ -970,6 +977,11 @@ public class MainShop : MonoBehaviour
         memoImg.SetActive(true);
     }
 
+    public void SwichPop()
+    {
+        shopPopup_obj.SetActive(true);
+        txt_Popup.text = "잘 때 사용할 수 있다.";
+    }
 
 
     public void changeWindowColor()
@@ -1128,9 +1140,7 @@ public class MainShop : MonoBehaviour
         }
         PlayerPrefs.Save();
     }
-
-
-
+    
 
     /*
     public void changeDeskColor()
@@ -1237,4 +1247,10 @@ public class MainShop : MonoBehaviour
         }
     }
     
+    public void AllClose()
+    {
+        shopWin_obj.SetActive(false);
+        outItem_obj.SetActive(false);
+        shopWinYN_obj.SetActive(false);
+    }
 }

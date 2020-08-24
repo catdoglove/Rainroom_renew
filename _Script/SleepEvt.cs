@@ -10,12 +10,16 @@ public class SleepEvt : MonoBehaviour
     string lastTime, str_Code;
     public Text sleepTime_txt;
     public GameObject dreamWin_obj,sleepYN_obj,sleepBack_obj,dreamnote_obj,bedWin_obj;
-    public GameObject sleepDown_obj, sleepUp_obj, bed_obj;
+    public GameObject sleepDown_obj, sleepUp_obj, bed_obj, light_obj, nightStar_obj;
     public Animator Ani_sleep;
+
+    public GameObject switch_obj;
+    public Sprite[] spr_switch;
 
     // Start is called before the first frame update
     void Start()
     {
+
 
         str_Code = PlayerPrefs.GetString("code", "");
 
@@ -34,6 +38,18 @@ public class SleepEvt : MonoBehaviour
             bed_obj.SetActive(false);
             sleepMove();
         }
+
+        if (PlayerPrefs.GetInt("starlight", 0) == 1)
+        {
+
+            switch_obj.GetComponent<Image>().sprite = spr_switch[1];
+            light_obj.SetActive(true);
+            if (PlayerPrefs.GetInt("lightlv", 0) >= 5)
+            {
+                nightStar_obj.SetActive(true);
+            }
+        }
+
     }
 
     void SleepAni()
@@ -159,5 +175,29 @@ public class SleepEvt : MonoBehaviour
         }
     }
     
+    public void Stars()
+    {
+        if (PlayerPrefs.GetInt("starlight",0)==1)
+        {
+
+            switch_obj.GetComponent<Image>().sprite = spr_switch[0];
+            light_obj.SetActive(false);
+            if (PlayerPrefs.GetInt("lightlv", 0) >= 5)
+            {
+                nightStar_obj.SetActive(false);
+            }
+            PlayerPrefs.SetInt("starlight", 0);
+        }
+        else
+        {
+            switch_obj.GetComponent<Image>().sprite = spr_switch[1];
+            light_obj.SetActive(true);
+            if (PlayerPrefs.GetInt("lightlv", 0) >= 5)
+            {
+                nightStar_obj.SetActive(true);
+            }
+            PlayerPrefs.SetInt("starlight", 1);
+        }
+    }
     
 }
