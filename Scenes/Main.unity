@@ -4564,13 +4564,13 @@ MonoBehaviour:
   txt_glassShow: {fileID: 439931070}
   txt_rain: {fileID: 1181002951}
   heartpaperImg: {fileID: 639521275}
-  btn_heartHelp: {fileID: 0}
-  heartpaperEatBtn: {fileID: 0}
-  heartpaperChoice: {fileID: 0}
-  heartNotE: {fileID: 0}
+  btn_heartHelp: {fileID: 1847860330}
+  heartpaperEatBtn: {fileID: 639521275}
+  heartpaperChoice: {fileID: 1236618264}
+  heartNotE: {fileID: 970581480}
   gobok: {fileID: 1159093358}
   btn_gobok: {fileID: 0}
-  img_bless: {fileID: 0}
+  img_bless: {fileID: 1522026152}
   gmoveY: 0
   gmoveX: 0
   seed_obj: {fileID: 216770031}
@@ -4592,6 +4592,7 @@ MonoBehaviour:
   popUp_obj: {fileID: 695030164}
   txt_popUp: {fileID: 439931070}
   g: {fileID: 0}
+  gm: {fileID: 300375158}
 --- !u!4 &300375160
 Transform:
   m_ObjectHideFlags: 0
@@ -13749,6 +13750,7 @@ MonoBehaviour:
   - {fileID: -4223878944611906930, guid: d708db35d863f7c49bb242d7278d173a, type: 3}
   - {fileID: -1133886206112897270, guid: d708db35d863f7c49bb242d7278d173a, type: 3}
   GM: {fileID: 300375158}
+  GMD: {fileID: 788415836}
 --- !u!114 &788415840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13775,6 +13777,7 @@ MonoBehaviour:
   - {fileID: -3906393605520503712, guid: 99b4098285b62224eae21598493efaea, type: 3}
   txt_likeLv: {fileID: 961575054}
   txt_faceLv: {fileID: 2003681017}
+  GM: {fileID: 788415836}
 --- !u!114 &788415841
 MonoBehaviour:
   m_ObjectHideFlags: 0

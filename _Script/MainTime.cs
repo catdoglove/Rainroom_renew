@@ -69,7 +69,7 @@ public class MainTime : MonoBehaviour
     public GameObject popUp_obj;
     public Text txt_popUp;
 
-    public GameObject g;
+    public GameObject g,gm;
 
     // Start is called before the first frame update
     void Start()

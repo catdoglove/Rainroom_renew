@@ -10,7 +10,7 @@ public class MainMenuEvt : MonoBehaviour
     public GameObject muteImg_obj, muteBGImg_obj;
     public Sprite[] mute_spr;
 
-    public GameObject GM;
+    public GameObject GM,GMD;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +44,7 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
+            AllClose();
             menu_obj.SetActive(true);
         }
     }
@@ -66,6 +67,7 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
+            AllClose();
             option_obj.SetActive(true);
         }
     }
@@ -73,18 +75,21 @@ public class MainMenuEvt : MonoBehaviour
     //상점창
     public void GetActShop()
     {
+        AllClose();
         GM.GetComponent<MainShop>().shopAct();
     }
 
     //구독
     public void GetActNews()
     {
+        AllClose();
         GM.GetComponent<MainTime>().gudocOpen();
     }
 
     //전단창
     public void GetActBeadal()
     {
+        AllClose();
         GM.GetComponent<MainTime>().ActBeadal();
     }
 
@@ -135,6 +140,15 @@ public class MainMenuEvt : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+
+    public void AllClose()
+    {
+        GMD.GetComponent<MainInfo>().infoWin_obj.SetActive(false);
+        option_obj.SetActive(false);
+        GM.GetComponent<MainShop>().shopWin_obj.SetActive(false);
+        GM.GetComponent<MainShop>().outItem_obj.SetActive(false);
+        GM.GetComponent<MainShop>().shopWinYN_obj.SetActive(false);
+    }
 
     /*
     public void changeToastTxt()

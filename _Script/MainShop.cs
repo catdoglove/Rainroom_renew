@@ -1247,10 +1247,4 @@ public class MainShop : MonoBehaviour
         }
     }
     
-    public void AllClose()
-    {
-        shopWin_obj.SetActive(false);
-        outItem_obj.SetActive(false);
-        shopWinYN_obj.SetActive(false);
-    }
 }

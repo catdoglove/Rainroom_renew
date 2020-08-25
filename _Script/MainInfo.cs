@@ -15,6 +15,7 @@ public class MainInfo : MonoBehaviour
     public GameObject face;
     public Sprite[] spr_face;
     public Text txt_likeLv, txt_faceLv;
+    public GameObject GM;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class MainInfo : MonoBehaviour
         }
         else
         {
-
+            GM.GetComponent<MainMenuEvt>().AllClose();
             SetIofo();
             infoWin_obj.SetActive(true);
             //txt_lv.text = "" + PlayerPrefs.GetInt("likelv", 0);
