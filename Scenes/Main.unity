@@ -2811,7 +2811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &168388242
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2874,7 +2874,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 168388244}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &168388244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3536,7 +3558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &216770032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5508,10 +5530,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outGoodsWin_obj: {fileID: 1639312013}
-  cat_obj: {fileID: 0}
-  rain_obj: {fileID: 0}
-  bear_obj: {fileID: 0}
-  d: {fileID: 0}
+  onRoom_obj: {fileID: 861185914}
+  goods_obj:
+  - {fileID: 2017399686}
+  - {fileID: 1179986450}
+  - {fileID: 426658513}
+  - {fileID: 1177981474}
+  - {fileID: 646845580}
+  - {fileID: 1274437536}
+  - {fileID: 168388241}
+  - {fileID: 376878951}
+  - {fileID: 1410482014}
+  check_obj:
+  - {fileID: 208001316}
+  - {fileID: 496877510}
+  - {fileID: 767659435}
+  - {fileID: 769118414}
+  - {fileID: 1825369961}
+  - {fileID: 997377898}
+  - {fileID: 80691211}
+  - {fileID: 727048461}
+  - {fileID: 1020808714}
+  spr_goodsImg:
+  - {fileID: -4380684638499261, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: 4277976122162084076, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: -6657370294931766300, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: 579097488873008107, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: 21300000, guid: f10af1f3a6213ae40aabe0e4d8ac69b4, type: 3}
+  - {fileID: -2682396158164393324, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: -98203654917171819, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: 7863129866437089125, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
+  - {fileID: 1418747857623926219, guid: ffc558052ad5b0541833c4a72daa7c47, type: 3}
 --- !u!114 &300375168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6588,7 +6637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &376878952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6651,7 +6700,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 376878954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &376878954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7315,7 +7386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &426658514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7378,7 +7449,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 426658516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &426658516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11183,7 +11276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &646845581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11246,7 +11339,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646845583}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &646845583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15180,7 +15295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &848687512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15256,7 +15371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &861185915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15385,7 +15500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &865203153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17061,7 +17176,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: "[\uB2E4\uC74C\uD638\uAC10\uC870\uAC74]\n\uC5B4\uCA4C\uAD6C\uC800\uCA4C\uAD6C"
+  m_Text: 
 --- !u!222 &961575055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21265,7 +21380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1177981475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21328,7 +21443,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1177981477}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1177981477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21460,7 +21597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1179986451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21523,7 +21660,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1179986453}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1179986453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21659,7 +21818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1182950805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22407,7 +22566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1243821587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22872,7 +23031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1274437537
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22935,7 +23094,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1274437539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1274437539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24902,7 +25083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1410482015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24965,7 +25146,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1410482017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set8
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1410482017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31868,7 +32071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2017399687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31931,7 +32134,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2017399689}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375167}
+        m_MethodName: Set0
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300375162}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2017399689
 MonoBehaviour:
   m_ObjectHideFlags: 0

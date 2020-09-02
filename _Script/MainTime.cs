@@ -141,6 +141,7 @@ public class MainTime : MonoBehaviour
 
     public void talkBtn()
     {
+        talk = PlayerPrefs.GetInt("talk", 5);
         talk--;
         if (talk <= 0)
         {
@@ -550,16 +551,16 @@ public class MainTime : MonoBehaviour
         if (shours < 0)
         {
             seedTime_txt.text = "00:00";
-            if (grow > now)
+            if (now > grow)
             {
-                now = PlayerPrefs.GetInt("seedlv", 0);
-                now++;
-                PlayerPrefs.SetInt("seedlv", now);
-                seed_obj.GetComponent<Image>().sprite = spr_seed[now];
+                grow = PlayerPrefs.GetInt("seedWater", 0);
+                grow++;
+                PlayerPrefs.SetInt("seedWater", grow);
+                seed_obj.GetComponent<Image>().sprite = spr_seed[grow];
                 PlayerPrefs.Save();
             }
         }
-        seed_obj.GetComponent<Image>().sprite = spr_seed[now];
+        seed_obj.GetComponent<Image>().sprite = spr_seed[grow];
     }
 
     public void ClosePopUpTime()
