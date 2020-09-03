@@ -4938,6 +4938,10 @@ MonoBehaviour:
   txt_popUp: {fileID: 439931070}
   g: {fileID: 0}
   gm: {fileID: 300375158}
+  tv_obj: {fileID: 119304802}
+  spr_tv1: {fileID: 643168067441167455, guid: aacb90f7acdd87840ba2b0d693250811, type: 3}
+  spr_tv2: {fileID: -2389905720659875673, guid: aacb90f7acdd87840ba2b0d693250811,
+    type: 3}
 --- !u!4 &300375160
 Transform:
   m_ObjectHideFlags: 0
@@ -4975,10 +4979,10 @@ MonoBehaviour:
   seedBtn_obj: {fileID: 216770031}
   cupBtn_obj: {fileID: 538554748}
   desk_obj: {fileID: 1182950804}
-  today_obj: {fileID: 861185914}
   clock_obj: {fileID: 848687511}
   draw_obj: {fileID: 865203152}
   frame_obj: {fileID: 1243821586}
+  fish_obj: {fileID: 1831511130}
   txt: {fileID: 0}
   spr_wall:
   - {fileID: 21300000, guid: aaee74ea7c925404192cddf075b8e64c, type: 3}
@@ -29943,7 +29947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1882699026
 MonoBehaviour:
   m_ObjectHideFlags: 0

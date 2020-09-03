@@ -71,6 +71,11 @@ public class MainTime : MonoBehaviour
 
     public GameObject g,gm;
 
+    //티비
+    public GameObject tv_obj;
+    int tv=0;
+    public Sprite spr_tv1, spr_tv2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,6 +138,7 @@ public class MainTime : MonoBehaviour
             News();
             food();
             SeedTimeFlow();
+            TvMove();
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
         }
@@ -566,6 +572,21 @@ public class MainTime : MonoBehaviour
     public void ClosePopUpTime()
     {
         popUpTime_obj.SetActive(false);
+    }
+
+    //티비
+    void TvMove()
+    {
+        if (tv == 0)
+        {
+            tv_obj.GetComponent<Image>().sprite = spr_tv2;
+            tv = 1;
+        }
+        else
+        {
+            tv_obj.GetComponent<Image>().sprite = spr_tv1;
+            tv = 0;
+        }
     }
 
 

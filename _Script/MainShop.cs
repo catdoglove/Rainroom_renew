@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class MainShop : MonoBehaviour
 {
     //방업그레이드
-    public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, bed_obj, seedBtn_obj, cupBtn_obj, desk_obj, today_obj;
-    public GameObject clock_obj,draw_obj,frame_obj;
+    public GameObject wall_obj, window_obj, turtle_obj, book_obj, light_obj, seed_obj, bed_obj, seedBtn_obj, cupBtn_obj, desk_obj;
+    //외출
+    public GameObject clock_obj,draw_obj,frame_obj,fish_obj;
     public Text txt;
     public Sprite[] spr_wall, spr_window, spr_book, spr_light, spr_seed, spr_sleep, spr_glass, spr_desk, spr_draw, spr_clock;
     public int[] cost_wall, cost_window, cost_book, cost_light;
@@ -71,7 +72,7 @@ public class MainShop : MonoBehaviour
             txt_turtle[3].text = "0";
             turtle_obj.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("seedlv", 0) == 1)
+        if (PlayerPrefs.GetInt("seedlv", 0) >= 1)
         {
             //레벨
             txt_seed[0].text = "Lv.MAX";
@@ -152,9 +153,49 @@ public class MainShop : MonoBehaviour
             lightcolNum = PlayerPrefs.GetInt("lightColor", 0);
             light_obj.GetComponent<Image>().sprite = spr_light[lightcolNum];
         }
-        
+
+
+        if (PlayerPrefs.GetInt("seedlv", 0) > 1)
+        {
+            int sd = PlayerPrefs.GetInt("seedlv", 0) - 1;
+            seed_obj.GetComponent<Image>().sprite = spr_seed[sd];
+        }
+        //시계
+        if (PlayerPrefs.GetInt("clovklv", 0) >= 1)
+        {
+            int sd = PlayerPrefs.GetInt("clovklv", 0);
+            clock_obj.GetComponent<Image>().sprite = spr_clock[sd];
+            clock_obj.SetActive(true);
+        }
+        //그림
+        if (PlayerPrefs.GetInt("drawlv", 0) >= 1)
+        {
+            int sd = PlayerPrefs.GetInt("drawlv", 0);
+            draw_obj.GetComponent<Image>().sprite = spr_draw[sd];
+            draw_obj.SetActive(true);
+        }
+        //그림틀
+        if (PlayerPrefs.GetInt("framelv", 0) >= 1)
+        {
+            int sd = PlayerPrefs.GetInt("framelv", 0);
+            frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[sd];
+            frame_obj.SetActive(true);
+        }
+        //잉어
+        if (PlayerPrefs.GetInt("fishlv", 0) == 1)
+        {
+            fish_obj.SetActive(true);
+        }
+        //책상
+        if (PlayerPrefs.GetInt("desklv", 0) >= 1)
+        {
+            int sd = PlayerPrefs.GetInt("desklv", 0);
+            desk_obj.GetComponent<Image>().sprite = spr_desk[sd];
+            desk_obj.SetActive(true);
+        }
+
         //씨앗맥스
-       // seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];
+        // seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];
         //컬러
     }
 
