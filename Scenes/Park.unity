@@ -8787,6 +8787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2145333738}
   - component: {fileID: 2145333737}
+  - component: {fileID: 2145333739}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -8832,3 +8833,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2145333739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145333736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e78c64184b8054090cab2d7df312df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shop_fst: {fileID: 1716473943}
+  shop_sec: {fileID: 896537638}
+  txt_fst:
+  - {fileID: 559351115}
+  - {fileID: 680911214}
+  - {fileID: 1491543006}
+  - {fileID: 156274958}
+  txt_sec:
+  - {fileID: 2075747288}
+  - {fileID: 970519942}
+  - {fileID: 1996534222}
+  - {fileID: 248024230}
+  spr_shops:
+  - {fileID: 1739976576270386331, guid: 4e83680c4e40c804ebcc6e89302e6df2, type: 3}
+  - {fileID: -4449475191110262528, guid: 4e83680c4e40c804ebcc6e89302e6df2, type: 3}
+  - {fileID: 3107982857028551670, guid: 4e83680c4e40c804ebcc6e89302e6df2, type: 3}
+  cost_clock: 640000001027000096000000e02e0000c8000000b0360000dc000000803e0000fa00000050460000fa00000050460000
+  cost_draw: 64000000102700008c000000b036000096000000b0360000a0000000983a0000aa000000803e0000b400000068420000be00000050460000c8000000384a0000dc000000204e0000dc000000204e0000
+  cost_frame: 9600000010270000c8000000983a0000d200000068420000e6000000384a0000fa000000204e0000fa000000204e0000
+  str_clock:
+  - "\uAE68\uC9C4\uC2DC\uACC4"
+  - "\uD3C9\uBC94\uD55C\uC2DC\uACC4"
+  - "\uB465\uADFC\uC2DC\uACC4"
+  - "\uB465\uADFC\uB098\uC2DC\uACC4"
+  - "\uACE0\uAE09\uC2DC\uACC4"
+  - "\uACE0\uAE09\uB098\uBB34\uC2DC\uACC4"
+  str_draw:
+  - "\uC2AC\uD514"
+  - "\uCC3E\uC544\uC11C"
+  - "\uBB34\uC5C7"
+  - "\uBC1C\uACAC"
+  - "\uAE30\uB2E4\uB9BC"
+  - "\uD53C\uC5B4\uB0A8"
+  - "\uC548\uB155"
+  - "\uB098\uC758\uAE30\uBD84"
+  - "\uD589\uBCF5\uD568"
+  - "\uAFC8"
+  str_frame:
+  - "\uB0A1\uC740\uC561\uC790"
+  - "\uD3C9\uBC94\uD55C\uC561\uC790"
+  - "\uAE68\uB057\uD55C\uC561\uC790"
+  - "\uB098\uBB34\uC561\uC790"
+  - "\uACE0\uAE09\uC561\uC790"
+  - "\uACE0\uAE09\uB098\uBB34\uC561\uC790"
+  popUp_obj: {fileID: 0}
