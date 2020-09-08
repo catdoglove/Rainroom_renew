@@ -35,6 +35,9 @@ public class RoomTalk : MonoBehaviour
     int itemAllArr; //총 줄수 
     int itemNowArr; //현재 줄
 
+    public GameObject change_turtle, turtle_btn;
+    int num_turtle;
+
     //캐릭터 변환
     public Animator charAni;
     
@@ -279,6 +282,7 @@ public class RoomTalk : MonoBehaviour
         closeTB.GetComponent<Button>().interactable = false;
         closeTB.SetActive(true);
 
+        turtle_btn.SetActive(false);
         talkbtn.SetActive(false);
         quesBtmArea.SetActive(false);
         quesBack.SetActive(false);
@@ -292,6 +296,7 @@ public class RoomTalk : MonoBehaviour
         closeTB.GetComponent<Button>().interactable = true;
         talkbtn.SetActive(true);
         talkCursor.SetActive(true);
+        turtle_btn.SetActive(true);
 
         setCharAni();
 
@@ -303,6 +308,7 @@ public class RoomTalk : MonoBehaviour
         talkballoon.SetActive(false);
         closeTB.SetActive(false);
         closeTB.GetComponent<Button>().interactable = false;
+        change_turtle.SetActive(false);
     }
 
 
@@ -344,11 +350,6 @@ public class RoomTalk : MonoBehaviour
 
     void callTalkItem()
     {
-        itemLv[0] = PlayerPrefs.GetInt("booklv", 0);
-        itemLv[1] = PlayerPrefs.GetInt("walllv", 0);
-        itemLv[2] = PlayerPrefs.GetInt("lightlv", 0);
-        itemLv[3] = PlayerPrefs.GetInt("windowlv", 0);
-        itemLv[4] = PlayerPrefs.GetInt("seedlv", 0);
        // itemLv[5] = PlayerPrefs.GetInt("그림", 0);
       //  itemLv[6] = PlayerPrefs.GetInt("시계", 0);
     }
@@ -371,7 +372,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkBook()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("booklv", 0)]["book"];
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -382,7 +382,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkWall()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("walllv", 0)]["wall"]; 
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -393,7 +392,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkLight()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("lightlv", 0)]["light"];
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -404,7 +402,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkWindow()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("windowlv", 0)]["window"];
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -415,7 +412,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkSeed()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("seedlv", 0)]["seed"];
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -426,7 +422,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkPicture()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("draw", 0)-1]["picture"];
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -437,7 +432,6 @@ public class RoomTalk : MonoBehaviour
 
     public void talkClock()
     {
-        callTalkItem();
         text_str = "" + data_item[PlayerPrefs.GetInt("clock", 0)-1]["clock"];
         testText_cut = text_str.Split('/');
         cleantalk();
@@ -446,6 +440,27 @@ public class RoomTalk : MonoBehaviour
         StartCoroutine("itemTalkRun");
     }
 
+
+    public void talkTurtle()
+    {         
+        change_turtle.SetActive(true);
+        text_str = "" + data_item[num_turtle]["turtle"];
+        testText_cut = text_str.Split('/');
+        cleantalk();
+
+        StopCoroutine("itemTalkRun");
+        StartCoroutine("itemTalkRun");
+
+        if (num_turtle < 9)
+        {
+            num_turtle++;
+        }
+        else
+        {
+            num_turtle = 0;
+        }
+
+    }
 
 
 }
