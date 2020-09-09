@@ -17,7 +17,8 @@ public class Parkshop : MonoBehaviour
     int item_num;
     int fstBuy, secBuy;
 
-    public GameObject popUp_obj;
+    public Text txt_rain;
+    public GameObject popUp_obj,shopWin_obj,helpWin_obj;
 
     int cost_r, cost_h, level, sum, have_r, have_h;
 
@@ -27,9 +28,36 @@ public class Parkshop : MonoBehaviour
     void Start()
     {
 
+        shop_rnd = Random.Range(0, 3);
         str_Code = PlayerPrefs.GetString("code", "");
 
         shop();
+    }
+
+    public void ActShop()
+    {
+
+        if (shopWin_obj.activeSelf)
+        {
+            shopWin_obj.SetActive(false);
+        }
+        else
+        {
+            shopWin_obj.SetActive(true);
+            txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
+        }
+    }
+
+    public void ShopHelp()
+    {
+        if (helpWin_obj.activeSelf)
+        {
+            helpWin_obj.SetActive(false);
+        }
+        else
+        {
+            helpWin_obj.SetActive(true);
+        }
     }
     
     void shop()
@@ -249,8 +277,8 @@ public class Parkshop : MonoBehaviour
                         have_h = have_h - cost_clock[item_num * 2];
                         have_r = have_r - cost_clock[item_num * 2 + 1];
                         item_num++;
-                        PlayerPrefs.SetInt("coin", have_h);
-                        PlayerPrefs.SetInt("have_r", have_r);
+                        PlayerPrefs.SetInt(str_Code + "h", have_h);
+                        PlayerPrefs.SetInt(str_Code + "r", have_r);
                         PlayerPrefs.SetInt("clock", item_num);
                         txt_fst[0].text = "Lv.X";
                         txt_fst[1].text = "품절";
@@ -277,8 +305,8 @@ public class Parkshop : MonoBehaviour
                         have_h = have_h - cost_clock[item_num * 2];
                         have_r = have_r - cost_clock[item_num * 2 + 1];
                         item_num++;
-                        PlayerPrefs.SetInt("coin", have_h);
-                        PlayerPrefs.SetInt("have_r", have_r);
+                        PlayerPrefs.SetInt(str_Code + "h", have_h);
+                        PlayerPrefs.SetInt(str_Code + "r", have_r);
                         PlayerPrefs.SetInt("clock", item_num);
                         txt_fst[0].text = "Lv.X";
                         txt_fst[1].text = "품절";
@@ -315,8 +343,8 @@ public class Parkshop : MonoBehaviour
                         have_h = have_h - cost_frame[item_num * 2];
                         have_r = have_r - cost_frame[item_num * 2 + 1];
                         item_num++;
-                        PlayerPrefs.SetInt("coin", have_h);
-                        PlayerPrefs.SetInt("have_r", have_r);
+                        PlayerPrefs.SetInt(str_Code + "h", have_h);
+                        PlayerPrefs.SetInt(str_Code + "r", have_r);
                         PlayerPrefs.SetInt("frame", item_num);
                         txt_sec[0].text = "Lv.X";
                         txt_sec[1].text = "품절";
@@ -339,8 +367,8 @@ public class Parkshop : MonoBehaviour
                         have_h = have_h - cost_draw[item_num * 2];
                         have_r = have_r - cost_draw[item_num * 2 + 1];
                         item_num++;
-                        PlayerPrefs.SetInt("coin", have_h);
-                        PlayerPrefs.SetInt("have_r", have_r);
+                        PlayerPrefs.SetInt(str_Code + "h", have_h);
+                        PlayerPrefs.SetInt(str_Code + "r", have_r);
                         PlayerPrefs.SetInt("draw", item_num);
                         txt_sec[0].text = "Lv.X";
                         txt_sec[1].text = "품절";
@@ -363,8 +391,8 @@ public class Parkshop : MonoBehaviour
                         have_h = have_h - cost_draw[item_num * 2];
                         have_r = have_r - cost_draw[item_num * 2 + 1];
                         item_num++;
-                        PlayerPrefs.SetInt("coin", have_h);
-                        PlayerPrefs.SetInt("have_r", have_r);
+                        PlayerPrefs.SetInt(str_Code + "h", have_h);
+                        PlayerPrefs.SetInt(str_Code + "r", have_r);
                         PlayerPrefs.SetInt("draw", item_num);
                         txt_sec[0].text = "Lv.X";
                         txt_sec[1].text = "품절";
@@ -388,8 +416,8 @@ public class Parkshop : MonoBehaviour
                         have_h = have_h - cost_draw[item_num * 2];
                         have_r = have_r - cost_draw[item_num * 2 + 1];
                         item_num++;
-                        PlayerPrefs.SetInt("coin", have_h);
-                        PlayerPrefs.SetInt("have_r", have_r);
+                        PlayerPrefs.SetInt(str_Code + "h", have_h);
+                        PlayerPrefs.SetInt(str_Code + "r", have_r);
                         PlayerPrefs.SetInt("draw", item_num);
                         txt_sec[0].text = "Lv.X";
                         txt_sec[1].text = "품절";
