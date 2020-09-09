@@ -151,23 +151,29 @@ public class RoomTalk : MonoBehaviour
         // }
         // else
         // {
-
-        //소리
         //Audio_obj.GetComponent<SoundEvt>().talkSound();
+        if(PlayerPrefs.GetInt("talk", 5) <= 0)
+        {
 
-        lovetalk();
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-
-        if (testText_cut[0] == "q")
-        { //질문이 있는경우
-            StartCoroutine("questionTalkRun");
         }
         else
         {
-            StartCoroutine("talkRun");
+            int a = PlayerPrefs.GetInt("likepoint",0);
+            a = a + 10;
+            PlayerPrefs.SetInt("likepoint", a);
+            lovetalk();
+            testText_cut = text_str.Split('/'); //끊기
+            cleantalk();
+
+            if (testText_cut[0] == "q")
+            { //질문이 있는경우
+                StartCoroutine("questionTalkRun");
+            }
+            else
+            {
+                StartCoroutine("talkRun");
+            }
         }
-      //  }
     }
 
 
@@ -412,7 +418,7 @@ public class RoomTalk : MonoBehaviour
 
     public void talkSeed()
     {
-        text_str = "" + data_item[PlayerPrefs.GetInt("seedlv", 0)]["seed"];
+        text_str = "" + data_item[PlayerPrefs.GetInt("seedlv", 0)-1]["seed"];
         testText_cut = text_str.Split('/');
         cleantalk();
 

@@ -174,7 +174,7 @@ public class MainTime : MonoBehaviour
         {
             wepRnd = Random.Range(0, 5);
             moveX = Random.Range(-7.1f, 7.1f);
-            moveY = Random.Range(4.1f, 1.1f);
+            moveY = Random.Range(1.1f, 3.9f);
             wep_obj.SetActive (false);
         }
 
@@ -611,7 +611,7 @@ public class MainTime : MonoBehaviour
                     baques_obj.transform.position = new Vector3(b_moveX, baques_obj.transform.position.y, baques_obj.transform.position.z);
                 }
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
     }
     
