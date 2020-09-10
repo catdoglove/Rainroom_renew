@@ -36,6 +36,7 @@ public class MainShop : MonoBehaviour
     public string[] str_memo;
     public GameObject memoImg, switchImg;
 
+    public GameObject[] MaxX_obj;
     //외출
     public GameObject outItem_obj;
     
@@ -161,23 +162,23 @@ public class MainShop : MonoBehaviour
             seed_obj.GetComponent<Image>().sprite = spr_seed[sd];
         }
         //시계
-        if (PlayerPrefs.GetInt("clovklv", 0) >= 1)
+        if (PlayerPrefs.GetInt("clock", 0) >= 1)
         {
-            int sd = PlayerPrefs.GetInt("clovklv", 0);
+            int sd = PlayerPrefs.GetInt("clock", 0);
             clock_obj.GetComponent<Image>().sprite = spr_clock[sd];
             clock_obj.SetActive(true);
         }
         //그림
-        if (PlayerPrefs.GetInt("drawlv", 0) >= 1)
+        if (PlayerPrefs.GetInt("draw", 0) >= 1)
         {
-            int sd = PlayerPrefs.GetInt("drawlv", 0);
+            int sd = PlayerPrefs.GetInt("draw", 0);
             draw_obj.GetComponent<Image>().sprite = spr_draw[sd];
             draw_obj.SetActive(true);
         }
         //그림틀
-        if (PlayerPrefs.GetInt("framelv", 0) >= 1)
+        if (PlayerPrefs.GetInt("frame", 0) >= 1)
         {
-            int sd = PlayerPrefs.GetInt("framelv", 0);
+            int sd = PlayerPrefs.GetInt("frame", 0);
             frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[sd];
             frame_obj.SetActive(true);
         }
@@ -933,9 +934,60 @@ public class MainShop : MonoBehaviour
     /// </summary>
     void SetOutItem()
     {
-        if (PlayerPrefs.GetInt("desklv",0)>=1)
+        if (PlayerPrefs.GetInt("windowlv", 0)>=1)
         {
             btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("booklv", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("walllv", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("lightlv", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("seedlv", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("draw", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("clock", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("frame", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("desklv", 0) >= 1)
+        {
+            btn_boxDesk.GetComponent<Button>().interactable = false;
+            MaxX_obj[0].SetActive(false);
         }
         btn_boxFrame.GetComponent<Button>().interactable = false;
         btn_colorFrame.GetComponent<Button>().interactable = false;
@@ -1287,5 +1339,6 @@ public class MainShop : MonoBehaviour
             PlayerPrefs.SetInt("bedbox", 0);
         }
     }
+    
     
 }

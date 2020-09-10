@@ -49,7 +49,7 @@ public class LoadEvt : MonoBehaviour
     void Update()
     {
         i++;
-        if (i == 50)
+        if (i == 500)
         {
             StartCoroutine(Load());
         }
