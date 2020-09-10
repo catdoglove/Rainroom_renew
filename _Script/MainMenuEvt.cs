@@ -44,7 +44,11 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
-            AllClose();
+
+            if (PlayerPrefs.GetInt("scene", 0) == 0)
+            {
+                AllClose();
+            }
             menu_obj.SetActive(true);
         }
     }
@@ -67,7 +71,10 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
-            AllClose();
+            if (PlayerPrefs.GetInt("scene", 0) == 0)
+            {
+                AllClose();
+            }
             option_obj.SetActive(true);
         }
     }
@@ -75,21 +82,30 @@ public class MainMenuEvt : MonoBehaviour
     //상점창
     public void GetActShop()
     {
-        AllClose();
+        if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            AllClose();
+        }
         GM.GetComponent<MainShop>().shopAct();
     }
 
     //구독
     public void GetActNews()
     {
-        AllClose();
+        if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            AllClose();
+        }
         GM.GetComponent<MainTime>().gudocOpen();
     }
 
     //전단창
     public void GetActBeadal()
     {
-        AllClose();
+        if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            AllClose();
+        }
         GM.GetComponent<MainTime>().ActBeadal();
     }
 
@@ -99,6 +115,7 @@ public class MainMenuEvt : MonoBehaviour
         //SceneManager.LoadSceneAsync("Main");
         SceneManager.LoadSceneAsync("Load");
         PlayerPrefs.SetInt("scene", 0);
+        menu_obj.SetActive(false);
     }
 
     public void MuteBG()

@@ -69,11 +69,13 @@ public class MoveOut : MonoBehaviour
         if (PlayerPrefs.GetInt("likelv", 0) >= 5)
         {
             goOutYN_obj.SetActive(true);
+            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
         }
         else
         {
             shopPopup_obj.SetActive(true);
             txt_Popup.text = "별로 나가고 싶지 않은 것 같다.\n더 친해지면 나갈지도 모른다.";
+            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
         }
     }
 

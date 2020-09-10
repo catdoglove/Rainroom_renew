@@ -9,7 +9,7 @@ public class MainTime : MonoBehaviour
     int talk;
 
     public static int wepRnd, wepShow, baqueRnd, baqueShow;
-    float moveX, moveY, b_moveX, b_moveY;
+    public float moveX, moveY, b_moveX, b_moveY;
     public GameObject wep_obj, baques_obj;
 
     //신문
@@ -80,16 +80,6 @@ public class MainTime : MonoBehaviour
     void Start()
     {
 
-        gmoveY = gobok.transform.position.y;
-        gmoveX = gobok.transform.position.y;
-
-        //업데이트대신쓴다
-        str = PlayerPrefs.GetString("code", "");
-        StartCoroutine("updateSec");
-        StartCoroutine("MoveB");
-
-        talk = PlayerPrefs.GetInt("talk", 5);
-
         //구독전단버튼시간태그로불러오기
 
         if (PlayerPrefs.GetInt("scene", 0) == 0)
@@ -98,7 +88,6 @@ public class MainTime : MonoBehaviour
             GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(true);
 
             g = GameObject.FindGameObjectWithTag("구독");
-            //btn_gudoc = GameObject.FindGameObjectWithTag("구독").GetComponent<Button>();
             btn_gudoc = g.GetComponent<Button>();
             g = GameObject.FindGameObjectWithTag("구독T");
             txt_gudoc = g.GetComponent<Text>();
@@ -109,6 +98,17 @@ public class MainTime : MonoBehaviour
 
             GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
         }
+
+        gmoveY = gobok.transform.position.y;
+        gmoveX = gobok.transform.position.y;
+
+        //업데이트대신쓴다
+        str = PlayerPrefs.GetString("code", "");
+        StartCoroutine("updateSec");
+        StartCoroutine("MoveB");
+
+        talk = PlayerPrefs.GetInt("talk", 5);
+
     }
 
 
@@ -166,6 +166,11 @@ public class MainTime : MonoBehaviour
         //거미줄
         if (wepRnd == 1)
         {
+            if(moveX==0&& moveX == 0)
+            {
+                moveX = Random.Range(-7.1f, 7.1f);
+                moveY = Random.Range(2.1f, 3.9f);
+            }
             wep_obj.SetActive (true);
             wep_obj.transform.position = new Vector3(moveX, moveY, wep_obj.transform.position.z);
 
@@ -174,7 +179,7 @@ public class MainTime : MonoBehaviour
         {
             wepRnd = Random.Range(0, 5);
             moveX = Random.Range(-7.1f, 7.1f);
-            moveY = Random.Range(1.1f, 3.9f);
+            moveY = Random.Range(2.1f, 3.9f);
             wep_obj.SetActive (false);
         }
 
@@ -216,6 +221,7 @@ public class MainTime : MonoBehaviour
         hG = 11 - hG;
         if (hG < 0)
         {
+
             btn_gudoc.GetComponent<Button>().interactable = true;
             hG = 0;
             mG = 0;
