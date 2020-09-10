@@ -33,7 +33,8 @@ public class CityTalk : MonoBehaviour
     public Animator charAni;
     public Sprite[] chareat;
 
-    public GameObject obj_cafe, obj_bunsik,charEat;
+    public GameObject obj_cafe, obj_bunsik,charEat, obj_cafe_YN, obj_bunsik_YN, obj_bunsik_price;
+    public Text txt_cafe_YN, txt_bunsik_YN;
 
 
 
@@ -178,10 +179,10 @@ public class CityTalk : MonoBehaviour
         //  }
     }
 
-    public void talkEat0() //순대
+
+    void talkBunsik(string str)
     {
-        closeBunsik();
-        ckFood = 0;
+        eatFalseObject();
         if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
         {
             nowArr = 0;
@@ -192,65 +193,47 @@ public class CityTalk : MonoBehaviour
 
         //소리
         //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
         lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["순대"];
+        text_str = "" + data_eat[randArr1[nowArr - 1]][str];
         testText_cut = text_str.Split('/'); //끊기
         cleantalk();
         StartCoroutine("talkRun");
         StartCoroutine("eatFood");
+    }
+
+    public void talkEat0() //순대
+    {
+        eatYN();
+        txt_bunsik_YN.text = "순대의 가격은 80";
+        ckFood = 0;
+
     }
 
     public void talkEat1() //떡볶이
     {
-        closeBunsik();
+        eatYN();
+        txt_bunsik_YN.text = "떡볶이 가격은 70";
         ckFood = 1;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["떡볶이"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
     }
 
     public void talkEat2() //어묵
     {
-        closeBunsik();
+        eatYN();
+        txt_bunsik_YN.text = "어묵의 가격은 50";
         ckFood = 2;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["어묵"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
     }
 
     public void talkEat3() //튀김
     {
-        closeBunsik();
+        eatYN();
+        txt_bunsik_YN.text = "튀김의 가격은 70";
         ckFood = 3;
+    }
+
+
+    void talkCafe(string str)
+    {
+        eatFalseObject();
         if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
         {
             nowArr = 0;
@@ -263,195 +246,71 @@ public class CityTalk : MonoBehaviour
         //Audio_obj.GetComponent<SoundEvt>().talkSound();
 
         lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["튀김"];
+        text_str = "" + data_eat[randArr1[nowArr - 1]][str];
         testText_cut = text_str.Split('/'); //끊기
         cleantalk();
         StartCoroutine("talkRun");
         StartCoroutine("eatFood");
     }
 
+
+
+
+
     public void talkEat4() //커피
     {
-        closeCafe();
+        txt_cafe_YN.text = "커피";
         ckFood = 4;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["커피"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        eatYN();
     }
 
     public void talkEat4_2() //차
     {
-        closeCafe();
-        ckFood = 4;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["차차"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        txt_cafe_YN.text = "차";
+        ckFood = 44;
+        eatYN();
     }
 
     public void talkEat5() //과일주스
     {
-        closeCafe();
+        txt_cafe_YN.text = "과일주스";
         ckFood = 5;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["과일"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        eatYN();
     }
 
     public void talkEat6() //아이스크림
     {
-        closeCafe();
+        txt_cafe_YN.text = "아이스크림";
         ckFood = 6;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["아이스"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        eatYN();
     }
 
     public void talkEat7() //빵
     {
-        closeCafe();
+        txt_cafe_YN.text = "빵";
         ckFood = 7;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["빠앙"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        eatYN();
     }
 
     public void talkEat8() //쿠키
     {
-        closeCafe();
+        txt_cafe_YN.text = "쿠키";
         ckFood = 8;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["쿠키"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        eatYN();
     }
 
     public void talkEat9() //샌드위치
     {
-        closeCafe();
+        eatYN();
+        txt_cafe_YN.text = "샌드위치";
         ckFood = 9;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["샌드위치"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
     }
 
     public void talkEat9_10() //마카롱
     {
-        closeCafe();
+        txt_cafe_YN.text = "마카롱";
         ckFood = 10;
-        if (PlayerPrefs.GetInt("talkcityCK", 0) == 99)
-        {
-            nowArr = 0;
-        }
-        PlayerPrefs.SetInt("talkcityCK", 88);
-        //대화속도
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
-
-        lineReload(1);
-        text_str = "" + data_eat[randArr1[nowArr - 1]]["마카롱"];
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        StartCoroutine("talkRun");
-        StartCoroutine("eatFood");
+        eatYN();
     }
 
     //대사 출력
@@ -619,6 +478,10 @@ public class CityTalk : MonoBehaviour
                 charEat.GetComponent<Image>().sprite = chareat[4];
                 break;
 
+            case 44: //커피와 차
+                charEat.GetComponent<Image>().sprite = chareat[4];
+                break;
+
             case 5: //과일주스
                 charEat.GetComponent<Image>().sprite = chareat[5];
                 break;
@@ -652,16 +515,91 @@ public class CityTalk : MonoBehaviour
         charEat.SetActive(false);
     }
 
-
-    public void closeCafe()
+    public void openCafe()
     {
-        obj_cafe.SetActive(false);
+        obj_cafe.SetActive(true);
+    }
+        
+    public void closeYN()
+    {
+        obj_bunsik_price.SetActive(false);
+        obj_bunsik_YN.SetActive(false);
+        obj_cafe_YN.SetActive(false);
     }
 
-
-    public void closeBunsik()
+    public void openBunsik()
     {
+        obj_bunsik.SetActive(true);
+    }
+
+    public void eatFalseObject()
+    {
+        obj_cafe.SetActive(false);
+        obj_cafe_YN.SetActive(false);
         obj_bunsik.SetActive(false);
+        obj_bunsik_YN.SetActive(false);
+        obj_bunsik_price.SetActive(false);
+    }
+    
+    void eatYN() //이걸로 할까창
+    {
+            obj_cafe_YN.SetActive(true);
+            obj_bunsik_price.SetActive(true);
+            obj_bunsik_YN.SetActive(true);
+    }
+
+    public void eatYES() 
+    {
+        switch (ckFood)
+        {
+            case 0: //순대
+                talkBunsik("순대");
+                break;
+
+            case 1: //떡볶이
+                talkBunsik("떡볶이");
+                break;
+
+            case 2: //어묵
+                talkBunsik("어묵");
+                break;
+
+            case 3: //튀김
+                talkBunsik("튀김");
+                break;
+
+            case 4: //커피와 차
+                talkCafe("커피");
+                break;
+
+            case 44: //커피와 차
+                talkCafe("차차");
+                break;
+
+            case 5: //과일주스
+                talkCafe("과일");
+                break;
+
+            case 6: //아이스크림
+                talkCafe("아이스");
+                break;
+
+            case 7: //빵
+                talkCafe("빠앙");
+                break;
+
+            case 8: //쿠키
+                talkCafe("쿠키");
+                break;
+
+            case 9: //샌드위치
+                talkCafe("샌드위치");
+                break;
+
+            case 10: //마카롱
+                talkCafe("마카롱");
+                break;
+        }
     }
 
 }
