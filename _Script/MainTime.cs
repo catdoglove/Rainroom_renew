@@ -115,6 +115,7 @@ public class MainTime : MonoBehaviour
     //
     IEnumerator updateSec()
     {
+        Debug.Log("tt");
         int a = 0;
         while (a == 0)
         {

@@ -7,7 +7,7 @@ public class TouchEvt : MonoBehaviour
     string str_Code;
     int h, r;
 
-    public GameObject wep_obj, baques_obj;
+    public GameObject wep_obj, baques_obj, trash_obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,4 +40,18 @@ public class TouchEvt : MonoBehaviour
         PlayerPrefs.SetInt(str_Code + "r", r);
         PlayerPrefs.SetInt(str_Code + "h", h);
     }
+
+    public void tTouch()
+    {
+
+        trash_obj.SetActive(false);
+        CityTime.trashRnd = 0;
+        h = PlayerPrefs.GetInt(str_Code + "h", 0);
+        r = PlayerPrefs.GetInt(str_Code + "r", 0);
+        h = h + 3;
+        r = r + 25;
+        PlayerPrefs.SetInt(str_Code + "r", r);
+        PlayerPrefs.SetInt(str_Code + "h", h);
+    }
+
 }
