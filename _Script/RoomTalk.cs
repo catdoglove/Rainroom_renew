@@ -40,8 +40,9 @@ public class RoomTalk : MonoBehaviour
 
     //캐릭터 변환
     public Animator charAni;
-    
-    
+
+    public GameObject pop_obj;
+    public Text txt_pop;
 
     // Start is called before the first frame update
     void Start()
@@ -469,4 +470,60 @@ public class RoomTalk : MonoBehaviour
     }
 
 
+    void UpLike()
+    {
+        int like = PlayerPrefs.GetInt("likepoint", 0);
+
+        if (like >= 400 && PlayerPrefs.GetInt("likelv", 0) >= 5 && PlayerPrefs.GetInt("booklv", 0) >= 8 && PlayerPrefs.GetInt("windowlv", 0) >= 8)
+        {
+            like = 0;
+            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likelv", PlayerPrefs.GetInt("likelv", 0) + 1);
+            txt_pop.text = "좀 친해진거 같다";
+            pop_obj.SetActive(true);
+        }
+        else if (like >= 400 && PlayerPrefs.GetInt("likelv", 0) == 4 && PlayerPrefs.GetInt("booklv", 0) >= 8 && PlayerPrefs.GetInt("windowlv", 0) >= 8)
+        {
+            like = 0;
+            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likelv", 5);
+            txt_pop.text = "좀 친해진거 같다";
+            pop_obj.SetActive(true);
+        }
+        else if (like >= 350 && PlayerPrefs.GetInt("likelv", 0) == 3 && PlayerPrefs.GetInt("booklv", 0) >= 8 && PlayerPrefs.GetInt("windowlv", 0) >= 8)
+        {
+            like = 0;
+            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likelv", 4);
+            txt_pop.text = "좀 친해진거 같다";
+            pop_obj.SetActive(true);
+        }
+        else if (like >= 240 && PlayerPrefs.GetInt("likelv", 0) == 2 && PlayerPrefs.GetInt("booklv", 0) >= 6 && PlayerPrefs.GetInt("windowlv", 0) >= 6)
+        {
+            like = 0;
+            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likelv", 3);
+            txt_pop.text = "좀 친해진거 같다";
+            pop_obj.SetActive(true);
+        }
+        else if (like >= 120 && PlayerPrefs.GetInt("likelv", 0) == 1 && PlayerPrefs.GetInt("booklv", 0) >= 4 && PlayerPrefs.GetInt("windowlv", 0) >= 4)
+        {
+            like = 0;
+            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likelv", 2);
+            txt_pop.text = "좀 친해진거 같다";
+            pop_obj.SetActive(true);
+        }
+        else if (like >= 50 && PlayerPrefs.GetInt("likelv", 0) == 0 && PlayerPrefs.GetInt("booklv", 0) >= 2 && PlayerPrefs.GetInt("windowlv", 0) >= 2)
+        {
+            like = 0;
+            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likelv", 1);
+            txt_pop.text = "좀 친해진거 같다";
+            pop_obj.SetActive(true);
+        }
+    }
+
+
+      
 }
