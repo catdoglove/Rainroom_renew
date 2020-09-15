@@ -174,6 +174,7 @@ public class RoomTalk : MonoBehaviour
             {
                 StartCoroutine("talkRun");
             }
+            UpLike();
         }
     }
 
@@ -477,7 +478,7 @@ public class RoomTalk : MonoBehaviour
         if (like >= 400 && PlayerPrefs.GetInt("likelv", 0) >= 5 && PlayerPrefs.GetInt("booklv", 0) >= 8 && PlayerPrefs.GetInt("windowlv", 0) >= 8)
         {
             like = 0;
-            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likepoint", like);
             PlayerPrefs.SetInt("likelv", PlayerPrefs.GetInt("likelv", 0) + 1);
             txt_pop.text = "좀 친해진거 같다";
             pop_obj.SetActive(true);
@@ -485,7 +486,7 @@ public class RoomTalk : MonoBehaviour
         else if (like >= 400 && PlayerPrefs.GetInt("likelv", 0) == 4 && PlayerPrefs.GetInt("booklv", 0) >= 8 && PlayerPrefs.GetInt("windowlv", 0) >= 8)
         {
             like = 0;
-            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likepoint", like);
             PlayerPrefs.SetInt("likelv", 5);
             txt_pop.text = "좀 친해진거 같다";
             pop_obj.SetActive(true);
@@ -493,7 +494,7 @@ public class RoomTalk : MonoBehaviour
         else if (like >= 350 && PlayerPrefs.GetInt("likelv", 0) == 3 && PlayerPrefs.GetInt("booklv", 0) >= 8 && PlayerPrefs.GetInt("windowlv", 0) >= 8)
         {
             like = 0;
-            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likepoint", like);
             PlayerPrefs.SetInt("likelv", 4);
             txt_pop.text = "좀 친해진거 같다";
             pop_obj.SetActive(true);
@@ -501,7 +502,7 @@ public class RoomTalk : MonoBehaviour
         else if (like >= 240 && PlayerPrefs.GetInt("likelv", 0) == 2 && PlayerPrefs.GetInt("booklv", 0) >= 6 && PlayerPrefs.GetInt("windowlv", 0) >= 6)
         {
             like = 0;
-            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likepoint", like);
             PlayerPrefs.SetInt("likelv", 3);
             txt_pop.text = "좀 친해진거 같다";
             pop_obj.SetActive(true);
@@ -509,15 +510,18 @@ public class RoomTalk : MonoBehaviour
         else if (like >= 120 && PlayerPrefs.GetInt("likelv", 0) == 1 && PlayerPrefs.GetInt("booklv", 0) >= 4 && PlayerPrefs.GetInt("windowlv", 0) >= 4)
         {
             like = 0;
-            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likepoint", like);
             PlayerPrefs.SetInt("likelv", 2);
             txt_pop.text = "좀 친해진거 같다";
             pop_obj.SetActive(true);
         }
-        else if (like >= 50 && PlayerPrefs.GetInt("likelv", 0) == 0 && PlayerPrefs.GetInt("booklv", 0) >= 2 && PlayerPrefs.GetInt("windowlv", 0) >= 2)
+        else if (like >= 45 && PlayerPrefs.GetInt("likelv", 0) == 0 && PlayerPrefs.GetInt("booklv", 0) >= 2 && PlayerPrefs.GetInt("windowlv", 0) >= 2)
         {
+
+            Debug.Log(PlayerPrefs.GetInt("likelv", 0));
+            Debug.Log(PlayerPrefs.GetInt("likepoint", 0));
             like = 0;
-            PlayerPrefs.SetInt("like", like);
+            PlayerPrefs.SetInt("likepoint", like);
             PlayerPrefs.SetInt("likelv", 1);
             txt_pop.text = "좀 친해진거 같다";
             pop_obj.SetActive(true);

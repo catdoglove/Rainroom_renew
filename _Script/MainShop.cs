@@ -22,6 +22,7 @@ public class MainShop : MonoBehaviour
     public GameObject bedBox_obj;
     public Sprite spr_boxOpen, spr_boxClose;
 
+    public GameObject shopHelp_obj;
 
     int cost_r, cost_h, level, sum, have_r, have_h;
 
@@ -1349,4 +1350,15 @@ public class MainShop : MonoBehaviour
     }
     
     
+    public void ActHelp()
+    {
+        if (shopHelp_obj.activeSelf)
+        {
+            shopHelp_obj.SetActive(false);
+        }
+        else
+        {
+            shopHelp_obj.SetActive(true);
+        }
+    }
 }

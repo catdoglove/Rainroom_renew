@@ -49,43 +49,42 @@ public class MainInfo : MonoBehaviour
     //창을열때 초기화
     void SetIofo()
     {
-
-        sld_like.value = PlayerPrefs.GetInt("likepoint", 0);
         sld_like.maxValue = PlayerPrefs.GetFloat("maxlike", 50);
+        sld_like.value = PlayerPrefs.GetInt("likepoint", 0);
         if (PlayerPrefs.GetInt("likelv", 0) == 1)
         {
             sld_like.maxValue = 122;
-            face.GetComponent<SpriteRenderer>().sprite = spr_face[1];
-            txt_likeLv.text = "[다음 호감도 조건]\n꾸준한 대화 및 창문,책 Lv.4이상";
+            face.GetComponent<Image>().sprite = spr_face[1];
+            txt_likeLv.text = "[다음 호감도 조건]"+"\n"+"꾸준한 대화 및 창문,책 Lv.4이상";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 2)
         {
             sld_like.maxValue = 245;
-            face.GetComponent<SpriteRenderer>().sprite = spr_face[2];
-            txt_likeLv.text = "[다음 호감도 조건]\n꾸준한 대화 및 창문,책 Lv.6이상";
+            face.GetComponent<Image>().sprite = spr_face[2];
+            txt_likeLv.text = "[다음 호감도 조건]" + "\n" + "꾸준한 대화 및 창문,책 Lv.6이상";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 3)
         {
             sld_like.maxValue = 360;
-            face.GetComponent<SpriteRenderer>().sprite = spr_face[3];
-            txt_likeLv.text = "[다음 호감도 조건]\n꾸준한 대화 및 창문,책 Lv.8이상";
+            face.GetComponent<Image>().sprite = spr_face[3];
+            txt_likeLv.text = "[다음 호감도 조건]" + "\n" + "꾸준한 대화 및 창문,책 Lv.8이상";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 4)
         {
             sld_like.maxValue = 415;
-            face.GetComponent<SpriteRenderer>().sprite = spr_face[4];
+            face.GetComponent<Image>().sprite = spr_face[4];
             txt_likeLv.text = "..할 말이 있어";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 5)
         {
             sld_like.maxValue = 415;
-            face.GetComponent<SpriteRenderer>().sprite = spr_face[5];
+            face.GetComponent<Image>().sprite = spr_face[5];
             txt_likeLv.text = "고마워 :)";
         }
         if (PlayerPrefs.GetInt("likelv", 0) >= 6)
         {
             sld_like.maxValue = 415;
-            face.GetComponent<SpriteRenderer>().sprite = spr_face[5];
+            face.GetComponent<Image>().sprite = spr_face[5];
             txt_likeLv.text = "고마워 :)";
             txt_faceLv.text = "" + (PlayerPrefs.GetInt("likelv", 0) - 5);
         }

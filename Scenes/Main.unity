@@ -1550,7 +1550,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 68596745}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375161}
+        m_MethodName: ActoutItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &68596745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4318,7 +4329,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 241856522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300375161}
+        m_MethodName: ActHelp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &241856522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5789,6 +5811,7 @@ MonoBehaviour:
     type: 3}
   spr_boxClose: {fileID: -3222993782799142453, guid: a149ec0ef9e1f3f4bbcccacfa4e5d3bb,
     type: 3}
+  shopHelp_obj: {fileID: 792218424}
   btn_memoBook: {fileID: 1981456338}
   btn_memoWindow: {fileID: 1358439781}
   btn_memoSeed: {fileID: 1120522081}
@@ -16984,6 +17007,7 @@ GameObject:
   - component: {fileID: 792218425}
   - component: {fileID: 792218427}
   - component: {fileID: 792218426}
+  - component: {fileID: 792218428}
   m_Layer: 5
   m_Name: "\uB3C4\uC6C0\uB9D0"
   m_TagString: Untagged
@@ -17047,6 +17071,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792218424}
   m_CullTransparentMesh: 0
+--- !u!114 &792218428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792218424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 792218426}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 300375161}
+        m_MethodName: ActHelp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &802873418
 GameObject:
   m_ObjectHideFlags: 0
@@ -19734,7 +19812,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: 
+  m_Text: "[\uB2E4\uC74C \uD638\uAC10\uB3C4 \uC870\uAC74]\n\uAFB8\uC900\uD55C \uB300\uD654
+    \uBC0F \uCC3D\uBB38,\uCC45 Lv.2\uC774\uC0C1"
 --- !u!222 &961575055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36171,8 +36250,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: "\uD30C\uB780 \uBC14\uAC00 \uB05D\uAE4C\uC9C0 \uB2FF\uACE0\n\uC870\uAC74
-    \uB9CC\uC871\uD558\uBA74 \uD638\uAC10 \uC0C1\uC2B9"
+  m_Text: "\uD30C\uB780 \uBC14\uAC00 \uB05D\uAE4C\uC9C0 \uB2FF\uACE0\n\uC544\uB798
+    \uC870\uAC74\uC744 \uB9CC\uC871\uD558\uBA74 \uD638\uAC10 \uC0C1\uC2B9"
 --- !u!222 &2010433391
 CanvasRenderer:
   m_ObjectHideFlags: 0
