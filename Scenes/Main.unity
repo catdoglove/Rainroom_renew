@@ -625,7 +625,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: showBookAllTxt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2739,7 +2739,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: showPictureAllTxt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5143,7 +5143,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeBookColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5823,24 +5823,24 @@ MonoBehaviour:
   spr_boxClose: {fileID: -3222993782799142453, guid: a149ec0ef9e1f3f4bbcccacfa4e5d3bb,
     type: 3}
   shopHelp_obj: {fileID: 792218424}
-  btn_memoBook: {fileID: 1981456338}
-  btn_memoWindow: {fileID: 1358439781}
-  btn_memoSeed: {fileID: 1120522081}
-  btn_memoLight: {fileID: 1341485723}
-  btn_memoWall: {fileID: 1329993703}
-  btn_colorWindow: {fileID: 449139341}
-  btn_colorWall: {fileID: 1046274984}
-  btn_colorLight: {fileID: 896383636}
-  btn_colorBed: {fileID: 375373276}
-  btn_colorBook: {fileID: 1046274984}
+  btn_memoBook: {fileID: 27428949}
+  btn_memoWindow: {fileID: 1583832316}
+  btn_memoSeed: {fileID: 1737342341}
+  btn_memoLight: {fileID: 493096830}
+  btn_memoWall: {fileID: 2123802314}
+  btn_colorWindow: {fileID: 1618273189}
+  btn_colorWall: {fileID: 1415696764}
+  btn_colorLight: {fileID: 1215446668}
+  btn_colorBed: {fileID: 505351646}
+  btn_colorBook: {fileID: 282189675}
   btn_colorClock: {fileID: 1618273189}
-  btn_colorDraw: {fileID: 0}
-  btn_colorFrame: {fileID: 0}
-  btn_colorDesk: {fileID: 0}
-  btn_memoClock: {fileID: 1583832316}
-  btn_memoDraw: {fileID: 0}
-  btn_boxFrame: {fileID: 0}
-  btn_boxDesk: {fileID: 0}
+  btn_colorDraw: {fileID: 1776604606}
+  btn_colorFrame: {fileID: 945784330}
+  btn_colorDesk: {fileID: 532254786}
+  btn_memoClock: {fileID: 992339436}
+  btn_memoDraw: {fileID: 156155154}
+  btn_boxFrame: {fileID: 500910403}
+  btn_boxDesk: {fileID: 1230646656}
   spr_windowColorImg:
   - {fileID: 5632190499878478072, guid: 3e4e3b8ad84eb6647998bb0b5a90bf7e, type: 3}
   - {fileID: 3071591870043330723, guid: 3e4e3b8ad84eb6647998bb0b5a90bf7e, type: 3}
@@ -6010,6 +6010,8 @@ MonoBehaviour:
   - {fileID: 482441420}
   - {fileID: 273076070}
   outItem_obj: {fileID: 1167585077}
+  txt_talk: {fileID: 0}
+  txt_talkTime: {fileID: 0}
 --- !u!114 &300375162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6376,7 +6378,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeClockColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7251,7 +7253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &354367080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9846,7 +9848,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: showLightAllTxt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19634,7 +19636,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeFrameColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20714,7 +20716,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: showClockAllTxt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24974,7 +24976,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeLightColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28711,7 +28713,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeRoomColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29143,7 +29145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeSeedColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29990,7 +29992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1572416542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32615,7 +32617,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: showSeedAllTxt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33234,7 +33236,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: changeDrawColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37842,7 +37844,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300375161}
-        m_MethodName: changeBedColor
+        m_MethodName: showWallAllTxt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

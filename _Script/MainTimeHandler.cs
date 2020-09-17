@@ -134,7 +134,19 @@ public class MainTimeHandler : MonoBehaviour {
 			} else {
 				string str = string.Format (@"{0:00}" + ":", minute) + string.Format (@"{0:00}", sec);
 				talkTime_txt.text = "" + str;
-			}
+
+                if (PlayerPrefs.GetInt("scene", 0) == 1)
+                {
+                    talkTime_txt.color = Color.white;
+                    talkNum.color = Color.white;
+                }
+                else
+                {
+                    talkTime_txt.color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+                    talkNum.color = new Color(50 / 255f, 50 / 255f, 50 / 255f);
+                }
+
+            }
 
 			talkNum.text = talk.ToString ();
 			if (talk >= 5) {

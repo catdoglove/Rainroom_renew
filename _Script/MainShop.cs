@@ -40,7 +40,7 @@ public class MainShop : MonoBehaviour
     public GameObject[] MaxX_obj;
     //외출
     public GameObject outItem_obj;
-    
+    public Text txt_talk, txt_talkTime;
     private void Awake()
     {
         First();
@@ -764,8 +764,8 @@ public class MainShop : MonoBehaviour
         if (level >= 8)
         {
             txt_window[0].text = "Lv.MAX";
-            btn_memoWindow.SetActive(true);
-            btn_colorWindow.SetActive(true);
+            //btn_memoWindow.SetActive(true);
+            //btn_colorWindow.SetActive(true);
 
         }
     }
@@ -790,8 +790,8 @@ public class MainShop : MonoBehaviour
         if (level >= 2)
         {
             txt_wall[0].text = "Lv.MAX";
-            btn_memoWall.SetActive(true);
-            btn_colorWall.SetActive(true);
+            //btn_memoWall.SetActive(true);
+            //btn_colorWall.SetActive(true);
         }
     }
     void BookRe()
@@ -814,8 +814,8 @@ public class MainShop : MonoBehaviour
         if (level >= 9)
         {
             txt_book[0].text = "Lv.MAX";
-            btn_memoBook.SetActive(true);
-            btn_colorBook.SetActive(true);
+            //btn_memoBook.SetActive(true);
+            //btn_colorBook.SetActive(true);
         }
     }
 
@@ -839,8 +839,8 @@ public class MainShop : MonoBehaviour
         if (level >= 2)
         {
             txt_light[0].text = "Lv.MAX";
-            btn_memoLight.SetActive(true);
-            btn_colorLight.SetActive(true);
+            //btn_memoLight.SetActive(true);
+            //btn_colorLight.SetActive(true);
         }
     }
 
@@ -935,63 +935,63 @@ public class MainShop : MonoBehaviour
     /// </summary>
     void SetOutItem()
     {
-        if (PlayerPrefs.GetInt("windowlv", 0)>=1)
+        if (PlayerPrefs.GetInt("windowlv", 0)>=8)
         {
             btn_colorWindow.GetComponent<Button>().interactable = true;
             btn_memoWindow.GetComponent<Button>().interactable = true;
             MaxX_obj[0].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("booklv", 0) >= 1)
+        if (PlayerPrefs.GetInt("booklv", 0) >= 9)
         {
             btn_colorBook.GetComponent<Button>().interactable = true;
             btn_memoBook.GetComponent<Button>().interactable = true;
             MaxX_obj[1].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("walllv", 0) >= 1)
+        if (PlayerPrefs.GetInt("walllv", 0) >= 2)
         {
             btn_colorWall.GetComponent<Button>().interactable = true;
             btn_memoWall.GetComponent<Button>().interactable = true;
             MaxX_obj[2].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("lightlv", 0) >= 1)
+        if (PlayerPrefs.GetInt("lightlv", 0) >= 2)
         {
             btn_colorLight.GetComponent<Button>().interactable = true;
             btn_memoLight.GetComponent<Button>().interactable = true;
             MaxX_obj[3].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("seedlv", 0) >= 1)
+        if (PlayerPrefs.GetInt("seedlv", 0) >= 5)
         {
             //btn_c.GetComponent<Button>().interactable = true;
             MaxX_obj[4].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("draw", 0) >= 1)
+        if (PlayerPrefs.GetInt("draw", 0) >= 6)
         {
             btn_colorDraw.GetComponent<Button>().interactable = true;
             btn_memoDraw.GetComponent<Button>().interactable = true;
             MaxX_obj[5].SetActive(false);
         }
-        if (PlayerPrefs.GetInt("clock", 0) >= 1)
+        if (PlayerPrefs.GetInt("clock", 0) >= 5)
         {
             btn_colorClock.GetComponent<Button>().interactable = true;
             btn_memoClock.GetComponent<Button>().interactable = true;
             MaxX_obj[6].SetActive(false);
         }
-        if (PlayerPrefs.GetInt("bedlv", 0) >= 1)
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 3)
         {
             btn_colorBed.GetComponent<Button>().interactable = true;
             MaxX_obj[7].SetActive(false);
         }
-        if (PlayerPrefs.GetInt("frame", 0) >= 1)
+        if (PlayerPrefs.GetInt("frame", 0) >= 5)
         {
             btn_colorFrame.GetComponent<Button>().interactable = true;
             MaxX_obj[8].SetActive(false);
         }
-        if (PlayerPrefs.GetInt("desklv", 0) >= 1)
+        if (PlayerPrefs.GetInt("desklv", 0) >= 2)
         {
             btn_colorDesk.GetComponent<Button>().interactable = true;
             MaxX_obj[9].SetActive(false);
@@ -1244,6 +1244,7 @@ public class MainShop : MonoBehaviour
     }
     
 
+
     /*
     public void changeDeskColor()
     {
@@ -1361,4 +1362,17 @@ public class MainShop : MonoBehaviour
             shopHelp_obj.SetActive(true);
         }
     }
+
+
+    /*
+    void first()
+    {
+        if (PlayerPrefs.GetInt("scene", 0)==1)
+        {
+            txt_talk.color ="";
+        }
+        
+    } 
+    */
+
 }
