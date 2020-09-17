@@ -12,6 +12,10 @@ public class MainMenuEvt : MonoBehaviour
 
     public GameObject GM,GMD;
 
+    public GameObject help_obj;
+    public Sprite[] spr_help;
+    int help_i;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -187,4 +191,38 @@ public class MainMenuEvt : MonoBehaviour
         PlayerPrefs.SetInt("endck", endck);
     }
     */
+
+    //도움말
+    public void OpenHelp()
+    {
+        help_obj.SetActive(true);
+        help_i = 0;
+        help_obj.GetComponent<Image>().sprite = spr_help[help_i];
+    }
+
+    public void HelpR()
+    {
+        if (help_i == 3)
+        {
+
+        }
+        else
+        {
+            help_i++;
+            help_obj.GetComponent<Image>().sprite = spr_help[help_i];
+        }
+    }
+
+    public void HelpL()
+    {
+        if (help_i == 0)
+        {
+
+        }
+        else
+        {
+            help_i--;
+            help_obj.GetComponent<Image>().sprite = spr_help[help_i];
+        }
+    }
 }
