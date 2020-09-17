@@ -44,6 +44,52 @@ public class RoomTalk : MonoBehaviour
     public GameObject pop_obj;
     public Text txt_pop;
 
+
+    //토스트
+    public string toastTxt = "한글 출력 되니??";
+       
+
+    private void toastFunction()
+    {
+        AndroidJavaClass toastClass =
+                    new AndroidJavaClass("android.widget.Toast");
+        
+        object[] toastParams = new object[3];
+        AndroidJavaClass unityActivity =
+          new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        toastParams[0] =
+                     unityActivity.GetStatic<AndroidJavaObject>
+                               ("currentActivity");
+        toastParams[1] = toastTxt;
+        toastParams[2] = toastClass.GetStatic<int>
+                               ("LENGTH_LONG");
+        
+        AndroidJavaObject toastObject =
+                        toastClass.CallStatic<AndroidJavaObject>
+                                      ("makeText", toastParams);
+        
+        toastObject.Call("show");
+
+    }
+
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            toastFunction();
+            StartCoroutine("applicationQuit");
+        }       
+
+    }
+
+    IEnumerator applicationQuit()
+    {
+        yield return new WaitForSeconds(1f);
+        Application.Quit();
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
