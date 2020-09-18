@@ -8888,6 +8888,8 @@ GameObject:
   - component: {fileID: 2145333738}
   - component: {fileID: 2145333737}
   - component: {fileID: 2145333739}
+  - component: {fileID: 2145333741}
+  - component: {fileID: 2145333740}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -8994,3 +8996,29 @@ MonoBehaviour:
   popUp_obj: {fileID: 918926949}
   shopWin_obj: {fileID: 1604754612}
   helpWin_obj: {fileID: 792218424}
+--- !u!114 &2145333740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145333736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196ec106edda06645a96a49fb63e0e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2145333741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145333736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0953eb444545bf47a690a68a08c38c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu_obj: {fileID: 0}
+  camera_c: {fileID: 0}

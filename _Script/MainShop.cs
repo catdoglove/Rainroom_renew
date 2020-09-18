@@ -29,10 +29,10 @@ public class MainShop : MonoBehaviour
     string str_Code;
 
     //MAX용
-    public GameObject btn_memoBook, btn_memoWindow, btn_memoSeed, btn_memoLight, btn_memoWall, btn_colorWindow, btn_colorWall, btn_colorLight, btn_colorBed, btn_colorBook;
+    public GameObject btn_memoBook, btn_memoWindow, btn_memoSeed, btn_memoLight, btn_memoWall, btn_colorWindow, btn_colorWall, btn_colorLight, btn_colorBed, btn_colorBook, btn_colorSeed;
     public GameObject btn_colorClock, btn_colorDraw, btn_colorFrame, btn_colorDesk, btn_memoClock, btn_memoDraw, btn_boxFrame, btn_boxDesk;
-    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg, spr_clockColorImg, spr_frameColorImg;
-    int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum, clockcolNum, drawcolNum, framecolNum;
+    public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg, spr_clockColorImg, spr_frameColorImg, spr_deskColorImg;
+    int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum, clockcolNum, drawcolNum, framecolNum, deskcolNum;
     public Text[] txt_memoName;
     public string[] str_memo;
     public GameObject memoImg, switchImg;
@@ -963,13 +963,13 @@ public class MainShop : MonoBehaviour
             MaxX_obj[3].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("seedlv", 0) >= 5)
+        if (PlayerPrefs.GetInt("seedlv", 0) >= 10)
         {
-            //btn_c.GetComponent<Button>().interactable = true;
+            btn_colorSeed.GetComponent<Button>().interactable = true;
             MaxX_obj[4].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("draw", 0) >= 6)
+        if (PlayerPrefs.GetInt("draw", 0) >= 9)
         {
             btn_colorDraw.GetComponent<Button>().interactable = true;
             btn_memoDraw.GetComponent<Button>().interactable = true;
@@ -981,7 +981,7 @@ public class MainShop : MonoBehaviour
             btn_memoClock.GetComponent<Button>().interactable = true;
             MaxX_obj[6].SetActive(false);
         }
-        if (PlayerPrefs.GetInt("bedlv", 0) >= 3)
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 4)
         {
             btn_colorBed.GetComponent<Button>().interactable = true;
             MaxX_obj[7].SetActive(false);
@@ -991,12 +991,13 @@ public class MainShop : MonoBehaviour
             btn_colorFrame.GetComponent<Button>().interactable = true;
             MaxX_obj[8].SetActive(false);
         }
-        if (PlayerPrefs.GetInt("desklv", 0) >= 2)
+        if (PlayerPrefs.GetInt("desklv", 0) >= 3)
         {
             btn_colorDesk.GetComponent<Button>().interactable = true;
             MaxX_obj[9].SetActive(false);
         }
     }
+
 
     void Allfalse()
     {
@@ -1243,26 +1244,23 @@ public class MainShop : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-
-
-    /*
+    
     public void changeDeskColor()
     {
         if (deskcolNum < 3)
         { 
             deskcolNum = PlayerPrefs.GetInt("deskColors", 0) + 1;
-            desk.GetComponent<Image>().sprite = spr_deskColorImg[deskcolNum];
+            desk_obj.GetComponent<Image>().sprite = spr_deskColorImg[deskcolNum];
             PlayerPrefs.SetInt("deskColors", deskcolNum);
         }
         else
         {
             deskcolNum = 0;
-            desk.GetComponent<Image>().sprite = spr_deskColorImg[deskcolNum];
+            desk_obj.GetComponent<Image>().sprite = spr_deskColorImg[deskcolNum];
             PlayerPrefs.SetInt("deskColors", 0);
         }
         PlayerPrefs.Save();
     }
-    */
 
     void First()
     {

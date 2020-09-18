@@ -76,6 +76,11 @@ public class MainTime : MonoBehaviour
     int tv=0;
     public Sprite spr_tv1, spr_tv2;
 
+
+    //카메라 태그로 찾고 적용
+    public GameObject menu_obj;
+    public Camera camera_c;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +114,12 @@ public class MainTime : MonoBehaviour
 
         talk = PlayerPrefs.GetInt("talk", 5);
 
+
+
+        //카메라
+        camera_c = Camera.main;
+        menu_obj = GameObject.FindGameObjectWithTag("메뉴Canvas");
+        menu_obj.GetComponent<Canvas>().worldCamera = camera_c;
     }
 
 
