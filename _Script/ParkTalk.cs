@@ -33,6 +33,22 @@ public class ParkTalk : MonoBehaviour
     public Animator charAni;
 
 
+    //뒤로가기 버튼 액션
+    public GameObject exitBtn;
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            exitBtn.SetActive(true);
+        }
+
+    }
+
+    public void exitFunction()
+    {
+        exitBtn.SetActive(false);
+    }
+    
 
     // Start is called before the first frame update
     void Start()

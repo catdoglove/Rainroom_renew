@@ -44,16 +44,53 @@ public class RoomTalk : MonoBehaviour
     public GameObject pop_obj;
     public Text txt_pop;
 
+    //종료
+    int exit_int, exitTalk;
+    int cnt_exit;
+    public string toastTxt;
 
-    //토스트
-    public string toastTxt = "한글 출력 되니??";
-       
+
 
     private void toastFunction()
     {
-        AndroidJavaClass toastClass =
-                    new AndroidJavaClass("android.widget.Toast");
+        if (PlayerPrefs.GetInt("sleeping", 0) == 1) //잘때 멘트
+        {
+            toastTxt = "쿨쿨... 잘가";
+        }
+        else
+        {
+            switch (PlayerPrefs.GetInt("likelv", 0))
+            {
+                case 0:
+                    toastTxt = "..잘가";
+                    break;
+
+                case 1:
+                    toastTxt = "잘가..";
+                    break;
+
+                case 2:
+                    toastTxt = "안녕 잘가.";
+                    break;
+
+                case 3:
+                    toastTxt = "즐거웠어 잘가.";
+                    break;
+
+                case 4:
+                    toastTxt = "잘가 좋은하루 보내.";
+                    break;
+
+                default:
+                    toastTxt = "잘가. 친구";
+                    break;
+            }
+        }
         
+
+            AndroidJavaClass toastClass =
+                    new AndroidJavaClass("android.widget.Toast");
+
         object[] toastParams = new object[3];
         AndroidJavaClass unityActivity =
           new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -76,10 +113,65 @@ public class RoomTalk : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
+        { 
+            closeTalkBoon();
+            talkCursor.SetActive(true);
+            if (exit_int == 0)
+            {
+                exit_int = 1;
+                talkballoon.SetActive(true);
+                closeTB.GetComponent<Button>().interactable = true;
+                closeTB.SetActive(true);
+                if (PlayerPrefs.GetInt("sleeping", 0) == 1)
+                {
+                    Text_obj.text = "(자고있다.)\n(뒤로가기를 한번 더 누르면 종료됩니다)";
+                }
+                else
+                {
+                    Text_obj.text = "가는 거야?\n(뒤로가기를 한번 더 누르면 종료됩니다)";
+                }
+            }
+            else
+            {
+                toastFunction();
+                StartCoroutine("applicationQuit");
+            }
+        }
+
+
+
+        if (exit_int == 1)
         {
-            toastFunction();
-            StartCoroutine("applicationQuit");
-        }       
+            cnt_exit++;
+
+            if (!talkballoon.activeSelf)
+            {
+                exit_int = 0;
+                cnt_exit = 0;
+            }
+
+        }
+
+
+        if (cnt_exit == 150)
+        {
+            if (PlayerPrefs.GetInt("sleeping", 0) == 1)
+            {
+                Text_obj.text = "..쿨쿨";
+            }
+            else
+            {
+                Text_obj.text = "..흠";
+            }
+            exit_int = 0;
+            cnt_exit = 0;
+
+        }
+        else if (cnt_exit == 250)
+        {
+            closeTalkBoon();
+        }
+
 
     }
 
@@ -363,6 +455,9 @@ public class RoomTalk : MonoBehaviour
         closeTB.SetActive(false);
         closeTB.GetComponent<Button>().interactable = false;
         change_turtle.SetActive(false);
+
+        //exit_int = 0;
+        //cnt_exit = 0;
     }
 
 
