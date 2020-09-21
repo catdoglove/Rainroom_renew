@@ -19,7 +19,7 @@ public class MainShop : MonoBehaviour
     public string[] window_name, wall_name, book_name, light_name;
     public Text txt_rain, txt_heart, txt_Popup;
     public GameObject shopWin_obj, shopPopup_obj,shopWinYN_obj;
-    public GameObject bedBox_obj;
+    public GameObject bedBox_obj, frameBox_obj, deskBox_obj;
     public Sprite spr_boxOpen, spr_boxClose;
 
     public GameObject shopHelp_obj;
@@ -35,7 +35,7 @@ public class MainShop : MonoBehaviour
     int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum, clockcolNum, drawcolNum, framecolNum, deskcolNum;
     public Text[] txt_memoName;
     public string[] str_memo;
-    public GameObject memoImg, switchImg;
+    public GameObject memoImg, switchImg,boxWin_obj;
 
     public GameObject[] MaxX_obj;
     //외출
@@ -49,7 +49,6 @@ public class MainShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         str_Code = PlayerPrefs.GetString("code", "");
         //PlayerPrefs.SetInt(str_Code + "h", 9999);
         //PlayerPrefs.SetInt(str_Code + "r", 99999);
@@ -98,6 +97,8 @@ public class MainShop : MonoBehaviour
             //마음
             txt_bed[3].text = "0";
             bed_obj.SetActive(true);
+            //상자
+            bedBox_obj.GetComponent<Button>().interactable = true;
             sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0);
             bed_obj.GetComponent<Image>().sprite = spr_sleep[PlayerPrefs.GetInt("bedlv", 0)-1];
 
@@ -119,6 +120,28 @@ public class MainShop : MonoBehaviour
             //마음
             txt_cup[3].text = "0";
             cupBtn_obj.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("booklv", 0) >= 9)
+        {
+            //레벨
+            txt_book[0].text = "Lv.MAX";
+            //이름
+            txt_book[1].text = "";
+            //물
+            txt_book[2].text = "0";
+            //마음
+            txt_book[3].text = "0";
+        }
+        if (PlayerPrefs.GetInt("walllv", 0) >= 2)
+        {
+            //레벨
+            txt_wall[0].text = "Lv.MAX";
+            //이름
+            txt_wall[1].text = "";
+            //물
+            txt_wall[2].text = "0";
+            //마음
+            txt_wall[3].text = "0";
         }
 
         level = PlayerPrefs.GetInt("windowlv", 0);
@@ -182,6 +205,8 @@ public class MainShop : MonoBehaviour
             int sd = PlayerPrefs.GetInt("frame", 0);
             frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[sd];
             frame_obj.SetActive(true);
+            //상자
+            frameBox_obj.GetComponent<Button>().interactable = true;
         }
         //잉어
         if (PlayerPrefs.GetInt("fishlv", 0) == 1)
@@ -194,7 +219,11 @@ public class MainShop : MonoBehaviour
             int sd = PlayerPrefs.GetInt("desklv", 0);
             desk_obj.GetComponent<Image>().sprite = spr_desk[sd];
             desk_obj.SetActive(true);
+            //상자
+            deskBox_obj.GetComponent<Button>().interactable = true;
         }
+
+
 
         //씨앗맥스
         // seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];
@@ -212,6 +241,7 @@ public class MainShop : MonoBehaviour
         else
         {
             shopWin_obj.SetActive(true);
+            boxWin_obj.SetActive(false);
             txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
@@ -227,7 +257,46 @@ public class MainShop : MonoBehaviour
 
     public void ShopBuyYN()
     {
+        int ck = 0;
+
+        if (PlayerPrefs.GetInt("cuplv", 0) >= 1&& item_num==1)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("turtlelv", 0) >= 1 && item_num == 2)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("seedlv", 0) >= 1 && item_num == 3)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("windowlv", 0) >= 8 && item_num == 4)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("booklv", 0) >= 9 && item_num == 5)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("walllv", 0) >= 2 && item_num == 6)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("lightlv", 0) >= 2 && item_num == 7)
+        {
+            ck++;
+        }
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 4 && item_num == 8)
+        {
+            ck++;
+        }
+        
         shopWinYN_obj.SetActive(true);
+        if (ck == 1)
+        {
+            shopWinYN_obj.SetActive(false);
+        }
     }
     public void ShopBuyY()
     {
@@ -410,11 +479,11 @@ public class MainShop : MonoBehaviour
 
     void BuyWindow()
     {
+        level = PlayerPrefs.GetInt("windowlv", 0);
         if (level >= 8) { }
         else
         {
             
-            level = PlayerPrefs.GetInt("windowlv", 0);
             sum = level * 2;
             cost_r = cost_window[sum];
             cost_h = cost_window[sum + 1];
@@ -447,10 +516,11 @@ public class MainShop : MonoBehaviour
 
     void BuyWall()
     {
+
+        level = PlayerPrefs.GetInt("walllv", 0);
         if (level >= 2) { }
         else
         {
-            level = PlayerPrefs.GetInt("walllv", 0);
             sum = level * 2;
             cost_r = cost_wall[sum];
             cost_h = cost_wall[sum + 1];
@@ -483,10 +553,10 @@ public class MainShop : MonoBehaviour
 
     void BuyBook()
     {
+        level = PlayerPrefs.GetInt("booklv", 0);
         if (level >= 9) { }
         else
         {
-            level = PlayerPrefs.GetInt("booklv", 0);
             sum = level * 2;
             cost_r = cost_book[sum];
             cost_h = cost_book[sum + 1];
@@ -519,11 +589,11 @@ public class MainShop : MonoBehaviour
 
     void BuyLight()
     {
+        level = PlayerPrefs.GetInt("lightlv", 0);
         if (level >= 2) { }
         else
         {
 
-            level = PlayerPrefs.GetInt("lightlv", 0);
             sum = level * 2;
             cost_r = cost_light[sum];
             cost_h = cost_light[sum + 1];
@@ -796,26 +866,29 @@ public class MainShop : MonoBehaviour
     }
     void BookRe()
     {
-        level = PlayerPrefs.GetInt("booklv", 0);
-        level--;
-        sum = level * 2;
-        cost_r = cost_book[sum];
-        cost_h = cost_book[sum + 1];
-        calc();
-        level++;
-        //레벨
-        txt_book[0].text = "Lv." + level;
-        //이름
-        txt_book[1].text = book_name[level];
-        //물
-        txt_book[2].text = "" + cost_r;
-        //마음
-        txt_book[3].text = "" + cost_h;
         if (level >= 9)
         {
             txt_book[0].text = "Lv.MAX";
             //btn_memoBook.SetActive(true);
             //btn_colorBook.SetActive(true);
+        }
+        else
+        {
+            level = PlayerPrefs.GetInt("booklv", 0);
+            level--;
+            sum = level * 2;
+            cost_r = cost_book[sum];
+            cost_h = cost_book[sum + 1];
+            calc();
+            level++;
+            //레벨
+            txt_book[0].text = "Lv." + level;
+            //이름
+            txt_book[1].text = book_name[level];
+            //물
+            txt_book[2].text = "" + cost_r;
+            //마음
+            txt_book[3].text = "" + cost_h;
         }
     }
 
@@ -872,17 +945,32 @@ public class MainShop : MonoBehaviour
         txt_book[3].text = "" + cost_h;
 
         ll = PlayerPrefs.GetInt("lightlv", 0);
-        sum = ll * 2;
-        cost_r = cost_light[sum];
-        cost_h = cost_light[sum + 1];
-        //레벨
-        txt_light[0].text = "Lv." + ll;
-        //이름
-        txt_light[1].text = light_name[ll];
-        //물
-        txt_light[2].text = "" + cost_r;
-        //마음
-        txt_light[3].text = "" + cost_h;
+
+        if (ll >= 2)
+        {
+            //레벨
+            txt_light[0].text = "Lv.MAX";
+            //이름
+            txt_light[1].text = "";
+            //물
+            txt_light[2].text = "0";
+            //마음
+            txt_light[3].text = "0";
+        }
+        else
+        {
+            sum = ll * 2;
+            cost_r = cost_light[sum];
+            cost_h = cost_light[sum + 1];
+            //레벨
+            txt_light[0].text = "Lv." + ll;
+            //이름
+            txt_light[1].text = light_name[ll];
+            //물
+            txt_light[2].text = "" + cost_r;
+            //마음
+            txt_light[3].text = "" + cost_h;
+        }
 
         ll = PlayerPrefs.GetInt("walllv", 0);
         sum = ll * 2;
@@ -898,17 +986,33 @@ public class MainShop : MonoBehaviour
         txt_wall[3].text = "" + cost_h;
 
         ll = PlayerPrefs.GetInt("windowlv", 0);
-        sum = ll * 2;
-        cost_r = cost_window[sum];
-        cost_h = cost_window[sum + 1];
-        //레벨
-        txt_window[0].text = "Lv." + ll;
-        //이름
-        txt_window[1].text = window_name[ll];
-        //물
-        txt_window[2].text = "" + cost_r;
-        //마음
-        txt_window[3].text = "" + cost_h;
+
+        if (ll >= 8)
+        {
+
+            //레벨
+            txt_window[0].text = "Lv.MAX";
+            //이름
+            txt_window[1].text = "";
+            //물
+            txt_window[2].text = "0";
+            //마음
+            txt_window[3].text = "0";
+        }
+        else
+        {
+            sum = ll * 2;
+            cost_r = cost_window[sum];
+            cost_h = cost_window[sum + 1];
+            //레벨
+            txt_window[0].text = "Lv." + ll;
+            //이름
+            txt_window[1].text = window_name[ll];
+            //물
+            txt_window[2].text = "" + cost_r;
+            //마음
+            txt_window[3].text = "" + cost_h;
+        }
     }
 
     public void closePop()
@@ -927,6 +1031,7 @@ public class MainShop : MonoBehaviour
         else
         {
             outItem_obj.SetActive(true);
+            SetOutItem();
         }
     }
 
@@ -1334,21 +1439,95 @@ public class MainShop : MonoBehaviour
         #endregion
     }
 
+
+    //상자창
+    public void ActBoxWin()
+    {
+        if (boxWin_obj.activeSelf)
+        {
+            boxWin_obj.SetActive(false);
+        }
+        else
+        {
+            boxWin_obj.SetActive(true);
+            
+                if (PlayerPrefs.GetInt("bedbox", 0) == 0)
+                {
+                    bedBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+                }
+                else
+                {
+                    bedBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+                }
+                if (PlayerPrefs.GetInt("framebox", 0) == 0)
+                {
+                    frameBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+                }
+                else
+                {
+                    frameBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+                }
+                if (PlayerPrefs.GetInt("deskbox", 0) == 0)
+                {
+                    deskBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+                }
+                else
+                {
+                    deskBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+                }
+        }
+    }
+
+    //상자버튼
     public void BedBox()
     {
         if (PlayerPrefs.GetInt("bedbox", 0) == 0)
         {
             bedBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            bed_obj.SetActive(false);
             PlayerPrefs.SetInt("bedbox", 1);
         }
         else
         {
             bedBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            bed_obj.SetActive(true);
             PlayerPrefs.SetInt("bedbox", 0);
         }
     }
-    
-    
+
+    public void FrameBox()
+    {
+        if (PlayerPrefs.GetInt("framebox", 0) == 0)
+        {
+            frameBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            frame_obj.SetActive(false);
+            PlayerPrefs.SetInt("framebox", 1);
+        }
+        else
+        {
+            frameBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            frame_obj.SetActive(true);
+            PlayerPrefs.SetInt("framebox", 0);
+        }
+    }
+
+    public void DeskBox()
+    {
+        if (PlayerPrefs.GetInt("deskbox", 0) == 0)
+        {
+            deskBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            desk_obj.SetActive(false);
+            PlayerPrefs.SetInt("deskbox", 1);
+        }
+        else
+        {
+            deskBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            desk_obj.SetActive(true);
+            PlayerPrefs.SetInt("deskbox", 0);
+        }
+    }
+
+
     public void ActHelp()
     {
         if (shopHelp_obj.activeSelf)
@@ -1360,6 +1539,7 @@ public class MainShop : MonoBehaviour
             shopHelp_obj.SetActive(true);
         }
     }
+
 
 
     /*
