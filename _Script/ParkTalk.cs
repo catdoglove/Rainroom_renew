@@ -8,12 +8,13 @@ public class ParkTalk : MonoBehaviour
 {
     List<Dictionary<string, object>> data_talk, data_etc; //csv파일
     int etcNum = 0;
-    public Text Text_obj; //선언 및 보여질
+    public Text Text_obj, dal_Text_obj, cat_Text_obj; //선언 및 보여질
     string[] testText_cut; //대사 끊기
     string text_str; //실질적 대사출력
 
     public GameObject talkbtn, talkballoon, talkcatballoon, closeTB, talkCursor, dalgonaballon; //대화버튼 및 영역
     int ckk;
+    public GameObject catheart;
 
     int[] allArr = new int[3]; 
     int loveLv = 0; //호감도 단계라고 생각하면 됨
@@ -32,6 +33,8 @@ public class ParkTalk : MonoBehaviour
     //캐릭터 변환
     public Animator charAni;
 
+    string str_Code;
+    int have_h, cost_h;
 
     //뒤로가기 버튼 액션
     public GameObject exitBtn;
@@ -59,6 +62,8 @@ public class ParkTalk : MonoBehaviour
         allArr[0] = 100;//대사
         allArr[1] = 15; //쓰레기
         allArr[2] = 20; //고양이
+
+        str_Code = PlayerPrefs.GetString("code", "");
 
     }
 
@@ -273,6 +278,28 @@ public class ParkTalk : MonoBehaviour
         talkballoon.SetActive(false);
         quesBack.SetActive(false);
         talkbtn.SetActive(true);
+
+
+        have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+        cost_h = 50;
+
+        
+        if (have_h >= cost_h)
+        {            
+            have_h = have_h - cost_h;
+            PlayerPrefs.SetInt(str_Code + "h", have_h);
+            catheart.SetActive(true);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            cat_Text_obj.text = "마음이 부족해..";
+            //배불러 보인다
+        }
+
+        //이미 먹이 줬으면 외출 뒤 다시 줘야함
+
+
     }
     public void catNo()
     {
@@ -444,6 +471,10 @@ public class ParkTalk : MonoBehaviour
     
     public void dalgonaEat()
     {
+        //마음이 모자르면 못 먹음, 이미 먹었으면 다음에 먹어야함
+        dal_Text_obj.text = "음.. 마음이 부족하구나";
+        //      "이제 없단다.";
+
         dalgonaballon.SetActive(false);
         StartCoroutine("eatDalgona");
     }
