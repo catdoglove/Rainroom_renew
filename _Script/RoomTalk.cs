@@ -49,6 +49,7 @@ public class RoomTalk : MonoBehaviour
     int cnt_exit;
     public string toastTxt;
 
+    public GameObject seedRain_obj;
 
 
     private void toastFunction()
@@ -458,6 +459,8 @@ public class RoomTalk : MonoBehaviour
 
         //exit_int = 0;
         //cnt_exit = 0;
+
+        seedRain_obj.SetActive(false);
     }
 
 
@@ -561,7 +564,7 @@ public class RoomTalk : MonoBehaviour
 
     public void talkSeed()
     {
-        text_str = "" + data_item[PlayerPrefs.GetInt("seedlv", 0)-1]["seed"];
+        text_str = "" + data_item[PlayerPrefs.GetInt("seedlv", 0)-2]["seed"];
         testText_cut = text_str.Split('/');
         cleantalk();
 

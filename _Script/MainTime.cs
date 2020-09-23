@@ -554,7 +554,7 @@ public class MainTime : MonoBehaviour
     void SeedTimeFlow()
     {
         now = PlayerPrefs.GetInt("seedlv", 0);
-        grow = PlayerPrefs.GetInt("seedWater", 1);
+        grow = PlayerPrefs.GetInt("seedgrow", 1);
         System.DateTime d = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         seedlastTime = PlayerPrefs.GetString("seedLastTime", d.ToString());
         System.DateTime lastDateTime = System.DateTime.Parse(seedlastTime);
@@ -577,14 +577,14 @@ public class MainTime : MonoBehaviour
             seedTime_txt.text = "00:00";
             if (now > grow)
             {
-                grow = PlayerPrefs.GetInt("seedWater", 0);
+                grow = PlayerPrefs.GetInt("seedgrow", 1);
                 grow++;
-                PlayerPrefs.SetInt("seedWater", grow);
-                seed_obj.GetComponent<Image>().sprite = spr_seed[grow];
+                PlayerPrefs.SetInt("seedgrow", grow);
+                seed_obj.GetComponent<Image>().sprite = spr_seed[grow-1];
                 PlayerPrefs.Save();
             }
         }
-        seed_obj.GetComponent<Image>().sprite = spr_seed[grow];
+        seed_obj.GetComponent<Image>().sprite = spr_seed[grow-1];
     }
 
     public void ClosePopUpTime()

@@ -49,9 +49,11 @@ public class MainShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //PlayerPrefs.DeleteKey("seedlv");
+        //PlayerPrefs.DeleteKey("seedgrow");
         str_Code = PlayerPrefs.GetString("code", "");
-        //PlayerPrefs.SetInt(str_Code + "h", 9999);
         //PlayerPrefs.SetInt(str_Code + "r", 99999);
+        //PlayerPrefs.SetInt(str_Code + "h", 9999);
         //가격과 이름
         setPrice();
         Setf();
@@ -182,7 +184,7 @@ public class MainShop : MonoBehaviour
 
         if (PlayerPrefs.GetInt("seedlv", 0) > 1)
         {
-            int sd = PlayerPrefs.GetInt("seedlv", 0) - 1;
+            int sd = PlayerPrefs.GetInt("seedgrow", 1)-1;
             seed_obj.GetComponent<Image>().sprite = spr_seed[sd];
         }
         //시계
@@ -255,6 +257,7 @@ public class MainShop : MonoBehaviour
         }
     }
 
+    //MAX 일때 못삼
     public void ShopBuyYN()
     {
         int ck = 0;
@@ -287,7 +290,7 @@ public class MainShop : MonoBehaviour
         {
             ck++;
         }
-        if (PlayerPrefs.GetInt("bedlv", 0) >= 4 && item_num == 8)
+        if (PlayerPrefs.GetInt("bedlv", 0) >= 1 && item_num == 8)
         {
             ck++;
         }
@@ -516,7 +519,6 @@ public class MainShop : MonoBehaviour
 
     void BuyWall()
     {
-
         level = PlayerPrefs.GetInt("walllv", 0);
         if (level >= 2) { }
         else
@@ -593,7 +595,6 @@ public class MainShop : MonoBehaviour
         if (level >= 2) { }
         else
         {
-
             sum = level * 2;
             cost_r = cost_light[sum];
             cost_h = cost_light[sum + 1];
@@ -834,8 +835,12 @@ public class MainShop : MonoBehaviour
         if (level >= 8)
         {
             txt_window[0].text = "Lv.MAX";
-            //btn_memoWindow.SetActive(true);
-            //btn_colorWindow.SetActive(true);
+            //이름
+            txt_window[1].text = "";
+            //물
+            txt_window[2].text = "0";
+            //마음
+            txt_window[3].text = "0";
 
         }
     }
@@ -860,8 +865,12 @@ public class MainShop : MonoBehaviour
         if (level >= 2)
         {
             txt_wall[0].text = "Lv.MAX";
-            //btn_memoWall.SetActive(true);
-            //btn_colorWall.SetActive(true);
+            //이름
+            txt_wall[1].text = "";
+            //물
+            txt_wall[2].text = "0";
+            //마음
+            txt_wall[3].text = "0";
         }
     }
     void BookRe()
