@@ -7298,7 +7298,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 896537641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &896537641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9123,6 +9134,8 @@ MonoBehaviour:
   wep_obj: {fileID: 0}
   baques_obj: {fileID: 0}
   trash_obj: {fileID: 1259407369}
+  leaf_obj: {fileID: 0}
+  park_trash_obj: {fileID: 0}
 --- !u!114 &1119049940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9176,6 +9189,10 @@ MonoBehaviour:
   cost_desk: 0000000000000000000000000000000000000000000000000000000000000000
   cost_bed: 0000000000000000000000000000000000000000000000000000000000000000
   cost_light: 0000000000000000000000000000000000000000000000000000000000000000
+  shopPopup_obj: {fileID: 918926949}
+  txt_Popup: {fileID: 1411855429}
+  txt_rain: {fileID: 1181002951}
+  txt_heart: {fileID: 1462328850}
 --- !u!1 &1121742667
 GameObject:
   m_ObjectHideFlags: 0
@@ -14866,7 +14883,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1716473946}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num0
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716473946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15445,7 +15473,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1750181923}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1750181923
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,16 +16,23 @@ public class CityShop : MonoBehaviour
 
     public GameObject shopPopup_obj;
     public Text txt_Popup;
+
+    public Text txt_rain, txt_heart;
     // Start is called before the first frame update
     void Start()
     {
-
         str_Code = PlayerPrefs.GetString("code", "");
+        setPrice();
     }
 
     // Update is called once per frame
     public void openShop()
     {
+
+        have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+        have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+        SetOpen();
+        SetText();
         shop_obj.SetActive(true);
         doorOpen_obj.SetActive(true);
         doorClose_obj.SetActive(false);
@@ -91,7 +98,46 @@ public class CityShop : MonoBehaviour
 
     public void ShopBuyYN()
     {
-        shopYN_obj.SetActive(true);
+        if (num_i==0)
+        {
+            level = PlayerPrefs.GetInt("bedlv", 0);
+            if (level < 1)
+            {
+                shopPopup_obj.SetActive(true);
+                txt_Popup.text = "아직 Max가 되지 않아 살 수 없다.";
+            }
+            else
+            {
+
+                if (level < 4)
+                {
+                    shopYN_obj.SetActive(true);
+                }
+            }
+        }
+        else if(num_i == 2)
+        {
+            level = PlayerPrefs.GetInt("lightlv", 0);
+            if (level < 2)
+            {
+                shopPopup_obj.SetActive(true);
+                txt_Popup.text = "아직 Max가 되지 않아 살 수 없다.";
+            }
+            else
+            {
+                if (level < 5)
+                {
+                    shopYN_obj.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            if (level < 3)
+            {
+                shopYN_obj.SetActive(true);
+            }
+        }
     }
     public void ShopBuyY()
     {
@@ -131,73 +177,93 @@ public class CityShop : MonoBehaviour
     {
 
 
+        level = PlayerPrefs.GetInt("bedlv", 0);
+        level = level - 1;
         sum = level * 2;
-        cost_h = cost_light[sum];
-        cost_r = cost_light[sum + 1];
+        cost_h = cost_bed[sum];
+        cost_r = cost_bed[sum + 1];
         have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
         have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
         if (have_r >= cost_r)
         {
             if (have_h >= cost_h)
             {
+                GetSum();
                 //마음
-                txt_bed[0].text = "";
+                txt_bed[0].text = "" + cost_bed[sum + 2];
                 //빗물
-                txt_bed[1].text = "";
+                txt_bed[1].text = "" + cost_bed[sum + 3];
                 //이름
-                txt_bed[2].text = "";
+                txt_bed[2].text = bed_name[level+1];
+                level = level + 2;
                 //레벨
-                txt_bed[3].text = "";
+                txt_bed[3].text = "Lv." + level;
+                if (level >= 4)
+                {
+                    txt_bed[3].text = "Lv.Max";
+                }
+                PlayerPrefs.SetInt("bedlv", level);
+                SetText();
             }
             else
             {
                 shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+                txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
             }
         }
         else
         {
             shopPopup_obj.SetActive(true);
-            txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+            txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
         }
 
     }
     void BuyDesk()
     {
 
+        level = PlayerPrefs.GetInt("desk", 0);
         sum = level * 2;
-        cost_h = cost_light[sum];
-        cost_r = cost_light[sum + 1];
+        cost_h = cost_desk[sum];
+        cost_r = cost_desk[sum + 1];
         have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
         have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
         if (have_r >= cost_r)
         {
             if (have_h >= cost_h)
             {
+                GetSum();
                 //마음
-                txt_desk[0].text = "";
+                txt_desk[0].text = "" + cost_desk[sum + 2];
                 //빗물
-                txt_desk[1].text = "";
+                txt_desk[1].text = "" + cost_desk[sum + 3];
+                level++;
                 //이름
-                txt_desk[2].text = "";
+                txt_desk[2].text = desk_name[level];
                 //레벨
-                txt_desk[3].text = "";
+                txt_desk[3].text = "Lv." + level;
+                if (level >= 3)
+                {
+                    txt_desk[3].text = "Lv.Max";
+                }
+                PlayerPrefs.SetInt("bedlv", level);
+                SetText();
             }
             else
             {
                 shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+                txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
             }
         }
         else
         {
             shopPopup_obj.SetActive(true);
-            txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+            txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
         }
     }
     void BuyLight()
     {
-
+        level = PlayerPrefs.GetInt("lightlv", 0);
+        level = level - 2;
         sum = level * 2;
         cost_h = cost_light[sum];
         cost_r = cost_light[sum + 1];
@@ -207,30 +273,110 @@ public class CityShop : MonoBehaviour
         {
             if (have_h >= cost_h)
             {
+                GetSum();
                 //마음
-                txt_light[0].text = "";
+                txt_light[0].text = "" + cost_light[sum + 2];
                 //빗물
-                txt_light[1].text = "";
+                txt_light[1].text = "" + cost_light[sum + 3];
                 //이름
-                txt_light[2].text = "";
+                txt_light[2].text = light_name[level+1];
+
+                level = level + 3;
                 //레벨
-                txt_light[3].text = "";
+                txt_light[3].text = "Lv." + level;
+                if (level >= 5)
+                {
+                    txt_light[3].text = "Lv.Max";
+                }
+                PlayerPrefs.SetInt("light", level);
+                SetText();
             }
             else
             {
                 shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+                txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
             }
         }
         else
         {
             shopPopup_obj.SetActive(true);
-            txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+            txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
         }
     }
+    void GetSum()
+    {
+        have_r = have_r - cost_r;
+        have_h = have_h - cost_h;
+        PlayerPrefs.SetInt(str_Code + "r", have_r);
+        PlayerPrefs.SetInt(str_Code + "h", have_h);
+    }
+
+    void SetText()
+    {
+        txt_rain.text = ""+have_r;
+        txt_heart.text = ""+have_h;
+    }
+
     public void ShopTodayBuyN()
     {
         shopTodayYN_obj.SetActive(false);
+    }
+
+    //상점을 열때
+    void SetOpen()
+    {
+
+        level = PlayerPrefs.GetInt("bedlv", 0);
+        level--;
+        sum = level * 2;
+        //마음
+        txt_bed[0].text = "" + cost_bed[sum];
+        //빗물
+        txt_bed[1].text = "" + cost_bed[sum +1];
+        //이름
+        txt_bed[2].text = bed_name[level];
+        level = level + 1;
+        //레벨
+        txt_bed[3].text = "Lv." + level;
+        if (level >= 4)
+        {
+            txt_bed[3].text = "Lv.Max";
+        }
+
+        level = PlayerPrefs.GetInt("desk", 0);
+        sum = level * 2;
+        //마음
+        txt_desk[0].text = "" + cost_desk[sum];
+        //빗물
+        txt_desk[1].text = "" + cost_desk[sum + 1];
+        //이름
+        txt_desk[2].text = desk_name[level];
+        //레벨
+        txt_desk[3].text = "Lv." + level;
+        if (level >= 3)
+        {
+            txt_desk[3].text = "Lv.Max";
+        }
+
+
+
+        level = PlayerPrefs.GetInt("lightlv", 0);
+        level=level-2;
+        sum = level * 2;
+        //마음
+        txt_light[0].text = "" + cost_light[sum];
+        //빗물
+        txt_light[1].text = "" + cost_light[sum + 1];
+        //이름
+        txt_light[2].text = light_name[level];
+
+        level = level + 2;
+        //레벨
+        txt_light[3].text = "Lv." + level;
+        if (level >= 5)
+        {
+            txt_light[3].text = "Lv.Max";
+        }
     }
 
     void setPrice()
