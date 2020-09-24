@@ -925,7 +925,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1119049936}
-        m_MethodName: eatFalseObject
+        m_MethodName: eatNo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9074,8 +9074,14 @@ MonoBehaviour:
   obj_cafe_YN: {fileID: 2130699052}
   obj_bunsik_YN: {fileID: 1736003632}
   obj_bunsik_price: {fileID: 758429751}
+  cafe_open_img: {fileID: 1188113709}
+  cafe_btn: {fileID: 1170981656}
+  toast_obj: {fileID: 0}
+  bunsik_txt_heart: {fileID: 1542453366}
   txt_cafe_YN: {fileID: 285855890}
   txt_bunsik_YN: {fileID: 413632801}
+  toast_txt: {fileID: 0}
+  spr_cafe: []
   exitBtn: {fileID: 2145728087}
 --- !u!4 &1119049937
 Transform:
@@ -9782,7 +9788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1170981657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15891,7 +15897,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1119049936}
-        m_MethodName: eatFalseObject
+        m_MethodName: eatNo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -16,6 +16,9 @@ public class MainMenuEvt : MonoBehaviour
     public Sprite[] spr_help;
     int help_i;
 
+    //대화속도
+    public Text speed_txt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -224,5 +227,12 @@ public class MainMenuEvt : MonoBehaviour
             help_i--;
             help_obj.GetComponent<Image>().sprite = spr_help[help_i];
         }
+    }
+
+
+    public void talkSpeed()
+    {
+        //1,2,3단계 조절해서 속도 조절하기
+        speed_txt.text = "대화속도 빠름";//보통, 느림
     }
 }

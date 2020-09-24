@@ -33,9 +33,13 @@ public class CityTalk : MonoBehaviour
     public Animator charAni;
     public Sprite[] chareat;
 
-    public GameObject obj_cafe, obj_bunsik,charEat, obj_cafe_YN, obj_bunsik_YN, obj_bunsik_price;
-    public Text txt_cafe_YN, txt_bunsik_YN;
+    public GameObject obj_cafe, obj_bunsik,charEat, obj_cafe_YN, obj_bunsik_YN, obj_bunsik_price,cafe_open_img, cafe_btn,toast_obj,bunsik_txt_heart;
+    public Text txt_cafe_YN, txt_bunsik_YN, toast_txt;
+    public Sprite[] spr_cafe;
 
+
+    string str_Code;
+    int have_h, cost_h;    
 
     //뒤로가기 버튼 액션
     public GameObject exitBtn;
@@ -45,7 +49,6 @@ public class CityTalk : MonoBehaviour
         {
             exitBtn.SetActive(true);
         }
-
     }
 
     public void exitFunction()
@@ -56,11 +59,19 @@ public class CityTalk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetInt("likelv", 0) >= 8) //호감도이상일경우
+        {
+            cafe_open_img.GetComponent<Image>().sprite = spr_cafe[1];
+            cafe_btn.SetActive(true);
+        }
+
         data_talk = CSVReader.Read("CSV/talk_out");
         data_eat = CSVReader.Read("CSV/city_eat");
 
         allArr[0] = 100;//대사
         allArr[1] = 10; //음식
+
+        str_Code = PlayerPrefs.GetString("code", "");
 
     }
 
@@ -555,64 +566,246 @@ public class CityTalk : MonoBehaviour
         obj_bunsik_YN.SetActive(false);
         obj_bunsik_price.SetActive(false);
     }
-    
+
     void eatYN() //이걸로 할까창
     {
-            obj_cafe_YN.SetActive(true);
-            obj_bunsik_price.SetActive(true);
-            obj_bunsik_YN.SetActive(true);
+        obj_cafe_YN.SetActive(true);
+        obj_bunsik_price.SetActive(true);
+        obj_bunsik_YN.SetActive(true);
+
+        bunsik_txt_heart.SetActive(true);
+    }
+
+
+    public void eatNo()
+    {
+        obj_cafe_YN.SetActive(false);
+        obj_bunsik_price.SetActive(false);
+        obj_bunsik_YN.SetActive(false);
     }
 
     public void eatYES() 
     {
+
+
+        have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+
         switch (ckFood)
         {
             case 0: //순대
-                talkBunsik("순대");
+
+                cost_h = 80;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkBunsik("순대");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    txt_bunsik_YN.text = "음.. 마음이 부족하구나";
+                    bunsik_txt_heart.SetActive(false);
+                }
+
                 break;
 
             case 1: //떡볶이
-                talkBunsik("떡볶이");
+
+                cost_h = 70;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkBunsik("떡볶이");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    txt_bunsik_YN.text = "음.. 마음이 부족하구나";
+                    bunsik_txt_heart.SetActive(false);
+                }
+
                 break;
 
             case 2: //어묵
-                talkBunsik("어묵");
+
+                cost_h = 50;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkBunsik("어묵");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    txt_bunsik_YN.text = "음.. 마음이 부족하구나";
+                    bunsik_txt_heart.SetActive(false);
+                }
                 break;
 
             case 3: //튀김
-                talkBunsik("튀김");
+
+                cost_h = 70;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkBunsik("튀김");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    txt_bunsik_YN.text = "음.. 마음이 부족하구나";
+                    bunsik_txt_heart.SetActive(false);
+                }
                 break;
 
-            case 4: //커피와 차
-                talkCafe("커피");
+            case 4: //커피
+
+                cost_h = 60;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("커피");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
+
                 break;
 
-            case 44: //커피와 차
-                talkCafe("차차");
+            case 44: //차
+
+                cost_h = 60;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("차차");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
                 break;
 
             case 5: //과일주스
-                talkCafe("과일");
+
+                cost_h = 80;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("과일");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
+
                 break;
 
             case 6: //아이스크림
-                talkCafe("아이스");
+
+                cost_h = 100;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("아이스");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
                 break;
 
             case 7: //빵
-                talkCafe("빠앙");
+                cost_h = 80;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("빠앙");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
                 break;
 
             case 8: //쿠키
-                talkCafe("쿠키");
+                cost_h = 80;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("쿠키");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
                 break;
 
             case 9: //샌드위치
-                talkCafe("샌드위치");
+                cost_h = 120;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("샌드위치");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
                 break;
 
             case 10: //마카롱
-                talkCafe("마카롱");
+                cost_h = 150;
+
+                if (have_h >= cost_h)
+                {
+                    have_h = have_h - cost_h;
+                    PlayerPrefs.SetInt(str_Code + "h", have_h);
+                    talkCafe("마카롱");
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    toast_obj.SetActive(true);
+                    toast_txt.text = "마음이 부족하다.";
+                }
                 break;
         }
     }

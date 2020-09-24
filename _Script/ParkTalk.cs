@@ -8,13 +8,13 @@ public class ParkTalk : MonoBehaviour
 {
     List<Dictionary<string, object>> data_talk, data_etc; //csv파일
     int etcNum = 0;
-    public Text Text_obj, dal_Text_obj, cat_Text_obj; //선언 및 보여질
+    public Text Text_obj, dal_Text_obj; //선언 및 보여질
     string[] testText_cut; //대사 끊기
     string text_str; //실질적 대사출력
 
     public GameObject talkbtn, talkballoon, talkcatballoon, closeTB, talkCursor, dalgonaballon; //대화버튼 및 영역
-    int ckk;
-    public GameObject catheart;
+    int ckk, ck_cat, ck_dal;
+    public GameObject catheart, cat_eat_txt, cat_enough_txt, cat_already_txt, dal_eat_txt, dal_enough_txt, dal_already_txt;
 
     int[] allArr = new int[3]; 
     int loveLv = 0; //호감도 단계라고 생각하면 됨
@@ -274,30 +274,41 @@ public class ParkTalk : MonoBehaviour
     //고양이 먹이줌
     public void catYes()
     {
-        talkcatballoon.SetActive(false);
-        talkballoon.SetActive(false);
-        quesBack.SetActive(false);
-        talkbtn.SetActive(true);
-
-
-        have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
-        cost_h = 50;
 
         
-        if (have_h >= cost_h)
-        {            
-            have_h = have_h - cost_h;
-            PlayerPrefs.SetInt(str_Code + "h", have_h);
-            catheart.SetActive(true);
-            PlayerPrefs.Save();
+
+        if (ck_cat == 1)
+        {
+            cat_already_txt.SetActive(true);
+            cat_eat_txt.SetActive(false);
+            cat_enough_txt.SetActive(false);
         }
         else
         {
-            cat_Text_obj.text = "마음이 부족해..";
-            //배불러 보인다
-        }
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_h = 50;
 
-        //이미 먹이 줬으면 외출 뒤 다시 줘야함
+            talkcatballoon.SetActive(false);
+            talkballoon.SetActive(false);
+            quesBack.SetActive(false);
+            talkbtn.SetActive(true);
+
+            if (have_h >= cost_h)
+            {
+                ck_cat = 1;
+                have_h = have_h - cost_h;
+                PlayerPrefs.SetInt(str_Code + "h", have_h);
+                catheart.SetActive(true);
+                PlayerPrefs.Save();
+            }
+            else
+            {
+                cat_enough_txt.SetActive(true);
+                cat_already_txt.SetActive(false);
+                cat_eat_txt.SetActive(false);
+            }
+
+        }
 
 
     }
@@ -438,6 +449,10 @@ public class ParkTalk : MonoBehaviour
             quesBack.SetActive(true);
             closeTB.SetActive(false);
             ckk = 0;
+
+            cat_eat_txt.SetActive(true);
+            cat_enough_txt.SetActive(false);
+            cat_already_txt.SetActive(false);
         }
         else
         {
@@ -462,6 +477,10 @@ public class ParkTalk : MonoBehaviour
     public void dalgonaOpen()
     {
         dalgonaballon.SetActive(true);
+
+        dal_already_txt.SetActive(false);
+        dal_eat_txt.SetActive(true);
+        dal_enough_txt.SetActive(false);
     }
 
     public void dalgonaClose()
@@ -471,12 +490,34 @@ public class ParkTalk : MonoBehaviour
     
     public void dalgonaEat()
     {
-        //마음이 모자르면 못 먹음, 이미 먹었으면 다음에 먹어야함
-        dal_Text_obj.text = "음.. 마음이 부족하구나";
-        //      "이제 없단다.";
+        if (ck_dal == 1) //먹은경우
+        {
+            dal_already_txt.SetActive(true);
+            dal_eat_txt.SetActive(false);
+            dal_enough_txt.SetActive(false);
+        }
+        else
+        {
+            have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            cost_h = 50;
 
-        dalgonaballon.SetActive(false);
-        StartCoroutine("eatDalgona");
+            if (have_h >= cost_h)
+            {
+                have_h = have_h - cost_h;
+                PlayerPrefs.SetInt(str_Code + "h", have_h);
+                dalgonaballon.SetActive(false);
+                StartCoroutine("eatDalgona");
+                PlayerPrefs.Save();
+                ck_dal = 1;
+            }
+            else
+            {
+                dal_already_txt.SetActive(false);
+                dal_eat_txt.SetActive(false);
+                dal_enough_txt.SetActive(true);
+
+            }
+        }
     }
 
     IEnumerator eatDalgona()
