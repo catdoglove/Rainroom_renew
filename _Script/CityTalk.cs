@@ -61,7 +61,7 @@ public class CityTalk : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("likelv", 0) >= 8) //호감도이상일경우
         {
-            cafe_open_img.GetComponent<Image>().sprite = spr_cafe[1];
+            cafe_open_img.GetComponent<Image>().sprite = spr_cafe[0];
             cafe_btn.SetActive(true);
         }
 

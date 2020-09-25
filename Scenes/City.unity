@@ -9169,7 +9169,8 @@ MonoBehaviour:
   txt_cafe_YN: {fileID: 285855890}
   txt_bunsik_YN: {fileID: 413632801}
   toast_txt: {fileID: 0}
-  spr_cafe: []
+  spr_cafe:
+  - {fileID: -8714063076042626871, guid: 250812f9204e553479b1129ba278affc, type: 3}
   exitBtn: {fileID: 2145728087}
 --- !u!4 &1119049937
 Transform:

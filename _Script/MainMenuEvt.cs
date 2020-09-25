@@ -233,6 +233,21 @@ public class MainMenuEvt : MonoBehaviour
     public void talkSpeed()
     {
         //1,2,3단계 조절해서 속도 조절하기
-        speed_txt.text = "대화속도 빠름";//보통, 느림
+        float f =PlayerPrefs.GetFloat("talkspeed", 0);
+        if (f == 0.07f)
+        {
+            speed_txt.text = "대화속도 보통";
+            PlayerPrefs.SetFloat("talkspeed", 0.05f);
+        }
+        else if (f == 0.05f)
+        {
+            speed_txt.text = "대화속도 빠름";
+            PlayerPrefs.SetFloat("talkspeed", 0.03f);
+        }
+        else if (f == 0.03f)
+        {
+            speed_txt.text = "대화속도 느림";
+            PlayerPrefs.SetFloat("talkspeed", 0.07f);
+        }
     }
 }

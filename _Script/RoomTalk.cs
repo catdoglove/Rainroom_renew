@@ -496,6 +496,10 @@ public class RoomTalk : MonoBehaviour
                 charAni.Play("char_ani6");
                 break;
 
+            default:
+                charAni.Play("char_ani6");
+                break;
+
         }
 
     }
