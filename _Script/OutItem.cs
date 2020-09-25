@@ -98,6 +98,7 @@ public class OutItem : MonoBehaviour
     }
     void SetGoods()
     {
+        //고양이 미니어쳐 곰인형 거미 엔딩 디퓨저 우산 도트 컵
         PlayerPrefs.SetInt("setoutgoods", item_num);
         for (int i = 0; i < 9; i++)
         {

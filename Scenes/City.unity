@@ -1921,7 +1921,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 244396491}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &244396491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2431,8 +2453,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ShopBuyY
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyY
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2717,8 +2739,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ShopBuyN
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3479,7 +3501,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1119049940}
         m_MethodName: ShopBuyY
         m_Mode: 1
         m_Arguments:
@@ -4386,7 +4408,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -5.399999, y: -10.2}
-  m_SizeDelta: {x: 296.06873, y: 77.77283}
+  m_SizeDelta: {x: 395.08234, y: 77.77283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512006620
 MonoBehaviour:
@@ -6081,7 +6103,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 725888259}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &725888259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6279,7 +6323,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 751312271}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &751312271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7310,6 +7376,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &896537641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7680,7 +7757,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 918926952}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ClosePop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &918926952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9199,6 +9287,43 @@ MonoBehaviour:
   txt_Popup: {fileID: 1411855429}
   txt_rain: {fileID: 1181002951}
   txt_heart: {fileID: 1462328850}
+  txt_today:
+  - {fileID: 309210356}
+  - {fileID: 1478016189}
+  - {fileID: 1749514357}
+  - {fileID: 63311428}
+  - {fileID: 1208188661}
+  - {fileID: 495819064}
+  - {fileID: 1132539427}
+  - {fileID: 2034755531}
+  - {fileID: 1549239188}
+  - {fileID: 263199646}
+  - {fileID: 208422669}
+  - {fileID: 244681624}
+  - {fileID: 935991351}
+  - {fileID: 612562170}
+  - {fileID: 1305061196}
+  - {fileID: 1097806219}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 869323324}
+  - {fileID: 117539757}
+  - {fileID: 1029968897}
+  - {fileID: 699674368}
+  - {fileID: 650247148}
+  - {fileID: 525373431}
+  - {fileID: 1458702397}
+  - {fileID: 506221389}
+  - {fileID: 28870278}
+  - {fileID: 1135091546}
+  - {fileID: 1022163573}
+  - {fileID: 721955335}
+  - {fileID: 135894937}
+  - {fileID: 600173832}
+  - {fileID: 865140713}
+  - {fileID: 1236213119}
 --- !u!1 &1121742667
 GameObject:
   m_ObjectHideFlags: 0
@@ -12943,7 +13068,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1119049940}
         m_MethodName: ShopBuyN
         m_Mode: 1
         m_Arguments:
@@ -14613,7 +14738,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1661119269}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num0
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1661119269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14901,6 +15048,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716473946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15023,7 +15181,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1718520738}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num8
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1718520738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15482,6 +15662,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1119049940}
         m_MethodName: Num2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopBuyYN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16516,7 +16707,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1895503709}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1895503709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16872,7 +17085,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1935574682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1935574682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17361,7 +17596,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2011132302}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: Num7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1119049940}
+        m_MethodName: ShopTodayBuyYN
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2011132302
 MonoBehaviour:
   m_ObjectHideFlags: 0

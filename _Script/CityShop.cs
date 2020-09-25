@@ -18,6 +18,8 @@ public class CityShop : MonoBehaviour
     public Text txt_Popup;
 
     public Text txt_rain, txt_heart;
+    public Text[] txt_today;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,6 @@ public class CityShop : MonoBehaviour
     // Update is called once per frame
     public void openShop()
     {
-
         have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
         have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
         SetOpen();
@@ -36,6 +37,8 @@ public class CityShop : MonoBehaviour
         shop_obj.SetActive(true);
         doorOpen_obj.SetActive(true);
         doorClose_obj.SetActive(false);
+        shopYN_obj.SetActive(false);
+        shopTodayYN_obj.SetActive(false);
     }
 
 
@@ -49,6 +52,7 @@ public class CityShop : MonoBehaviour
 
     public void openTodayShop()
     {
+        SetToday();
         todayShop_obj.SetActive(true);
     }
 
@@ -94,6 +98,15 @@ public class CityShop : MonoBehaviour
     public void Num7()
     {
         num_i = 7;
+    }
+    public void Num8()
+    {
+        num_i = 8;
+    }
+
+    public void ClosePop()
+    {
+        shopPopup_obj.SetActive(false);
     }
 
     public void ShopBuyYN()
@@ -165,18 +178,66 @@ public class CityShop : MonoBehaviour
 
     public void ShopTodayBuyYN()
     {
-        shopTodayYN_obj.SetActive(true);
+        if(PlayerPrefs.GetInt("outgoods" + num_i, 0) == 1)
+        {
+
+        }
+        else
+        {
+            shopTodayYN_obj.SetActive(true);
+        }
     }
     public void ShopTodayBuyY()
     {
+        switch (num_i)
+        {
+            case 0:
+                cost_r = 19000;
+                cost_h = 240;
+                break;
+            case 1:
+                cost_r = 20000;
+                cost_h = 250;
+                break;
+            case 2:
+                cost_r = 17000;
+                cost_h = 240;
+                break;
+            case 3:
+                cost_r = 15000;
+                cost_h = 220;
+                break;
+            case 4:
+                break;
+            case 5:
+                cost_r = 17000;
+                cost_h = 230;
+                break;
+            case 6:
+                cost_r = 20000;
+                cost_h = 250;
+                break;
+            case 7:
+                cost_r = 16000;
+                cost_h = 230;
+                break;
+            case 8:
+                cost_r = 16000;
+                cost_h = 230;
+                break;
+            default:
+                break;
+        }
+        BuyToday();
         shopTodayYN_obj.SetActive(false);
-
+    }
+    public void ShopTodayBuyN()
+    {
+        shopTodayYN_obj.SetActive(false);
     }
 
     void BuyBed()
     {
-
-
         level = PlayerPrefs.GetInt("bedlv", 0);
         level = level - 1;
         sum = level * 2;
@@ -207,21 +268,19 @@ public class CityShop : MonoBehaviour
             }
             else
             {
-                shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
+                PopShop();
             }
         }
         else
         {
-            shopPopup_obj.SetActive(true);
-            txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
+            PopShop();
         }
 
     }
     void BuyDesk()
     {
 
-        level = PlayerPrefs.GetInt("desk", 0);
+        level = PlayerPrefs.GetInt("desklv", 0);
         sum = level * 2;
         cost_h = cost_desk[sum];
         cost_r = cost_desk[sum + 1];
@@ -245,19 +304,17 @@ public class CityShop : MonoBehaviour
                 {
                     txt_desk[3].text = "Lv.Max";
                 }
-                PlayerPrefs.SetInt("bedlv", level);
+                PlayerPrefs.SetInt("desklv", level);
                 SetText();
             }
             else
             {
-                shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
+                PopShop();
             }
         }
         else
         {
-            shopPopup_obj.SetActive(true);
-            txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
+            PopShop();
         }
     }
     void BuyLight()
@@ -288,21 +345,23 @@ public class CityShop : MonoBehaviour
                 {
                     txt_light[3].text = "Lv.Max";
                 }
-                PlayerPrefs.SetInt("light", level);
+                PlayerPrefs.SetInt("lightlv", level);
                 SetText();
             }
             else
             {
-                shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
+                PopShop();
             }
         }
         else
         {
-            shopPopup_obj.SetActive(true);
-            txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
+            PopShop();
         }
     }
+
+    /// <summary>
+    /// 계산 및 저장
+    /// </summary>
     void GetSum()
     {
         have_r = have_r - cost_r;
@@ -317,10 +376,6 @@ public class CityShop : MonoBehaviour
         txt_heart.text = ""+have_h;
     }
 
-    public void ShopTodayBuyN()
-    {
-        shopTodayYN_obj.SetActive(false);
-    }
 
     //상점을 열때
     void SetOpen()
@@ -343,7 +398,7 @@ public class CityShop : MonoBehaviour
             txt_bed[3].text = "Lv.Max";
         }
 
-        level = PlayerPrefs.GetInt("desk", 0);
+        level = PlayerPrefs.GetInt("desklv", 0);
         sum = level * 2;
         //마음
         txt_desk[0].text = "" + cost_desk[sum];
@@ -431,5 +486,69 @@ public class CityShop : MonoBehaviour
         light_name[3] = "고급전등";
         cost_light[6] = 0;
         cost_light[7] = 0;
+    }
+
+    void SetToday()
+    {
+
+        //고양이 미니어쳐 곰인형 거미 엔딩 디퓨저 우산 도트 컵
+        for (int i = 0; i <= 8; i++)
+        {
+            if (PlayerPrefs.GetInt("outgoods" + i, 0) == 1)
+            {
+                //마음
+                txt_today[i].text = "x";
+                //빗물
+                txt_today[i + 1].text = "x";
+                //이름
+                txt_today[i + 2].text = "품절";
+                //레벨
+                txt_today[i + 3].text = "Lv.Max";
+            }
+        }
+    }
+
+    void BuyToday()
+    {
+        have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+        have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+        if (have_r >= cost_r)
+        {
+            if (have_h >= cost_h)
+            {
+                GetSum();
+
+                PlayerPrefs.SetInt("outgoods" + num_i, 1);
+                int i = 0;
+                i = num_i * 4;
+                //마음
+                txt_today[i].text = "x";
+                //빗물
+                txt_today[i + 1].text = "x";
+                //이름
+                txt_today[i + 2].text = "품절";
+                //레벨
+                txt_today[i + 3].text = "Lv.Max";
+                PlayerPrefs.SetInt("setoutgoods", num_i);
+                SetText();
+            }
+            else
+            {
+                PopShop();
+            }
+        }
+        else
+        {
+            PopShop();
+        }
+    }
+
+    /// <summary>
+    /// 부족토스트
+    /// </summary>
+    void PopShop()
+    {
+        shopPopup_obj.SetActive(true);
+        txt_Popup.text = "구입하기에 가지고 있는 것이 부족하다.";
     }
 }
