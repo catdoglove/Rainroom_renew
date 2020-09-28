@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuEvt : MonoBehaviour
 {
-    public GameObject menu_obj,option_obj, menuOut_obj, menuIn_obj;
+    public GameObject menu_obj,option_obj, menuOut_obj, menuIn_obj, backWnd;
     public GameObject muteImg_obj, muteBGImg_obj;
     public Sprite[] mute_spr;
 
@@ -23,6 +23,19 @@ public class MainMenuEvt : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("scene", 0);
+
+        switch (PlayerPrefs.GetFloat("talkspeed", 0))
+        {
+            case 0.05f:
+                speed_txt.text = "대화속도 보통";
+                break;
+            case 0.03f:
+                speed_txt.text = "대화속도 빠름";
+                break;
+            case 0.07f:
+                speed_txt.text = "대화속도 느림";
+                break;
+        }
     }
     
 
@@ -117,12 +130,24 @@ public class MainMenuEvt : MonoBehaviour
     }
 
 
+    //돌아가창
+    public void backWndOpen()
+    {
+        backWnd.SetActive(true);
+    }
+
+    public void backWndClose()
+    {
+        backWnd.SetActive(false);
+    }
+
     public void GoBack()
     {
         //SceneManager.LoadSceneAsync("Main");
         SceneManager.LoadSceneAsync("Load");
         PlayerPrefs.SetInt("scene", 0);
         menu_obj.SetActive(false);
+        backWnd.SetActive(false);
     }
 
     public void MuteBG()
