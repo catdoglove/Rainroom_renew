@@ -30,12 +30,6 @@ public class Singleton : MonoBehaviour {
         
     }
 
-
-
-
-
-
-
     /*
     //정적변수
     private static Singleton instance = null;

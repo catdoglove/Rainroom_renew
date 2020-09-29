@@ -580,11 +580,11 @@ public class MainTime : MonoBehaviour
                 grow = PlayerPrefs.GetInt("seedgrow", 1);
                 grow++;
                 PlayerPrefs.SetInt("seedgrow", grow);
-                seed_obj.GetComponent<Image>().sprite = spr_seed[grow-1];
+                seed_obj.GetComponent<Image>().sprite = spr_seed[grow];
                 PlayerPrefs.Save();
             }
         }
-        seed_obj.GetComponent<Image>().sprite = spr_seed[grow-1];
+        //seed_obj.GetComponent<Image>().sprite = spr_seed[grow-1];
     }
 
     public void ClosePopUpTime()

@@ -49,6 +49,7 @@ public class MainShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
         //PlayerPrefs.DeleteKey("seedlv");
         //PlayerPrefs.DeleteKey("seedgrow");
         str_Code = PlayerPrefs.GetString("code", "");
@@ -102,14 +103,14 @@ public class MainShop : MonoBehaviour
             //상자
             bedBox_obj.GetComponent<Button>().interactable = true;
             sleepcolNum = PlayerPrefs.GetInt("sleepColor", 0);
-            bed_obj.GetComponent<Image>().sprite = spr_sleep[PlayerPrefs.GetInt("bedlv", 0)-1];
+            bed_obj.GetComponent<Image>().sprite = spr_sleep[PlayerPrefs.GetInt("bedlv", 0) - 1];
 
             if (PlayerPrefs.GetInt("bedlv", 0) >= 4)
             {
-            }
                 bed_obj.GetComponent<Image>().sprite = spr_sleepColorImg[sleepcolNum];
-                //btn_colorBed.SetActive(true);
             }
+            //btn_colorBed.SetActive(true);
+        }
 
         if (PlayerPrefs.GetInt("cuplv", 0) == 1)
         {
@@ -224,8 +225,6 @@ public class MainShop : MonoBehaviour
             //상자
             deskBox_obj.GetComponent<Button>().interactable = true;
         }
-
-
 
         //씨앗맥스
         // seed_obj.GetComponent<Image>().sprite = spr_seed[PlayerPrefs.GetInt("seedlv", 0)];

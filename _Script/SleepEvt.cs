@@ -16,6 +16,8 @@ public class SleepEvt : MonoBehaviour
     public GameObject switch_obj;
     public Sprite[] spr_switch;
 
+    public GameObject cha_obj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class SleepEvt : MonoBehaviour
 
             sleepBack_obj.SetActive(true);
             bed_obj.SetActive(false);
+            cha_obj.SetActive(false);
             sleepMove();
         }
 
@@ -167,6 +170,8 @@ public class SleepEvt : MonoBehaviour
         if (PlayerPrefs.GetInt("bedlv", 0)==1)
         {
             sleepDown_obj.SetActive(true);
+            bed_obj.SetActive(false);
+            cha_obj.SetActive(false);
         }
         else
         {

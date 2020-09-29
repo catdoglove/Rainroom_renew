@@ -384,12 +384,24 @@ public class CityShop : MonoBehaviour
         level = PlayerPrefs.GetInt("bedlv", 0);
         level--;
         sum = level * 2;
-        //마음
-        txt_bed[0].text = "" + cost_bed[sum];
-        //빗물
-        txt_bed[1].text = "" + cost_bed[sum +1];
-        //이름
-        txt_bed[2].text = bed_name[level];
+        if (level < 0)
+        {
+            //마음
+            txt_bed[0].text = "x";
+            //빗물
+            txt_bed[1].text = "x";
+            //이름
+            txt_bed[2].text = "이불";
+        }
+        else
+        {
+            //마음
+            txt_bed[0].text = "" + cost_bed[sum];
+            //빗물
+            txt_bed[1].text = "" + cost_bed[sum + 1];
+            //이름
+            txt_bed[2].text = bed_name[level];
+        }
         level = level + 1;
         //레벨
         txt_bed[3].text = "Lv." + level;
@@ -418,12 +430,15 @@ public class CityShop : MonoBehaviour
         level = PlayerPrefs.GetInt("lightlv", 0);
         level=level-2;
         sum = level * 2;
-        //마음
-        txt_light[0].text = "" + cost_light[sum];
-        //빗물
-        txt_light[1].text = "" + cost_light[sum + 1];
-        //이름
-        txt_light[2].text = light_name[level];
+        if (level < 0)
+        {
+            //마음
+            txt_light[0].text = "x";
+            //빗물
+            txt_light[1].text = "x";
+            //이름
+            txt_light[2].text = "전등";
+        }
 
         level = level + 2;
         //레벨

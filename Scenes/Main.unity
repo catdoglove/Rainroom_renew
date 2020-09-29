@@ -484,8 +484,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 300375159}
-        m_MethodName: talkBtn
+      - m_Target: {fileID: 300375169}
+        m_MethodName: talkA
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -495,8 +495,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375169}
-        m_MethodName: talkA
+      - m_Target: {fileID: 300375159}
+        m_MethodName: talkBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6228,6 +6228,7 @@ MonoBehaviour:
   spr_switch:
   - {fileID: 3341895929379786006, guid: 67c33b0013dbe9f478774d304176b563, type: 3}
   - {fileID: -5349546134301776880, guid: 67c33b0013dbe9f478774d304176b563, type: 3}
+  cha_obj: {fileID: 2028583994}
 --- !u!114 &300375167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10773,7 +10774,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -4.64, y: 0}
+  m_AnchoredPosition: {x: -4.6399994, y: 0}
   m_SizeDelta: {x: -9.270493, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &514820756
@@ -18055,7 +18056,7 @@ RectTransform:
   m_GameObject: {fileID: 838330677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.01389, y: 0.01389, z: 0.01389}
+  m_LocalScale: {x: 1, y: 1, z: 0.01389}
   m_Children: []
   m_Father: {fileID: 1719788467}
   m_RootOrder: 3
@@ -23340,7 +23341,7 @@ RectTransform:
   m_GameObject: {fileID: 1086152338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.01389, y: 0.01389, z: 0.01389}
+  m_LocalScale: {x: 1, y: 1, z: 0.01389}
   m_Children: []
   m_Father: {fileID: 1719788467}
   m_RootOrder: 2
@@ -37695,7 +37696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8637932855835228225, guid: 0a91888228ced854cb344682d24ef318,
+  m_Sprite: {fileID: 4662047107655927284, guid: 0a91888228ced854cb344682d24ef318,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
