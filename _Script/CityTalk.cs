@@ -589,6 +589,7 @@ public class CityTalk : MonoBehaviour
 
 
         have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
+        int lp = PlayerPrefs.GetInt("likepoint", 0);
 
         switch (ckFood)
         {
@@ -598,6 +599,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 13;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkBunsik("순대");
@@ -617,6 +619,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 11;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkBunsik("떡볶이");
@@ -636,6 +639,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 9;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkBunsik("어묵");
@@ -654,6 +658,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkBunsik("튀김");
@@ -672,6 +677,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 11;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("커피");
@@ -691,6 +697,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 11;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("차차");
@@ -709,6 +716,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("과일");
@@ -728,6 +736,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 17;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("아이스");
@@ -745,6 +754,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("빠앙");
@@ -762,6 +772,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("쿠키");
@@ -779,6 +790,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 20;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("샌드위치");
@@ -796,6 +808,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    lp = lp + 25;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     talkCafe("마카롱");
@@ -808,6 +821,9 @@ public class CityTalk : MonoBehaviour
                 }
                 break;
         }
+
+
+        PlayerPrefs.SetInt("likepoint", a);
     }
 
 }

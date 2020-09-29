@@ -503,6 +503,10 @@ public class ParkTalk : MonoBehaviour
 
             if (have_h >= cost_h)
             {
+                int a = PlayerPrefs.GetInt("likepoint", 0);
+                a = a + 10;
+                PlayerPrefs.SetInt("likepoint", a);
+
                 have_h = have_h - cost_h;
                 PlayerPrefs.SetInt(str_Code + "h", have_h);
                 dalgonaballon.SetActive(false);

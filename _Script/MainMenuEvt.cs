@@ -24,7 +24,7 @@ public class MainMenuEvt : MonoBehaviour
     {
         PlayerPrefs.SetInt("scene", 0);
 
-        switch (PlayerPrefs.GetFloat("talkspeed", 0))
+        switch (PlayerPrefs.GetFloat("talkspeed", 0.05f))
         {
             case 0.05f:
                 speed_txt.text = "대화속도 보통";
@@ -258,7 +258,7 @@ public class MainMenuEvt : MonoBehaviour
     public void talkSpeed()
     {
         //1,2,3단계 조절해서 속도 조절하기
-        float f =PlayerPrefs.GetFloat("talkspeed", 0);
+        float f =PlayerPrefs.GetFloat("talkspeed", 0.05f);
         if (f == 0.07f)
         {
             speed_txt.text = "대화속도 보통";
