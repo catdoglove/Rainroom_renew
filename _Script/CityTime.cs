@@ -11,16 +11,45 @@ public class CityTime : MonoBehaviour
     public Sprite[] spr_people;
 
 
+    int talk;
     // Start is called before the first frame update
     void Start()
     {
-
-
+        if(PlayerPrefs.GetInt("ending", 0) == 0)
+        {
+            if (PlayerPrefs.GetInt("likelv", 0) >= 12)
+            {
+                int sum = 0;
+                for (int i = 0; i < 9; i++)
+                {
+                    if (PlayerPrefs.GetInt("outgoods" + i, 0) == 1)
+                    {
+                        sum++;
+                    }
+                }
+            }
+        }
 
 
         StartCoroutine("updateSec");
         StartCoroutine("MoveP");
         StartCoroutine("MoveP2");
+    }
+
+
+    public void talkBtn()
+    {
+        talk = PlayerPrefs.GetInt("talk", 5);
+        talk--;
+        if (talk <= 0)
+        {
+            talk = 0;
+        }
+        if (talk >= 5)
+        {
+            talk = 4;
+        }
+        PlayerPrefs.SetInt("talk", talk);
     }
 
 
@@ -174,5 +203,7 @@ public class CityTime : MonoBehaviour
             yield return new WaitForSeconds(0.14f);
         }
     }
+
+
 
 }

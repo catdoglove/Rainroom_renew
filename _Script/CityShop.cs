@@ -511,14 +511,15 @@ public class CityShop : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("outgoods" + i, 0) == 1)
             {
+                int ci = i * 4;
                 //마음
-                txt_today[i].text = "x";
+                txt_today[ci].text = "x";
                 //빗물
-                txt_today[i + 1].text = "x";
+                txt_today[ci + 1].text = "x";
                 //이름
-                txt_today[i + 2].text = "품절";
+                txt_today[ci + 2].text = "품절";
                 //레벨
-                txt_today[i + 3].text = "Lv.Max";
+                txt_today[ci + 3].text = "Lv.Max";
             }
         }
     }

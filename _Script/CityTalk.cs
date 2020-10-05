@@ -193,7 +193,7 @@ public class CityTalk : MonoBehaviour
 
         testText_cut = text_str.Split('/'); //끊기
         cleantalk();
-
+        HeartPlus();
         if (testText_cut[0] == "q")
         { //질문이 있는경우
             StartCoroutine("questionTalkRun");
@@ -823,7 +823,42 @@ public class CityTalk : MonoBehaviour
         }
 
 
-        PlayerPrefs.SetInt("likepoint", a);
+        PlayerPrefs.SetInt("likepoint", lp);
     }
+    
+    /// <summary>
+    /// 레벨에따라 마음을 더해준다
+    /// </summary>
+    void HeartPlus()
+    {
+        int hp = PlayerPrefs.GetInt(str_Code + "h", 0);
+        switch (PlayerPrefs.GetInt("likelv", 0))
+        {
+            case 0:
+                hp = hp + 2;
+                break;
 
+            case 1:
+                hp = hp + 3;
+                break;
+
+            case 2:
+                hp = hp + 4;
+                break;
+
+            case 3:
+                hp = hp + 5;
+                break;
+
+            case 4:
+                hp = hp + 6;
+                break;
+
+            default:
+                hp = hp + 7;
+                break;
+        }
+        PlayerPrefs.SetInt(str_Code + "h", hp);
+        PlayerPrefs.Save();
+    }
 }

@@ -9,6 +9,7 @@ public class OutItem : MonoBehaviour
     public GameObject[] goods_obj;
     public GameObject[] check_obj;
     public Sprite[] spr_goodsImg;
+    public GameObject txt_obj;
     int item_num;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,17 @@ public class OutItem : MonoBehaviour
         }
         int s=PlayerPrefs.GetInt("setoutgoods");
         onRoom_obj.GetComponent<Image>().sprite = spr_goodsImg[s];
+
+        // 인스팩터 구현후에 
+        /*
+        if (sum == 7)
+        {
+            txt_obj.SetActive(true);
+        }else if(sum == 8)
+        {
+            goods_obj[4].SetActive(true);
+        }
+        */
     }
     
 

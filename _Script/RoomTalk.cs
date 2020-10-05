@@ -51,6 +51,7 @@ public class RoomTalk : MonoBehaviour
 
     public GameObject seedRain_obj;
 
+    string str_Code;
 
     private void toastFunction()
     {
@@ -198,6 +199,8 @@ public class RoomTalk : MonoBehaviour
 
         setCharAni();
 
+        str_Code = PlayerPrefs.GetString("code", "");
+
     }
 
     void cleantalk() //대화 초기화
@@ -314,6 +317,8 @@ public class RoomTalk : MonoBehaviour
                 StartCoroutine("talkRun");
             }
             UpLike();
+
+            HeartPlus();
         }
     }
 
@@ -568,7 +573,7 @@ public class RoomTalk : MonoBehaviour
 
     public void talkSeed()
     {
-        text_str = "" + data_item[PlayerPrefs.GetInt("seedlv", 0)-2]["seed"];
+        text_str = "" + data_item[PlayerPrefs.GetInt("seedgrow", 0)]["seed"];
         testText_cut = text_str.Split('/');
         cleantalk();
 
@@ -676,6 +681,40 @@ public class RoomTalk : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 레벨에따라 마음을 더해준다
+    /// </summary>
+    void HeartPlus()
+    {
+        int hp = PlayerPrefs.GetInt(str_Code + "h", 0);
+        switch (PlayerPrefs.GetInt("likelv", 0))
+        {
+            case 0:
+                hp = hp + 2;
+                break;
 
+            case 1:
+                hp = hp + 3;
+                break;
+
+            case 2:
+                hp = hp + 4;
+                break;
+
+            case 3:
+                hp = hp + 5;
+                break;
+
+            case 4:
+                hp = hp + 6;
+                break;
+
+            default:
+                hp = hp + 7;
+                break;
+        }
+        PlayerPrefs.SetInt(str_Code + "h", hp);
+        PlayerPrefs.Save();
+    }
       
 }
