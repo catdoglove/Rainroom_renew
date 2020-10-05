@@ -38,6 +38,9 @@ public class ParkTalk : MonoBehaviour
 
     //뒤로가기 버튼 액션
     public GameObject exitBtn;
+
+    public GameObject GM;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -282,6 +285,7 @@ public class ParkTalk : MonoBehaviour
             cat_already_txt.SetActive(true);
             cat_eat_txt.SetActive(false);
             cat_enough_txt.SetActive(false);
+            GM.GetComponent<SoundEvt>().touchSound();
         }
         else
         {
@@ -300,12 +304,14 @@ public class ParkTalk : MonoBehaviour
                 PlayerPrefs.SetInt(str_Code + "h", have_h);
                 catheart.SetActive(true);
                 PlayerPrefs.Save();
+                GM.GetComponent<SoundEvt>().catSound();
             }
             else
             {
                 cat_enough_txt.SetActive(true);
                 cat_already_txt.SetActive(false);
                 cat_eat_txt.SetActive(false);
+                GM.GetComponent<SoundEvt>().touchSound();
             }
 
         }
@@ -490,11 +496,13 @@ public class ParkTalk : MonoBehaviour
     
     public void dalgonaEat()
     {
+
         if (ck_dal == 1) //먹은경우
         {
             dal_already_txt.SetActive(true);
             dal_eat_txt.SetActive(false);
             dal_enough_txt.SetActive(false);
+            GM.GetComponent<SoundEvt>().touchSound();
         }
         else
         {
@@ -513,12 +521,15 @@ public class ParkTalk : MonoBehaviour
                 StartCoroutine("eatDalgona");
                 PlayerPrefs.Save();
                 ck_dal = 1;
+
+                GM.GetComponent<SoundEvt>().eatGoldSound();
             }
             else
             {
                 dal_already_txt.SetActive(false);
                 dal_eat_txt.SetActive(false);
                 dal_enough_txt.SetActive(true);
+                GM.GetComponent<SoundEvt>().touchSound();
 
             }
         }

@@ -18,12 +18,14 @@ public class MainMenuEvt : MonoBehaviour
 
     //대화속도
     public Text speed_txt;
+   
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerPrefs.SetInt("scene", 0);
 
+        //대화속도
         switch (PlayerPrefs.GetFloat("talkspeed", 0.05f))
         {
             case 0.05f:
@@ -36,6 +38,27 @@ public class MainMenuEvt : MonoBehaviour
                 speed_txt.text = "대화속도 느림";
                 break;
         }
+
+        //음소거
+        if (PlayerPrefs.GetInt("soundBGmute", 0) == 1)
+        {
+            muteBGImg_obj.GetComponent<Image>().sprite = mute_spr[1];
+        }
+        else
+        {
+            muteBGImg_obj.GetComponent<Image>().sprite = mute_spr[0];
+        }
+
+
+        if (PlayerPrefs.GetInt("soundmute", 0) == 1)
+        {
+            muteImg_obj.GetComponent<Image>().sprite = mute_spr[1];
+        }
+        else
+        {
+            muteImg_obj.GetComponent<Image>().sprite = mute_spr[0];
+        }
+
     }
     
 
@@ -152,9 +175,11 @@ public class MainMenuEvt : MonoBehaviour
 
     public void MuteBG()
     {
-
-        if (PlayerPrefs.GetInt("scene", 0) == 0)
+        if (GM == null)
         {
+            GM = GameObject.Find("GameObject");
+        }
+        
             if (PlayerPrefs.GetInt("soundBGmute", 0) == 1)
             {
                 PlayerPrefs.SetInt("soundBGmute", 0);
@@ -167,25 +192,25 @@ public class MainMenuEvt : MonoBehaviour
                 GM.GetComponent<SoundEvt>().BGMute();
                 muteBGImg_obj.GetComponent<Image>().sprite = mute_spr[1];
             }
-        }
         PlayerPrefs.Save();
     }
     public void MuteSE()
     {
-
-        if (PlayerPrefs.GetInt("scene", 0) == 0)
+        if (GM == null)
         {
+            GM = GameObject.Find("GameObject");
+        }
+        
             if (PlayerPrefs.GetInt("soundmute", 0) == 1)
             {
                 GM.GetComponent<SoundEvt>().soundMute();
-                muteBGImg_obj.GetComponent<Image>().sprite = mute_spr[0];
+                muteImg_obj.GetComponent<Image>().sprite = mute_spr[0];
             }
             else
             {
                 GM.GetComponent<SoundEvt>().soundMute();
-                muteBGImg_obj.GetComponent<Image>().sprite = mute_spr[1];
+                muteImg_obj.GetComponent<Image>().sprite = mute_spr[1];
             }
-        }
         PlayerPrefs.Save();
     }
 
@@ -275,4 +300,5 @@ public class MainMenuEvt : MonoBehaviour
             PlayerPrefs.SetFloat("talkspeed", 0.07f);
         }
     }
+    
 }

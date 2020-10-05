@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class SoundEvt : MonoBehaviour {
 
-	public static AudioSource se_touch,se_back;
-	public static AudioClip sp_touch;
+	public AudioSource se_touch,se_back;
+	public AudioClip sp_touch;
 	public AudioSource se_touch1;
 	public AudioClip sp_touch1;
 	public GameObject muteImg,muteBGImg;
@@ -80,7 +80,7 @@ public class SoundEvt : MonoBehaviour {
     }
 	
 
-	public static void touchSound1(){
+	public void touchSound11(){
 		
 		se_touch.Play ();
 	}
@@ -187,7 +187,7 @@ public class SoundEvt : MonoBehaviour {
 			se_eatGold.mute = true;
 			se_eatCity.mute = true;
 			se_heartpaper.mute = true;
-			muteImg.GetComponent<Image>().sprite=spr_mute[1];//소리음소거
+			//muteImg.GetComponent<Image>().sprite=spr_mute[1];//소리음소거
 			PlayerPrefs.SetInt("soundmute",1);
 		} else {
 			se_touch.mute = false;
@@ -201,7 +201,7 @@ public class SoundEvt : MonoBehaviour {
 			se_eatGold.mute = false;
 			se_eatCity.mute = false;
 			se_heartpaper.mute = false;
-			muteImg.GetComponent<Image>().sprite=spr_mute[0];//소리재생
+			//muteImg.GetComponent<Image>().sprite=spr_mute[0];//소리재생
 			PlayerPrefs.SetInt("soundmute",0);
 		}
 	}
