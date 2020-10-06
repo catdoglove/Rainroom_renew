@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ParkTime : MonoBehaviour
 {
@@ -9,13 +10,97 @@ public class ParkTime : MonoBehaviour
     public GameObject trash_obj, leaf_obj;
 
     string str;
+    int talk;
+
+
+    //쓰레기통
+    public Sprite[] spr_trash;
+    public GameObject trashB, memoTrash, trashButton;
+    int item_num;
+    int iTrash;
+
     // Start is called before the first frame update
     void Start()
     {
 
+        iTrash = PlayerPrefs.GetInt("trashnum", 0);
         str = PlayerPrefs.GetString("code", "");
         StartCoroutine("updateSecp");
+
+        trashB.GetComponent<Image>().sprite = spr_trash[PlayerPrefs.GetInt("trashCanImage", 0)];
+        ckTrash();
+
     }
+
+
+    public void getTrash()
+    {
+        //iTrash++;
+        iTrash = iTrash + 10;
+
+        ckTrash();
+
+        PlayerPrefs.SetInt("trashnum", iTrash);
+        PlayerPrefs.SetInt("trashCanImage", item_num);
+    }
+
+    void ckTrash()
+    {
+        if (iTrash < 20)
+        {
+            item_num = 0;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+
+        }
+        else if (iTrash >= 100)
+        {
+            item_num = 5;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+            trashButton.GetComponent<Button>().interactable = true;
+        }
+        else if (iTrash >= 80)
+        {
+            item_num = 4;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+        }
+        else if (iTrash >= 60)
+        {
+            item_num = 3;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+        }
+        else if (iTrash >= 40)
+        {
+            item_num = 2;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+        }
+        else if (iTrash >= 20)
+        {
+            item_num = 1;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+        }
+
+    }
+
+    public void memoTrashOpen()
+    {
+        if (iTrash >= 100)
+        {
+            memoTrash.SetActive(true);
+            trashButton.GetComponent<Button>().interactable = false;
+            PlayerPrefs.SetInt("trashnum", 0);
+            iTrash = 0;
+            trashB.GetComponent<Image>().sprite = spr_trash[0];
+            h = PlayerPrefs.GetInt(str_Code + "h", 0);
+            h = h + 20;
+            PlayerPrefs.SetInt(str_Code + "h", h);
+        }
+    }
+
+    public void memoTrashClose()
+    {
+        memoTrash.SetActive(false);
+    }
+
 
     IEnumerator updateSecp()
     {
@@ -39,6 +124,21 @@ public class ParkTime : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         
+    }
+
+    public void talkBtn()
+    {
+        talk = PlayerPrefs.GetInt("talk", 5);
+        talk--;
+        if (talk <= 0)
+        {
+            talk = 0;
+        }
+        if (talk >= 5)
+        {
+            talk = 4;
+        }
+        PlayerPrefs.SetInt("talk", talk);
     }
 
     void Baquitrash()
