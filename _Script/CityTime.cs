@@ -15,7 +15,7 @@ public class CityTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("ending", 0) == 0)
+        if(PlayerPrefs.GetInt("setending", 0) == 0)
         {
             if (PlayerPrefs.GetInt("likelv", 0) >= 12)
             {
@@ -26,6 +26,10 @@ public class CityTime : MonoBehaviour
                     {
                         sum++;
                     }
+                }
+                if (sum == 8)
+                {
+                    PlayerPrefs.SetInt("setending", 1);
                 }
             }
         }

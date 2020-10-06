@@ -9,7 +9,12 @@ public class OutItem : MonoBehaviour
     public GameObject[] goods_obj;
     public GameObject[] check_obj;
     public Sprite[] spr_goodsImg;
-    public GameObject txt_obj;
+
+    public GameObject txt_obj,ending_obj, endingImg_obj,endBtnL_obj, endBtnR_obj;
+    public Sprite[] spr_end;
+    public Sprite spr_endBtn;
+    public int page_i;
+
     int item_num;
     // Start is called before the first frame update
     void Start()
@@ -29,17 +34,21 @@ public class OutItem : MonoBehaviour
         }
         int s=PlayerPrefs.GetInt("setoutgoods");
         onRoom_obj.GetComponent<Image>().sprite = spr_goodsImg[s];
+        
 
-        // 인스팩터 구현후에 
-        /*
-        if (sum == 7)
+        if(sum>=8&& PlayerPrefs.GetInt("setending", 0) == 1)
+        {
+            ending_obj.SetActive(true);
+        }
+
+        if (sum == 8)
         {
             txt_obj.SetActive(true);
-        }else if(sum == 8)
+        }else if(sum == 9)
         {
             goods_obj[4].SetActive(true);
+            txt_obj.SetActive(false);
         }
-        */
     }
     
 
@@ -119,5 +128,47 @@ public class OutItem : MonoBehaviour
         int s = PlayerPrefs.GetInt("setoutgoods");
         check_obj[s].SetActive(true);
         onRoom_obj.GetComponent<Image>().sprite = spr_goodsImg[s];
+    }
+
+    public void EndR()
+    {
+        if (page_i == 5)
+        {
+
+            PlayerPrefs.SetInt("outgoods4", 1);
+            PlayerPrefs.SetInt("setending", 2);
+            PlayerPrefs.SetInt("setoutgoods",4);
+            ending_obj.SetActive(false);
+            onRoom_obj.GetComponent<Image>().sprite = spr_goodsImg[4];
+            goods_obj[4].SetActive(true);
+            txt_obj.SetActive(false);
+        }
+        else
+        {
+            page_i++;
+            endingImg_obj.GetComponent<Image>().sprite = spr_end[page_i];
+            endBtnL_obj.SetActive(true);
+
+            if (page_i == 5)
+            {
+                endBtnR_obj.GetComponent<Image>().sprite = spr_endBtn;
+            }
+        }
+    }
+    public void EndL()
+    {
+        if (page_i == 0)
+        {
+
+        }
+        else
+        {
+            page_i--;
+            endingImg_obj.GetComponent<Image>().sprite = spr_end[page_i];
+            if (page_i == 0)
+            {
+                endBtnL_obj.SetActive(false);
+            }
+        }
     }
 }

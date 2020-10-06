@@ -573,7 +573,7 @@ public class RoomTalk : MonoBehaviour
 
     public void talkSeed()
     {
-        text_str = "" + data_item[PlayerPrefs.GetInt("seedgrow", 0)]["seed"];
+        text_str = "" + data_item[PlayerPrefs.GetInt("seedgrow", 1)-1]["seed"];
         testText_cut = text_str.Split('/');
         cleantalk();
 

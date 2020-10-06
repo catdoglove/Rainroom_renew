@@ -155,6 +155,7 @@ public class SleepEvt : MonoBehaviour
         {
             dreamWin_obj.SetActive(true);
             PlayerPrefs.SetInt("sleepdream", 0);
+            dreamnote_obj.SetActive(false);
             int r = PlayerPrefs.GetInt(str_Code + "r", 0);
             int h = PlayerPrefs.GetInt(str_Code + "h", 0);
             r = r + 400;
