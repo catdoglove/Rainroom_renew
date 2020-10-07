@@ -37,6 +37,7 @@ public class CityTalk : MonoBehaviour
     public Text txt_cafe_YN, txt_bunsik_YN, toast_txt;
     public Sprite[] spr_cafe;
 
+    public GameObject GM;
 
     string str_Code;
     int have_h, cost_h;    
@@ -599,6 +600,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 13;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -619,6 +621,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 11;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -639,6 +642,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 9;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -658,6 +662,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -677,6 +682,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 11;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -697,6 +703,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 11;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -716,6 +723,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -736,6 +744,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 17;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -754,6 +763,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -772,6 +782,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 15;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -790,6 +801,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 20;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
@@ -808,6 +820,7 @@ public class CityTalk : MonoBehaviour
 
                 if (have_h >= cost_h)
                 {
+                    GM.GetComponent<SoundEvt>().eatCitySound();
                     lp = lp + 25;
                     have_h = have_h - cost_h;
                     PlayerPrefs.SetInt(str_Code + "h", have_h);

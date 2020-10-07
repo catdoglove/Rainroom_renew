@@ -37,8 +37,7 @@ public class ParkTime : MonoBehaviour
 
     public void getTrash()
     {
-        //iTrash++;
-        iTrash = iTrash + 10;
+        iTrash++;
 
         ckTrash();
 

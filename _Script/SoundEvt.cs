@@ -12,8 +12,8 @@ public class SoundEvt : MonoBehaviour {
 	public Sprite [] spr_mute;
 
 	//아이템소리
-	public AudioClip sp_book,sp_light,sp_window,sp_tv,sp_cat,sp_clock,sp_sleep,sp_eatGold,sp_eatCity,sp_heartpaper;
-	public AudioSource se_book,se_light,se_window,se_tv,se_cat,se_clock,se_sleep,se_eatGold,se_eatCity,se_heartpaper;
+	public AudioClip sp_book,sp_light,sp_window,sp_tv,sp_cat,sp_clock,sp_sleep,sp_eatGold,sp_eatCity,sp_heartpaper, sp_trash;
+	public AudioSource se_book,se_light,se_window,se_tv,se_cat,se_clock,se_sleep,se_eatGold,se_eatCity,se_heartpaper, se_trash;
 
 	// Use this for initialization
 	void Start () {
@@ -40,8 +40,10 @@ public class SoundEvt : MonoBehaviour {
 
 		se_eatGold = gameObject.GetComponent<AudioSource> ();
 		se_eatGold.clip=sp_eatGold;
+        se_trash = gameObject.GetComponent<AudioSource>();
+        se_trash.clip = sp_trash;
 
-		se_eatCity = gameObject.GetComponent<AudioSource> ();
+        se_eatCity = gameObject.GetComponent<AudioSource> ();
 		se_eatCity.clip=sp_eatCity;
 
 		se_heartpaper = gameObject.GetComponent<AudioSource> ();
@@ -59,7 +61,8 @@ public class SoundEvt : MonoBehaviour {
 			se_eatGold.mute = true;
 			se_eatCity.mute = true;
 			se_heartpaper.mute = true;
-		}
+            se_trash.mute = true;
+        }
 
         if (PlayerPrefs.GetInt("soundBGmute", 0) == 1)
         {
@@ -150,15 +153,20 @@ public class SoundEvt : MonoBehaviour {
 		se_eatGold.Play ();
 	}
 
-	public void eatCitySound(){
+
+    public void trashSound()
+    {
+        se_trash = gameObject.GetComponent<AudioSource>();
+        se_trash.clip = sp_trash;
+        se_trash.loop = false;
+        se_trash.Play();
+    }
+
+    public void eatCitySound(){
 		se_eatCity = gameObject.GetComponent<AudioSource> ();
 		se_eatCity.clip=sp_eatCity;
 		se_eatCity.loop = false;
-		if (PlayerPrefs.GetInt ("citymoney", 0) == 1) {
-			PlayerPrefs.SetInt ("citymoney", 0);
-		} else {
-			se_eatCity.Play ();
-		}
+        se_eatCity.Play ();
 	}
 
 
@@ -187,8 +195,9 @@ public class SoundEvt : MonoBehaviour {
 			se_eatGold.mute = true;
 			se_eatCity.mute = true;
 			se_heartpaper.mute = true;
-			//muteImg.GetComponent<Image>().sprite=spr_mute[1];//소리음소거
-			PlayerPrefs.SetInt("soundmute",1);
+            se_trash.mute = true;
+            //muteImg.GetComponent<Image>().sprite=spr_mute[1];//소리음소거
+            PlayerPrefs.SetInt("soundmute",1);
 		} else {
 			se_touch.mute = false;
 			se_book.mute = false;
@@ -201,8 +210,9 @@ public class SoundEvt : MonoBehaviour {
 			se_eatGold.mute = false;
 			se_eatCity.mute = false;
 			se_heartpaper.mute = false;
-			//muteImg.GetComponent<Image>().sprite=spr_mute[0];//소리재생
-			PlayerPrefs.SetInt("soundmute",0);
+            se_trash.mute = false;
+            //muteImg.GetComponent<Image>().sprite=spr_mute[0];//소리재생
+            PlayerPrefs.SetInt("soundmute",0);
 		}
 	}
 

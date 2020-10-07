@@ -4219,7 +4219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2145333743}
-        m_MethodName: touchSound
+        m_MethodName: windowSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4502,7 +4502,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 931311245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2145333743}
+        m_MethodName: touchSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &931311245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4853,7 +4864,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2145333743}
-        m_MethodName: touchSound
+        m_MethodName: tvSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5707,7 +5718,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1170981659}
   m_OnClick:
     m_PersistentCalls:
@@ -5724,7 +5735,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2145333743}
-        m_MethodName: touchSound
+        m_MethodName: windowSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2145333737}
+        m_MethodName: talkTrash
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8151,17 +8173,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2145333737}
-        m_MethodName: talkTrash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2145333742}
         m_MethodName: parkTrashTouch
         m_Mode: 1
@@ -8174,7 +8185,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2145333743}
-        m_MethodName: touchSound
+        m_MethodName: trashSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9943,6 +9954,7 @@ MonoBehaviour:
   - "\uACE0\uAE09\uC561\uC790"
   - "\uACE0\uAE09\uB098\uBB34\uC561\uC790"
   txt_rain: {fileID: 1181002951}
+  txt_heart: {fileID: 0}
   txt_Popup: {fileID: 1411855429}
   popUp_obj: {fileID: 918926949}
   shopWin_obj: {fileID: 1604754612}
@@ -10036,6 +10048,7 @@ MonoBehaviour:
   sp_eatGold: {fileID: 8300000, guid: 71f346ce30bff5a478a225c4e1c2c505, type: 3}
   sp_eatCity: {fileID: 8300000, guid: afb0cac9a206de84eab3c0587aa0e400, type: 3}
   sp_heartpaper: {fileID: 8300000, guid: 0b324bba86887c340b42d45a50bd6ae0, type: 3}
+  sp_trash: {fileID: 8300000, guid: c9ea6e4f529ab7c4999f0f4c1a7402e6, type: 3}
   se_book: {fileID: 0}
   se_light: {fileID: 0}
   se_window: {fileID: 0}
@@ -10046,6 +10059,7 @@ MonoBehaviour:
   se_eatGold: {fileID: 0}
   se_eatCity: {fileID: 0}
   se_heartpaper: {fileID: 0}
+  se_trash: {fileID: 0}
 --- !u!82 &2145333744
 AudioSource:
   m_ObjectHideFlags: 0

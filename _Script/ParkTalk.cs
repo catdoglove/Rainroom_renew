@@ -261,8 +261,6 @@ public class ParkTalk : MonoBehaviour
 
         //대화속도
         speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-        //소리
-        //Audio_obj.GetComponent<SoundEvt>().talkSound();
 
         lineReload(2);
 
