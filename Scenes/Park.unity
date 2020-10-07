@@ -9954,7 +9954,7 @@ MonoBehaviour:
   - "\uACE0\uAE09\uC561\uC790"
   - "\uACE0\uAE09\uB098\uBB34\uC561\uC790"
   txt_rain: {fileID: 1181002951}
-  txt_heart: {fileID: 0}
+  txt_heart: {fileID: 794199586}
   txt_Popup: {fileID: 1411855429}
   popUp_obj: {fileID: 918926949}
   shopWin_obj: {fileID: 1604754612}

@@ -211,6 +211,12 @@ public class MainShop : MonoBehaviour
             frame_obj.SetActive(true);
             //상자
             frameBox_obj.GetComponent<Button>().interactable = true;
+
+
+            if (PlayerPrefs.GetInt("frameColors", 0) > 0)
+            {
+                frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[PlayerPrefs.GetInt("frameColors", 0)];
+            }
         }
         //잉어
         if (PlayerPrefs.GetInt("fishlv", 0) == 1)
@@ -1070,7 +1076,7 @@ public class MainShop : MonoBehaviour
             MaxX_obj[2].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("lightlv", 0) >= 2)
+        if (PlayerPrefs.GetInt("lightlv", 0) >= 5)
         {
             btn_colorLight.GetComponent<Button>().interactable = true;
             btn_memoLight.GetComponent<Button>().interactable = true;
@@ -1351,9 +1357,9 @@ public class MainShop : MonoBehaviour
         }
         else
         {
-            framecolNum = 0;
+            framecolNum = 1;
             frame_obj.GetComponent<Image>().sprite = spr_frameColorImg[framecolNum];
-            PlayerPrefs.SetInt("frameColors", 0);
+            PlayerPrefs.SetInt("frameColors", 1);
         }
         PlayerPrefs.Save();
     }

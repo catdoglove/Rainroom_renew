@@ -45,6 +45,7 @@ public class Parkshop : MonoBehaviour
         {
             shopWin_obj.SetActive(true);
             txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
+            txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
         }
     }
 
@@ -328,6 +329,7 @@ public class Parkshop : MonoBehaviour
         }
 
         txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
+        txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
 
         PlayerPrefs.Save();
     }
@@ -438,6 +440,7 @@ public class Parkshop : MonoBehaviour
         }
 
         txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
+        txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
         PlayerPrefs.Save();
     }
 }
