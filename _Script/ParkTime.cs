@@ -11,7 +11,8 @@ public class ParkTime : MonoBehaviour
 
     string str;
     int talk;
-
+    
+    string str_Code;
 
     //쓰레기통
     public Sprite[] spr_trash;
@@ -25,6 +26,7 @@ public class ParkTime : MonoBehaviour
 
         iTrash = PlayerPrefs.GetInt("trashnum", 0);
         str = PlayerPrefs.GetString("code", "");
+        str_Code = PlayerPrefs.GetString("code", "");
         StartCoroutine("updateSecp");
 
         trashB.GetComponent<Image>().sprite = spr_trash[PlayerPrefs.GetInt("trashCanImage", 0)];
@@ -85,6 +87,7 @@ public class ParkTime : MonoBehaviour
     {
         if (iTrash >= 100)
         {
+            int h;
             memoTrash.SetActive(true);
             trashButton.GetComponent<Button>().interactable = false;
             PlayerPrefs.SetInt("trashnum", 0);

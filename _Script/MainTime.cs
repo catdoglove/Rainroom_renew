@@ -63,8 +63,9 @@ public class MainTime : MonoBehaviour
     public Text seedTime_txt;
     public Sprite[] spr_seed;
     public GameObject popUpTime_obj;
-    public Text txt_popUpTime;
+    public Text txt_popUpTime, txt_seedW;
 
+    public GameObject talkballoon, closeTB;
 
     public GameObject popUp_obj;
     public Text txt_popUp;
@@ -503,7 +504,7 @@ public class MainTime : MonoBehaviour
         {
             //물을 줄수 있음
             seedYN_obj.SetActive(true);
-            //txt_seedW.text = "물을 " + PlayerPrefs.GetInt("seedlv", 0) * 1000 + " 줄까?";
+            txt_seedW.text = "물을 " + PlayerPrefs.GetInt("seedlv", 0) * 1000 + " 줄까?";
         }
 
     }
@@ -519,7 +520,10 @@ public class MainTime : MonoBehaviour
         }
         else
         {
-            
+
+            talkballoon.SetActive(false);
+            closeTB.SetActive(false);
+            closeTB.GetComponent<Button>().interactable = false;
             r = PlayerPrefs.GetInt(str + "r", 0);
             fl = fl * 1000;
             if (r >= fl)
@@ -545,6 +549,9 @@ public class MainTime : MonoBehaviour
     }
     public void SeedN()
     {
+        talkballoon.SetActive(false);
+        closeTB.SetActive(false);
+        closeTB.GetComponent<Button>().interactable = false;
 
         seedYN_obj.SetActive(false);
     }

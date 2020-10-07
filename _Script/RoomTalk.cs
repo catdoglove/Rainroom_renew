@@ -52,6 +52,7 @@ public class RoomTalk : MonoBehaviour
     public GameObject seedRain_obj;
 
     string str_Code;
+    
 
     private void toastFunction()
     {
@@ -466,6 +467,7 @@ public class RoomTalk : MonoBehaviour
         //cnt_exit = 0;
 
         seedRain_obj.SetActive(false);
+        
     }
 
 

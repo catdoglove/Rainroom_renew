@@ -178,6 +178,7 @@ public class SleepEvt : MonoBehaviour
         {
             sleepUp_obj.SetActive(true);
             bed_obj.SetActive(true);
+            cha_obj.SetActive(false);
         }
     }
     

@@ -34,6 +34,7 @@ public class MainShop : MonoBehaviour
     public Sprite[] spr_windowColorImg, spr_wallColorImg, spr_sleepColorImg, spr_bookColorImg, spr_seedColorImg, spr_clockColorImg, spr_frameColorImg, spr_deskColorImg;
     int wincolNum, wallcolNum, lightcolNum, sleepcolNum, bookcolNum, seedcolNum, clockcolNum, drawcolNum, framecolNum, deskcolNum;
     public Text[] txt_memoName;
+    [TextArea]
     public string[] str_memo;
     public GameObject memoImg, switchImg,boxWin_obj;
 

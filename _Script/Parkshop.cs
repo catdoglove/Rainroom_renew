@@ -17,7 +17,7 @@ public class Parkshop : MonoBehaviour
     int item_num;
     int fstBuy, secBuy;
 
-    public Text txt_rain, txt_Popup;
+    public Text txt_rain, txt_heart, txt_Popup;
     public GameObject popUp_obj,shopWin_obj,helpWin_obj;
 
     int cost_r, cost_h, level, sum, have_r, have_h;
@@ -328,6 +328,7 @@ public class Parkshop : MonoBehaviour
         }
 
         txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
+
         PlayerPrefs.Save();
     }
     public void upSecnd()
