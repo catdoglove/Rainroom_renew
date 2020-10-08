@@ -77,6 +77,10 @@ public class MainTime : MonoBehaviour
     int tv=0;
     public Sprite spr_tv1, spr_tv2;
 
+    //외출시간
+    public GameObject umbrella_obj, timerPopClock_obj;
+    public Sprite[] spr_umbrella;
+    public Text txt_goOut;
 
     //카메라 태그로 찾고 적용
     public GameObject menu_obj;
@@ -596,6 +600,7 @@ public class MainTime : MonoBehaviour
     public void ClosePopUpTime()
     {
         popUpTime_obj.SetActive(false);
+        timerPopClock_obj.SetActive(false);
     }
 
     //티비
@@ -610,6 +615,48 @@ public class MainTime : MonoBehaviour
         {
             tv_obj.GetComponent<Image>().sprite = spr_tv1;
             tv = 0;
+        }
+    }
+
+    /// <summary>
+    /// 외출시간
+    /// </summary>
+    /// <returns></returns>
+    void CheckOutTime()
+    {
+
+        System.DateTime now;
+        string lastTime;
+        int ac, acb;
+        //외출시간
+        now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        lastTime = PlayerPrefs.GetString("outtime", now.ToString());
+        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
+        ac = (int)compareTime.TotalMinutes;
+        acb = (int)compareTime.TotalSeconds;
+        acb = acb - (acb / 60) * 60;
+        acb = 59 - acb;
+        ac = 14 - ac;////////////////////////////////////////////////////////////
+
+        if (ac < 0)
+        {
+            umbrella_obj.GetComponent<SpriteRenderer>().sprite = spr_umbrella[0];
+        }
+        else
+        {
+            umbrella_obj.GetComponent<SpriteRenderer>().sprite = spr_umbrella[1];
+        }
+
+        //외출남은시간
+        if (ac < 0)
+        {
+            txt_goOut.text = "00:00";
+        }
+        else
+        {
+            string stru = string.Format(@"{00:00}" + ":", ac) + string.Format(@"{00:00}", acb);
+            txt_goOut.text = stru;
         }
     }
 

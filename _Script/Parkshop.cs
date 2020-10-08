@@ -24,6 +24,8 @@ public class Parkshop : MonoBehaviour
 
     string str_Code;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,7 +60,7 @@ public class Parkshop : MonoBehaviour
         else
         {
 
-            txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+            txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
             helpWin_obj.SetActive(true);
         }
     }
@@ -442,5 +444,11 @@ public class Parkshop : MonoBehaviour
         txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
         txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
         PlayerPrefs.Save();
+    }
+
+
+    public void ClosePop()
+    {
+        popUp_obj.SetActive(false);
     }
 }

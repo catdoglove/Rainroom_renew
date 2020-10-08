@@ -11,8 +11,8 @@ public class MoveOut : MonoBehaviour
     public Text toastTxt;
 
 
-    public Text txt_Popup;
-    public GameObject shopPopup_obj,goOutYN_obj;
+    public Text txt_Popup, txt_timePopup;
+    public GameObject shopPopup_obj,goOutYN_obj, timerPop_obj, timerPopClock_obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,16 +66,41 @@ public class MoveOut : MonoBehaviour
     }
     public void GoOutYN()
     {
-        if (PlayerPrefs.GetInt("likelv", 0) >= 5)
+        
+        System.DateTime now;
+        string lastTime;
+        int ac, acb;
+        //외출시간
+        now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        lastTime = PlayerPrefs.GetString("outtime", now.ToString());
+        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
+        ac = (int)compareTime.TotalMinutes;
+        acb = (int)compareTime.TotalSeconds;
+        acb = acb - (acb / 60) * 60;
+        acb = 59 - acb;
+        ac = 14 - ac;
+
+        if (ac<0)
         {
-            goOutYN_obj.SetActive(true);
-            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
+            if (PlayerPrefs.GetInt("likelv", 0) >= 5)
+            {
+                goOutYN_obj.SetActive(true);
+                GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
+
+            }
+            else
+            {
+                shopPopup_obj.SetActive(true);
+                txt_Popup.text = "별로 나가고 싶지 않은 것 같다." + "\n" + "더 친해지면 나갈지도 모른다.";
+                GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
+            }
         }
         else
         {
-            shopPopup_obj.SetActive(true);
-            txt_Popup.text = "별로 나가고 싶지 않은 것 같다.\n더 친해지면 나갈지도 모른다.";
-            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
+            timerPop_obj.SetActive(true);
+            timerPopClock_obj.SetActive(true);
+            txt_Popup.text = "돌아온지 얼마 안되었다." + "\n" + "우산이 마르면 가자.";
         }
     }
 

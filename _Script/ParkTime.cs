@@ -24,6 +24,24 @@ public class ParkTime : MonoBehaviour
     void Start()
     {
 
+        if (PlayerPrefs.GetInt("setending", 0) == 0)
+        {
+            if (PlayerPrefs.GetInt("likelv", 0) >= 12)
+            {
+                int sum = 0;
+                for (int i = 0; i < 9; i++)
+                {
+                    if (PlayerPrefs.GetInt("outgoods" + i, 0) == 1)
+                    {
+                        sum++;
+                    }
+                }
+                if (sum >= 8)
+                {
+                    PlayerPrefs.SetInt("setending", 1);
+                }
+            }
+        }
         iTrash = PlayerPrefs.GetInt("trashnum", 0);
         str = PlayerPrefs.GetString("code", "");
         str_Code = PlayerPrefs.GetString("code", "");

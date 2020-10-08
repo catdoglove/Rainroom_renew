@@ -27,7 +27,7 @@ public class CityTime : MonoBehaviour
                         sum++;
                     }
                 }
-                if (sum == 8)
+                if (sum >= 8)
                 {
                     PlayerPrefs.SetInt("setending", 1);
                 }

@@ -49,7 +49,7 @@ public class MainInfo : MonoBehaviour
     //창을열때 초기화
     void SetIofo()
     {
-        sld_like.maxValue = PlayerPrefs.GetFloat("maxlike", 50);
+        //sld_like.maxValue = PlayerPrefs.GetFloat("maxlike", 50);
         sld_like.value = PlayerPrefs.GetInt("likepoint", 0);
         if (PlayerPrefs.GetInt("likelv", 0) == 1)
         {
