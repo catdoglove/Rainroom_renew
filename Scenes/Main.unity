@@ -12670,7 +12670,7 @@ RectTransform:
   m_GameObject: {fileID: 600137974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1856550303}
   m_RootOrder: 0
@@ -17750,6 +17750,8 @@ MonoBehaviour:
   txt_lv: {fileID: 2003681017}
   sld_like: {fileID: 1010657726}
   face: {fileID: 656908316}
+  flower_obj: {fileID: 1697533778}
+  cat_obj: {fileID: 337989040}
   spr_face:
   - {fileID: 8211371934494871070, guid: 99b4098285b62224eae21598493efaea, type: 3}
   - {fileID: -3767599992364788040, guid: 99b4098285b62224eae21598493efaea, type: 3}
@@ -36525,7 +36527,7 @@ RectTransform:
   m_GameObject: {fileID: 1856550302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2000002, y: 1.2000002, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 600137975}
   - {fileID: 915688365}

@@ -12,7 +12,7 @@ public class MainInfo : MonoBehaviour
     //호감도
     public static int like;
     public Slider sld_like;
-    public GameObject face;
+    public GameObject face,flower_obj, cat_obj;
     public Sprite[] spr_face;
     public Text txt_likeLv, txt_faceLv;
     public GameObject GM;
@@ -42,6 +42,15 @@ public class MainInfo : MonoBehaviour
             infoWin_obj.SetActive(true);
             //txt_lv.text = "" + PlayerPrefs.GetInt("likelv", 0);
             txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
+
+            if (PlayerPrefs.GetInt("infoflower", 0) == 1)
+            {
+                flower_obj.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("catlove", 0) == 1)
+            {
+                cat_obj.SetActive(true);
+            }
         }
     }
 

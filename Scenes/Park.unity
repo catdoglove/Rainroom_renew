@@ -10012,6 +10012,8 @@ MonoBehaviour:
   charAni: {fileID: 1223938169}
   exitBtn: {fileID: 1930457359}
   GM: {fileID: 2145333736}
+  catPop_obj: {fileID: 918926949}
+  txt_pop: {fileID: 1411855429}
 --- !u!4 &2145333738
 Transform:
   m_ObjectHideFlags: 0

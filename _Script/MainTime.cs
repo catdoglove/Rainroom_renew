@@ -154,6 +154,7 @@ public class MainTime : MonoBehaviour
             News();
             food();
             SeedTimeFlow();
+            CheckOutTime();
             TvMove();
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
@@ -495,9 +496,12 @@ public class MainTime : MonoBehaviour
     {
         now = PlayerPrefs.GetInt("seedlv", 0);
         grow = PlayerPrefs.GetInt("seedgrow", 1);
-        if (now >= 9)
+        if (grow >= 9)
         {
-
+            if (PlayerPrefs.GetInt("infoflower", 0)==0)
+            {
+                PlayerPrefs.SetInt("infoflower", 1);
+            }
         }
         else
         {

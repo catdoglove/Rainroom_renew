@@ -41,6 +41,9 @@ public class ParkTalk : MonoBehaviour
 
     public GameObject GM;
 
+    public GameObject catPop_obj;
+    public Text txt_pop;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -303,6 +306,20 @@ public class ParkTalk : MonoBehaviour
                 catheart.SetActive(true);
                 PlayerPrefs.Save();
                 GM.GetComponent<SoundEvt>().catSound();
+
+                //발도장
+                int ct= PlayerPrefs.GetInt("catlike", 0);
+                ct++;
+                PlayerPrefs.SetInt("catlike", ct);
+                if (PlayerPrefs.GetInt("catlike", 0) >= 14)
+                {//성장완료
+                    if (PlayerPrefs.GetInt("catlove", 0) == 0)
+                    {
+                        catPop_obj.SetActive(true);
+                        txt_pop.text= "고양이와 친해졌다. 정보창에 뭔가 찍혔다.";
+                        PlayerPrefs.SetInt("catlove", 1);
+                    }
+                }
             }
             else
             {
@@ -311,7 +328,6 @@ public class ParkTalk : MonoBehaviour
                 cat_eat_txt.SetActive(false);
                 GM.GetComponent<SoundEvt>().touchSound();
             }
-
         }
 
 
