@@ -1100,7 +1100,7 @@ public class MainShop : MonoBehaviour
             MaxX_obj[3].SetActive(false);
         }
 
-        if (PlayerPrefs.GetInt("seedlv", 0) >= 10)
+        if (PlayerPrefs.GetInt("seedlv", 0) >= 9)
         {
             btn_colorSeed.GetComponent<Button>().interactable = true;
             MaxX_obj[4].SetActive(false);

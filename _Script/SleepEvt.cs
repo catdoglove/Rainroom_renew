@@ -21,8 +21,6 @@ public class SleepEvt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
         str_Code = PlayerPrefs.GetString("code", "");
 
         StartCoroutine("SleepTime");
@@ -179,6 +177,7 @@ public class SleepEvt : MonoBehaviour
             sleepUp_obj.SetActive(true);
             bed_obj.SetActive(true);
             cha_obj.SetActive(false);
+            SleepAni();
         }
     }
     

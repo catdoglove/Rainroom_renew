@@ -495,20 +495,27 @@ public class MainTime : MonoBehaviour
     {
         now = PlayerPrefs.GetInt("seedlv", 0);
         grow = PlayerPrefs.GetInt("seedgrow", 1);
-        //만렙인가? 아니면
-        //12시간이지났는가?
-        if (now > grow)
+        if (now >= 9)
         {
-            //물을 줄수 없음
 
-            popUpTime_obj.SetActive(true);
-            txt_popUpTime.text = "아직 축축하다.";
         }
         else
         {
-            //물을 줄수 있음
-            seedYN_obj.SetActive(true);
-            txt_seedW.text = "물을 " + PlayerPrefs.GetInt("seedlv", 0) * 1000 + " 줄까?";
+            //만렙인가? 아니면
+            //12시간이지났는가?
+            if (now > grow)
+            {
+                //물을 줄수 없음
+
+                popUpTime_obj.SetActive(true);
+                txt_popUpTime.text = "아직 축축하다.";
+            }
+            else
+            {
+                //물을 줄수 있음
+                seedYN_obj.SetActive(true);
+                txt_seedW.text = "물을 " + PlayerPrefs.GetInt("seedlv", 0) * 1000 + " 줄까?";
+            }
         }
 
     }
