@@ -11,7 +11,7 @@ public class MoveOut : MonoBehaviour
     public Text toastTxt;
 
 
-    public Text txt_Popup, txt_timePopup;
+    public Text txt_Popup, txt_timePopup ;
     public GameObject shopPopup_obj,goOutYN_obj, timerPop_obj, timerPopClock_obj;
     // Start is called before the first frame update
     void Start()
@@ -100,7 +100,7 @@ public class MoveOut : MonoBehaviour
         {
             timerPop_obj.SetActive(true);
             timerPopClock_obj.SetActive(true);
-            txt_Popup.text = "돌아온지 얼마 안되었다." + "\n" + "우산이 마르면 가자.";
+            txt_timePopup.text = "돌아온 지 얼마 안 되었다." + "\n" + "우산이 마르면 가자.";
         }
     }
 
