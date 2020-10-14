@@ -400,18 +400,27 @@ public class MainTime : MonoBehaviour
     public void food1()
     {//짜장
         PlayerPrefs.SetInt("heartpaper", 1);
+        heartpaperChoice.SetActive(true);
     }
     public void food2()
     {//볶음밥
         PlayerPrefs.SetInt("heartpaper", 2);
+        heartpaperChoice.SetActive(true);
     }
     public void food3()
     {//짬뽕
         PlayerPrefs.SetInt("heartpaper", 3);
+        heartpaperChoice.SetActive(true);
     }
     public void food4()
     {//우동
         PlayerPrefs.SetInt("heartpaper", 4);
+        heartpaperChoice.SetActive(true);
+    }
+
+    public void CloseBedal()
+    {
+        heartpaperEatBtn.SetActive(false);
     }
     
 
@@ -487,7 +496,17 @@ public class MainTime : MonoBehaviour
 
     public void ActBeadal()
     {
+        
 
+
+        if (heartpaperImg.activeSelf)
+        {
+            heartpaperImg.SetActive(false);
+        }
+        else
+        {
+            heartpaperImg.SetActive(true);
+        }
     }
 
 
@@ -652,11 +671,11 @@ public class MainTime : MonoBehaviour
 
         if (ac < 0)
         {
-            umbrella_obj.GetComponent<SpriteRenderer>().sprite = spr_umbrella[0];
+            umbrella_obj.GetComponent<Image>().sprite = spr_umbrella[0];
         }
         else
         {
-            umbrella_obj.GetComponent<SpriteRenderer>().sprite = spr_umbrella[1];
+            umbrella_obj.GetComponent<Image>().sprite = spr_umbrella[1];
         }
 
         //외출남은시간

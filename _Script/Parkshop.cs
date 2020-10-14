@@ -60,7 +60,7 @@ public class Parkshop : MonoBehaviour
         else
         {
 
-            txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
+            //txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
             helpWin_obj.SetActive(true);
         }
     }
@@ -337,6 +337,8 @@ public class Parkshop : MonoBehaviour
     }
     public void upSecnd()
     {
+        have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
+        have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
         if (secBuy == 0)
         {
             switch (shop_rnd)

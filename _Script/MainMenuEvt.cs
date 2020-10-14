@@ -12,7 +12,7 @@ public class MainMenuEvt : MonoBehaviour
 
     public GameObject GM,GMD;
 
-    public GameObject help_obj;
+    public GameObject help_obj, helpImg_obj;
     public Sprite[] spr_help;
     int help_i;
 
@@ -250,7 +250,7 @@ public class MainMenuEvt : MonoBehaviour
     {
         help_obj.SetActive(true);
         help_i = 0;
-        help_obj.GetComponent<Image>().sprite = spr_help[help_i];
+        helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
     }
 
     public void HelpR()
@@ -262,7 +262,7 @@ public class MainMenuEvt : MonoBehaviour
         else
         {
             help_i++;
-            help_obj.GetComponent<Image>().sprite = spr_help[help_i];
+            helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
         }
     }
 
@@ -275,7 +275,7 @@ public class MainMenuEvt : MonoBehaviour
         else
         {
             help_i--;
-            help_obj.GetComponent<Image>().sprite = spr_help[help_i];
+            helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
         }
     }
 

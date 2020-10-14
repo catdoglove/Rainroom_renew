@@ -69,6 +69,7 @@ public class TurtleChange : MonoBehaviour
             {
                 txt_pop.text = "수량이 부족합니다.";
                 turtlePop_obj.SetActive(true);
+                turtleWinYN_obj.SetActive(false);
             }
         }
         else if (i_change == 2)
@@ -87,10 +88,10 @@ public class TurtleChange : MonoBehaviour
             {
                 txt_pop.text = "수량이 부족합니다.";
                 turtlePop_obj.SetActive(true);
+                turtleWinYN_obj.SetActive(false);
             }
         }
         PlayerPrefs.Save();
-        turtleWinYN_obj.SetActive(false);
     }
 
     public void ChangeN()

@@ -537,6 +537,8 @@ public class ParkTalk : MonoBehaviour
                 ck_dal = 1;
 
                 GM.GetComponent<SoundEvt>().eatGoldSound();
+
+                PlayerPrefs.SetInt("dalgona", PlayerPrefs.GetInt("dalgona", 0) + 1);
             }
             else
             {
