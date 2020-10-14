@@ -322,6 +322,7 @@ public class MainTime : MonoBehaviour
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
+                    heartpaperImg.SetActive(false);
                 }
                 else
                 {
@@ -341,6 +342,7 @@ public class MainTime : MonoBehaviour
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
+                    heartpaperImg.SetActive(false);
                 }
                 else
                 {
@@ -360,6 +362,7 @@ public class MainTime : MonoBehaviour
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
+                    heartpaperImg.SetActive(false);
                 }
                 else
                 {
@@ -379,6 +382,7 @@ public class MainTime : MonoBehaviour
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
+                    heartpaperImg.SetActive(false);
                 }
                 else
                 {
