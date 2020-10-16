@@ -6,6 +6,7 @@ public class STouchEvt : MonoBehaviour
 {
     string str_Code;
     int h, r;
+    public GameObject GM;
 
     public GameObject wep_obj;
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class STouchEvt : MonoBehaviour
 
     private void OnMouseDown()
     {
+        GM.GetComponent<SoundEvt>().trashSound();
         wep_obj.SetActive(false);
         MainTime.wepRnd = 0;
         h = PlayerPrefs.GetInt(str_Code + "h", 0);

@@ -6,6 +6,7 @@ public class TouchEvt : MonoBehaviour
 {
     string str_Code;
     int h, r;
+    public GameObject GM;
 
     public GameObject wep_obj, baques_obj, trash_obj, leaf_obj, park_trash_obj;
     // Start is called before the first frame update
@@ -17,8 +18,6 @@ public class TouchEvt : MonoBehaviour
     
     public void sTouch()
     {
-
-        wep_obj.SetActive(false);
         MainTime.wepRnd = 0;
         h = PlayerPrefs.GetInt(str_Code + "h", 0);
         r = PlayerPrefs.GetInt(str_Code + "r", 0);
@@ -30,6 +29,7 @@ public class TouchEvt : MonoBehaviour
 
     private void OnMouseDown()
     {
+        GM.GetComponent<SoundEvt>().touchSound();
         baques_obj.SetActive(false);
         MainTime.baqueRnd = 0;
         MainTime.baqueShow = 0;

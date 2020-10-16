@@ -315,6 +315,7 @@ public class MainTime : MonoBehaviour
             case 1: //짜
                 if (h >= 50)
                 {
+                    gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 50;
                     like = like + 7;
                     PlayerPrefs.SetInt(str + "h", h);
@@ -328,13 +329,14 @@ public class MainTime : MonoBehaviour
                 {
                     heartNotE.text = "마음이 부족하다.";
                     heartpaperEatBtn.SetActive(false);
-                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                    gm.GetComponent<SoundEvt>().touchSound();
                 }
                 break;
 
             case 2: //볶
                 if (h >= 50)
                 {
+                    gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 50;
                     like = like + 7;
                     PlayerPrefs.SetInt(str + "h", h);
@@ -348,13 +350,14 @@ public class MainTime : MonoBehaviour
                 {
                     heartNotE.text = "마음이 부족하다.";
                     heartpaperEatBtn.SetActive(false);
-                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                    gm.GetComponent<SoundEvt>().touchSound();
                 }
                 break;
 
             case 3: //우
                 if (h >= 60)
                 {
+                    gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 60;
                     like = like + 9;
                     PlayerPrefs.SetInt(str + "h", h);
@@ -368,13 +371,14 @@ public class MainTime : MonoBehaviour
                 {
                     heartNotE.text = "마음이 부족하다.";
                     heartpaperEatBtn.SetActive(false);
-                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                    gm.GetComponent<SoundEvt>().touchSound();
                 }
                 break;
 
             case 4: //짬
                 if (h >= 60)
                 {
+                    gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 60;
                     like = like + 9;
                     PlayerPrefs.SetInt(str + "h", h);
@@ -388,7 +392,7 @@ public class MainTime : MonoBehaviour
                 {
                     heartNotE.text = "마음이 부족하다.";
                     heartpaperEatBtn.SetActive(false);
-                    PlayerPrefs.SetInt("heartpapernomoney", 1);
+                    gm.GetComponent<SoundEvt>().touchSound();
                 }
                 break;
             default:

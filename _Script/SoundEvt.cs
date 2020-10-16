@@ -83,7 +83,7 @@ public class SoundEvt : MonoBehaviour {
     }
 	
 
-	public void touchSound11(){
+	public void XtouchSound(){
 		
 		se_touch.Play ();
 	}
@@ -174,11 +174,7 @@ public class SoundEvt : MonoBehaviour {
 		se_heartpaper = gameObject.GetComponent<AudioSource> ();
 		se_heartpaper.clip=sp_heartpaper;
 		se_heartpaper.loop = false;
-		if (PlayerPrefs.GetInt ("heartpapernomoney", 0) == 1) {
-			PlayerPrefs.SetInt ("heartpapernomoney", 0);
-		} else {
-			se_heartpaper.Play ();
-		}
+        se_heartpaper.Play ();
 	}
 
 	//효과음
