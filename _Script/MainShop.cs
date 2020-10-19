@@ -38,7 +38,7 @@ public class MainShop : MonoBehaviour
     public string[] str_memo;
     public GameObject memoImg, switchImg,boxWin_obj;
 
-    public GameObject[] MaxX_obj;
+    public GameObject[] MaxX_obj, shopBtn_obj;
     //외출
     public GameObject outItem_obj;
     public Text txt_talk, txt_talkTime;
@@ -74,39 +74,42 @@ public class MainShop : MonoBehaviour
 
         if (PlayerPrefs.GetInt("turtlelv", 0) == 1)
         {
+            shopBtn_obj[1].GetComponent<Button>().interactable = false;
             //레벨
             txt_turtle[0].text = "Lv.MAX";
             //이름
             txt_turtle[1].text = "거북이";
             //물
-            txt_turtle[2].text = "0";
+            txt_turtle[2].text = "x";
             //마음
-            txt_turtle[3].text = "0";
+            txt_turtle[3].text = "x";
             turtle_obj.SetActive(true);
         }
         if (PlayerPrefs.GetInt("seedlv", 0) >= 1)
         {
+            shopBtn_obj[2].GetComponent<Button>().interactable = false;
             //레벨
             txt_seed[0].text = "Lv.MAX";
             //이름
             txt_seed[1].text = "씨앗";
             //물
-            txt_seed[2].text = "0";
+            txt_seed[2].text = "x";
             //마음
-            txt_seed[3].text = "0";
+            txt_seed[3].text = "x";
             seed_obj.SetActive(true);
         }
 
         if (PlayerPrefs.GetInt("bedlv", 0) >= 1)
         {
+            shopBtn_obj[7].GetComponent<Button>().interactable = false;
             //레벨
             txt_bed[0].text = "Lv.MAX";
             //이름
             txt_bed[1].text = "이불";
             //물
-            txt_bed[2].text = "0";
+            txt_bed[2].text = "x";
             //마음
-            txt_bed[3].text = "0";
+            txt_bed[3].text = "x";
             bed_obj.SetActive(true);
             //상자
             bedBox_obj.GetComponent<Button>().interactable = true;
@@ -122,59 +125,64 @@ public class MainShop : MonoBehaviour
 
         if (PlayerPrefs.GetInt("cuplv", 0) == 1)
         {
+            shopBtn_obj[0].GetComponent<Button>().interactable = false;
             //레벨
             txt_cup[0].text = "Lv.MAX";
             //이름
             txt_cup[1].text = "물컵";
             //물
-            txt_cup[2].text = "0";
+            txt_cup[2].text = "x";
             //마음
-            txt_cup[3].text = "0";
+            txt_cup[3].text = "x";
             cupBtn_obj.SetActive(true);
         }
         if (PlayerPrefs.GetInt("booklv", 0) >= 9)
         {
+            shopBtn_obj[4].GetComponent<Button>().interactable = false;
             //레벨
             txt_book[0].text = "Lv.MAX";
             //이름
             txt_book[1].text = "책장";
             //물
-            txt_book[2].text = "0";
+            txt_book[2].text = "x";
             //마음
-            txt_book[3].text = "0";
+            txt_book[3].text = "x";
         }
         if (PlayerPrefs.GetInt("walllv", 0) >= 2)
         {
+            shopBtn_obj[5].GetComponent<Button>().interactable = false;
             //레벨
             txt_wall[0].text = "Lv.MAX";
             //이름
             txt_wall[1].text = "깨끗한벽지";
             //물
-            txt_wall[2].text = "0";
+            txt_wall[2].text = "x";
             //마음
-            txt_wall[3].text = "0";
+            txt_wall[3].text = "x";
         }
         if (PlayerPrefs.GetInt("lightlv", 0) >= 2)
         {
+            shopBtn_obj[6].GetComponent<Button>().interactable = false;
             //레벨
             txt_light[0].text = "Lv.MAX";
             //이름
             txt_light[1].text = "불켜진 전구";
             //물
-            txt_light[2].text = "0";
+            txt_light[2].text = "x";
             //마음
-            txt_light[3].text = "0";
+            txt_light[3].text = "x";
         }
         if (PlayerPrefs.GetInt("windowlv", 0) >= 8)
         {
+            shopBtn_obj[3].GetComponent<Button>().interactable = false;
             //레벨
             txt_window[0].text = "Lv.MAX";
             //이름
             txt_window[1].text = "예쁜커튼";
             //물
-            txt_window[2].text = "0";
+            txt_window[2].text = "x";
             //마음
-            txt_window[3].text = "0";
+            txt_window[3].text = "x";
         }
 
         level = PlayerPrefs.GetInt("windowlv", 0);
@@ -429,7 +437,7 @@ public class MainShop : MonoBehaviour
     {
         //물마음-창문
         window_name[0] = "깨진창문";
-        cost_window[0]=0;
+        cost_window[0] = 0;
         cost_window[1] = 15;
 
         window_name[1] = "보수된창문";
@@ -666,13 +674,14 @@ public class MainShop : MonoBehaviour
 
                     if (level >= 2)
                     {
+                        shopBtn_obj[6].GetComponent<Button>().interactable = false;
                         txt_light[0].text = "Lv.MAX";
                         //이름
                         txt_light[1].text = light_name[level];
                         //물
-                        txt_light[2].text = "0";
+                        txt_light[2].text = "x";
                         //마음
-                        txt_light[3].text = "0";
+                        txt_light[3].text = "x";
                     }
 
                 }
@@ -712,14 +721,16 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
                     txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
+
+                    shopBtn_obj[1].GetComponent<Button>().interactable = false;
                     //레벨
                     txt_turtle[0].text = "Lv.MAX";
                     //이름
                     txt_turtle[1].text = "거북이";
                     //물
-                    txt_turtle[2].text = "0";
+                    txt_turtle[2].text = "x";
                     //마음
-                    txt_turtle[3].text = "0";
+                    txt_turtle[3].text = "x";
 
                     turtle_obj.SetActive(true);
                     PlayerPrefs.Save();
@@ -760,14 +771,15 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
                     txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
+                    shopBtn_obj[2].GetComponent<Button>().interactable = false;
                     //레벨
                     txt_seed[0].text = "Lv.MAX";
                     //이름
                     txt_seed[1].text = "씨앗";
                     //물
-                    txt_seed[2].text = "0";
+                    txt_seed[2].text = "x";
                     //마음
-                    txt_seed[3].text = "0";
+                    txt_seed[3].text = "x";
                     seed_obj.SetActive(true);
                     PlayerPrefs.Save();
                 }
@@ -806,14 +818,15 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
                     txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
+                    shopBtn_obj[7].GetComponent<Button>().interactable = false;
                     //레벨
                     txt_bed[0].text = "Lv.MAX";
                     //이름
                     txt_bed[1].text = "이불";
                     //물
-                    txt_bed[2].text = "0";
+                    txt_bed[2].text = "x";
                     //마음
-                    txt_bed[3].text = "0";
+                    txt_bed[3].text = "x";
                     bed_obj.SetActive(true);
                     PlayerPrefs.Save();
                 }
@@ -853,14 +866,15 @@ public class MainShop : MonoBehaviour
                     PlayerPrefs.SetInt(str_Code + "h", have_h);
                     txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
                     txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
+                    shopBtn_obj[0].GetComponent<Button>().interactable = false;
                     //레벨
                     txt_cup[0].text = "Lv.MAX";
                     //이름
                     txt_cup[1].text = "물컵";
                     //물
-                    txt_cup[2].text = "0";
+                    txt_cup[2].text = "x";
                     //마음
-                    txt_cup[3].text = "0";
+                    txt_cup[3].text = "x";
                     cupBtn_obj.SetActive(true);
                     PlayerPrefs.Save();
                 }
@@ -901,13 +915,14 @@ public class MainShop : MonoBehaviour
 
         if (level >= 8)
         {
+            shopBtn_obj[3].GetComponent<Button>().interactable = false;
             txt_window[0].text = "Lv.MAX";
             //이름
             txt_window[1].text = "예쁜커튼";
             //물
-            txt_window[2].text = "0";
+            txt_window[2].text = "x";
             //마음
-            txt_window[3].text = "0";
+            txt_window[3].text = "x";
 
         }
     }
@@ -934,23 +949,25 @@ public class MainShop : MonoBehaviour
         txt_wall[3].text = "" + cost_h;
         if (level >= 2)
         {
+            shopBtn_obj[5].GetComponent<Button>().interactable = false;
             txt_wall[0].text = "Lv.MAX";
             //이름
             txt_wall[1].text = "깨끗한벽지";
             //물
-            txt_wall[2].text = "0";
+            txt_wall[2].text = "x";
             //마음
-            txt_wall[3].text = "0";
+            txt_wall[3].text = "x";
         }
     }
     void BookRe()
     {
         if (level >= 9)
         {
+            shopBtn_obj[4].GetComponent<Button>().interactable = false;
             txt_book[0].text = "Lv.MAX";
             txt_book[1].text = book_name[level];
-            txt_book[2].text = "0";
-            txt_book[3].text = "0";
+            txt_book[2].text = "x";
+            txt_book[3].text = "x";
             //btn_memoBook.SetActive(true);
             //btn_colorBook.SetActive(true);
         }
@@ -999,6 +1016,7 @@ public class MainShop : MonoBehaviour
         txt_light[3].text = "" + cost_h;
         if (level >= 2)
         {
+            shopBtn_obj[6].GetComponent<Button>().interactable = false;
             txt_light[0].text = "Lv.MAX";
             //btn_memoLight.SetActive(true);
             //btn_colorLight.SetActive(true);
@@ -1036,14 +1054,15 @@ public class MainShop : MonoBehaviour
 
         if (ll >= 2)
         {
+            shopBtn_obj[6].GetComponent<Button>().interactable = false;
             //레벨
             txt_light[0].text = "Lv.MAX";
             //이름
             txt_light[1].text = "";
             //물
-            txt_light[2].text = "0";
+            txt_light[2].text = "x";
             //마음
-            txt_light[3].text = "0";
+            txt_light[3].text = "x";
         }
         else
         {
@@ -1078,14 +1097,15 @@ public class MainShop : MonoBehaviour
         if (ll >= 8)
         {
 
+            shopBtn_obj[3].GetComponent<Button>().interactable = false;
             //레벨
             txt_window[0].text = "Lv.MAX";
             //이름
             txt_window[1].text = "예쁜커튼";
             //물
-            txt_window[2].text = "0";
+            txt_window[2].text = "x";
             //마음
-            txt_window[3].text = "0";
+            txt_window[3].text = "x";
         }
         else
         {

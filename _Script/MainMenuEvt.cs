@@ -298,6 +298,8 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
+            helpR_obj.SetActive(true);
+            helpO_obj.SetActive(false);
             help_i--;
             helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
         }

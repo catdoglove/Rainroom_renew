@@ -19,6 +19,7 @@ public class CityShop : MonoBehaviour
 
     public Text txt_rain, txt_heart;
     public Text[] txt_today;
+    public GameObject[] todayBtn_obj, shopBtn_obj;
 
     // Start is called before the first frame update
     void Start()
@@ -146,6 +147,7 @@ public class CityShop : MonoBehaviour
         }
         else
         {
+            level = PlayerPrefs.GetInt("desklv", 0);
             if (level < 3)
             {
                 shopYN_obj.SetActive(true);
@@ -255,12 +257,13 @@ public class CityShop : MonoBehaviour
                 //빗물
                 txt_bed[1].text = "" + cost_bed[sum + 3];
                 //이름
-                txt_bed[2].text = bed_name[level+1];
+                txt_bed[2].text = bed_name[level];
                 level = level + 2;
                 //레벨
                 txt_bed[3].text = "Lv." + level;
                 if (level >= 4)
                 {
+                    shopBtn_obj[0].GetComponent<Button>().interactable = false;
                     txt_bed[3].text = "Lv.Max";
                 }
                 PlayerPrefs.SetInt("bedlv", level);
@@ -303,6 +306,7 @@ public class CityShop : MonoBehaviour
                 if (level >= 3)
                 {
                     txt_desk[3].text = "Lv.Max";
+                    shopBtn_obj[1].GetComponent<Button>().interactable = false;
                 }
                 PlayerPrefs.SetInt("desklv", level);
                 SetText();
@@ -338,11 +342,12 @@ public class CityShop : MonoBehaviour
                 //이름
                 txt_light[2].text = light_name[level+1];
 
-                level = level + 3;
                 //레벨
                 txt_light[3].text = "Lv." + level;
+                level = level + 2;
                 if (level >= 5)
                 {
+                    shopBtn_obj[2].GetComponent<Button>().interactable = false;
                     txt_light[3].text = "Lv.Max";
                 }
                 PlayerPrefs.SetInt("lightlv", level);
@@ -402,11 +407,12 @@ public class CityShop : MonoBehaviour
             //이름
             txt_bed[2].text = bed_name[level];
         }
-        level = level + 1;
         //레벨
         txt_bed[3].text = "Lv." + level;
+        level = level + 1;
         if (level >= 4)
         {
+            shopBtn_obj[0].GetComponent<Button>().interactable = false;
             txt_bed[3].text = "Lv.Max";
         }
 
@@ -422,6 +428,7 @@ public class CityShop : MonoBehaviour
         txt_desk[3].text = "Lv." + level;
         if (level >= 3)
         {
+            shopBtn_obj[1].GetComponent<Button>().interactable = false;
             txt_desk[3].text = "Lv.Max";
         }
 
@@ -449,12 +456,20 @@ public class CityShop : MonoBehaviour
             //레벨
             txt_light[3].text = "Lv." + level;
         }
-
-        level = level + 2;
+        
         //레벨
         txt_light[3].text = "Lv." + level;
+        level = level + 2;
         if (level >= 5)
         {
+            shopBtn_obj[2].GetComponent<Button>().interactable = false;
+            //마음
+            txt_light[0].text = "x";
+            //빗물
+            txt_light[1].text = "x";
+            //이름
+            txt_light[2].text = "고급전등";
+
             txt_light[3].text = "Lv.Max";
         }
     }
@@ -527,6 +542,8 @@ public class CityShop : MonoBehaviour
                 }
                 else
                 {
+
+                    todayBtn_obj[i].GetComponent<Button>().interactable = false;
                     int ci = i * 4;
                     //마음
                     txt_today[ci].text = "x";
@@ -554,6 +571,7 @@ public class CityShop : MonoBehaviour
                 PlayerPrefs.SetInt("outgoods" + num_i, 1);
                 int i = 0;
                 i = num_i * 4;
+                todayBtn_obj[num_i].GetComponent<Button>().interactable = false;
                 //마음
                 txt_today[i].text = "x";
                 //빗물

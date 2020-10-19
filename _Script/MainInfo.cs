@@ -21,6 +21,7 @@ public class MainInfo : MonoBehaviour
     void Start()
     {
         str_Code = PlayerPrefs.GetString("code", "");
+        SetIofo();
     }
 
 

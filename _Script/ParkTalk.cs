@@ -325,7 +325,7 @@ public class ParkTalk : MonoBehaviour
                     if (PlayerPrefs.GetInt("catlove", 0) == 0)
                     {
                         catPop_obj.SetActive(true);
-                        txt_pop.text= "고양이와 친해졌다. 정보창에 뭔가 찍혔다.";
+                        txt_pop.text= "고양이와 친해졌다."+"\n"+"정보창에 뭔가 찍혔다.";
                         PlayerPrefs.SetInt("catlove", 1);
                     }
                 }

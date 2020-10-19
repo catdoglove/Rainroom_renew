@@ -116,7 +116,6 @@ public class SleepEvt : MonoBehaviour
     public void OpenSleepYNY()
     {
         sleepYN_obj.SetActive(true);
-        bedWin_obj.SetActive(false);
     }
     public void OpenSleepYNN()
     {

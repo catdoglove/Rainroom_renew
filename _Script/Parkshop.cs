@@ -73,7 +73,6 @@ public class Parkshop : MonoBehaviour
             case 0: //시계액자
                 shop_fst.GetComponent<Image>().sprite = spr_shops[0];
                 shop_sec.GetComponent<Image>().sprite = spr_shops[2];
-
                 item_num = PlayerPrefs.GetInt("clock", 0);
                 if (item_num == 5)
                 {
@@ -81,6 +80,7 @@ public class Parkshop : MonoBehaviour
                     txt_fst[1].text = "품절";
                     txt_fst[2].text = "0";
                     txt_fst[3].text = "0";
+                    shop_fst.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -97,6 +97,7 @@ public class Parkshop : MonoBehaviour
                     txt_sec[1].text = "품절";
                     txt_sec[2].text = "0";
                     txt_sec[3].text = "0";
+                    shop_sec.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -116,6 +117,7 @@ public class Parkshop : MonoBehaviour
                     txt_fst[1].text = "품절";
                     txt_fst[2].text = "0";
                     txt_fst[3].text = "0";
+                    shop_fst.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -131,6 +133,7 @@ public class Parkshop : MonoBehaviour
                     txt_sec[1].text = "품절";
                     txt_sec[2].text = "0";
                     txt_sec[3].text = "0";
+                    shop_sec.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -150,6 +153,7 @@ public class Parkshop : MonoBehaviour
                     txt_fst[1].text = "품절";
                     txt_fst[2].text = "0";
                     txt_fst[3].text = "0";
+                    shop_fst.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -165,6 +169,7 @@ public class Parkshop : MonoBehaviour
                     txt_sec[1].text = "품절";
                     txt_sec[2].text = "0";
                     txt_sec[3].text = "0";
+                    shop_sec.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -185,6 +190,7 @@ public class Parkshop : MonoBehaviour
                     txt_fst[1].text = "품절";
                     txt_fst[2].text = "0";
                     txt_fst[3].text = "0";
+                    shop_fst.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -200,6 +206,7 @@ public class Parkshop : MonoBehaviour
                     txt_sec[1].text = "품절";
                     txt_sec[2].text = "0";
                     txt_sec[3].text = "0";
+                    shop_sec.GetComponent<Button>().interactable = false;
                 }
                 else
                 {
@@ -241,6 +248,7 @@ public class Parkshop : MonoBehaviour
                         txt_fst[1].text = "품절";
                         txt_fst[2].text = "X";
                         txt_fst[3].text = "X";
+                        shop_fst.GetComponent<Button>().interactable = false;
                         fstBuy = 1;
                     }
                     else
@@ -265,6 +273,7 @@ public class Parkshop : MonoBehaviour
                         txt_fst[1].text = "품절";
                         txt_fst[2].text = "X";
                         txt_fst[3].text = "X";
+                        shop_fst.GetComponent<Button>().interactable = false;
                         fstBuy = 1;
                     }
                     else
@@ -289,6 +298,7 @@ public class Parkshop : MonoBehaviour
                         txt_fst[1].text = "품절";
                         txt_fst[2].text = "X";
                         txt_fst[3].text = "X";
+                        shop_fst.GetComponent<Button>().interactable = false;
                         fstBuy = 1;
                         if (item_num == 4)
                         {
@@ -317,6 +327,7 @@ public class Parkshop : MonoBehaviour
                         txt_fst[1].text = "품절";
                         txt_fst[2].text = "X";
                         txt_fst[3].text = "X";
+                        shop_fst.GetComponent<Button>().interactable = false;
                         fstBuy = 1;
                         if (item_num == 4)
                         {
@@ -360,6 +371,7 @@ public class Parkshop : MonoBehaviour
                         txt_sec[1].text = "품절";
                         txt_sec[2].text = "X";
                         txt_sec[3].text = "X";
+                        shop_sec.GetComponent<Button>().interactable = false;
                         secBuy = 1;
                     }
                     else
@@ -384,6 +396,7 @@ public class Parkshop : MonoBehaviour
                         txt_sec[1].text = "품절";
                         txt_sec[2].text = "X";
                         txt_sec[3].text = "X";
+                        shop_sec.GetComponent<Button>().interactable = false;
                         secBuy = 1;
                     }
                     else
@@ -408,6 +421,7 @@ public class Parkshop : MonoBehaviour
                         txt_sec[1].text = "품절";
                         txt_sec[2].text = "X";
                         txt_sec[3].text = "X";
+                        shop_sec.GetComponent<Button>().interactable = false;
                         secBuy = 1;
                     }
                     else
@@ -433,6 +447,7 @@ public class Parkshop : MonoBehaviour
                         txt_sec[1].text = "품절";
                         txt_sec[2].text = "X";
                         txt_sec[3].text = "X";
+                        shop_sec.GetComponent<Button>().interactable = false;
                         secBuy = 1;
                     }
                     else
