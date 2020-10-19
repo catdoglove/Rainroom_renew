@@ -213,31 +213,20 @@ public class RoomTalk : MonoBehaviour
 
     void lovetalk()
     { //호감도에 또는 사물에 따른 대화
-        int lol;
+        loveLv = PlayerPrefs.GetInt("likelv", 0);
+        
         if (loveLv >= 5)
         {
-            lol = 5;
+            loveLv = 5;
         }
-        else
-        {
-            lol = loveLv;
-        }
+
         lineReload();
         
-        text_str = "" + data_talk[randArr[nowArr - 1]]["대화" + 1]; //문장넣기 0~9
+        text_str = "" + data_talk[randArr[nowArr - 1]]["대화" + loveLv]; //문장넣기 0~9
     }
 
     void lineReload() // 대화 차례대로 보여주기 및 대화줄 초기화
     {
-        int lol;
-        if (loveLv >= 5)
-        {
-            lol = 5;
-        }
-        else
-        {
-            lol = loveLv;
-        }
         if (nowArr == 0) // 난수 돌리기
         {
             GetRandomInt(allArr[0]); //테스트 0
