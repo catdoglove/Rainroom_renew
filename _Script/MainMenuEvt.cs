@@ -12,8 +12,8 @@ public class MainMenuEvt : MonoBehaviour
 
     public GameObject GM,GMD;
 
-    public GameObject help_obj, helpImg_obj;
-    public Sprite[] spr_help;
+    public GameObject help_obj, helpImg_obj, helpOut_obj, helpR_obj, helpO_obj;
+    public Sprite[] spr_help, spr_helpOut;
     int help_i;
 
     //대화속도
@@ -248,19 +248,43 @@ public class MainMenuEvt : MonoBehaviour
     //도움말
     public void OpenHelp()
     {
-        help_obj.SetActive(true);
-        help_i = 0;
-        helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
+        if (PlayerPrefs.GetInt("scene", 0)==2)
+        {
+            helpOut_obj.SetActive(true);
+            helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[0];
+        }
+        else if (PlayerPrefs.GetInt("scene", 2) == 3)
+        {
+            helpOut_obj.SetActive(true);
+            helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[1];
+        }
+        else
+        {
+            help_obj.SetActive(true);
+            help_i = 0;
+            helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
+        }
     }
 
     public void HelpR()
     {
         if (help_i == 3)
         {
-
+            help_obj.SetActive(false);
+            helpR_obj.SetActive(true);
+            helpO_obj.SetActive(false);
+        }
+        else if (help_i == 2)
+        {
+            help_i++;
+            helpR_obj.SetActive(false);
+            helpO_obj.SetActive(true);
+            helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
         }
         else
         {
+            helpR_obj.SetActive(true);
+            helpO_obj.SetActive(false);
             help_i++;
             helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
         }
@@ -279,6 +303,10 @@ public class MainMenuEvt : MonoBehaviour
         }
     }
 
+    public void CloseOutHelp()
+    {
+        helpOut_obj.SetActive(false);
+    }
 
     public void talkSpeed()
     {

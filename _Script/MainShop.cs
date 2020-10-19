@@ -50,6 +50,7 @@ public class MainShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //PlayerPrefs.DeleteAll();
         //PlayerPrefs.DeleteKey("seedlv");
         //PlayerPrefs.DeleteKey("seedgrow");
@@ -666,6 +667,12 @@ public class MainShop : MonoBehaviour
                     if (level >= 2)
                     {
                         txt_light[0].text = "Lv.MAX";
+                        //이름
+                        txt_light[1].text = light_name[level];
+                        //물
+                        txt_light[2].text = "0";
+                        //마음
+                        txt_light[3].text = "0";
                     }
 
                 }
@@ -880,6 +887,9 @@ public class MainShop : MonoBehaviour
         cost_h = cost_window[sum + 1];
         calc();
         level++;
+        sum = level * 2;
+        cost_r = cost_window[sum];
+        cost_h = cost_window[sum + 1];
         //레벨
         txt_window[0].text = "Lv." + level;
         //이름
@@ -911,6 +921,9 @@ public class MainShop : MonoBehaviour
         cost_h = cost_wall[sum + 1];
         calc();
         level++;
+        sum = level * 2;
+        cost_r = cost_wall[sum];
+        cost_h = cost_wall[sum + 1];
         //레벨
         txt_wall[0].text = "Lv." + level;
         //이름
@@ -950,6 +963,9 @@ public class MainShop : MonoBehaviour
             cost_h = cost_book[sum + 1];
             calc();
             level++;
+            sum = level * 2;
+            cost_r = cost_book[sum];
+            cost_h = cost_book[sum + 1];
             //레벨
             txt_book[0].text = "Lv." + level;
             //이름
@@ -970,6 +986,9 @@ public class MainShop : MonoBehaviour
         cost_h = cost_light[sum + 1];
         calc();
         level++;
+        sum = level * 2;
+        cost_r = cost_light[sum];
+        cost_h = cost_light[sum + 1];
         //레벨
         txt_light[0].text = "Lv." + level;
         //이름

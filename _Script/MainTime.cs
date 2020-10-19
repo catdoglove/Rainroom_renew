@@ -47,7 +47,7 @@ public class MainTime : MonoBehaviour
 
 
     //전단지
-    public GameObject heartpaperImg, btn_heartHelp;
+    public GameObject heartpaperImg, btn_heartHelp,hHelp_obj, hPop_obj;
     public GameObject heartpaperEatBtn;
     public GameObject heartpaperChoice;
     public Text heartNotE;
@@ -89,6 +89,8 @@ public class MainTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        PlayerPrefs.SetInt("scene", 0);
 
         //구독전단버튼시간태그로불러오기
 
@@ -303,7 +305,7 @@ public class MainTime : MonoBehaviour
     public void heartpaperY()
     {//먹는다
 
-        
+        hPop_obj.SetActive(false);
         h = PlayerPrefs.GetInt(str + "h", 0);
         r = PlayerPrefs.GetInt(str + "r", 0);
         like =PlayerPrefs.GetInt("likelv", 0);
@@ -319,7 +321,7 @@ public class MainTime : MonoBehaviour
                     h = h - 50;
                     like = like + 7;
                     PlayerPrefs.SetInt(str + "h", h);
-                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
@@ -327,7 +329,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
-                    heartNotE.text = "마음이 부족하다.";
+                    hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
                 }
@@ -340,7 +342,7 @@ public class MainTime : MonoBehaviour
                     h = h - 50;
                     like = like + 7;
                     PlayerPrefs.SetInt(str + "h", h);
-                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
@@ -348,7 +350,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
-                    heartNotE.text = "마음이 부족하다.";
+                    hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
                 }
@@ -361,7 +363,7 @@ public class MainTime : MonoBehaviour
                     h = h - 60;
                     like = like + 9;
                     PlayerPrefs.SetInt(str + "h", h);
-                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
@@ -369,7 +371,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
-                    heartNotE.text = "마음이 부족하다.";
+                    hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
                 }
@@ -382,7 +384,7 @@ public class MainTime : MonoBehaviour
                     h = h - 60;
                     like = like + 9;
                     PlayerPrefs.SetInt(str + "h", h);
-                    PlayerPrefs.SetInt("likelv", like);
+                    PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
@@ -390,7 +392,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
-                    heartNotE.text = "마음이 부족하다.";
+                    hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
                 }
@@ -403,6 +405,7 @@ public class MainTime : MonoBehaviour
     public void heartpaperN()
     {//안
         heartpaperChoice.SetActive(false);
+        hPop_obj.SetActive(false);
     }
 
     public void food1()
@@ -431,6 +434,17 @@ public class MainTime : MonoBehaviour
         heartpaperEatBtn.SetActive(false);
     }
     
+    public void HeartpaperHelp()
+    {
+        if (hHelp_obj.activeSelf)
+        {
+            hHelp_obj.SetActive(false);
+        }
+        else
+        {
+            hHelp_obj.SetActive(true);
+        }
+    }
 
     void cup()
     {

@@ -188,22 +188,31 @@ public class CityTalk : MonoBehaviour
         //소리
         //Audio_obj.GetComponent<SoundEvt>().talkSound();
 
-        lineReload(0);
+        if (PlayerPrefs.GetInt("talk", 5) <= 0)
+        {
 
-        text_str = "" + data_talk[randArr[nowArr - 1]]["park"];
-
-        testText_cut = text_str.Split('/'); //끊기
-        cleantalk();
-        HeartPlus();
-        if (testText_cut[0] == "q")
-        { //질문이 있는경우
-            StartCoroutine("questionTalkRun");
         }
         else
         {
-            StartCoroutine("talkRun");
+            int a = PlayerPrefs.GetInt("likepoint", 0);
+            a = a + 10;
+            PlayerPrefs.SetInt("likepoint", a);
+            lineReload(0);
+
+            text_str = "" + data_talk[randArr[nowArr - 1]]["park"];
+
+            testText_cut = text_str.Split('/'); //끊기
+            cleantalk();
+            HeartPlus();
+            if (testText_cut[0] == "q")
+            { //질문이 있는경우
+                StartCoroutine("questionTalkRun");
+            }
+            else
+            {
+                StartCoroutine("talkRun");
+            }
         }
-        //  }
     }
 
 

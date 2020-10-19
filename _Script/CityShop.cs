@@ -438,6 +438,16 @@ public class CityShop : MonoBehaviour
             txt_light[1].text = "x";
             //이름
             txt_light[2].text = "전등";
+        }else if (level < 3)
+        {
+            //마음
+            txt_light[0].text = "" + cost_light[sum];
+            //빗물
+            txt_light[1].text = "" + cost_light[sum + 1];
+            //이름
+            txt_light[2].text = light_name[level];
+            //레벨
+            txt_light[3].text = "Lv." + level;
         }
 
         level = level + 2;
