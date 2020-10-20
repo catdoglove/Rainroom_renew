@@ -88,22 +88,49 @@ public class SoundEvt : MonoBehaviour {
 		se_touch.Play ();
 	}
 
-	public void touchSound(){
-		se_touch1 = gameObject.GetComponent<AudioSource> ();
+	public void touchSound()
+    {
+        if (PlayerPrefs.GetInt("soundmute", 0) == 1)
+        {
+            se_touch.mute = true;
+        }
+        else
+        {
+            se_touch.mute = false;
+        }
+        se_touch1 = gameObject.GetComponent<AudioSource> ();
 		se_touch1.clip=sp_touch1;
 		se_touch1.loop = false;
 		se_touch1.Play ();
 	}
 
-	public void bookSound(){
-		se_book = gameObject.GetComponent<AudioSource> ();
+	public void bookSound()
+    {
+        if (PlayerPrefs.GetInt("soundmute", 0) == 1)
+        {
+            se_book.mute = true;
+        }
+        else
+        {
+            se_book.mute = false;
+        }
+        se_book = gameObject.GetComponent<AudioSource> ();
 		se_book.clip=sp_book;
 		se_book.loop = false;
 		se_book.Play ();
 	}
 
-	public void windowSound(){
-		se_window = gameObject.GetComponent<AudioSource> ();
+	public void windowSound()
+    {
+        if (PlayerPrefs.GetInt("soundmute", 0) == 1)
+        {
+            se_window.mute = true;
+        }
+        else
+        {
+            se_window.mute = false;
+        }
+        se_window = gameObject.GetComponent<AudioSource> ();
 		se_window.clip=sp_window;
 		se_window.loop = false;
 		se_window.Play ();

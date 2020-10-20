@@ -258,9 +258,9 @@ public class CityShop : MonoBehaviour
                 txt_bed[1].text = "" + cost_bed[sum + 3];
                 //이름
                 txt_bed[2].text = bed_name[level];
-                level = level + 2;
                 //레벨
                 txt_bed[3].text = "Lv." + level;
+                level = level + 2;
                 if (level >= 4)
                 {
                     shopBtn_obj[0].GetComponent<Button>().interactable = false;
@@ -344,7 +344,7 @@ public class CityShop : MonoBehaviour
 
                 //레벨
                 txt_light[3].text = "Lv." + level;
-                level = level + 2;
+                level = level + 3;
                 if (level >= 5)
                 {
                     shopBtn_obj[2].GetComponent<Button>().interactable = false;

@@ -127,6 +127,7 @@ public class SleepEvt : MonoBehaviour
     {
         PlayerPrefs.SetString("sleepLastTime", System.DateTime.Now.ToString());
         sleepYN_obj.SetActive(false);
+        bedWin_obj.SetActive(false);
         sleepBack_obj.SetActive(true);
         PlayerPrefs.SetInt("sleeping", 1);
         PlayerPrefs.SetInt("sleepdream", 1);

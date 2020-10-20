@@ -8,7 +8,7 @@ public class Parkshop : MonoBehaviour
 
 
     //무인상점
-    public GameObject shop_fst, shop_sec;
+    public GameObject shop_fst, shop_sec, shopYN_obj;
     public Text[] txt_fst, txt_sec;
     public Sprite[] spr_shops;
     public int[] cost_clock, cost_draw, cost_frame;
@@ -20,12 +20,13 @@ public class Parkshop : MonoBehaviour
     public Text txt_rain, txt_heart, txt_Popup;
     public GameObject popUp_obj,shopWin_obj,helpWin_obj;
 
-    int cost_r, cost_h, level, sum, have_r, have_h;
+    int cost_r, cost_h, level, sum, have_r, have_h,firstS_i;
 
     string str_Code;
 
 
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class Parkshop : MonoBehaviour
 
         shop();
     }
+
 
     public void ActShop()
     {
@@ -59,7 +61,6 @@ public class Parkshop : MonoBehaviour
         }
         else
         {
-
             //txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
             helpWin_obj.SetActive(true);
         }
@@ -253,6 +254,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -278,6 +280,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -306,6 +309,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -335,6 +339,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -376,6 +381,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -401,6 +407,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -426,6 +433,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -452,6 +460,7 @@ public class Parkshop : MonoBehaviour
                     }
                     else
                     {
+                        txt_Popup.text = "구입하기에는" + "\n" + "가지고 있는 것이 부족하다.";
                         popUp_obj.SetActive(true);
                     }
                     break;
@@ -461,6 +470,34 @@ public class Parkshop : MonoBehaviour
         txt_rain.text = "" + PlayerPrefs.GetInt(str_Code + "r", 0);
         txt_heart.text = "" + PlayerPrefs.GetInt(str_Code + "h", 0);
         PlayerPrefs.Save();
+    }
+
+    public void FirstYN()
+    {
+        shopYN_obj.SetActive(true);
+        firstS_i = 1;
+    }
+    public void SecondYN()
+    {
+        shopYN_obj.SetActive(true);
+        firstS_i = 2;
+    }
+
+    public void ShopY()
+    {
+        if (firstS_i == 1)
+        {
+            upFirst();
+        }
+        else if(firstS_i==2)
+        {
+            upSecnd();
+        }
+        shopYN_obj.SetActive(false);
+    }
+    public void ShopN()
+    {
+        shopYN_obj.SetActive(false);
     }
 
 

@@ -304,11 +304,10 @@ public class MainTime : MonoBehaviour
     
     public void heartpaperY()
     {//먹는다
-
-        hPop_obj.SetActive(false);
+        
         h = PlayerPrefs.GetInt(str + "h", 0);
         r = PlayerPrefs.GetInt(str + "r", 0);
-        like =PlayerPrefs.GetInt("likelv", 0);
+        like =PlayerPrefs.GetInt("likepoint", 0);
 
         heartpaperEatBtn.SetActive(true);
         heartpaperEatBtn.GetComponent<Image>().sprite = spr_paperFood[PlayerPrefs.GetInt("heartpaper", 0)];
@@ -329,6 +328,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
+                    heartNotE.text = "마음이 부족하다.";
                     hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
@@ -350,6 +350,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
+                    heartNotE.text = "마음이 부족하다.";
                     hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
@@ -371,6 +372,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
+                    heartNotE.text = "마음이 부족하다.";
                     hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
@@ -392,6 +394,7 @@ public class MainTime : MonoBehaviour
                 }
                 else
                 {
+                    heartNotE.text = "마음이 부족하다.";
                     hPop_obj.SetActive(true);
                     heartpaperEatBtn.SetActive(false);
                     gm.GetComponent<SoundEvt>().touchSound();
@@ -405,7 +408,6 @@ public class MainTime : MonoBehaviour
     public void heartpaperN()
     {//안
         heartpaperChoice.SetActive(false);
-        hPop_obj.SetActive(false);
     }
 
     public void food1()

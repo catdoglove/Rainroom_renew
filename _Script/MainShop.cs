@@ -261,7 +261,7 @@ public class MainShop : MonoBehaviour
         }
         
         //잉어
-        if (PlayerPrefs.GetInt("dalgona", 0) >= 14)
+        if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
         {
             fish_obj.SetActive(true);
         }
@@ -603,13 +603,13 @@ public class MainShop : MonoBehaviour
                 else
                 {
                     shopPopup_obj.SetActive(true);
-                    txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+                    txt_Popup.text = "구입하기에는"+"\n"+"가지고 있는 것이 부족하다.";
                 }
             }
             else
             {
                 shopPopup_obj.SetActive(true);
-                txt_Popup.text = "구입하기에는\n가지고 있는 것이 부족하다.";
+                txt_Popup.text = "구입하기에는"+"\n"+"가지고 있는 것이 부족하다.";
             }
         }
     }

@@ -547,7 +547,14 @@ public class ParkTalk : MonoBehaviour
 
                 GM.GetComponent<SoundEvt>().eatGoldSound();
 
+
                 PlayerPrefs.SetInt("dalgona", PlayerPrefs.GetInt("dalgona", 0) + 1);
+                //잉어
+                if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
+                {
+                    catPop_obj.SetActive(true);
+                    txt_pop.text = "달달한 냄새가 났다." + "\n" + "방안을 확인해보자.";
+                }
             }
             else
             {

@@ -2336,7 +2336,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -4080,29 +4080,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 216770033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 300375159}
-        m_MethodName: GrowSeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 300375162}
-        m_MethodName: touchSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &220321654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4651,7 +4629,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -5337,7 +5315,7 @@ Transform:
   m_LocalScale: {x: 60, y: 60, z: 0}
   m_Children: []
   m_Father: {fileID: 1947510294}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &287166149
 Animator:
@@ -5396,7 +5374,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: aa8d289a10659bd46b929ac26e0c06b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5695,10 +5673,10 @@ MonoBehaviour:
   heartpaperImg: {fileID: 266109814}
   btn_heartHelp: {fileID: 1847860330}
   hHelp_obj: {fileID: 510123710}
-  hPop_obj: {fileID: 970581478}
+  hPop_obj: {fileID: 695030164}
   heartpaperEatBtn: {fileID: 639521275}
   heartpaperChoice: {fileID: 1236618264}
-  heartNotE: {fileID: 970581480}
+  heartNotE: {fileID: 439931070}
   gobok: {fileID: 1159093358}
   btn_gobok: {fileID: 0}
   img_bless: {fileID: 1522026152}
@@ -6502,6 +6480,7 @@ MonoBehaviour:
   txt_pop: {fileID: 439931070}
   toastTxt: "\uD55C\uAE00 \uCD9C\uB825 \uB418\uB2C8??"
   seedRain_obj: {fileID: 696542220}
+  seedTxt_obj: {fileID: 1296599464}
 --- !u!114 &300375170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11039,7 +11018,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -12490,7 +12469,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -13523,7 +13502,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: bookSound
         m_Mode: 1
         m_Arguments:
@@ -13682,7 +13661,7 @@ RectTransform:
   - {fileID: 294148068}
   - {fileID: 687337104}
   m_Father: {fileID: 1947510294}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14612,7 +14591,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -15593,7 +15572,7 @@ RectTransform:
   - {fileID: 439931069}
   - {fileID: 465010602}
   m_Father: {fileID: 1580066024}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15662,18 +15641,18 @@ RectTransform:
   m_GameObject: {fileID: 696542220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 2138087023}
   - {fileID: 1116985362}
   - {fileID: 943267509}
   - {fileID: 1136882723}
-  m_Father: {fileID: 1580066024}
-  m_RootOrder: 14
+  m_Father: {fileID: 1296599465}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 246, y: -79}
+  m_AnchoredPosition: {x: 0, y: -0.000045776367}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &704173230
@@ -17510,7 +17489,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -17805,6 +17784,8 @@ GameObject:
   - component: {fileID: 788415839}
   - component: {fileID: 788415840}
   - component: {fileID: 788415841}
+  - component: {fileID: 788415843}
+  - component: {fileID: 788415842}
   m_Layer: 5
   m_Name: "\uBA54\uB274GameObject"
   m_TagString: "\uBA54\uB274GameObject"
@@ -17932,6 +17913,144 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccbeb54a4184c84bacb5100d90c23fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &788415842
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788415836}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &788415843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788415836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0885284bbda971949ba25e38b9537fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  se_touch: {fileID: 300375163}
+  se_back: {fileID: 641090323}
+  sp_touch: {fileID: 0}
+  se_touch1: {fileID: 0}
+  sp_touch1: {fileID: 8300000, guid: ef14d83d39338a34fa0de36092014c53, type: 3}
+  muteImg: {fileID: 0}
+  muteBGImg: {fileID: 0}
+  spr_mute: []
+  sp_book: {fileID: 8300000, guid: 6ddca3dcc328fbb488dc6948cc0a8e97, type: 3}
+  sp_light: {fileID: 8300000, guid: 3efa2cd176d316442b134a2bcd02e36e, type: 3}
+  sp_window: {fileID: 8300000, guid: 8d2e973f77233834bb54e75dad29ce7a, type: 3}
+  sp_tv: {fileID: 8300000, guid: 84426634f814a1046bfc715a5e04dc7a, type: 3}
+  sp_cat: {fileID: 8300000, guid: 04faa163c398b34458441608689197b6, type: 3}
+  sp_clock: {fileID: 8300000, guid: 721b21f68a30d244b9ad68f2b5b92274, type: 3}
+  sp_sleep: {fileID: 8300000, guid: 0792a9ff480c1e04980abc11f8984d56, type: 3}
+  sp_eatGold: {fileID: 8300000, guid: 71f346ce30bff5a478a225c4e1c2c505, type: 3}
+  sp_eatCity: {fileID: 8300000, guid: afb0cac9a206de84eab3c0587aa0e400, type: 3}
+  sp_heartpaper: {fileID: 8300000, guid: 0b324bba86887c340b42d45a50bd6ae0, type: 3}
+  sp_trash: {fileID: 8300000, guid: c9ea6e4f529ab7c4999f0f4c1a7402e6, type: 3}
+  se_book: {fileID: 0}
+  se_light: {fileID: 0}
+  se_window: {fileID: 0}
+  se_tv: {fileID: 0}
+  se_cat: {fileID: 0}
+  se_clock: {fileID: 0}
+  se_sleep: {fileID: 0}
+  se_eatGold: {fileID: 0}
+  se_eatCity: {fileID: 0}
+  se_heartpaper: {fileID: 0}
+  se_trash: {fileID: 0}
 --- !u!1 &792218424
 GameObject:
   m_ObjectHideFlags: 0
@@ -22360,7 +22479,7 @@ RectTransform:
   - {fileID: 817726926}
   - {fileID: 628456897}
   m_Father: {fileID: 1580066024}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24120,7 +24239,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -24636,7 +24755,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -25175,7 +25294,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -28327,7 +28446,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -28594,6 +28713,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296042382}
   m_CullTransparentMesh: 0
+--- !u!1 &1296599464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296599465}
+  m_Layer: 5
+  m_Name: "\uBB3C\uC8FC\uAE30"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1296599465
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296599464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -473703.62}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children:
+  - {fileID: 696542221}
+  m_Father: {fileID: 1947510294}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -17.998745, y: -220.0014}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1298477879
 GameObject:
   m_ObjectHideFlags: 0
@@ -29918,7 +30073,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -31983,7 +32138,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: windowSound
         m_Mode: 1
         m_Arguments:
@@ -32135,7 +32290,6 @@ RectTransform:
   - {fileID: 1318719985}
   - {fileID: 1639312014}
   - {fileID: 1555059827}
-  - {fileID: 696542221}
   - {fileID: 695030165}
   - {fileID: 1001207133}
   m_Father: {fileID: 0}
@@ -32615,7 +32769,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -37415,7 +37569,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
@@ -37555,7 +37709,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: windowSound
         m_Mode: 1
         m_Arguments:
@@ -37787,6 +37941,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 0.01389}
   m_Children:
   - {fileID: 67615983}
+  - {fileID: 1296599465}
   - {fileID: 287166148}
   - {fileID: 638627154}
   m_Father: {fileID: 815380710}
@@ -38125,7 +38280,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: windowSound
         m_Mode: 1
         m_Arguments:
@@ -39050,7 +39205,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
+      - m_Target: {fileID: 788415843}
         m_MethodName: bookSound
         m_Mode: 1
         m_Arguments:
