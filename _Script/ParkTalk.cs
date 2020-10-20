@@ -302,13 +302,14 @@ public class ParkTalk : MonoBehaviour
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
             cost_h = 50;
 
-            talkcatballoon.SetActive(false);
-            talkballoon.SetActive(false);
-            quesBack.SetActive(false);
-            talkbtn.SetActive(true);
 
             if (have_h >= cost_h)
             {
+                talkcatballoon.SetActive(false);
+                talkballoon.SetActive(false);
+                quesBack.SetActive(false);
+                talkbtn.SetActive(true);
+
                 ck_cat = 1;
                 have_h = have_h - cost_h;
                 PlayerPrefs.SetInt(str_Code + "h", have_h);

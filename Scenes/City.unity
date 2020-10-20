@@ -9470,11 +9470,11 @@ MonoBehaviour:
   obj_bunsik_price: {fileID: 758429751}
   cafe_open_img: {fileID: 1188113709}
   cafe_btn: {fileID: 1170981656}
-  toast_obj: {fileID: 0}
+  toast_obj: {fileID: 918926949}
   bunsik_txt_heart: {fileID: 1542453366}
   txt_cafe_YN: {fileID: 285855890}
   txt_bunsik_YN: {fileID: 413632801}
-  toast_txt: {fileID: 0}
+  toast_txt: {fileID: 1411855429}
   spr_cafe:
   - {fileID: -8714063076042626871, guid: 250812f9204e553479b1129ba278affc, type: 3}
   GM: {fileID: 1119049935}
