@@ -19,7 +19,7 @@ public class MainShop : MonoBehaviour
     public string[] window_name, wall_name, book_name, light_name;
     public Text txt_rain, txt_heart, txt_Popup;
     public GameObject shopWin_obj, shopPopup_obj,shopWinYN_obj;
-    public GameObject bedBox_obj, frameBox_obj, deskBox_obj;
+    public GameObject bedBox_obj, frameBox_obj, deskBox_obj, dalgonaBox_obj, dalgonaBtn_obj;
     public Sprite spr_boxOpen, spr_boxClose;
 
     public GameObject shopHelp_obj;
@@ -263,7 +263,11 @@ public class MainShop : MonoBehaviour
         //잉어
         if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
         {
-            fish_obj.SetActive(true);
+
+            if (PlayerPrefs.GetInt("dalgonabox", 1) == 1)
+            {
+                fish_obj.SetActive(true);
+            }
         }
         //책상
         if (PlayerPrefs.GetInt("desklv", 0) >= 1)
@@ -484,7 +488,6 @@ public class MainShop : MonoBehaviour
         wall_name[2] = "깨끗한벽지";
         cost_wall[4] = 0;
         cost_wall[5] = 0;
-
 
         //물마음-책
         book_name[0] = "전단지";
@@ -1559,31 +1562,35 @@ public class MainShop : MonoBehaviour
         else
         {
             boxWin_obj.SetActive(true);
-            
-                if (PlayerPrefs.GetInt("bedbox", 0) == 0)
-                {
-                    bedBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
-                }
-                else
-                {
-                    bedBox_obj.GetComponent<Image>().sprite = spr_boxClose;
-                }
-                if (PlayerPrefs.GetInt("framebox", 0) == 0)
-                {
-                    frameBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
-                }
-                else
-                {
-                    frameBox_obj.GetComponent<Image>().sprite = spr_boxClose;
-                }
-                if (PlayerPrefs.GetInt("deskbox", 0) == 0)
-                {
-                    deskBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
-                }
-                else
-                {
-                    deskBox_obj.GetComponent<Image>().sprite = spr_boxClose;
-                }
+
+            if (PlayerPrefs.GetInt("bedbox", 0) == 0)
+            {
+                bedBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            }
+            else
+            {
+                bedBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            }
+            if (PlayerPrefs.GetInt("framebox", 0) == 0)
+            {
+                frameBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            }
+            else
+            {
+                frameBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            }
+            if (PlayerPrefs.GetInt("deskbox", 0) == 0)
+            {
+                deskBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            }
+            else
+            {
+                deskBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            }
+            if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
+            {
+                dalgonaBtn_obj.SetActive(true);
+            }
         }
     }
 
@@ -1636,6 +1643,22 @@ public class MainShop : MonoBehaviour
         }
     }
 
+    //잉어
+    public void FishBox()
+    {
+        if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
+        {
+            dalgonaBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            fish_obj.SetActive(false);
+            PlayerPrefs.SetInt("dalgonabox", 1);
+        }
+        else
+        {
+            dalgonaBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            fish_obj.SetActive(true);
+            PlayerPrefs.SetInt("dalgonabox", 0);
+        }
+    }
 
     public void ActHelp()
     {

@@ -42,7 +42,6 @@ public class CityShop : MonoBehaviour
         shopTodayYN_obj.SetActive(false);
     }
 
-
     public void closeShop()
     {
         shop_obj.SetActive(false);
@@ -61,7 +60,6 @@ public class CityShop : MonoBehaviour
     {
         shopHelp_obj.SetActive(true);
     }
-
 
     public void closeHelp()
     {
