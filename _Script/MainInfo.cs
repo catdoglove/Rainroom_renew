@@ -24,7 +24,10 @@ public class MainInfo : MonoBehaviour
         SetIofo();
     }
 
-
+    public void CloseInfo()
+    {
+        infoWin_obj.SetActive(false);
+    }
 
     public void infoAct()
     {

@@ -12,17 +12,26 @@ public class MainMenuEvt : MonoBehaviour
 
     public GameObject GM,GMD;
 
-    public GameObject help_obj, helpImg_obj, helpOut_obj, helpR_obj, helpO_obj;
+    public GameObject help_obj, helpImg_obj, helpOut_obj, helpCity_obj, helpR_obj, helpO_obj;
     public Sprite[] spr_help, spr_helpOut;
     int help_i;
 
     //대화속도
     public Text speed_txt;
-   
+
+    private void Awake()
+    {
+        Debug.Log("asdsadsa");
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetInt("firstroom", 0) == 1)
+        {
+            OpenHelp();
+        }
+
         PlayerPrefs.SetInt("scene", 0);
 
         //대화속도
@@ -93,9 +102,15 @@ public class MainMenuEvt : MonoBehaviour
                 AllClose();
             }
             menu_obj.SetActive(true);
+            option_obj.SetActive(false);
         }
     }
 
+
+    public void CloseOption()
+    {
+        option_obj.SetActive(false);
+    }
     //옵션창 닫기 열기
     public void ActOption()
     {
@@ -119,6 +134,7 @@ public class MainMenuEvt : MonoBehaviour
                 AllClose();
             }
             option_obj.SetActive(true);
+            backWnd.SetActive(false);
         }
     }
 
@@ -157,6 +173,7 @@ public class MainMenuEvt : MonoBehaviour
     public void backWndOpen()
     {
         backWnd.SetActive(true);
+        option_obj.SetActive(false);
     }
 
     public void backWndClose()
@@ -251,12 +268,12 @@ public class MainMenuEvt : MonoBehaviour
         if (PlayerPrefs.GetInt("scene", 0)==2)
         {
             helpOut_obj.SetActive(true);
-            helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[0];
+            //helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[0];
         }
         else if (PlayerPrefs.GetInt("scene", 2) == 3)
         {
-            helpOut_obj.SetActive(true);
-            helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[1];
+            helpCity_obj.SetActive(true);
+            //helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[1];
         }
         else
         {
@@ -308,6 +325,7 @@ public class MainMenuEvt : MonoBehaviour
     public void CloseOutHelp()
     {
         helpOut_obj.SetActive(false);
+        helpCity_obj.SetActive(false);
     }
 
     public void talkSpeed()

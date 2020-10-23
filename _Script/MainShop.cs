@@ -57,7 +57,8 @@ public class MainShop : MonoBehaviour
         str_Code = PlayerPrefs.GetString("code", "");
         //PlayerPrefs.SetInt(str_Code + "r", 999999);
         //PlayerPrefs.SetInt(str_Code + "h", 99999);
-
+        //PlayerPrefs.SetInt("lightlv", 0);
+        //PlayerPrefs.SetInt("bedlv", 0);
 
         if (PlayerPrefs.GetInt("light", 0) >= 2)
         {
@@ -264,7 +265,7 @@ public class MainShop : MonoBehaviour
         if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
         {
 
-            if (PlayerPrefs.GetInt("dalgonabox", 1) == 1)
+            if (PlayerPrefs.GetInt("dalgonabox", 0) == 1)
             {
                 fish_obj.SetActive(true);
             }
@@ -880,6 +881,7 @@ public class MainShop : MonoBehaviour
                     txt_cup[3].text = "x";
                     cupBtn_obj.SetActive(true);
                     PlayerPrefs.Save();
+                    PlayerPrefs.SetInt("water", 0);
                 }
                 else
                 {
@@ -1591,6 +1593,15 @@ public class MainShop : MonoBehaviour
             {
                 dalgonaBtn_obj.SetActive(true);
             }
+
+            if (PlayerPrefs.GetInt("dalgonabox", 0) == 0)
+            {
+                dalgonaBox_obj.GetComponent<Image>().sprite = spr_boxOpen;
+            }
+            else
+            {
+                dalgonaBox_obj.GetComponent<Image>().sprite = spr_boxClose;
+            }
         }
     }
 
@@ -1646,7 +1657,7 @@ public class MainShop : MonoBehaviour
     //잉어
     public void FishBox()
     {
-        if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
+        if (PlayerPrefs.GetInt("dalgonabox", 0) == 0)
         {
             dalgonaBox_obj.GetComponent<Image>().sprite = spr_boxClose;
             fish_obj.SetActive(false);

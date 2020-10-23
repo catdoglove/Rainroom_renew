@@ -321,7 +321,7 @@ public class ParkTalk : MonoBehaviour
                 int ct= PlayerPrefs.GetInt("catlike", 0);
                 ct++;
                 PlayerPrefs.SetInt("catlike", ct);
-                if (PlayerPrefs.GetInt("catlike", 0) >= 14)
+                if (PlayerPrefs.GetInt("catlike", 0) >= 15)
                 {//성장완료
                     if (PlayerPrefs.GetInt("catlove", 0) == 0)
                     {
@@ -551,7 +551,7 @@ public class ParkTalk : MonoBehaviour
 
                 PlayerPrefs.SetInt("dalgona", PlayerPrefs.GetInt("dalgona", 0) + 1);
                 //잉어
-                if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
+                if (PlayerPrefs.GetInt("dalgona", 0) == 15)
                 {
                     catPop_obj.SetActive(true);
                     txt_pop.text = "달달한 냄새가 났다." + "\n" + "방안을 확인해보자.";

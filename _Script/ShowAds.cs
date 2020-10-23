@@ -16,14 +16,14 @@ public class ShowAds : MonoBehaviour
     System.DateTime lastDateTimenow;
     string lastTimem;
 
-    int ag, agb;
+    public int ag, agb;
 
     public GameObject delBtn;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine("updateSec1");
     }
 
     public void ActAd()
@@ -64,10 +64,11 @@ public class ShowAds : MonoBehaviour
                 tvImg.GetComponent<Image>().sprite = spr_adTV[0];
                 PlayerPrefs.SetInt("roomads", 0);
             }
+            tvImg.GetComponent<Button>().interactable = true;
         }
         else
         {
-
+            tvImg.GetComponent<Button>().interactable = false;
         }
     }
 
@@ -77,19 +78,20 @@ public class ShowAds : MonoBehaviour
         PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
         PlayerPrefs.SetInt("talk", 5);
         adWin_obj.SetActive(false);
+        tvImg.GetComponent<Image>().sprite = spr_adTV[0];
+        tvImg.GetComponent<Button>().interactable = false;
     }
 
 
 
     //
-    IEnumerator updateSec()
+    IEnumerator updateSec1()
     {
         int a = 0;
         while (a == 0)
         {
             Adtime();
-
-            PlayerPrefs.Save();
+            
             yield return new WaitForSeconds(0.8f);
         }
     }

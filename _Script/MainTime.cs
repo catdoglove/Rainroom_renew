@@ -157,7 +157,7 @@ public class MainTime : MonoBehaviour
             food();
             SeedTimeFlow();
             CheckOutTime();
-            TvMove();
+            //TvMove();
             PlayerPrefs.Save();
             yield return new WaitForSeconds(1f);
         }
