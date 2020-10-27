@@ -618,6 +618,12 @@ public class RoomTalk : MonoBehaviour
 
     public void talkDal()
     {
+        text_str = "달/고/나/ /장/수/가/ /줬/어/./ /자/주/ /사/ /먹/은/ /기/념/품/이/야/./ /물/론/ /진/짜/ /물/고/기/는/ /아/니/야/";
+        testText_cut = text_str.Split('/');
+        cleantalk();
+
+        StopCoroutine("itemTalkRun");
+        StartCoroutine("itemTalkRun");
         //달고나 장수가 줬어. 자주 사 먹은 기념품이야. 물론 진짜 물고기는 아니야
     }
 

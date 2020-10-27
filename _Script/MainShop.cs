@@ -54,8 +54,8 @@ public class MainShop : MonoBehaviour
         //PlayerPrefs.DeleteKey("seedlv");
         //PlayerPrefs.DeleteKey("seedgrow");
         str_Code = PlayerPrefs.GetString("code", "");
-        PlayerPrefs.SetInt(str_Code + "r", 999999);
-        PlayerPrefs.SetInt(str_Code + "h", 9999);
+        //PlayerPrefs.SetInt(str_Code + "r", 999999);
+        //PlayerPrefs.SetInt(str_Code + "h", 9999);
         //PlayerPrefs.SetInt("lightlv", 0);
         //PlayerPrefs.SetInt("bedlv", 0);
 
