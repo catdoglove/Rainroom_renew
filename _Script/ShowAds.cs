@@ -36,6 +36,7 @@ public class ShowAds : MonoBehaviour
         {
             adWin_obj.SetActive(true);
         }
+
     }
 
 
@@ -44,6 +45,7 @@ public class ShowAds : MonoBehaviour
         
         now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastTimem = PlayerPrefs.GetString("adtimes", now.ToString());
+        Timechecker();
         System.DateTime lastDateTimem = System.DateTime.Parse(lastTimem);
         System.TimeSpan compareTimem = System.DateTime.Now - lastDateTimem;
         ag = (int)compareTimem.TotalMinutes;
@@ -75,7 +77,22 @@ public class ShowAds : MonoBehaviour
     public void AdReward()
     {
         lastDateTimenow = System.DateTime.Now;
-        PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
+        if (PlayerPrefs.GetInt("scene", 0) == 2)
+        {
+            PlayerPrefs.SetString("adtimespark", lastDateTimenow.ToString());
+        }
+        else if (PlayerPrefs.GetInt("scene", 0) == 3)
+        {
+            PlayerPrefs.SetString("adtimescity", lastDateTimenow.ToString());
+        }
+        else if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
+        }
+        else
+        {
+            PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
+        }
         PlayerPrefs.SetInt("talk", 5);
         adWin_obj.SetActive(false);
         tvImg.GetComponent<Image>().sprite = spr_adTV[0];
@@ -103,5 +120,26 @@ public class ShowAds : MonoBehaviour
     public void ShowADOut()
     {
         PlayerPrefs.SetInt("outtimecut", 4);
+    }
+
+
+    void Timechecker()
+    {
+        if (PlayerPrefs.GetInt("scene", 0) == 2)
+        {
+            lastTimem = PlayerPrefs.GetString("adtimespark", now.ToString());
+        }
+        else if (PlayerPrefs.GetInt("scene", 0) == 3)
+        {
+            lastTimem = PlayerPrefs.GetString("adtimescity", now.ToString());
+        }
+        else if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            lastTimem = PlayerPrefs.GetString("adtimes", now.ToString());
+        }
+        else
+        {
+            lastTimem = PlayerPrefs.GetString("adtimes", now.ToString());
+        }
     }
 }

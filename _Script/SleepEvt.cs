@@ -45,7 +45,10 @@ public class SleepEvt : MonoBehaviour
 
             switch_obj.GetComponent<Image>().sprite = spr_switch[1];
             light_obj.SetActive(true);
-            nightStar_obj.SetActive(true);
+            if (PlayerPrefs.GetInt("lightlv", 0) >= 5)
+            {
+                nightStar_obj.SetActive(true);
+            }
         }
 
     }

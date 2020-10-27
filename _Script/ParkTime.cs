@@ -23,6 +23,12 @@ public class ParkTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (PlayerPrefs.GetInt("backHomeTrash", 0) == 999)
+        {
+            item_num = 5;
+            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+        }
         //도움말 최초 1회 실행
         if (PlayerPrefs.GetInt("firstHelpPark", 0) == 0)
         {
