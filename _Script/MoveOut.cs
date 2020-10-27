@@ -81,6 +81,10 @@ public class MoveOut : MonoBehaviour
         acb = 59 - acb;
         ac = 14 - ac;
 
+        if (PlayerPrefs.GetInt("outtimecut", 0) == 4)
+        {
+            ac = ac - 10;
+        }
         if (ac<0)
         {
             if (PlayerPrefs.GetInt("likelv", 0) >= 5)

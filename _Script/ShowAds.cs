@@ -80,6 +80,10 @@ public class ShowAds : MonoBehaviour
         adWin_obj.SetActive(false);
         tvImg.GetComponent<Image>().sprite = spr_adTV[0];
         tvImg.GetComponent<Button>().interactable = false;
+        if (PlayerPrefs.GetInt("scene", 0) >= 2)
+        {
+            tvImg.GetComponent<Image>().sprite = spr_adTV[2];
+        }
     }
 
 

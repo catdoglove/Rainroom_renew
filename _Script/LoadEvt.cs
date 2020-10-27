@@ -8,7 +8,6 @@ public class LoadEvt : MonoBehaviour
 {
     AsyncOperation async;
     int i = 0;
-
     //카메라 태그로 찾고 적용
     public GameObject menu_obj;
     public Camera camera_c;
@@ -16,10 +15,11 @@ public class LoadEvt : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //카메라
-        camera_c = Camera.main;
-        menu_obj = GameObject.FindGameObjectWithTag("메뉴Canvas");
-        menu_obj.GetComponent<Canvas>().worldCamera = camera_c;
+        
+            //카메라
+            camera_c = Camera.main;
+            menu_obj = GameObject.FindGameObjectWithTag("메뉴Canvas");
+            menu_obj.GetComponent<Canvas>().worldCamera = camera_c;
 
     }
     IEnumerator Load()
@@ -27,10 +27,12 @@ public class LoadEvt : MonoBehaviour
         if (PlayerPrefs.GetInt("scene", 0) == 2)
         {
             async = SceneManager.LoadSceneAsync("Park");
+            PlayerPrefs.SetInt("outtimecut", 0);
         }
         else if (PlayerPrefs.GetInt("scene", 0) == 3)
         {
             async = SceneManager.LoadSceneAsync("City");
+            PlayerPrefs.SetInt("outtimecut", 0);
         }
         else if (PlayerPrefs.GetInt("scene", 0) == 0)
         {

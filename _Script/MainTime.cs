@@ -91,6 +91,12 @@ public class MainTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.GetInt("titlecheck", 0) == 1)
+        {
+            title_obj.SetActive(false);
+        }
+
+        PlayerPrefs.SetInt("titlecheck", 0);
 
         PlayerPrefs.SetInt("scene", 0);
 

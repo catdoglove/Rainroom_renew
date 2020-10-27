@@ -36,7 +36,7 @@ public class MainShop : MonoBehaviour
     public Text[] txt_memoName;
     [TextArea]
     public string[] str_memo;
-    public GameObject memoImg, switchImg,boxWin_obj;
+    public GameObject memoImg, switchImg, switchImg2, boxWin_obj;
 
     public GameObject[] MaxX_obj, shopBtn_obj;
     //외출
@@ -50,19 +50,19 @@ public class MainShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //PlayerPrefs.DeleteAll();
         //PlayerPrefs.DeleteKey("seedlv");
         //PlayerPrefs.DeleteKey("seedgrow");
         str_Code = PlayerPrefs.GetString("code", "");
-        //PlayerPrefs.SetInt(str_Code + "r", 999999);
-        //PlayerPrefs.SetInt(str_Code + "h", 9999);
+        PlayerPrefs.SetInt(str_Code + "r", 999999);
+        PlayerPrefs.SetInt(str_Code + "h", 9999);
         //PlayerPrefs.SetInt("lightlv", 0);
         //PlayerPrefs.SetInt("bedlv", 0);
 
-        if (PlayerPrefs.GetInt("light", 0) >= 2)
+        if (PlayerPrefs.GetInt("lightlv", 0) >= 2)
         {
             switchImg.SetActive(true);
+            switchImg2.SetActive(true);
         }
         //가격과 이름
         setPrice();
@@ -686,6 +686,8 @@ public class MainShop : MonoBehaviour
                         txt_light[2].text = "x";
                         //마음
                         txt_light[3].text = "x";
+                        switchImg.SetActive(true);
+                        switchImg2.SetActive(true);
                     }
 
                 }

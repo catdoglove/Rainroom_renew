@@ -31,6 +31,7 @@ public class Parkshop : MonoBehaviour
     void Start()
     {
 
+        PlayerPrefs.SetInt("titlecheck", 1);
         shop_rnd = Random.Range(0, 3);
         str_Code = PlayerPrefs.GetString("code", "");
 
