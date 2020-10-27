@@ -615,6 +615,11 @@ public class RoomTalk : MonoBehaviour
 
     }
 
+    public void talkDal()
+    {
+        //달고나 장수가 줬어. 자주 사 먹은 기념품이야. 물론 진짜 물고기는 아니야
+    }
+
 
     void UpLike()
     {

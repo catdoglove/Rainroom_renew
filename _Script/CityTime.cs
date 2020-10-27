@@ -6,7 +6,7 @@ public class CityTime : MonoBehaviour
 {
     public static int trashRnd, trashShow, peopleRnd, peopleRnd2, peopleShow, peopleShow2, peopleImgRnd;
     public float moveX, moveY, b_moveX, b_moveY, b2_moveX, b2_moveY;
-    public GameObject trash_obj, peoples_obj, peoples_obj2;
+    public GameObject trash_obj, peoples_obj, peoples_obj2, first_help;
 
     public Sprite[] spr_people;
 
@@ -15,7 +15,13 @@ public class CityTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("setending", 0) == 0)
+        //도움말 최초 1회 실행
+        if (PlayerPrefs.GetInt("firstHelpCity", 0) == 0)
+        {
+            first_help.SetActive(true);
+        }
+        
+        if (PlayerPrefs.GetInt("setending", 0) == 0)
         {
             if (PlayerPrefs.GetInt("likelv", 0) >= 12)
             {
@@ -40,6 +46,11 @@ public class CityTime : MonoBehaviour
         StartCoroutine("MoveP2");
     }
 
+    public void closeFirstHelp()
+    {
+        first_help.SetActive(false);
+        PlayerPrefs.SetInt("firstHelpCity", 99);
+    }
 
     public void talkBtn()
     {

@@ -7,7 +7,7 @@ public class ParkTime : MonoBehaviour
 {
     public static int trashRnd2, leafRnd;
     public float moveX, moveY, moveLX, moveLY;
-    public GameObject trash_obj, leaf_obj;
+    public GameObject trash_obj, leaf_obj, first_help;
 
     string str;
     int talk;
@@ -23,6 +23,11 @@ public class ParkTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //도움말 최초 1회 실행
+        if (PlayerPrefs.GetInt("firstHelpPark", 0) == 0)
+        {
+            first_help.SetActive(true);
+        }
 
         if (PlayerPrefs.GetInt("setending", 0) == 0)
         {
@@ -53,6 +58,12 @@ public class ParkTime : MonoBehaviour
     }
 
 
+    public void closeFirstHelp()
+    {
+        first_help.SetActive(false);
+        PlayerPrefs.SetInt("firstHelpPark", 99);
+    }
+
     public void getTrash()
     {
         iTrash++;
@@ -73,9 +84,12 @@ public class ParkTime : MonoBehaviour
         }
         else if (iTrash >= 100)
         {
-            item_num = 5;
-            trashB.GetComponent<Image>().sprite = spr_trash[item_num];
-            trashButton.GetComponent<Button>().interactable = true;
+            PlayerPrefs.SetInt("allTrash", 99);
+            if (PlayerPrefs.GetInt("backHomeTrash", 0) == 999)
+            {
+                item_num = 5;
+                trashB.GetComponent<Image>().sprite = spr_trash[item_num];
+            }
         }
         else if (iTrash >= 80)
         {
@@ -102,17 +116,21 @@ public class ParkTime : MonoBehaviour
 
     public void memoTrashOpen()
     {
-        if (iTrash >= 100)
+        if (PlayerPrefs.GetInt("backHomeTrash", 0) == 999)
         {
-            int h;
-            memoTrash.SetActive(true);
-            trashButton.GetComponent<Button>().interactable = false;
-            PlayerPrefs.SetInt("trashnum", 0);
-            iTrash = 0;
-            trashB.GetComponent<Image>().sprite = spr_trash[0];
-            h = PlayerPrefs.GetInt(str_Code + "h", 0);
-            h = h + 20;
-            PlayerPrefs.SetInt(str_Code + "h", h);
+            if (iTrash >= 100)
+            {
+                int h;
+                memoTrash.SetActive(true);
+                PlayerPrefs.SetInt("trashnum", 0);
+                iTrash = 0;
+                trashB.GetComponent<Image>().sprite = spr_trash[0];
+                h = PlayerPrefs.GetInt(str_Code + "h", 0);
+                h = h + 20;
+                PlayerPrefs.SetInt(str_Code + "h", h);
+                PlayerPrefs.SetInt("backHomeTrash", 1);
+                PlayerPrefs.SetInt("allTrash", 1);
+            }
         }
     }
 

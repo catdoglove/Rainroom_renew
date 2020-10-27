@@ -10,7 +10,7 @@ public class MainTime : MonoBehaviour
 
     public static int wepRnd, wepShow, baqueRnd, baqueShow;
     public float moveX, moveY, b_moveX, b_moveY;
-    public GameObject wep_obj, baques_obj;
+    public GameObject wep_obj, baques_obj, talk_btn;
 
     //신문
     System.DateTime lastGudoc, nowGudog;
@@ -86,6 +86,8 @@ public class MainTime : MonoBehaviour
     public GameObject menu_obj;
     public Camera camera_c;
 
+    public GameObject title_obj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,8 +129,21 @@ public class MainTime : MonoBehaviour
         camera_c = Camera.main;
         menu_obj = GameObject.FindGameObjectWithTag("메뉴Canvas");
         menu_obj.GetComponent<Canvas>().worldCamera = camera_c;
+
+
+        if (PlayerPrefs.GetInt("allTrash", 0) == 99)
+        {
+            PlayerPrefs.SetInt("backHomeTrash", 999);
+        }
+
+
     }
 
+
+    public void closeTitle()
+    {
+        title_obj.SetActive(false);
+    }
 
     //
     IEnumerator updateSec()
@@ -171,10 +186,12 @@ public class MainTime : MonoBehaviour
         if (talk <= 0)
         {
             talk = 0;
+            talk_btn.GetComponent<Button>().interactable = false;
         }
         if (talk >= 5)
         {
             talk = 4;
+            talk_btn.GetComponent<Button>().interactable = true; //위치 옮기기
         }
         PlayerPrefs.SetInt("talk", talk);
     }
