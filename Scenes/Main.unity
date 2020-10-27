@@ -506,17 +506,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375162}
-        m_MethodName: touchSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 300375159}
         m_MethodName: talkBtn
         m_Mode: 1
@@ -6738,6 +6727,7 @@ MonoBehaviour:
   toastTxt: "\uD55C\uAE00 \uCD9C\uB825 \uB418\uB2C8??"
   seedRain_obj: {fileID: 696542220}
   seedTxt_obj: {fileID: 1296599464}
+  gmS: {fileID: 300375158}
 --- !u!114 &300375170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18444,7 +18434,7 @@ MonoBehaviour:
   helpCity_obj: {fileID: 926819574}
   helpR_obj: {fileID: 1909247409}
   helpO_obj: {fileID: 1964617934}
-  helpL_obj: {fileID: 0}
+  helpL_obj: {fileID: 1578488041}
   spr_help:
   - {fileID: 21300000, guid: 483f077572e5f7b469ab65d43db4274d, type: 3}
   - {fileID: 21300000, guid: a1ceb91dd4749484fbafe5c0b1086e20, type: 3}
@@ -33104,7 +33094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1578488042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35333,7 +35323,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 13
+  m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!1 &1724152166
 GameObject:

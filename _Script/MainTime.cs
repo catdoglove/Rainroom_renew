@@ -186,12 +186,10 @@ public class MainTime : MonoBehaviour
         if (talk <= 0)
         {
             talk = 0;
-            talk_btn.GetComponent<Button>().interactable = false;
         }
         if (talk >= 5)
         {
             talk = 4;
-            talk_btn.GetComponent<Button>().interactable = true; //위치 옮기기
         }
         PlayerPrefs.SetInt("talk", talk);
     }
@@ -709,7 +707,10 @@ public class MainTime : MonoBehaviour
         acb = acb - (acb / 60) * 60;
         acb = 59 - acb;
         ac = 14 - ac;////////////////////////////////////////////////////////////
-
+        if (PlayerPrefs.GetInt("outtimecut", 0)==4)
+        {
+            ac = ac - 10;
+        }
         if (ac < 0)
         {
             umbrella_obj.GetComponent<Image>().sprite = spr_umbrella[0];

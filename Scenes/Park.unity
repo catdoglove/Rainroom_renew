@@ -213,17 +213,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2145333743}
-        m_MethodName: touchSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2145333740}
         m_MethodName: talkBtn
         m_Mode: 1
@@ -10932,6 +10921,7 @@ GameObject:
   - component: {fileID: 2145333742}
   - component: {fileID: 2145333743}
   - component: {fileID: 2145333744}
+  - component: {fileID: 2145333745}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -10953,6 +10943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text_obj: {fileID: 236617718}
   dal_Text_obj: {fileID: 162069588}
+  gmS: {fileID: 2145333736}
   talkbtn: {fileID: 10767433}
   talkballoon: {fileID: 589278798}
   talkcatballoon: {fileID: 1570228534}
@@ -11252,3 +11243,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2145333745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145333736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9237ffb8b3f65f04da05cba5977bad7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adWin_obj: {fileID: 1274200147}
+  tvImg: {fileID: 938714957}
+  spr_adTV:
+  - {fileID: -5784475946169410453, guid: 8df101c080bde61438067f8f3b634656, type: 3}
+  - {fileID: -6195757667575085005, guid: 8df101c080bde61438067f8f3b634656, type: 3}
+  ag: 0
+  agb: 0
+  delBtn: {fileID: 0}

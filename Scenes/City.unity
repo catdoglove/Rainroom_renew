@@ -9498,6 +9498,7 @@ GameObject:
   - component: {fileID: 1119049941}
   - component: {fileID: 1119049942}
   - component: {fileID: 1119049943}
+  - component: {fileID: 1119049944}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -9556,6 +9557,7 @@ MonoBehaviour:
   spr_cafe:
   - {fileID: -8714063076042626871, guid: 250812f9204e553479b1129ba278affc, type: 3}
   GM: {fileID: 1119049935}
+  gmS: {fileID: 1119049935}
   exitBtn: {fileID: 2145728087}
 --- !u!4 &1119049937
 Transform:
@@ -9879,6 +9881,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_obj: {fileID: 0}
   camera_c: {fileID: 0}
+--- !u!114 &1119049944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119049935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9237ffb8b3f65f04da05cba5977bad7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adWin_obj: {fileID: 1274200147}
+  tvImg: {fileID: 938714957}
+  spr_adTV:
+  - {fileID: 5990004948708079881, guid: 82de954e09bd1964e9a7c002618cd2df, type: 3}
+  - {fileID: 2060558970024453951, guid: 82de954e09bd1964e9a7c002618cd2df, type: 3}
+  ag: 0
+  agb: 0
+  delBtn: {fileID: 0}
 --- !u!1 &1121742667
 GameObject:
   m_ObjectHideFlags: 0
@@ -16453,17 +16475,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1119049938}
         m_MethodName: talkBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1119049942}
-        m_MethodName: touchSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

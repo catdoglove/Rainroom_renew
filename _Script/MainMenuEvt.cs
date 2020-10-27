@@ -18,19 +18,17 @@ public class MainMenuEvt : MonoBehaviour
 
     //대화속도
     public Text speed_txt;
-
-    private void Awake()
-    {
-    }
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("firstroom", 0) == 1)
+        if (PlayerPrefs.GetInt("firstroom", 0) == 0)
         {
             OpenHelp();
+            PlayerPrefs.SetInt("firstroom", 2);
         }
-
+        
         PlayerPrefs.SetInt("scene", 0);
 
         //대화속도

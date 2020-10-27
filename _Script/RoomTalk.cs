@@ -49,7 +49,7 @@ public class RoomTalk : MonoBehaviour
     int cnt_exit;
     public string toastTxt;
 
-    public GameObject seedRain_obj, seedTxt_obj;
+    public GameObject seedRain_obj, seedTxt_obj,gmS;
 
     string str_Code;
     
@@ -291,6 +291,7 @@ public class RoomTalk : MonoBehaviour
         }
         else
         {
+            TalkSound();
             int a = PlayerPrefs.GetInt("likepoint",0);
             a = a + 10;
             PlayerPrefs.SetInt("likepoint", a);
@@ -711,4 +712,9 @@ public class RoomTalk : MonoBehaviour
         PlayerPrefs.Save();
     }
       
+
+    public void TalkSound()
+    {
+        gmS.GetComponent<SoundEvt>().touchSound();
+    }
 }

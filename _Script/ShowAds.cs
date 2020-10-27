@@ -95,4 +95,9 @@ public class ShowAds : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
         }
     }
+
+    public void ShowADOut()
+    {
+        PlayerPrefs.SetInt("outtimecut", 4);
+    }
 }

@@ -11,6 +11,7 @@ public class ParkTalk : MonoBehaviour
     public Text Text_obj, dal_Text_obj; //선언 및 보여질
     string[] testText_cut; //대사 끊기
     string text_str; //실질적 대사출력
+    public GameObject gmS;
 
     public GameObject talkbtn, talkballoon, talkcatballoon, closeTB, talkCursor, dalgonaballon; //대화버튼 및 영역
     int ckk, ck_cat, ck_dal;
@@ -218,6 +219,7 @@ public class ParkTalk : MonoBehaviour
         }
         else
         {
+            TalkSound();
             int a = PlayerPrefs.GetInt("likepoint", 0);
             a = a + 10;
             PlayerPrefs.SetInt("likepoint", a);
@@ -611,4 +613,8 @@ public class ParkTalk : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void TalkSound()
+    {
+        gmS.GetComponent<SoundEvt>().touchSound();
+    }
 }

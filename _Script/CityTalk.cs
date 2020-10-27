@@ -37,7 +37,7 @@ public class CityTalk : MonoBehaviour
     public Text txt_cafe_YN, txt_bunsik_YN, toast_txt;
     public Sprite[] spr_cafe;
 
-    public GameObject GM;
+    public GameObject GM, gmS;
 
     string str_Code;
     int have_h, cost_h;    
@@ -194,6 +194,7 @@ public class CityTalk : MonoBehaviour
         }
         else
         {
+            TalkSound();
             int a = PlayerPrefs.GetInt("likepoint", 0);
             a = a + 10;
             PlayerPrefs.SetInt("likepoint", a);
@@ -882,5 +883,10 @@ public class CityTalk : MonoBehaviour
         }
         PlayerPrefs.SetInt(str_Code + "h", hp);
         PlayerPrefs.Save();
+    }
+
+    public void TalkSound()
+    {
+        gmS.GetComponent<SoundEvt>().touchSound();
     }
 }
