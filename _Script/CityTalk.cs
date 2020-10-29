@@ -41,22 +41,17 @@ public class CityTalk : MonoBehaviour
 
     string str_Code;
     int have_h, cost_h;    
+    
 
-    //뒤로가기 버튼 액션
-    public GameObject exitBtn;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            exitBtn.SetActive(true);
+            toast_obj.SetActive(true);
+            toast_txt.text = "여기서는 헤어질 수 없다.";
         }
     }
-
-    public void exitFunction()
-    {
-        exitBtn.SetActive(false);
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -36,10 +36,7 @@ public class ParkTalk : MonoBehaviour
 
     string str_Code;
     int have_h, cost_h;
-
-    //뒤로가기 버튼 액션
-    public GameObject exitBtn;
-
+    
     public GameObject GM;
 
     public GameObject catPop_obj;
@@ -49,16 +46,12 @@ public class ParkTalk : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            exitBtn.SetActive(true);
+            catPop_obj.SetActive(true);
+            txt_pop.text = "여기서는 헤어질 수 없다.";
         }
 
     }
-
-    public void exitFunction()
-    {
-        exitBtn.SetActive(false);
-    }
-    
+        
 
     // Start is called before the first frame update
     void Start()
