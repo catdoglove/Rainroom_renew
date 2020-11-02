@@ -12,7 +12,7 @@ public class OutItem : MonoBehaviour
 
     public GameObject txt_obj,ending_obj, endingImg_obj,endBtnL_obj, endBtnR_obj;
     public Sprite[] spr_end;
-    public Sprite spr_endBtn;
+    public Sprite spr_endBtn, spr_endRBtn;
     public int page_i;
 
     int item_num;
@@ -163,6 +163,7 @@ public class OutItem : MonoBehaviour
         }
         else
         {
+            endBtnR_obj.GetComponent<Image>().sprite = spr_endRBtn;
             page_i--;
             endingImg_obj.GetComponent<Image>().sprite = spr_end[page_i];
             if (page_i == 0)

@@ -12,7 +12,7 @@ public class MainMenuEvt : MonoBehaviour
 
     public GameObject GM,GMD;
 
-    public GameObject help_obj, helpImg_obj, helpOut_obj, helpCity_obj, helpR_obj, helpO_obj;
+    public GameObject help_obj, helpImg_obj, helpOut_obj, helpCity_obj, helpR_obj, helpO_obj, helpL_obj;
     public Sprite[] spr_help, spr_helpOut;
     int help_i;
 
@@ -21,7 +21,6 @@ public class MainMenuEvt : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("asdsadsa");
     }
 
     // Start is called before the first frame update
@@ -300,6 +299,7 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
+            helpL_obj.SetActive(true);
             helpR_obj.SetActive(true);
             helpO_obj.SetActive(false);
             help_i++;
@@ -311,7 +311,6 @@ public class MainMenuEvt : MonoBehaviour
     {
         if (help_i == 0)
         {
-
         }
         else
         {
@@ -319,6 +318,10 @@ public class MainMenuEvt : MonoBehaviour
             helpO_obj.SetActive(false);
             help_i--;
             helpImg_obj.GetComponent<Image>().sprite = spr_help[help_i];
+            if (help_i == 0)
+            {
+                helpL_obj.SetActive(false);
+            }
         }
     }
 

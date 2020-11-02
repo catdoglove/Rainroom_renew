@@ -263,6 +263,10 @@ public class CityShop : MonoBehaviour
                 level = level + 1;
                 if (level >= 4)
                 {
+                    //마음
+                    txt_bed[0].text = "x";
+                    //빗물
+                    txt_bed[1].text = "x";
                     shopBtn_obj[0].GetComponent<Button>().interactable = false;
                     txt_bed[3].text = "Lv.Max";
                 }
@@ -305,6 +309,10 @@ public class CityShop : MonoBehaviour
                 txt_desk[3].text = "Lv." + level;
                 if (level >= 3)
                 {
+                    //마음
+                    txt_desk[0].text = "x";
+                    //빗물
+                    txt_desk[1].text = "x";
                     txt_desk[3].text = "Lv.Max";
                     shopBtn_obj[1].GetComponent<Button>().interactable = false;
                 }
@@ -348,6 +356,10 @@ public class CityShop : MonoBehaviour
                 level = level + 2;
                 if (level >= 5)
                 {
+                    //마음
+                    txt_light[0].text = "x";
+                    //빗물
+                    txt_light[1].text = "x";
                     shopBtn_obj[2].GetComponent<Button>().interactable = false;
                     txt_light[3].text = "Lv.Max";
                 }
@@ -437,6 +449,12 @@ public class CityShop : MonoBehaviour
         if (level >= 3)
         {
             shopBtn_obj[1].GetComponent<Button>().interactable = false;
+            //마음
+            txt_desk[0].text = "x";
+            //빗물
+            txt_desk[1].text = "x";
+            //이름
+            txt_desk[2].text = "원목책상";
             txt_desk[3].text = "Lv.Max";
         }
 

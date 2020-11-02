@@ -6653,6 +6653,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 184cc205cff528d4689f1282207d1193, type: 3}
   - {fileID: 21300000, guid: e506708b65d958148be75375f7c69eaf, type: 3}
   spr_endBtn: {fileID: 21300000, guid: 16c693cdd3bcc5e418c7e460ac1beb27, type: 3}
+  spr_endRBtn: {fileID: 21300000, guid: 551bfb580eaa99b43b159556fc39f9a5, type: 3}
   page_i: 0
 --- !u!114 &300375168
 MonoBehaviour:
@@ -18408,6 +18409,7 @@ MonoBehaviour:
   helpCity_obj: {fileID: 926819574}
   helpR_obj: {fileID: 1909247409}
   helpO_obj: {fileID: 1964617934}
+  helpL_obj: {fileID: 1578488041}
   spr_help:
   - {fileID: 21300000, guid: 483f077572e5f7b469ab65d43db4274d, type: 3}
   - {fileID: 21300000, guid: a1ceb91dd4749484fbafe5c0b1086e20, type: 3}
@@ -32927,7 +32929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1578488042
 RectTransform:
   m_ObjectHideFlags: 0

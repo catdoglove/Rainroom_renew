@@ -56,7 +56,7 @@ public class MainShop : MonoBehaviour
         //PlayerPrefs.DeleteKey("seedgrow");
         str_Code = PlayerPrefs.GetString("code", "");
         //PlayerPrefs.SetInt(str_Code + "r", 999999);
-        //PlayerPrefs.SetInt(str_Code + "h", 99999);
+        //PlayerPrefs.SetInt(str_Code + "h", 9999);
         //PlayerPrefs.SetInt("lightlv", 0);
         //PlayerPrefs.SetInt("bedlv", 0);
 
@@ -265,7 +265,7 @@ public class MainShop : MonoBehaviour
         if (PlayerPrefs.GetInt("dalgona", 0) >= 15)
         {
 
-            if (PlayerPrefs.GetInt("dalgonabox", 0) == 1)
+            if (PlayerPrefs.GetInt("dalgonabox", 0) == 0)
             {
                 fish_obj.SetActive(true);
             }
