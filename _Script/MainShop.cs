@@ -226,6 +226,10 @@ public class MainShop : MonoBehaviour
         {
             int sd = PlayerPrefs.GetInt("seedgrow", 1) - 1;
             seed_obj.GetComponent<Image>().sprite = spr_seed[sd];
+            if (PlayerPrefs.GetInt("seedColor", 0) > 0)
+            {
+                seed_obj.GetComponent<Image>().sprite = spr_seedColorImg[PlayerPrefs.GetInt("seedColor", 0)];
+            }
         }
         //시계
         if (PlayerPrefs.GetInt("clock", 0) >= 1)
@@ -244,6 +248,10 @@ public class MainShop : MonoBehaviour
             int sd = PlayerPrefs.GetInt("draw", 0);
             draw_obj.GetComponent<Image>().sprite = spr_draw[sd];
             draw_obj.SetActive(true);
+            if (PlayerPrefs.GetInt("drawColors", 0) > 0)
+            {
+                draw_obj.GetComponent<Image>().sprite = spr_draw[PlayerPrefs.GetInt("drawColors", 0)];
+            }
         }
         //그림틀
         if (PlayerPrefs.GetInt("frame", 0) >= 1)
@@ -278,6 +286,11 @@ public class MainShop : MonoBehaviour
             desk_obj.SetActive(true);
             //상자
             deskBox_obj.GetComponent<Button>().interactable = true;
+
+            if (PlayerPrefs.GetInt("deskColors", 0) > 0)
+            {
+                desk_obj.GetComponent<Image>().sprite = spr_deskColorImg[PlayerPrefs.GetInt("deskColors", 0)];
+            }
         }
 
         //씨앗맥스

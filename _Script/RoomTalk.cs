@@ -714,6 +714,13 @@ public class RoomTalk : MonoBehaviour
                 hp = hp + 7;
                 break;
         }
+
+        if (PlayerPrefs.GetInt("infoflower", 0) == 1)
+        {
+            hp++;
+        }
+
+
         PlayerPrefs.SetInt(str_Code + "h", hp);
         PlayerPrefs.Save();
     }
