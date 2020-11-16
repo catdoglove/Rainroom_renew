@@ -24,7 +24,6 @@ public class CityShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         PlayerPrefs.SetInt("titlecheck", 1);
         str_Code = PlayerPrefs.GetString("code", "");
         setPrice();

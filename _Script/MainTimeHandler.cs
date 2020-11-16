@@ -78,7 +78,7 @@ public class MainTimeHandler : MonoBehaviour {
         //	getRain = 0;
         //
         Warring();
-        coldRain_i = coldRain_i + getRain;
+        coldRain_i = coldRain_i + getRain * 5;
 		PlayerPrefs.SetInt (str + "r", coldRain_i);
 		//rainNum.text = coldRain_i.ToString();
 		PlayerPrefs.SetString("lastTime",dateTimenow.ToString());
