@@ -66,25 +66,25 @@ public class MainInfo : MonoBehaviour
         sld_like.value = PlayerPrefs.GetInt("likepoint", 0);
         if (PlayerPrefs.GetInt("likelv", 0) == 1)
         {
-            sld_like.maxValue = 122;
+            sld_like.maxValue = 112;
             face.GetComponent<Image>().sprite = spr_face[1];
             txt_likeLv.text = "[다음 호감도 조건]"+"\n"+"꾸준한 대화 및 창문,책 Lv.4이상";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 2)
         {
-            sld_like.maxValue = 245;
+            sld_like.maxValue = 224;
             face.GetComponent<Image>().sprite = spr_face[2];
             txt_likeLv.text = "[다음 호감도 조건]" + "\n" + "꾸준한 대화 및 창문,책 Lv.6이상";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 3)
         {
-            sld_like.maxValue = 360;
+            sld_like.maxValue = 316;
             face.GetComponent<Image>().sprite = spr_face[3];
             txt_likeLv.text = "[다음 호감도 조건]" + "\n" + "꾸준한 대화 및 창문,책 Lv.8이상";
         }
         if (PlayerPrefs.GetInt("likelv", 0) == 4)
         {
-            sld_like.maxValue = 415;
+            sld_like.maxValue = 360;
             face.GetComponent<Image>().sprite = spr_face[4];
             txt_likeLv.text = "..할 말이 있어";
         }

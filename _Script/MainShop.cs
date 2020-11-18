@@ -39,6 +39,7 @@ public class MainShop : MonoBehaviour
     public GameObject memoImg, switchImg, switchImg2, boxWin_obj;
 
     public GameObject[] MaxX_obj, shopBtn_obj;
+    public Sprite cup_spr;
     //외출
     public GameObject outItem_obj;
     public Text txt_talk, txt_talkTime;
@@ -726,8 +727,8 @@ public class MainShop : MonoBehaviour
         {
             have_r = PlayerPrefs.GetInt(str_Code + "r", 0);
             have_h = PlayerPrefs.GetInt(str_Code + "h", 0);
-            cost_r = 8000;
-            cost_h = 250;
+            cost_r = 5000;
+            cost_h = 150;
             if (have_r >= cost_r)
             {
                 if (have_h >= cost_h)
@@ -897,6 +898,7 @@ public class MainShop : MonoBehaviour
                     cupBtn_obj.SetActive(true);
                     PlayerPrefs.Save();
                     PlayerPrefs.SetInt("water", 0);
+                    cupBtn_obj.GetComponent<Image>().sprite = cup_spr;
                 }
                 else
                 {

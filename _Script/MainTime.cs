@@ -339,7 +339,7 @@ public class MainTime : MonoBehaviour
                 {
                     gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 50;
-                    like = like + 7;
+                    like = like + 10;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
@@ -361,7 +361,7 @@ public class MainTime : MonoBehaviour
                 {
                     gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 50;
-                    like = like + 7;
+                    like = like + 10;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
@@ -383,7 +383,7 @@ public class MainTime : MonoBehaviour
                 {
                     gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 60;
-                    like = like + 9;
+                    like = like + 15;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
@@ -405,7 +405,7 @@ public class MainTime : MonoBehaviour
                 {
                     gm.GetComponent<SoundEvt>().heartpaperSound();
                     h = h - 60;
-                    like = like + 9;
+                    like = like + 15;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
                     PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());

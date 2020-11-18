@@ -48,8 +48,8 @@ public class TouchEvt : MonoBehaviour
         CityTime.trashRnd = 0;
         h = PlayerPrefs.GetInt(str_Code + "h", 0);
         r = PlayerPrefs.GetInt(str_Code + "r", 0);
-        h = h + 3;
-        r = r + 25;
+        h = h + 5;
+        r = r + 30;
         PlayerPrefs.SetInt(str_Code + "r", r);
         PlayerPrefs.SetInt(str_Code + "h", h);
     }
