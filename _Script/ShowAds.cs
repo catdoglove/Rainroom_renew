@@ -76,24 +76,6 @@ public class ShowAds : MonoBehaviour
 
     public void AdReward()
     {
-        lastDateTimenow = System.DateTime.Now;
-        if (PlayerPrefs.GetInt("scene", 0) == 2)
-        {
-            PlayerPrefs.SetString("adtimespark", lastDateTimenow.ToString());
-        }
-        else if (PlayerPrefs.GetInt("scene", 0) == 3)
-        {
-            PlayerPrefs.SetString("adtimescity", lastDateTimenow.ToString());
-        }
-        else if (PlayerPrefs.GetInt("scene", 0) == 0)
-        {
-            PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
-        }
-        else
-        {
-            PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
-        }
-        PlayerPrefs.SetInt("talk", 5);
         adWin_obj.SetActive(false);
         tvImg.GetComponent<Image>().sprite = spr_adTV[0];
         tvImg.GetComponent<Button>().interactable = false;

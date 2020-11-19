@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using GoogleMobileAds.Api;
+using GoogleMobileAds.Api;
 using UnityEngine.UI;
 
 
 public class AdmobADS : MonoBehaviour {
-    /*
+    
     //배너
     private BannerView bannerView;
     AdRequest request;
@@ -21,11 +21,25 @@ public class AdmobADS : MonoBehaviour {
     int rewardCoin;
     Color color;
     public GameObject Toast_obj;
-    
+    public Text adPop_txt;
+    public Button cutTime_btn;
+
+    System.DateTime now;
+    System.DateTime lastDateTimenow;
+
+    public GameObject GM;
+
 
 
     // Use this for initialization 앱 ID
     void Start () {
+
+
+        if (PlayerPrefs.GetInt("outtimecut", 4) == 4 && PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+
+            cutTime_btn.interactable = false;
+        }
         color = new Color(1f, 1f, 1f);
 
 #if UNITY_ANDROID
@@ -39,26 +53,33 @@ public class AdmobADS : MonoBehaviour {
         MobileAds.Initialize(appId);
 
         //this.RequestBanner();
-        
 
-        rewardBasedVideo = RewardBasedVideoAd.Instance;
+
+        this.rewardBasedVideo = RewardBasedVideoAd.Instance;
         
         // Called when the user should be rewarded for watching a video.
         rewardBasedVideo.OnAdRewarded += HandleRewardBasedVideoRewarded;
         // Called when the ad is closed.
         rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
 
-        RequestRewardedVideo();
-        RequestInterstitial();
+        this.RequestRewardedVideo();
+        this.RequestInterstitial();
 
 
+    }
+
+    //terminating with uncaught exception of type Il2CppExceptionWrapper ㅇㅔ러 없앰
+    private void OnDisable()
+    {
+        rewardBasedVideo.OnAdRewarded -= HandleRewardBasedVideoRewarded;
+        rewardBasedVideo.OnAdClosed -= HandleRewardBasedVideoClosed;
     }
 
     //배너
     private void RequestBanner()
     {
 #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+            string adUnitId = "ca-app-pub-9179569099191885~8249233951";
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/2934735716";
 #else
@@ -82,7 +103,7 @@ public class AdmobADS : MonoBehaviour {
     {
 
 #if UNITY_ANDROID
-            adUnitIdvideo = "ca-app-pub-9179569099191885/8650861151"; // 테스트 ca-app-pub-3940256099942544/5224354917
+            adUnitIdvideo = "ca-app-pub-3940256099942544/5224354917"; // 테스트 ca-app-pub-3940256099942544/5224354917
 #elif UNITY_IPHONE
             adUnitIdvideo = "ca-app-pub-3940256099942544/1712485313";
 #else
@@ -91,30 +112,31 @@ public class AdmobADS : MonoBehaviour {
         // Create an empty ad request.
         request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
-        rewardBasedVideo.LoadAd(request, adUnitIdvideo);
+        this.rewardBasedVideo.LoadAd(request, adUnitIdvideo);
     }
 
     //시청보상
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
-        if (PlayerPrefs.GetInt("place", 0) == 0)
+        lastDateTimenow = System.DateTime.Now;
+        if (PlayerPrefs.GetInt("scene", 0) == 2)
         {
-            PlayerPrefs.SetInt("talk", 5);
-            PlayerPrefs.Save();
-            if (PlayerPrefs.GetInt("talk", 5) >= 5)
-            {
-                PlayerPrefs.SetInt("secf", 240);
-            }
+            PlayerPrefs.SetString("adtimespark", lastDateTimenow.ToString());
+        }
+        else if (PlayerPrefs.GetInt("scene", 0) == 3)
+        {
+            PlayerPrefs.SetString("adtimescity", lastDateTimenow.ToString());
+        }
+        else if (PlayerPrefs.GetInt("scene", 0) == 0)
+        {
+            PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
         }
         else
         {
-            PlayerPrefs.SetInt("talk", 5);
-            PlayerPrefs.Save();
-            if (PlayerPrefs.GetInt("talk", 5) >= 5)
-            {
-                PlayerPrefs.SetInt("secf2", 240);
-            }
+            PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
         }
+        GM.GetComponent<ShowAds>().AdReward();
+        PlayerPrefs.SetInt("talk", 5);
 
 
     }
@@ -133,7 +155,8 @@ public class AdmobADS : MonoBehaviour {
         }
         else
         {
-            StartCoroutine("ToastImgFadeOut");
+            Toast_obj.SetActive(true);
+            adPop_txt.text = "아직 볼 수 없다." + "\n" + " 나중에 시도해보자.";
         }
     }
     
@@ -145,26 +168,12 @@ public class AdmobADS : MonoBehaviour {
     }
 
     
-    IEnumerator ToastImgFadeOut()
-    {
-        color.a = Mathf.Lerp(0f, 1f, 1f);
-        Toast_obj.GetComponent<Image>().color = color;
-        Toast_obj.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
-        for (float i = 1f; i > 0f; i -= 0.05f)
-        {
-            color.a = Mathf.Lerp(0f, 1f, i);
-            Toast_obj.GetComponent<Image>().color = color;
-            yield return null;
-        }
-        Toast_obj.SetActive(false);
-    }
 
     //전면광고
     private void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-9179569099191885/1598954374"; // 테스트ca-app-pub-3940256099942544/1033173712
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712"; // 테스트ca-app-pub-3940256099942544/1033173712
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
@@ -178,14 +187,13 @@ public class AdmobADS : MonoBehaviour {
         this.interstitial.LoadAd(request);
         
     }
-    
 
     public void ShowAdInterstitial()
     {
         if (this.interstitial.IsLoaded())
         {
             this.interstitial.Show();
-            PlayerPrefs.SetInt("bouttime", 9);
+            PlayerPrefs.SetInt("outtimecut", 4);
         }
     }
 

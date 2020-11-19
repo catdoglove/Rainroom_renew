@@ -40,6 +40,7 @@ public class MainShop : MonoBehaviour
 
     public GameObject[] MaxX_obj, shopBtn_obj;
     public Sprite cup_spr;
+    public GameObject notice_obj;
     //외출
     public GameObject outItem_obj;
     public Text txt_talk, txt_talkTime;
@@ -68,7 +69,22 @@ public class MainShop : MonoBehaviour
         //가격과 이름
         setPrice();
         Setf();
-        
+        Notice();
+    }
+
+    public void Notice()
+    {
+        if (PlayerPrefs.GetInt("notice1", 0) == 0)
+        {
+            notice_obj.SetActive(true);
+        }
+    }
+    public void CloseNotice()
+    {
+        PlayerPrefs.SetInt(str_Code + "r", PlayerPrefs.GetInt(str_Code + "r", 0)+1000);
+        PlayerPrefs.SetInt(str_Code + "h", PlayerPrefs.GetInt(str_Code + "h", 0) + 10);
+        notice_obj.SetActive(false);
+        PlayerPrefs.SetInt("notice1", 1);
     }
 
     void Setf()
@@ -1500,6 +1516,8 @@ public class MainShop : MonoBehaviour
 
     void First()
     {
+
+        PlayerPrefs.SetString("adtimes", System.DateTime.Now.ToString());
         #region
         int c = 0;
         string str = "";
