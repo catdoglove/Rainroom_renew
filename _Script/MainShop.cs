@@ -1517,7 +1517,6 @@ public class MainShop : MonoBehaviour
     void First()
     {
 
-        PlayerPrefs.SetString("adtimes", System.DateTime.Now.ToString());
         #region
         int c = 0;
         string str = "";
@@ -1583,6 +1582,8 @@ public class MainShop : MonoBehaviour
             PlayerPrefs.SetString("code", str);
             PlayerPrefs.SetInt("first", 1);
             PlayerPrefs.Save();
+
+            PlayerPrefs.SetString("adtimes", System.DateTime.Now.ToString());
         }//endOfIf
 
         #endregion
