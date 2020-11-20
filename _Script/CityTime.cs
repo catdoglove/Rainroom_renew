@@ -15,6 +15,8 @@ public class CityTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        PlayerPrefs.SetInt("outtimecut", 0);
         //도움말 최초 1회 실행
         if (PlayerPrefs.GetInt("firstHelpCity", 0) == 0)
         {
@@ -97,7 +99,7 @@ public class CityTime : MonoBehaviour
         }
         else
         {
-            trashRnd = Random.Range(0, 2);
+            trashRnd = Random.Range(0, 12);
             moveX = Random.Range(-7.1f, 7.1f);
             trash_obj.SetActive(false);
         }

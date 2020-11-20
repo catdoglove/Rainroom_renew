@@ -78,15 +78,16 @@ public class SleepEvt : MonoBehaviour
             }
 
             string str = string.Format(@"{00:00}" + ":", hours) + string.Format(@"{00:00}", minute);
-            if (hours <= 0)
-            {
-                sleepTime_txt.text = "00:00";
-                PlayerPrefs.SetInt("sleeping", 0);
-            }
-            else
-            {
-                sleepTime_txt.text = str;
-            }
+                if (hours < 0)
+                {
+                    sleepTime_txt.text = "00:00";
+                    PlayerPrefs.SetInt("sleeping", 0);
+                    Asleep();
+                }
+                else
+                {
+                    sleepTime_txt.text = str;
+                }
             PlayerPrefs.Save();
             }
             yield return new WaitForSeconds(1f);
@@ -94,6 +95,25 @@ public class SleepEvt : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 시간되면 잠깨기
+    /// </summary>
+    void Asleep()
+    {
+
+        if (PlayerPrefs.GetInt("bedlv", 0) == 1)
+        {
+            sleepDown_obj.SetActive(false);
+        }
+        else
+        {
+            sleepUp_obj.SetActive(false);
+        }
+        bed_obj.SetActive(true);
+        cha_obj.SetActive(true);
+        sleepBack_obj.SetActive(false);
+        dreamnote_obj.SetActive(true);
+    }
 
 
     //얼마나 시간이 흘렀나?

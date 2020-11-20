@@ -293,7 +293,7 @@ public class RoomTalk : MonoBehaviour
         {
             TalkSound();
             int a = PlayerPrefs.GetInt("likepoint",0);
-            a = a + 10;
+            a = a + 1;
             PlayerPrefs.SetInt("likepoint", a);
             lovetalk();
             testText_cut = text_str.Split('/'); //끊기

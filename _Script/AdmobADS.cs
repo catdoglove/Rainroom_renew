@@ -35,7 +35,7 @@ public class AdmobADS : MonoBehaviour {
     void Start () {
 
 
-        if (PlayerPrefs.GetInt("outtimecut", 4) == 4 && PlayerPrefs.GetInt("scene", 0) == 0)
+        if (PlayerPrefs.GetInt("outtimecut", 0) == 4 && PlayerPrefs.GetInt("scene", 0) == 0)
         {
 
             cutTime_btn.interactable = false;
@@ -194,6 +194,7 @@ public class AdmobADS : MonoBehaviour {
         {
             this.interstitial.Show();
             PlayerPrefs.SetInt("outtimecut", 4);
+            cutTime_btn.interactable = false;
         }
     }
 

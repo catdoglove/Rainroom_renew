@@ -24,6 +24,7 @@ public class ParkTime : MonoBehaviour
     void Start()
     {
 
+        PlayerPrefs.SetInt("outtimecut", 0);
         if (PlayerPrefs.GetInt("backHomeTrash", 0) == 999)
         {
             item_num = 5;
@@ -203,7 +204,7 @@ public class ParkTime : MonoBehaviour
         }
         else
         {
-            trashRnd2 = Random.Range(0, 2);
+            trashRnd2 = Random.Range(0, 20);
             moveX = Random.Range(-7.1f, 7.1f);
             trash_obj.SetActive(false);
         }
@@ -223,7 +224,7 @@ public class ParkTime : MonoBehaviour
         }
         else
         {
-            leafRnd = Random.Range(0, 2);
+            leafRnd = Random.Range(0, 20);
             moveLX = Random.Range(-7.1f, 7.1f);
             leaf_obj.SetActive(false);
         }

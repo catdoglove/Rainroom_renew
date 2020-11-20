@@ -214,7 +214,7 @@ public class ParkTalk : MonoBehaviour
         {
             TalkSound();
             int a = PlayerPrefs.GetInt("likepoint", 0);
-            a = a + 10;
+            a = a + 1;
             PlayerPrefs.SetInt("likepoint", a);
             lineReload(0);
 
@@ -601,6 +601,10 @@ public class ParkTalk : MonoBehaviour
             default:
                 hp = hp + 7;
                 break;
+        }
+        if (PlayerPrefs.GetInt("infoflower", 0) == 1)
+        {
+            hp++;
         }
         PlayerPrefs.SetInt(str_Code + "h", hp);
         PlayerPrefs.Save();

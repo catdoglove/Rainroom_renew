@@ -217,7 +217,7 @@ public class MainTime : MonoBehaviour
         }
         else
         {
-            wepRnd = Random.Range(0, 5);
+            wepRnd = Random.Range(0, 20);
             moveX = Random.Range(-7.1f, 7.1f);
             moveY = Random.Range(2.1f, 3.9f);
             wep_obj.SetActive (false);
@@ -233,7 +233,7 @@ public class MainTime : MonoBehaviour
 
             baques_obj.transform.position = new Vector3(b_moveX, baques_obj.transform.position.y, baques_obj.transform.position.z);
 
-            baqueRnd = Random.Range(0, 5);
+            baqueRnd = Random.Range(0, 21);
             if (baqueRnd == 1)
             {
                 baqueShow = 1;
