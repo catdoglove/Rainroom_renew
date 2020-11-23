@@ -2598,6 +2598,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 300375173}
+        m_MethodName: LoadRewardedVideo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &124719528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,6 +5950,7 @@ GameObject:
   - component: {fileID: 300375170}
   - component: {fileID: 300375171}
   - component: {fileID: 300375172}
+  - component: {fileID: 300375173}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: GameObject
@@ -6862,6 +6874,19 @@ MonoBehaviour:
   adPop_txt: {fileID: 439931070}
   cutTime_btn: {fileID: 1226738012}
   GM: {fileID: 300375158}
+--- !u!114 &300375173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300375158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bf87db85e7a4d18bf8422eb54ac837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 300375158}
 --- !u!1 &301776945
 GameObject:
   m_ObjectHideFlags: 0
@@ -7559,8 +7584,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375172}
-        m_MethodName: showAdmobVideo
+      - m_Target: {fileID: 300375173}
+        m_MethodName: ShowRewardedVideo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32086,7 +32111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1473338508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32103,7 +32128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -356, y: 600}
+  m_AnchoredPosition: {x: -485, y: 773}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1473338509
@@ -40709,7 +40734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2002422796
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40726,7 +40751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -612, y: 600}
+  m_AnchoredPosition: {x: -741, y: 772.99994}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2002422797
