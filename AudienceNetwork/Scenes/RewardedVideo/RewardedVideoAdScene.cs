@@ -45,8 +45,8 @@ public class RewardedVideoAdScene : BaseScene
         // https://developers.facebook.com/docs/audience-network/ios/rewarded-video#server-side-reward-validation
         RewardData rewardData = new RewardData
         {
-            UserId = "533954717487727",
-            Currency = "2938079689628163"  //이게 맞는지 찾아보기
+            UserId = "USER_ID",
+            Currency = "REWARD_ID"
         };
 #pragma warning disable 0219
         RewardedVideoAd s2sRewardedVideoAd = new RewardedVideoAd("1114749265606126_1114756392272080", rewardData);

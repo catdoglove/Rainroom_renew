@@ -10,7 +10,7 @@ public class BaseScene : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Escape))
             {
-                Application.Quit();
+                //Application.Quit();
                 return;
             }
         }
