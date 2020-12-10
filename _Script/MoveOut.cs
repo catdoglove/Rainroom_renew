@@ -27,6 +27,7 @@ public class MoveOut : MonoBehaviour
         int h = PlayerPrefs.GetInt(str_Code + "h", 0);
         if (h >= 100)
         {
+            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
             h = h - 100;
             PlayerPrefs.SetInt(str_Code + "h", h);
             PlayerPrefs.SetInt("gocitysuccess", 1);
@@ -46,6 +47,7 @@ public class MoveOut : MonoBehaviour
         int h = PlayerPrefs.GetInt(str_Code + "h", 0);
         if (h >= 100)
         {
+            GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
             h = h - 100;
             PlayerPrefs.SetInt(str_Code + "h", h);
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
