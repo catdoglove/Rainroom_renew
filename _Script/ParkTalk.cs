@@ -531,7 +531,7 @@ public class ParkTalk : MonoBehaviour
             if (have_h >= cost_h)
             {
                 int a = PlayerPrefs.GetInt("likepoint", 0);
-                a = a + 10;
+                a = a + 1;
                 PlayerPrefs.SetInt("likepoint", a);
 
                 have_h = have_h - cost_h;
