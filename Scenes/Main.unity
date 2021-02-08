@@ -30448,7 +30448,7 @@ MonoBehaviour:
     m_LineSpacing: 0.8
   m_Text: "(\uC7A0\uB4E4\uBA74 \uC911\uAC04\uC5D0 \uAE68\uC5B4\uB0A0 \uC218 \uC5C6\uC73C\uBA70
     \n\uC5B4\uB5A4 \uBC84\uD2BC\uB3C4 \uB204\uB97C \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.\n\uC815\uB9D0
-    6\uC2DC\uAC04\uB3D9\uC548 \uC7A1\uC744 \uC7A1\uB2C8\uB2E4.)"
+    6\uC2DC\uAC04\uB3D9\uC548 \uC7A0\uC744 \uC7A1\uB2C8\uB2E4.)"
 --- !u!222 &1304603915
 CanvasRenderer:
   m_ObjectHideFlags: 0
