@@ -18,6 +18,9 @@ public class AdmobADS : MonoBehaviour {
     //전면
     private InterstitialAd interstitial;
 
+    //보상형 전면 광고
+    private RewardedInterstitialAd rewardedInterstitialAd;
+
     int rewardCoin;
     Color color;
     public GameObject Toast_obj;
@@ -65,6 +68,10 @@ public class AdmobADS : MonoBehaviour {
         this.RequestRewardedVideo();
         this.RequestInterstitial();
 
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the rewarded ad with the request.
+        RewardedInterstitialAd.LoadAd("ca-app-pub-3940256099942544/5354046379", request, adLoadCallback);
 
     }
 
@@ -210,4 +217,34 @@ public class AdmobADS : MonoBehaviour {
     }
     */
 
+        //보상형 전면 광고
+    private void adLoadCallback(RewardedInterstitialAd ad, string error)
+    {
+        if (error == null)
+        {
+            rewardedInterstitialAd = ad;
+            rewardedInterstitialAd.OnAdFailedToPresentFullScreenContent += HandleAdFailedToPresent;
+
+        }
+    }
+
+    //보상형 전면 광고 보여주기
+    public void ShowRewardedInterstitialAd()
+    {
+        if (rewardedInterstitialAd != null)
+        {
+            rewardedInterstitialAd.Show(userEarnedRewardCallback);
+        }
+    }
+
+    private void userEarnedRewardCallback(Reward reward)
+    {
+        // TODO: Reward the user.
+        PlayerPrefs.SetInt("outtimecut", 4);
+        cutTime_btn.interactable = false;
+    }
+    private void HandleAdFailedToPresent(object sender, AdErrorEventArgs args)
+    {
+        //MonoBehavior.print("Rewarded interstitial ad has failed to present.");
+    }
 }

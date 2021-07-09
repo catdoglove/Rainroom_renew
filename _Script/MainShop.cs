@@ -60,6 +60,8 @@ public class MainShop : MonoBehaviour
         //PlayerPrefs.SetInt(str_Code + "h", 9999);
         //PlayerPrefs.SetInt("lightlv", 0);
         //PlayerPrefs.SetInt("bedlv", 0);
+        //PlayerPrefs.SetInt("likelv", 6);
+        
 
         if (PlayerPrefs.GetInt("lightlv", 0) >= 2)
         {
