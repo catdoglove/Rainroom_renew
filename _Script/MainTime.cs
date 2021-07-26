@@ -87,6 +87,7 @@ public class MainTime : MonoBehaviour
     public Camera camera_c;
 
     public GameObject title_obj;
+    public GameObject blackAd_obj;
 
     // Start is called before the first frame update
     void Start()
@@ -157,6 +158,11 @@ public class MainTime : MonoBehaviour
         int a = 0;
         while (a == 0)
         {
+            if (PlayerPrefs.GetInt("blad", 0) == 1)
+            {
+                blackAd_obj.SetActive(false);
+                PlayerPrefs.SetInt("blad", 0);
+            }
             //최대량 제한 빗물 마음
             if (PlayerPrefs.GetInt(str + "r", 0) > 999999)
             {

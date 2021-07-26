@@ -11104,6 +11104,7 @@ MonoBehaviour:
   trashB: {fileID: 1188113709}
   memoTrash: {fileID: 1895960064}
   trashButton: {fileID: 1170981656}
+  blackAd_obj: {fileID: 1806657452}
 --- !u!114 &2145333741
 MonoBehaviour:
   m_ObjectHideFlags: 0

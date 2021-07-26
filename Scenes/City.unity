@@ -9764,6 +9764,7 @@ MonoBehaviour:
   - {fileID: 6717560579159843309, guid: c694b5ef1e44de94bae8b3c441370a72, type: 3}
   - {fileID: 8749710852025898394, guid: c694b5ef1e44de94bae8b3c441370a72, type: 3}
   - {fileID: -8146909544407412486, guid: c694b5ef1e44de94bae8b3c441370a72, type: 3}
+  blackAd_obj: {fileID: 477763608}
 --- !u!114 &1119049939
 MonoBehaviour:
   m_ObjectHideFlags: 0

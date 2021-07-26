@@ -6037,6 +6037,7 @@ MonoBehaviour:
   menu_obj: {fileID: 0}
   camera_c: {fileID: 0}
   title_obj: {fileID: 1261739487}
+  blackAd_obj: {fileID: 1490912846}
 --- !u!4 &300375160
 Transform:
   m_ObjectHideFlags: 0
