@@ -5940,6 +5940,7 @@ GameObject:
   - component: {fileID: 300375170}
   - component: {fileID: 300375171}
   - component: {fileID: 300375172}
+  - component: {fileID: 300375173}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: GameObject
@@ -6864,6 +6865,26 @@ MonoBehaviour:
   adPop_txt: {fileID: 439931070}
   cutTime_btn: {fileID: 1226738012}
   GM: {fileID: 300375158}
+--- !u!114 &300375173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300375158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63f0fc8f6c18dc4f96da93936797a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wnd:
+  - {fileID: 1604754612}
+  - {fileID: 1522026152}
+  - {fileID: 1895960064}
+  - {fileID: 266109814}
+  - {fileID: 1918756141}
+  - {fileID: 1654939926}
+  - {fileID: 1318719984}
 --- !u!1 &301776945
 GameObject:
   m_ObjectHideFlags: 0
@@ -18757,6 +18778,7 @@ GameObject:
   - component: {fileID: 788415841}
   - component: {fileID: 788415843}
   - component: {fileID: 788415842}
+  - component: {fileID: 788415844}
   m_Layer: 5
   m_Name: "\uBA54\uB274GameObject"
   m_TagString: "\uBA54\uB274GameObject"
@@ -19024,6 +19046,22 @@ MonoBehaviour:
   se_eatCity: {fileID: 0}
   se_heartpaper: {fileID: 0}
   se_trash: {fileID: 0}
+--- !u!114 &788415844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788415836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63f0fc8f6c18dc4f96da93936797a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wnd:
+  - {fileID: 351962229}
+  - {fileID: 88821400}
+  - {fileID: 664385700}
 --- !u!1 &792218424
 GameObject:
   m_ObjectHideFlags: 0

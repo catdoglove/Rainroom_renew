@@ -10953,6 +10953,7 @@ GameObject:
   - component: {fileID: 2145333744}
   - component: {fileID: 2145333745}
   - component: {fileID: 2145333746}
+  - component: {fileID: 2145333747}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -11311,3 +11312,17 @@ MonoBehaviour:
   adPop_txt: {fileID: 1411855429}
   cutTime_btn: {fileID: 0}
   GM: {fileID: 2145333736}
+--- !u!114 &2145333747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145333736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63f0fc8f6c18dc4f96da93936797a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wnd:
+  - {fileID: 1604754612}
