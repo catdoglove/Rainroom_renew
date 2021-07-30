@@ -117,12 +117,12 @@ public class RoomTalk : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         { 
-            closeTalkBoon();
-            talkCursor.SetActive(true);
+           // closeTalkBoon();
             if (exit_int == 0)
             {
                 exit_int = 1;
                 talkballoon.SetActive(true);
+                talkCursor.SetActive(true);
                 closeTB.GetComponent<Button>().interactable = true;
                 closeTB.SetActive(true);
                 if (PlayerPrefs.GetInt("sleeping", 0) == 1)
