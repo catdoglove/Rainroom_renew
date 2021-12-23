@@ -93,7 +93,6 @@ public class MainMenuEvt : MonoBehaviour
         }
         else
         {
-
             if (PlayerPrefs.GetInt("scene", 0) == 0)
             {
                 AllClose();
@@ -111,7 +110,6 @@ public class MainMenuEvt : MonoBehaviour
     //옵션창 닫기 열기
     public void ActOption()
     {
-        
         if (PlayerPrefs.GetInt("scene", 0) == 0)
         {
             if (GM == null)
@@ -119,7 +117,6 @@ public class MainMenuEvt : MonoBehaviour
                 GM = GameObject.FindGameObjectWithTag("GameObject");
             }
         }
-
         if (option_obj.activeSelf)
         {
             option_obj.SetActive(false);
@@ -164,7 +161,6 @@ public class MainMenuEvt : MonoBehaviour
         }
         GM.GetComponent<MainTime>().ActBeadal();
     }
-
 
     //돌아가창
     public void backWndOpen()
@@ -227,7 +223,6 @@ public class MainMenuEvt : MonoBehaviour
             }
         PlayerPrefs.Save();
     }
-
 
     public void AllClose()
     {
