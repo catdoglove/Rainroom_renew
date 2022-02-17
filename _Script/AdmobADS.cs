@@ -33,7 +33,7 @@ public class AdmobADS : MonoBehaviour {
     // Use this for initialization 앱 ID
     void Start () {
 
-
+        MobileAds.Initialize(initStatus => { });
 #if UNITY_ANDROID
         string appId = "ca-app-pub-9179569099191885~8249233951"; //테스트용ca-app-pub-3940256099942544~3347511713
 #elif UNITY_IPHONE
