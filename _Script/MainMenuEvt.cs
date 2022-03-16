@@ -10,7 +10,7 @@ public class MainMenuEvt : MonoBehaviour
     public GameObject muteImg_obj, muteBGImg_obj;
     public Sprite[] mute_spr;
 
-    public GameObject GM,GMD;
+    public GameObject GM,GMD,GM_city;
 
     public GameObject help_obj, helpImg_obj, helpOut_obj, helpCity_obj, helpR_obj, helpO_obj, helpL_obj;
     public Sprite[] spr_help, spr_helpOut;
@@ -22,7 +22,8 @@ public class MainMenuEvt : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+
         if (PlayerPrefs.GetInt("firstroom", 0) == 0)
         {
             OpenHelp();
@@ -176,7 +177,12 @@ public class MainMenuEvt : MonoBehaviour
 
     public void GoBack()
     {
-        //SceneManager.LoadSceneAsync("Main");
+        //여기서 실행 
+        if (PlayerPrefs.GetInt("scene", 2) == 3)
+        {
+            MemoryDestroy();
+        }
+
         SceneManager.LoadSceneAsync("Load");
         PlayerPrefs.SetInt("scene", 0);
         menu_obj.SetActive(false);
@@ -233,26 +239,6 @@ public class MainMenuEvt : MonoBehaviour
         GM.GetComponent<MainShop>().shopWinYN_obj.SetActive(false);
     }
 
-    /*
-    public void changeToastTxt()
-    {
-        if (endck == 1)
-        {
-            endTxt.text = "종료메세지A";
-            AndroidDialogAndToastBinding.instance.toastShort("기본인사로 변경되었습니다.");
-            endck = 2;
-            Movebtn.opOp = 0;
-        }
-        else if (endck == 2)
-        {
-            endTxt.text = "종료메세지B";
-            AndroidDialogAndToastBinding.instance.toastShort("호감도에 따른 인사로 변경되었습니다.");
-            endck = 1;
-            Movebtn.opOp = 0;
-        }
-        PlayerPrefs.SetInt("endck", endck);
-    }
-    */
 
     //도움말
     public void OpenHelp()
@@ -260,12 +246,10 @@ public class MainMenuEvt : MonoBehaviour
         if (PlayerPrefs.GetInt("scene", 0)==2)
         {
             helpOut_obj.SetActive(true);
-            //helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[0];
         }
         else if (PlayerPrefs.GetInt("scene", 2) == 3)
         {
             helpCity_obj.SetActive(true);
-            //helpOut_obj.GetComponent<Image>().sprite = spr_helpOut[1];
         }
         else
         {
@@ -344,11 +328,20 @@ public class MainMenuEvt : MonoBehaviour
             PlayerPrefs.SetFloat("talkspeed", 0.07f);
         }
     }
-
-
     public void showInfoLink()
     {
         Application.OpenURL("https://docs.google.com/document/d/1JFdyCym-5Kxns2xcA-w8W5ir5YiL4J-6JrJeMF8zcuk/edit?usp=sharing");
+    }
+
+    void MemoryDestroy()
+    {
+        if (GM == null)
+        {
+            GM_city = GameObject.FindGameObjectWithTag("도시GM");
+        }        
+        GM_city.GetComponent<CityShop>().blackimg.SetActive(true);
+        GM_city.GetComponent<CityShop>().shopHelp_obj.GetComponent<Image>().sprite = null;
+        helpCity_obj.GetComponent<Image>().sprite = null;        
     }
 
 }
