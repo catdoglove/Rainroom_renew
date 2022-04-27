@@ -222,7 +222,7 @@ public class ParkTalk : MonoBehaviour
 
             testText_cut = text_str.Split('/'); //끊기
             cleantalk();
-
+            HeartPlus();
             if (testText_cut[0] == "q")
             { //질문이 있는경우
                 StartCoroutine("questionTalkRun");
