@@ -343,5 +343,13 @@ public class MainMenuEvt : MonoBehaviour
         GM_city.GetComponent<CityShop>().shopHelp_obj.GetComponent<Image>().sprite = null;
         helpCity_obj.GetComponent<Image>().sprite = null;        
     }
+    public void showNews2()
+    {
+        if (GM == null)
+        {
+            GM = GameObject.FindGameObjectWithTag("GameObject");
+        }
+        GM.GetComponent<RoomText>().showNews();
+    }
 
 }

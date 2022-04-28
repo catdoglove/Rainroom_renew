@@ -41758,8 +41758,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 300375168}
-        m_MethodName: showNews
+      - m_Target: {fileID: 788415839}
+        m_MethodName: showNews2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
