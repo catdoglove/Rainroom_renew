@@ -335,7 +335,7 @@ public class MainMenuEvt : MonoBehaviour
 
     void MemoryDestroy()
     {
-        if (GM == null)
+        if (GM_city == null)
         {
             GM_city = GameObject.FindGameObjectWithTag("도시GM");
         }        
