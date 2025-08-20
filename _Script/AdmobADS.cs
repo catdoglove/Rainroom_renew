@@ -4,6 +4,7 @@ using UnityEngine;
 using GoogleMobileAds.Api;
 using UnityEngine.UI;
 using System;
+using GoogleMobileAds.Api.Mediation.IronSource;
 
 public class AdmobADS : MonoBehaviour
 {
@@ -28,7 +29,10 @@ public class AdmobADS : MonoBehaviour
 
     public GameObject GM;
 
-
+    private void Awake()
+    {
+        GoogleMobileAds.Mediation.IronSource.Api.IronSource.SetMetaData("do_not_sell", "true");
+    }
 
     // Use this for initialization 앱 ID
     void Start()
