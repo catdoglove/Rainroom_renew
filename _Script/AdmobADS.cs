@@ -37,26 +37,36 @@ public class AdmobADS : MonoBehaviour
     // Use this for initialization 앱 ID
     void Start()
     {
-
-        // Initialize the Google Mobile Ads SDK.
-        MobileAds.Initialize((InitializationStatus initStatus) =>
-        {
-            // This callback is called once the MobileAds SDK is initialized.
-        });
+        color = new Color(1f, 1f, 1f);
 
         _rewardedAdUnitId = "ca-app-pub-9179569099191885/4627868936";
         _GoOutADSid = "ca-app-pub-9179569099191885/1928999389";
+
+        if (Application.internetReachability != NetworkReachability.NotReachable) //인터넷연결된경우?
+        {
+            // Initialize the Google Mobile Ads SDK.
+            MobileAds.Initialize((InitializationStatus initStatus) =>
+            {
+                LoadRewardedAd();
+                LoadRewardedInterstitialAd();
+                // This callback is called once the MobileAds SDK is initialized.
+            });
+
+
+        }
+        else
+        {
+           // Debug.Log("No Internet, skip init for now. 인터넷 연결 불가능");
+        }
 
         if (PlayerPrefs.GetInt("outtimecut", 0) == 4 && PlayerPrefs.GetInt("scene", 0) == 0)
         {
             cutTime_btn.interactable = false;
         }
-        color = new Color(1f, 1f, 1f);
-
-        LoadRewardedAd();
-        LoadRewardedInterstitialAd();
-
     }
+
+
+
 
     public void LoadRewardedAd()
     {
@@ -76,7 +86,6 @@ public class AdmobADS : MonoBehaviour
         RewardedAd.Load(_rewardedAdUnitId, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
-                RegisterEventHandlers(ad); //이벤트 등록
                 // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
@@ -87,10 +96,10 @@ public class AdmobADS : MonoBehaviour
                 //Debug.Log("Rewarded ad loaded with response : " + ad.GetResponseInfo());
 
                 rewardedAd = ad;
+                RegisterEventHandlers(ad); //이벤트 등록
             });
 
     }
-
 
 
     private void RegisterEventHandlers(RewardedAd ad)
@@ -103,10 +112,18 @@ public class AdmobADS : MonoBehaviour
 
         ad.OnAdFullScreenContentClosed += () =>
         {
-            //blackimg.SetActive(false);
-           // LoadRewardedAd();
-            //Debug.Log("광고닫기");
+           Debug.Log("광고닫기");
+            giveMeReward();
         };
+    }
+
+
+    void giveMeReward()
+    {
+        GM.GetComponent<ShowAds>().AdReward();
+        PlayerPrefs.SetInt("talk", 5);
+        PlayerPrefs.SetInt("blad", 1);
+        LoadRewardedAd();
     }
 
 
@@ -145,11 +162,9 @@ public class AdmobADS : MonoBehaviour
                     {
                         PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
                     }
-                    GM.GetComponent<ShowAds>().AdReward();
-                    PlayerPrefs.SetInt("talk", 5);
-                    PlayerPrefs.SetInt("blad", 1);
-                    LoadRewardedAd();
                 });
+
+                PlayerPrefs.Save();
             }
             else
             {
@@ -182,8 +197,6 @@ public class AdmobADS : MonoBehaviour
         RewardedInterstitialAd.Load(_GoOutADSid, adRequest,
             (RewardedInterstitialAd ad, LoadAdError error) =>
             {
-                RegisterEventHandlers(ad); //이벤트 등록
-                                                               // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
                     //Debug.LogError("rewarded interstitial ad failed to load an ad " + "with error : " + error);
@@ -228,36 +241,7 @@ public class AdmobADS : MonoBehaviour
     }
 
 
-    private void RegisterEventHandlers(RewardedInterstitialAd ad)
-    {
-        ad.OnAdPaid += (AdValue adValue) =>
-        {
-
-        };
-        ad.OnAdImpressionRecorded += () =>
-        {
-            //Debug.Log("Interstitial ad recorded an impression.");
-        };
-        ad.OnAdClicked += () =>
-        {
-            //Debug.Log("Interstitial ad was clicked.");
-        };
-        ad.OnAdFullScreenContentOpened += () =>
-        {
-            //Debug.Log("Interstitial ad full screen content opened.");
-        };
-        ad.OnAdFullScreenContentClosed += () =>
-        {            
-            //blackimg.SetActive(false);
-            //LoadRewardedInterstitialAd();
-
-            //Debug.Log("Interstitial ad full screen content closed.");
-        };
-        ad.OnAdFullScreenContentFailed += (AdError error) =>
-        {
-            //Debug.LogError("Interstitial ad failed to open full screen content " + "with error : " + error);
-        };
     }
 
 
-}
+
