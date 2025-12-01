@@ -28,6 +28,7 @@ public class AdmobADS : MonoBehaviour
     System.DateTime lastDateTimenow;
 
     public GameObject GM;
+    bool rewardEarned = false;
 
     private void Awake()
     {
@@ -112,8 +113,12 @@ public class AdmobADS : MonoBehaviour
 
         ad.OnAdFullScreenContentClosed += () =>
         {
-           Debug.Log("광고닫기");
-            giveMeReward();
+            if (rewardEarned)
+            {
+              //  Debug.Log("광고닫기");
+                giveMeReward();
+                rewardEarned = false;
+            }
         };
     }
 
@@ -145,6 +150,7 @@ public class AdmobADS : MonoBehaviour
                 //blackimg.SetActive(true);
                 rewardedAd.Show((Reward reward) =>
                 {
+                    rewardEarned = true;
                     lastDateTimenow = System.DateTime.Now;
                     if (PlayerPrefs.GetInt("scene", 0) == 2)
                     {
