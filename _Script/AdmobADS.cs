@@ -53,6 +53,7 @@ public class AdmobADS : MonoBehaviour
             // Initialize the Google Mobile Ads SDK.
             MobileAds.Initialize((InitializationStatus initStatus) =>
             {
+                Debug.Log("Admob Init Complete");
                 LoadRewardedAd();
                 LoadRewardedAd2();
                 //LoadRewardedInterstitialAd();
