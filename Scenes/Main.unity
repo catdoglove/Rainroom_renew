@@ -6983,6 +6983,7 @@ MonoBehaviour:
   - {fileID: 3341895929379786006, guid: 67c33b0013dbe9f478774d304176b563, type: 3}
   - {fileID: -5349546134301776880, guid: 67c33b0013dbe9f478774d304176b563, type: 3}
   cha_obj: {fileID: 2028583994}
+  alarm_obj: {fileID: 814958726}
 --- !u!114 &300375167
 MonoBehaviour:
   m_ObjectHideFlags: 0
