@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq; //랜덤필
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq; //랜덤필
 
 public class RoomText : MonoBehaviour
 {
@@ -24,11 +24,15 @@ public class RoomText : MonoBehaviour
 
     int[] testArr = new int[60];
 
+    async void csvvreader()
+    {
+        data_diray = await CSVReader.ReadAsync("Assets/CSV/deardiary.csv"); //대사 불러오기   
+        data_news = await CSVReader.ReadAsync("Assets/CSV/news.csv"); //대사 불러오기   
+    }
     // Start is called before the first frame update
     void Start()
     {
-        data_diray = CSVReader.Read("CSV/deardiary"); //대사 불러오기   
-        data_news = CSVReader.Read("CSV/news"); //대사 불러오기   
+        csvvreader();
 
         allArr[0] = 60; //일기
         allArr[1] = 100; //신문
