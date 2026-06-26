@@ -290,7 +290,7 @@ public class RoomTalk : MonoBehaviour
         // else
         // {
         //Audio_obj.GetComponent<SoundEvt>().talkSound();
-        if(PlayerPrefs.GetInt("talk", 5) <= 0)
+        if (PlayerPrefs.GetInt("talk", 5) <= 0)
         {
 
         }
