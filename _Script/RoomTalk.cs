@@ -312,7 +312,7 @@ public class RoomTalk : MonoBehaviour
             {
                 StartCoroutine(talkRun(speedF));
             }
-
+            UpLike();
             HeartPlus();
         }
     }
