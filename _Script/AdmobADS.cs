@@ -4,7 +4,6 @@ using UnityEngine;
 using GoogleMobileAds.Api;
 using UnityEngine.UI;
 using System;
-//using Unity.Services.LevelPlay;
 using GoogleMobileAds.Api.Mediation.UnityAds;
 
 
@@ -210,13 +209,12 @@ public class AdmobADS : MonoBehaviour
                     isFirstAdRewardPending = true; // Update()로 신호만 보냄
                 });
 
-                PlayerPrefs.Save();
             }
             else
             {
                 Toast_obj.SetActive(true);
                 adPop_txt.text = "아직 볼 수 없다." + "\n" + "나중에 시도해보자.";
-                LoadRewardedAd();
+                //LoadRewardedAd();
             }
         }
     }
@@ -322,7 +320,7 @@ public class AdmobADS : MonoBehaviour
         {
             Toast_obj.SetActive(true);
             adPop_txt.text = "아직 볼 수 없다." + "\n" + "나중에 시도해보자.";
-            LoadRewardedAd2();
+            //LoadRewardedAd2();
         }
 
     }
