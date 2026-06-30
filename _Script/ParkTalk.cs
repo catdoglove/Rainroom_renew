@@ -422,6 +422,7 @@ public class ParkTalk : MonoBehaviour
     //선택한 질문 출력
     IEnumerator choiceTextRun()
     {
+        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
         falseObject();
 
       //  quesStr = " ";

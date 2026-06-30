@@ -390,6 +390,7 @@ public class RoomTalk : MonoBehaviour
     //선택한 질문 출력
     IEnumerator choiceTextRun()
     {
+        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
         falseObject();
 
       //  quesStr = " ";
