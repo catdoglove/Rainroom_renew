@@ -28,6 +28,13 @@ public class AdmobADStime : MonoBehaviour
 
         _rewardedAdUnitId = "ca-app-pub-9179569099191885/8513428768";
 
+
+        if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) == 99)
+        {
+            alarm_obj.SetActive(false);
+            return;
+        }
+
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
             LoadRewardedAd();
@@ -36,6 +43,8 @@ public class AdmobADStime : MonoBehaviour
         {
             //Debug.Log("No Internet, skip init for now 인터넷 연결 X");
         }
+
+
     }
     private void Update()
     {
@@ -47,6 +56,7 @@ public class AdmobADStime : MonoBehaviour
     }
     public void LoadRewardedAd()
     {
+        alarm_obj.SetActive(false);
         // Clean up the old ad before loading a new one.
         if (rewardedAd != null)
         {
@@ -67,6 +77,7 @@ public class AdmobADStime : MonoBehaviour
                 if (error != null || ad == null)
                 {
                     //Debug.LogError("Rewarded ad failed to load an ad " + "with error : " + error);
+                    if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
                     return;
                 }
 
@@ -74,6 +85,7 @@ public class AdmobADStime : MonoBehaviour
 
                 rewardedAd = ad;
                 RegisterEventHandlers(ad);
+                if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
             });
 
     }

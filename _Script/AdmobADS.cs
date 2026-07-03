@@ -39,11 +39,15 @@ public class AdmobADS : MonoBehaviour
     private int loadFailCount = 0;
     private int loadFailCountInterstitial = 0;
 
+    public GameObject adsBtn;
+    private Button adsBtnComponent;
+
     private void Awake()
     {
         //UnityAds.SetConsentMetaData("gdpr.consent", true);
         GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("gdpr.consent", true);
         GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("privacy.consent", true);
+        adsBtnComponent = adsBtn.GetComponent<Button>();
     }
 
     // Use this for initialization 앱 ID
@@ -131,6 +135,7 @@ public class AdmobADS : MonoBehaviour
 
     public void LoadRewardedAd()
     {
+        adsBtnComponent.interactable = false;
         // Clean up the old ad before loading a new one.
         if (rewardedAd != null)
         {
@@ -152,6 +157,7 @@ public class AdmobADS : MonoBehaviour
                 {
                     Debug.Log("광고 로드 실패 재시도");
                     isReloadPending = true; // 여기서도 플래그를 세워주면 무한 동력 완성!
+                    adsBtnComponent.interactable = true;
                     return;
                 }
 
@@ -160,6 +166,7 @@ public class AdmobADS : MonoBehaviour
                 loadFailCount = 0;
                 rewardedAd = ad;
                 RegisterEventHandlers(ad); //이벤트 등록
+                adsBtnComponent.interactable = true;
             });
 
     }

@@ -51,10 +51,6 @@ public class SleepEvt : MonoBehaviour
             }
         }
 
-        if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) == 99)
-        {
-            alarm_obj.SetActive(false);
-        }
 
     }
 
