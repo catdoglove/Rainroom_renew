@@ -39,6 +39,10 @@ public class AdmobADS : MonoBehaviour
     private int loadFailCount = 0;
     private int loadFailCountInterstitial = 0;
 
+    // 기존 플래그들 아래에 추가
+    private bool isFirstAdLoadSuccessPending = false;
+    private bool isSecondAdLoadSuccessPending = false;
+
     public GameObject adsBtn;
     private Button adsBtnComponent;
 
@@ -85,7 +89,9 @@ public class AdmobADS : MonoBehaviour
         }
         else
         {
-            // Debug.Log("No Internet, skip init for now. 인터넷 연결 불가능");
+            adsBtnComponent.interactable = false; // 인터넷 없으면 비활성화
+            if (cutTime_btn != null)
+                cutTime_btn.interactable = false;
         }
 
         if (PlayerPrefs.GetInt("outtimecut", 0) == 4 && PlayerPrefs.GetInt("scene", 0) == 0)
@@ -117,17 +123,39 @@ public class AdmobADS : MonoBehaviour
         if (isReloadPending)
         {
             isReloadPending = false;
-            float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCount), 30f); // 최대 30초
-            loadFailCount++;
-            Invoke("LoadRewardedAd", delay);
+            if (!IsInvoking("LoadRewardedAd")) // ← 이미 예약됐는지 체크
+            {
+                float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCount), 30f); // 최대 30초
+                loadFailCount++;
+                Invoke("LoadRewardedAd", delay);
+            }
         }
 
         if (isReloadInterstitialPending)
         {
             isReloadInterstitialPending = false;
-            float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCountInterstitial), 30f); // 최대 30초
-            loadFailCountInterstitial++;
-            Invoke("LoadRewardedAd2", delay);
+            if (!IsInvoking("LoadRewardedAd2")) // ← 이미 예약됐는지 체크
+            {
+                float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCountInterstitial), 30f); // 최대 30초
+                loadFailCountInterstitial++;
+                Invoke("LoadRewardedAd2", delay);
+            }
+        }
+
+        if (isFirstAdLoadSuccessPending)
+        {
+            isFirstAdLoadSuccessPending = false;
+            adsBtnComponent.interactable = true;
+        }
+
+        if (isSecondAdLoadSuccessPending)
+        {
+            isSecondAdLoadSuccessPending = false;
+            if (cutTime_btn != null) // 먼저 버튼이 존재하는지 확인
+            {
+                if (PlayerPrefs.GetInt("outtimecut", 0) != 4)
+                    cutTime_btn.interactable = true;
+            }
         }
     }
 
@@ -157,7 +185,7 @@ public class AdmobADS : MonoBehaviour
                 {
                     Debug.Log("광고 로드 실패 재시도");
                     isReloadPending = true; // 여기서도 플래그를 세워주면 무한 동력 완성!
-                    adsBtnComponent.interactable = true;
+                    //adsBtnComponent.interactable = true; // true냐 false냐 선택알아서
                     return;
                 }
 
@@ -166,7 +194,7 @@ public class AdmobADS : MonoBehaviour
                 loadFailCount = 0;
                 rewardedAd = ad;
                 RegisterEventHandlers(ad); //이벤트 등록
-                adsBtnComponent.interactable = true;
+                isFirstAdLoadSuccessPending = true;
             });
 
     }
@@ -191,16 +219,6 @@ public class AdmobADS : MonoBehaviour
             isReloadPending = true;
         };
     }
-
-
-    void giveMeReward()
-    {
-        GM.GetComponent<ShowAds>().AdReward();
-        PlayerPrefs.SetInt("talk", 5);
-        PlayerPrefs.SetInt("blad", 1);
-        LoadRewardedAd();
-    }
-
 
 
 
@@ -254,6 +272,10 @@ public class AdmobADS : MonoBehaviour
 
     public void LoadRewardedAd2()
     {
+        if (cutTime_btn != null)
+        {
+            cutTime_btn.interactable = false;
+        }
         // Clean up the old ad before loading a new one.
         if (rewardedAdout != null)
         {
@@ -281,53 +303,21 @@ public class AdmobADS : MonoBehaviour
                 loadFailCountInterstitial = 0;
                 rewardedAdout = ad;
                 RegisterEventHandlers2(ad); //이벤트 등록
+                isSecondAdLoadSuccessPending = true;
             });
 
     }
 
 
-
-    /*
-    public void LoadRewardedInterstitialAd()
-    {
-        // Clean up the old ad before loading a new one.
-        if (rewardedInterstitialAd != null)
-        {
-            rewardedInterstitialAd.Destroy();
-            rewardedInterstitialAd = null;
-        }
-
-        //Debug.Log("Loading the rewarded interstitial ad.");
-
-        // create our request used to load the ad.
-        var adRequest = new AdRequest();
-
-        // send the request to load the ad.
-        RewardedInterstitialAd.Load(_GoOutADSid, adRequest,
-            (RewardedInterstitialAd ad, LoadAdError error) =>
-            {
-                if (error != null || ad == null)
-                {
-                    //Debug.LogError("rewarded interstitial ad failed to load an ad " + "with error : " + error);
-                    return;
-                }
-
-                //Debug.Log("Rewarded interstitial ad loaded with response : " + ad.GetResponseInfo());
-
-                rewardedInterstitialAd = ad;
-            });
-    }
-    */
 
 
     //보상형 전면 광고 보여주기
     public void ShowRewardedInterstitialAd()
     {
-        //Debug.Log("상태보기 : " + rewardedInterstitialAd);
-
         if (rewardedAdout != null && rewardedAdout.CanShowAd())
         {
-            //blackimg.SetActive(true);
+            if (cutTime_btn != null)
+                cutTime_btn.interactable = false;
             rewardedAdout.Show((Reward reward) =>
             {
                 isSecondAdRewardPending = true; // Update()로 신호만 보냄
@@ -347,7 +337,8 @@ public class AdmobADS : MonoBehaviour
         PlayerPrefs.SetInt("outtimecut", 4);
         PlayerPrefs.Save();
 
-        cutTime_btn.interactable = false;
+        if (cutTime_btn != null)
+            cutTime_btn.interactable = false;
         Toast_obj.SetActive(true);
         adPop_txt.text = "외출 대기 시간이\n줄어들었다.";
     }

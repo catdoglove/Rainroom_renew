@@ -22,6 +22,10 @@ public class AdmobADStime : MonoBehaviour
 
     private bool isRewardPending = false;
 
+    // 기존 플래그들 아래에 추가
+    private bool isFirstAdLoadSuccessPending = false;
+
+
     void Start()
     {
         color = new Color(1f, 1f, 1f);
@@ -53,6 +57,13 @@ public class AdmobADStime : MonoBehaviour
             isRewardPending = false;
             ExecuteReward();
         }
+
+        // 기존 if문들 아래에 추가
+        if (isFirstAdLoadSuccessPending)
+        {
+            isFirstAdLoadSuccessPending = false;
+            if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
+        }
     }
     public void LoadRewardedAd()
     {
@@ -77,7 +88,8 @@ public class AdmobADStime : MonoBehaviour
                 if (error != null || ad == null)
                 {
                     //Debug.LogError("Rewarded ad failed to load an ad " + "with error : " + error);
-                    if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
+                    Debug.Log("광고 로드 실패 재시도");
+                    //if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
                     return;
                 }
 
@@ -85,7 +97,7 @@ public class AdmobADStime : MonoBehaviour
 
                 rewardedAd = ad;
                 RegisterEventHandlers(ad);
-                if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
+                isFirstAdLoadSuccessPending = true;
             });
 
     }
@@ -109,6 +121,7 @@ public class AdmobADStime : MonoBehaviour
         PlayerPrefs.SetInt("wait", 1);
         if (rewardedAd != null && rewardedAd.CanShowAd())
         {
+            alarm_obj.SetActive(false);
             rewardedAd.Show((Reward reward) =>
             {
                 isRewardPending = true;
@@ -118,10 +131,10 @@ public class AdmobADStime : MonoBehaviour
         {
             PlayerPrefs.SetInt("wait", 2);
             MilkToast();
-            LoadRewardedAd();
+            //LoadRewardedAd();
         }
-
     }
+
     private void ExecuteReward()
     {
         closeTimeADS();
