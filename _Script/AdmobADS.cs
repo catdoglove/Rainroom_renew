@@ -43,6 +43,11 @@ public class AdmobADS : MonoBehaviour
     private bool isFirstAdLoadSuccessPending = false;
     private bool isSecondAdLoadSuccessPending = false;
 
+    // 애드몹 초기화 상태를 저장할 변수 추가
+    private bool isAdmobInitialized = false;
+    private bool isInitializing = false;
+    private Coroutine networkRoutine = null;
+
     public GameObject adsBtn;
     private Button adsBtnComponent;
 
@@ -54,20 +59,40 @@ public class AdmobADS : MonoBehaviour
         adsBtnComponent = adsBtn.GetComponent<Button>();
     }
 
-    // Use this for initialization 앱 ID
-    void Start()
+    // 3초마다 인터넷이 켜졌는지 확인하는 감시자 역할
+    private IEnumerator CheckNetworkRoutine()
     {
-        color = new Color(1f, 1f, 1f);
+        // 애드몹이 초기화되지 않은 동안에만 무한 반복
+        while (!isAdmobInitialized)
+        {
+            yield return new WaitForSeconds(3f); // 3초 쉬고 
 
-        _rewardedAdUnitId = "ca-app-pub-9179569099191885/4627868936";
-        _GoOutADSid = "ca-app-pub-9179569099191885/9113313158";
+            if (isInitializing) continue;
+
+            // 인터넷이 켜졌는지 다시 확인
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                Debug.Log("인터넷 연결 감지! 애드몹 초기화를 시작합니다.");
+                InitializeAds(); // 연결되었으니 다시 초기화 시도
+            }
+        }
+        networkRoutine = null;
+    }
+
+    public void InitializeAds()
+    {
+        // 이미 초기화가 끝났거나, 현재 초기화가 진행 중이면 아무것도 안 하고 돌아감
+        if (isAdmobInitialized || isInitializing) return;
 
         if (Application.internetReachability != NetworkReachability.NotReachable) //인터넷연결된경우?
         {
-            // Initialize the Google Mobile Ads SDK.
+            isInitializing = true; // 잠금장치 ON (초기화 시작)
             MobileAds.Initialize((InitializationStatus initStatus) =>
             {
-                Debug.Log("Admob Init Complete");
+                //Debug.Log("Admob Init Complete");
+                isAdmobInitialized = true;
+                isInitializing = false;
+
                 LoadRewardedAd();
                 LoadRewardedAd2();
                 //LoadRewardedInterstitialAd();
@@ -92,7 +117,25 @@ public class AdmobADS : MonoBehaviour
             adsBtnComponent.interactable = false; // 인터넷 없으면 비활성화
             if (cutTime_btn != null)
                 cutTime_btn.interactable = false;
+            if (networkRoutine == null)
+            {
+                Debug.Log("인터넷 없음. 3초마다 재연결을 확인합니다.");
+                networkRoutine = StartCoroutine(CheckNetworkRoutine());
+            }
         }
+    }
+
+
+
+    // Use this for initialization 앱 ID
+    void Start()
+    {
+        color = new Color(1f, 1f, 1f);
+
+        _rewardedAdUnitId = "ca-app-pub-9179569099191885/4627868936";
+        _GoOutADSid = "ca-app-pub-9179569099191885/9113313158";
+
+        InitializeAds();
 
         if (PlayerPrefs.GetInt("outtimecut", 0) == 4 && PlayerPrefs.GetInt("scene", 0) == 0)
         {
@@ -372,6 +415,15 @@ public class AdmobADS : MonoBehaviour
         {
             rewardedAdout.Destroy();
             rewardedAdout = null;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (networkRoutine != null)
+        {
+            StopCoroutine(networkRoutine); // 혹시 모를 찌꺼기 실행을 확실히 정지
+            networkRoutine = null;         // 변수를 깨끗하게 청소!
         }
     }
 }
