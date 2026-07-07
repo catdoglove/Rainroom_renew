@@ -72,7 +72,7 @@ public class AdmobADS : MonoBehaviour
             // 인터넷이 켜졌는지 다시 확인
             if (Application.internetReachability != NetworkReachability.NotReachable)
             {
-                Debug.Log("인터넷 연결 감지! 애드몹 초기화를 시작합니다.");
+                //Debug.Log("인터넷 연결 감지! 애드몹 초기화를 시작합니다.");
                 InitializeAds(); // 연결되었으니 다시 초기화 시도
             }
         }
@@ -119,7 +119,7 @@ public class AdmobADS : MonoBehaviour
                 cutTime_btn.interactable = false;
             if (networkRoutine == null)
             {
-                Debug.Log("인터넷 없음. 3초마다 재연결을 확인합니다.");
+                //Debug.Log("인터넷 없음. 3초마다 재연결을 확인합니다.");
                 networkRoutine = StartCoroutine(CheckNetworkRoutine());
             }
         }
@@ -226,7 +226,7 @@ public class AdmobADS : MonoBehaviour
                 // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
-                    Debug.Log("광고 로드 실패 재시도");
+                    //Debug.Log("광고 로드 실패 재시도");
                     isReloadPending = true; // 여기서도 플래그를 세워주면 무한 동력 완성!
                     //adsBtnComponent.interactable = true; // true냐 false냐 선택알아서
                     return;
@@ -255,7 +255,7 @@ public class AdmobADS : MonoBehaviour
         ad.OnAdFullScreenContentClosed += () =>
         {
             isReloadPending = true; // 플래그만 세움, 여기서 직접 호출 X
-            Debug.Log("광고 종료");
+            //Debug.Log("광고 종료");
         };
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
@@ -396,7 +396,7 @@ public class AdmobADS : MonoBehaviour
         ad.OnAdFullScreenContentClosed += () =>
         {
             isReloadInterstitialPending = true;
-            Debug.Log("광고 종료");
+            //Debug.Log("광고 종료");
         };
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
