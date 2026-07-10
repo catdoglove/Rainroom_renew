@@ -47,15 +47,23 @@ public class AdmobADS : MonoBehaviour
     private bool isAdmobInitialized = false;
     private bool isInitializing = false;
     private Coroutine networkRoutine = null;
+    private Coroutine initTimeoutRoutine = null;
 
     public GameObject adsBtn;
     private Button adsBtnComponent;
 
     private void Awake()
     {
-        //UnityAds.SetConsentMetaData("gdpr.consent", true);
-        GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("gdpr.consent", true);
-        GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("privacy.consent", true);
+        if (Application.internetReachability != NetworkReachability.NotReachable)
+        {
+            // GoogleMobileAds.Mediation.IronSource.Api.IronSource.SetMetaData("do_not_sell", "true");
+            GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("gdpr.consent", true);
+            GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("privacy.consent", true);
+        }
+        else
+        {
+            // Debug.Log("No Internet, skip init for now 인터넷 연결되지않음");
+        }
         adsBtnComponent = adsBtn.GetComponent<Button>();
     }
 
@@ -166,6 +174,8 @@ public class AdmobADS : MonoBehaviour
         if (isReloadPending)
         {
             isReloadPending = false;
+            if (adsBtnComponent != null) adsBtnComponent.interactable = false;
+
             if (!IsInvoking("LoadRewardedAd")) // ← 이미 예약됐는지 체크
             {
                 float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCount), 30f); // 최대 30초
@@ -177,6 +187,8 @@ public class AdmobADS : MonoBehaviour
         if (isReloadInterstitialPending)
         {
             isReloadInterstitialPending = false;
+            if (cutTime_btn != null) cutTime_btn.interactable = false;
+
             if (!IsInvoking("LoadRewardedAd2")) // ← 이미 예약됐는지 체크
             {
                 float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCountInterstitial), 30f); // 최대 30초
@@ -424,6 +436,11 @@ public class AdmobADS : MonoBehaviour
         {
             StopCoroutine(networkRoutine); // 혹시 모를 찌꺼기 실행을 확실히 정지
             networkRoutine = null;         // 변수를 깨끗하게 청소!
+        }
+        if (initTimeoutRoutine != null)
+        {
+            StopCoroutine(initTimeoutRoutine);
+            initTimeoutRoutine = null;
         }
     }
 }
