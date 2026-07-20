@@ -48,22 +48,25 @@ public class AdmobADS : MonoBehaviour
     private bool isInitializing = false;
     private Coroutine networkRoutine = null;
     private Coroutine initTimeoutRoutine = null;
+    private bool isInitCompletePending = false;
+
+    private bool isRewardedAdLoading = false;
+    private bool isInterstitialAdLoading = false;
 
     public GameObject adsBtn;
     private Button adsBtnComponent;
 
     private void Awake()
-    {
+    {/*
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-            // GoogleMobileAds.Mediation.IronSource.Api.IronSource.SetMetaData("do_not_sell", "true");
             GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("gdpr.consent", true);
             GoogleMobileAds.Mediation.UnityAds.Api.UnityAds.SetConsentMetaData("privacy.consent", true);
         }
         else
         {
             // Debug.Log("No Internet, skip init for now 인터넷 연결되지않음");
-        }
+        }*/
         adsBtnComponent = adsBtn.GetComponent<Button>();
     }
 
@@ -95,27 +98,12 @@ public class AdmobADS : MonoBehaviour
         if (Application.internetReachability != NetworkReachability.NotReachable) //인터넷연결된경우?
         {
             isInitializing = true; // 잠금장치 ON (초기화 시작)
+            initTimeoutRoutine = StartCoroutine(InitTimeoutRoutine());
+
             MobileAds.Initialize((InitializationStatus initStatus) =>
             {
-                //Debug.Log("Admob Init Complete");
-                isAdmobInitialized = true;
-                isInitializing = false;
-
-                LoadRewardedAd();
-                LoadRewardedAd2();
-                //LoadRewardedInterstitialAd();
-                // This callback is called once the MobileAds SDK is initialized.
-
-                /*
-                // initStatus 안에 어댑터 목록이 있어야 함
-                Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
-                foreach (var keyValuePair in map)
-                {
-                    string className = keyValuePair.Key;
-                    AdapterStatus status = keyValuePair.Value;
-                    Debug.Log($"어댑터: {className}, 상태: {status.InitializationState}");
-                }
-                */
+                if (isAdmobInitialized) return; // 이미 다른 시도로 초기화 완료된 경우 무시
+                isInitCompletePending = true;
             });
 
 
@@ -212,6 +200,25 @@ public class AdmobADS : MonoBehaviour
                     cutTime_btn.interactable = true;
             }
         }
+
+        if (isInitCompletePending)
+        {
+            isInitCompletePending = false;
+
+            isAdmobInitialized = true;
+            isInitializing = false;
+
+            if (initTimeoutRoutine != null)
+            {
+                StopCoroutine(initTimeoutRoutine);
+                initTimeoutRoutine = null;
+            }
+
+            // 광고 로드 시작
+            LoadRewardedAd();
+            LoadRewardedAd2();
+        }
+
     }
 
 
@@ -219,7 +226,9 @@ public class AdmobADS : MonoBehaviour
     public void LoadRewardedAd()
     {
         adsBtnComponent.interactable = false;
-        // Clean up the old ad before loading a new one.
+        if (isRewardedAdLoading) return;
+
+        isRewardedAdLoading = true; // 로딩 시작
         if (rewardedAd != null)
         {
             rewardedAd.Destroy();
@@ -235,12 +244,13 @@ public class AdmobADS : MonoBehaviour
         RewardedAd.Load(_rewardedAdUnitId, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
+                isRewardedAdLoading = false; // 로드 완료(또는 실패) 시 플래그 해제
                 // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
                     //Debug.Log("광고 로드 실패 재시도");
                     isReloadPending = true; // 여기서도 플래그를 세워주면 무한 동력 완성!
-                    //adsBtnComponent.interactable = true; // true냐 false냐 선택알아서
+                    adsBtnComponent.interactable = true; // true냐 false냐 선택알아서
                     return;
                 }
 
@@ -258,12 +268,6 @@ public class AdmobADS : MonoBehaviour
 
     private void RegisterEventHandlers(RewardedAd ad)
     {
-        // Raised when the ad is estimated to have earned money.
-        ad.OnAdPaid += (AdValue adValue) =>
-        {
-            //Debug.Log("광고");
-        };
-
         ad.OnAdFullScreenContentClosed += () =>
         {
             isReloadPending = true; // 플래그만 세움, 여기서 직접 호출 X
@@ -301,7 +305,7 @@ public class AdmobADS : MonoBehaviour
             {
                 Toast_obj.SetActive(true);
                 adPop_txt.text = "아직 볼 수 없다." + "\n" + "나중에 시도해보자.";
-                //LoadRewardedAd();
+                LoadRewardedAd();
             }
         }
     }
@@ -331,7 +335,9 @@ public class AdmobADS : MonoBehaviour
         {
             cutTime_btn.interactable = false;
         }
-        // Clean up the old ad before loading a new one.
+        if (isInterstitialAdLoading) return;
+
+        isInterstitialAdLoading = true; // 로딩 시작
         if (rewardedAdout != null)
         {
             rewardedAdout.Destroy();
@@ -347,11 +353,17 @@ public class AdmobADS : MonoBehaviour
         RewardedAd.Load(_GoOutADSid, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
+                isInterstitialAdLoading = false; // 로드 완료(또는 실패) 시 플래그 해제
                 // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
                     Debug.Log("광고 로드 실패, 재시도");
-                    isReloadInterstitialPending = true; // 여기서도 플래그를 세워주면 무한 동력 완성!
+                    isReloadInterstitialPending = true;
+                    if (cutTime_btn != null) // 먼저 버튼이 존재하는지 확인
+                    {
+                        if (PlayerPrefs.GetInt("outtimecut", 0) != 4)
+                            cutTime_btn.interactable = true;
+                    }
                     return;
                 }
 
@@ -382,7 +394,7 @@ public class AdmobADS : MonoBehaviour
         {
             Toast_obj.SetActive(true);
             adPop_txt.text = "아직 볼 수 없다." + "\n" + "나중에 시도해보자.";
-            //LoadRewardedAd2();
+            LoadRewardedAd2();
         }
 
     }
@@ -400,11 +412,6 @@ public class AdmobADS : MonoBehaviour
 
     private void RegisterEventHandlers2(RewardedAd ad)
     {
-        // Raised when the ad is estimated to have earned money.
-        ad.OnAdPaid += (AdValue adValue) =>
-        {
-        };
-
         ad.OnAdFullScreenContentClosed += () =>
         {
             isReloadInterstitialPending = true;
@@ -418,6 +425,7 @@ public class AdmobADS : MonoBehaviour
 
     private void OnDestroy()
     {
+        CancelInvoke();
         if (rewardedAd != null)
         {
             rewardedAd.Destroy();
@@ -441,6 +449,40 @@ public class AdmobADS : MonoBehaviour
         {
             StopCoroutine(initTimeoutRoutine);
             initTimeoutRoutine = null;
+        }
+    }
+
+    // 초기화가 특정 시간 내에 안 끝나면 강제로 잠금을 풀어주는 코루틴
+    private IEnumerator InitTimeoutRoutine()
+    {
+        yield return new WaitForSeconds(15f);
+        if (isAdmobInitialized)
+        {
+            yield break;
+        }
+        if (isInitializing)
+        {
+            // Debug.Log("애드몹 초기화 타임아웃! 잠금을 해제하여 재시도를 허용합니다.");
+            isInitializing = false;
+        }
+
+        if (networkRoutine == null)
+        {
+            networkRoutine = StartCoroutine(CheckNetworkRoutine());
+        }
+    }
+    void OnApplicationPause(bool pause)
+    {
+        if (!pause && isAdmobInitialized) // 초기화 완료 후에만 체크
+        {
+            if (rewardedAd == null || !rewardedAd.CanShowAd())
+            {
+                LoadRewardedAd();
+            }
+            if (rewardedAdout == null || !rewardedAdout.CanShowAd())
+            {
+                LoadRewardedAd2();
+            }
         }
     }
 }

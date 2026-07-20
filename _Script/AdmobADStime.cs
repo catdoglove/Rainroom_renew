@@ -19,25 +19,18 @@ public class AdmobADStime : MonoBehaviour
 
     public GameObject GM, timeWnd_obj, alarm_obj;
 
+    // 중요: 보상 지급 타이밍을 메인 스레드로 넘겨줄 플래그
+    private bool isFirstRewardPending = false;
 
-    private bool isRewardPending = false;
+    private bool isReloadPending = false;
 
-    // 기존 플래그들 아래에 추가
-    private bool isFirstAdLoadSuccessPending = false;
-
+    private int loadFailCount = 0;
 
     void Start()
     {
         color = new Color(1f, 1f, 1f);
 
         _rewardedAdUnitId = "ca-app-pub-9179569099191885/8513428768";
-
-
-        if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) == 99)
-        {
-            alarm_obj.SetActive(false);
-            return;
-        }
 
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
@@ -47,27 +40,30 @@ public class AdmobADStime : MonoBehaviour
         {
             //Debug.Log("No Internet, skip init for now 인터넷 연결 X");
         }
-
-
     }
+
+
+    // 중요: 메인 스레드에서 플래그를 감지하여 안전하게 보상 지급
     private void Update()
     {
-        if (isRewardPending)
+        if (isFirstRewardPending)
         {
-            isRewardPending = false;
-            ExecuteReward();
+            isFirstRewardPending = false;
+            giveMeReward();
         }
 
-        // 기존 if문들 아래에 추가
-        if (isFirstAdLoadSuccessPending)
+        if (isReloadPending)
         {
-            isFirstAdLoadSuccessPending = false;
-            if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
+            isReloadPending = false;
+            float delay = Mathf.Min(1f * Mathf.Pow(2, loadFailCount), 30f); // 최대 30초
+            loadFailCount++;
+            Invoke("LoadRewardedAd", delay);
         }
     }
+
+
     public void LoadRewardedAd()
     {
-        alarm_obj.SetActive(false);
         // Clean up the old ad before loading a new one.
         if (rewardedAd != null)
         {
@@ -87,32 +83,30 @@ public class AdmobADStime : MonoBehaviour
                 // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
-                    //Debug.LogError("Rewarded ad failed to load an ad " + "with error : " + error);
-                    Debug.Log("광고 로드 실패 재시도");
-                    //if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) != 99) alarm_obj.SetActive(true); // 시청 전에만 버튼 표시
+                    //  Debug.Log("광고 로드 실패 재시도");
+                    isReloadPending = true; // 여기서도 플래그를 세워주면 무한 동력 완성!
                     return;
                 }
 
-                //Debug.Log("Rewarded ad loaded with response : " + ad.GetResponseInfo());
-
+                loadFailCount = 0;
                 rewardedAd = ad;
-                RegisterEventHandlers(ad);
-                isFirstAdLoadSuccessPending = true;
+                RegisterEventHandlers(ad); //이벤트 등록
             });
 
     }
+
     private void RegisterEventHandlers(RewardedAd ad)
     {
         ad.OnAdFullScreenContentClosed += () =>
         {
-            LoadRewardedAd();
+            isReloadPending = true; // 플래그만 세움, 여기서 직접 호출 X
         };
-
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
-            LoadRewardedAd();
+            isReloadPending = true;
         };
     }
+
 
     public void showAdmobVideo()
     {
@@ -121,32 +115,33 @@ public class AdmobADStime : MonoBehaviour
         PlayerPrefs.SetInt("wait", 1);
         if (rewardedAd != null && rewardedAd.CanShowAd())
         {
-            alarm_obj.SetActive(false);
             rewardedAd.Show((Reward reward) =>
             {
-                isRewardPending = true;
+                isFirstRewardPending = true;
             });
         }
         else
         {
             PlayerPrefs.SetInt("wait", 2);
             MilkToast();
-            //LoadRewardedAd();
+            // LoadRewardedAd();
         }
+
     }
 
-    private void ExecuteReward()
+    void giveMeReward()
     {
         closeTimeADS();
         Toast_obj.SetActive(true);
         Toast_txt.text = "잠자는 시간이 2시간 감소되었다.";
+        StopCoroutine("ToastImgFadeOut");
         StartCoroutine("ToastImgFadeOut");
         PlayerPrefs.SetInt("sleeptimeadsreward", 99);
         alarm_obj.SetActive(false);
 
         PlayerPrefs.SetInt("blad", 1);
         PlayerPrefs.SetInt("adrunout", 0);
-        PlayerPrefs.Save(); // Save() 추가 권장
+        PlayerPrefs.Save();
     }
 
 
@@ -165,7 +160,8 @@ public class AdmobADStime : MonoBehaviour
         if (PlayerPrefs.GetInt("wait", 0) == 2)
         {
             Toast_obj.SetActive(true);
-            Toast_txt.text = "아직 볼 수 없다." + "\n" + "나중에 시도해보자.";
+            Toast_txt.text = "아직 볼 수 없다. 나중에 시도하자.";
+            StopCoroutine("ToastImgFadeOut");
             StartCoroutine("ToastImgFadeOut");
         }
     }
@@ -174,29 +170,34 @@ public class AdmobADStime : MonoBehaviour
 
     IEnumerator ToastImgFadeOut()
     {
-        if (PlayerPrefs.GetInt("setmilkadc", 0) == 1)
-        {
-            PlayerPrefs.SetInt("setmilkadc", 0);
-        }
+        Image toastImage = Toast_obj.GetComponent<Image>();
 
-        color.a = Mathf.Lerp(0f, 1f, 1f);
-        Toast_obj.GetComponent<Image>().color = color;
+        color.a = 1f;
+        toastImage.color = color;
         Toast_obj.SetActive(true);
         yield return new WaitForSeconds(3.5f);
-        for (float i = 1f; i > 0f; i -= 0.05f)
+
+        float fadeDuration = 1f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
         {
-            color.a = Mathf.Lerp(0f, 1f, i);
-            Toast_obj.GetComponent<Image>().color = color;
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            toastImage.color = color;
             yield return null;
         }
         Toast_obj.SetActive(false);
-
     }
+
+
+
 
     public void touchToastEvt()
     {
         Toast_obj.SetActive(false);
     }
+
     private void OnDestroy()
     {
         if (rewardedAd != null)
@@ -205,5 +206,6 @@ public class AdmobADStime : MonoBehaviour
             rewardedAd = null;
         }
     }
+
 
 }
