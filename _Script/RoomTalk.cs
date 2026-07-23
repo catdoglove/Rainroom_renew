@@ -551,25 +551,6 @@ public class RoomTalk : MonoBehaviour
 
     }
 
-    void callTalkItem()
-    {
-       // itemLv[5] = PlayerPrefs.GetInt("그림", 0);
-      //  itemLv[6] = PlayerPrefs.GetInt("시계", 0);
-    }
-    
-    IEnumerator itemTalkRun()
-    {
-        speedF = PlayerPrefs.GetFloat("talkspeed", 0.05f);
-        falseObject();
-        for (int i = 0; i < testText_cut.Length; i++)
-        {
-            text_str = text_str.Insert(text_str.Length, testText_cut[i]);
-            Text_obj.text = text_str;
-            yield return new WaitForSeconds(speedF);
-        }
-
-        trueObject();
-    }
 
     //물건 대사
 

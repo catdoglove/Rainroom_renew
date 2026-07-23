@@ -19,7 +19,7 @@ public class ParkTime : MonoBehaviour
     public GameObject trashB, memoTrash, trashButton;
     int item_num;
     int iTrash;
-    public GameObject blackAd_obj;
+    //public GameObject blackAd_obj;
 
     // Start is called before the first frame update
     void Start()
@@ -150,14 +150,8 @@ public class ParkTime : MonoBehaviour
 
     IEnumerator updateSecp()
     {
-        int a = 0;
-        while (a == 0)
+        while (true)
         {
-            if (PlayerPrefs.GetInt("blad", 0) == 1)
-            {
-                blackAd_obj.SetActive(false);
-                PlayerPrefs.SetInt("blad", 0);
-            }
             Baquitrash();
 
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());

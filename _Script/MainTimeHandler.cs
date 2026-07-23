@@ -103,12 +103,15 @@ public class MainTimeHandler : MonoBehaviour {
 	IEnumerator talkTimeFlow(){
 		int minute;
 		int sec;
-		int a = 0;
-		while (a == 0) {
+		while (true) {
 			talk = PlayerPrefs.GetInt ("talk", 5);
 			lastTime = PlayerPrefs.GetString ("TalkLastTime", System.DateTime.Now.ToString ());
-			System.DateTime lastDateTime = System.DateTime.Parse (lastTime);
-			System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
+            System.DateTime lastDateTime;
+            if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+            {
+                lastDateTime = System.DateTime.Now;
+            }
+            System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
             if ((int)compareTime.TotalSeconds < 0)
             {
                 compareTime = System.DateTime.Now - System.DateTime.Now;

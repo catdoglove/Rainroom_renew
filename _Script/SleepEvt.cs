@@ -66,8 +66,7 @@ public class SleepEvt : MonoBehaviour
     //깨어날시간 체크
     IEnumerator SleepTime()
     {
-        int a = 0;
-        while (a == 0)
+        while (true)
         {
             if (PlayerPrefs.GetInt("sleeping", 0) == 1)
             {
@@ -125,7 +124,11 @@ public class SleepEvt : MonoBehaviour
     {
         System.DateTime d = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastTime = PlayerPrefs.GetString("sleepLastTime", d.ToString());
-        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        System.DateTime lastDateTime;
+        if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+        {
+            lastDateTime = d;
+        }
         System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
         hours = (int)compareTime.TotalHours;
         minute = (int)compareTime.TotalMinutes;

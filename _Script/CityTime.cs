@@ -9,7 +9,7 @@ public class CityTime : MonoBehaviour
     public GameObject trash_obj, peoples_obj, peoples_obj2, first_help;
 
     public Sprite[] spr_people;
-    public GameObject blackAd_obj;
+    //public GameObject blackAd_obj;
 
     int talk;
     // Start is called before the first frame update
@@ -72,14 +72,8 @@ public class CityTime : MonoBehaviour
 
     IEnumerator updateSec()
     {
-        int a = 0;
-        while (a == 0)
+        while (true)
         {
-            if (PlayerPrefs.GetInt("blad", 0) == 1)
-            {
-                blackAd_obj.SetActive(false);
-                PlayerPrefs.SetInt("blad", 0);
-            }
             Baquitrash();
 
             PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
@@ -153,8 +147,7 @@ public class CityTime : MonoBehaviour
 
     IEnumerator MoveP()
     {
-        int a = 0;
-        while (a == 0)
+        while (true)
         {
             if (peopleShow == 1)
             {
@@ -191,8 +184,7 @@ public class CityTime : MonoBehaviour
 
     IEnumerator MoveP2()
     {
-        int a = 0;
-        while (a == 0)
+        while (true)
         {
             if (peopleShow2 == 1)
             {

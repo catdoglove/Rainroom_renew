@@ -87,7 +87,7 @@ public class MainTime : MonoBehaviour
     public Camera camera_c;
 
     public GameObject title_obj;
-    public GameObject blackAd_obj;
+   // public GameObject blackAd_obj;
 
     // Start is called before the first frame update
     void Start()
@@ -157,14 +157,8 @@ public class MainTime : MonoBehaviour
     //
     IEnumerator updateSec()
     {
-        int a = 0;
-        while (a == 0)
+        while (true)
         {
-            if (PlayerPrefs.GetInt("blad", 0) == 1)
-            {
-                blackAd_obj.SetActive(false);
-                PlayerPrefs.SetInt("blad", 0);
-            }
             //최대량 제한 빗물 마음
             if (PlayerPrefs.GetInt(str + "r", 0) > 999999)
             {
@@ -260,7 +254,10 @@ public class MainTime : MonoBehaviour
         //신문시간
         nowGudog = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastGudog = PlayerPrefs.GetString("saveGudoc", nowGudog.ToString());
-        lastDateGudog = System.DateTime.Parse(lastGudog);
+        if (!System.DateTime.TryParse(lastGudog, out lastDateGudog))
+        {
+            lastDateGudog = nowGudog;
+        }
         compareGudog = System.DateTime.Now - lastDateGudog;
         hG = (int)compareGudog.TotalHours;
         mG = (int)compareGudog.TotalMinutes;
@@ -313,7 +310,10 @@ public class MainTime : MonoBehaviour
         //시간
         nowPaper = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastPaper = PlayerPrefs.GetString("savePaper", nowPaper.ToString());
-        lastDatePaper = System.DateTime.Parse(lastPaper);
+        if (!System.DateTime.TryParse(lastPaper, out lastDatePaper))
+        {
+            lastDatePaper = nowPaper; // 파싱 실패 시 1970년으로 폴백
+        }
         comparePaper = System.DateTime.Now - lastDatePaper;
         hGp = (int)comparePaper.TotalHours;
         mGp = (int)comparePaper.TotalMinutes;
@@ -655,7 +655,11 @@ public class MainTime : MonoBehaviour
         grow = PlayerPrefs.GetInt("seedgrow", 1);
         System.DateTime d = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         seedlastTime = PlayerPrefs.GetString("seedLastTime", d.ToString());
-        System.DateTime lastDateTime = System.DateTime.Parse(seedlastTime);
+        System.DateTime lastDateTime;
+        if (!System.DateTime.TryParse(seedlastTime, out lastDateTime))
+        {
+            lastDateTime = d; // 파싱 실패 시 1970년으로 폴백
+        }
         System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
         shours = (int)compareTime.TotalHours;
         sminute = (int)compareTime.TotalMinutes;
@@ -719,7 +723,11 @@ public class MainTime : MonoBehaviour
         //외출시간
         now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastTime = PlayerPrefs.GetString("outtime", now.ToString());
-        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        System.DateTime lastDateTime;
+        if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+        {
+            lastDateTime = now;
+        }
         System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
         ac = (int)compareTime.TotalMinutes;
         acb = (int)compareTime.TotalSeconds;

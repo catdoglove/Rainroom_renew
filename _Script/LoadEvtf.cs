@@ -20,14 +20,11 @@ public class LoadEvtf : MonoBehaviour
     IEnumerator Load()
     {
         async = SceneManager.LoadSceneAsync("Main");
-        while (!async.isDone)
-        {
-            yield return true;
-        }
+        yield return async; // AsyncOperation 자체가 YieldInstruction이라 완료될 때까지 자동 대기
     }
 
 
-    
+
     // Update is called once per frame
     void Update()
     {

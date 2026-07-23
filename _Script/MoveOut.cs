@@ -75,7 +75,11 @@ public class MoveOut : MonoBehaviour
         //외출시간
         now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastTime = PlayerPrefs.GetString("outtime", now.ToString());
-        System.DateTime lastDateTime = System.DateTime.Parse(lastTime);
+        System.DateTime lastDateTime;
+        if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+        {
+            lastDateTime = now;
+        }
         System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
         ac = (int)compareTime.TotalMinutes;
         acb = (int)compareTime.TotalSeconds;

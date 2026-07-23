@@ -325,7 +325,6 @@ public class AdmobADS : MonoBehaviour
 
         GM.GetComponent<ShowAds>().AdReward();
         PlayerPrefs.SetInt("talk", 5);
-        PlayerPrefs.SetInt("blad", 1);
         PlayerPrefs.Save();
     }
 

@@ -138,8 +138,6 @@ public class AdmobADStime : MonoBehaviour
         StartCoroutine("ToastImgFadeOut");
         PlayerPrefs.SetInt("sleeptimeadsreward", 99);
         alarm_obj.SetActive(false);
-
-        PlayerPrefs.SetInt("blad", 1);
         PlayerPrefs.SetInt("adrunout", 0);
         PlayerPrefs.Save();
     }

@@ -15,7 +15,6 @@ public class LoadEvt : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
             //카메라
             camera_c = Camera.main;
             menu_obj = GameObject.FindGameObjectWithTag("메뉴Canvas");
@@ -44,7 +43,7 @@ public class LoadEvt : MonoBehaviour
         }
         while (!async.isDone)
         {
-            yield return true;
+            yield return null;
         }
     }
 
