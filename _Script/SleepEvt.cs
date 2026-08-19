@@ -123,7 +123,7 @@ public class SleepEvt : MonoBehaviour
     void SleepTimeFlow()
     {
         System.DateTime d = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        lastTime = PlayerPrefs.GetString("sleepLastTime", d.ToString());
+        lastTime = PlayerPrefs.GetString("sleepLastTime", d.ToString("o"));
         System.DateTime lastDateTime;
         if (!System.DateTime.TryParse(lastTime, out lastDateTime))
         {
@@ -162,7 +162,7 @@ public class SleepEvt : MonoBehaviour
     //잘까?
     public void SleepY()
     {
-        PlayerPrefs.SetString("sleepLastTime", System.DateTime.Now.ToString());
+        PlayerPrefs.SetString("sleepLastTime", System.DateTime.Now.ToString("o"));
         sleepYN_obj.SetActive(false);
         bedWin_obj.SetActive(false);
         sleepBack_obj.SetActive(true);

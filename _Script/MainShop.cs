@@ -1577,7 +1577,7 @@ public class MainShop : MonoBehaviour
             PlayerPrefs.SetInt("first", 1);
             PlayerPrefs.Save();
 
-            PlayerPrefs.SetString("adtimes", System.DateTime.Now.ToString());
+            PlayerPrefs.SetString("adtimes", System.DateTime.Now.ToString("o"));
         }//endOfIf
 
         #endregion

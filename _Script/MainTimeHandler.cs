@@ -30,7 +30,7 @@ public class MainTimeHandler : MonoBehaviour {
         //돈디스트로이로 씬을 넘어가도 다시 실행되지 않는다
         if (talk >= 5)
         {
-            PlayerPrefs.SetString("TalkLastTime", System.DateTime.Now.ToString());
+            PlayerPrefs.SetString("TalkLastTime", System.DateTime.Now.ToString("o"));
         }
     }
 
@@ -66,7 +66,7 @@ public class MainTimeHandler : MonoBehaviour {
 		//현재시간을가져옵니다
 		System.DateTime dateTimenow = System.DateTime.Now;
 		//str로장되어있는과거접속시간을가져옵니다
-		string lastTimem = PlayerPrefs.GetString("lastTime",dateTimenow.ToString());
+		string lastTimem = PlayerPrefs.GetString("lastTime",dateTimenow.ToString("o"));
 		//형변환을해줍니다
 		System.DateTime lastDateTimem = System.DateTime.Parse(lastTimem);
 		//계산
@@ -82,7 +82,7 @@ public class MainTimeHandler : MonoBehaviour {
         coldRain_i = coldRain_i + getRain;
 		PlayerPrefs.SetInt (str + "r", coldRain_i);
 		//rainNum.text = coldRain_i.ToString();
-		PlayerPrefs.SetString("lastTime",dateTimenow.ToString());
+		PlayerPrefs.SetString("lastTime",dateTimenow.ToString("o"));
 		PlayerPrefs.Save ();
 
         //빗물이 마이너스일때
@@ -105,7 +105,7 @@ public class MainTimeHandler : MonoBehaviour {
 		int sec;
 		while (true) {
 			talk = PlayerPrefs.GetInt ("talk", 5);
-			lastTime = PlayerPrefs.GetString ("TalkLastTime", System.DateTime.Now.ToString ());
+			lastTime = PlayerPrefs.GetString ("TalkLastTime", System.DateTime.Now.ToString ("o"));
             System.DateTime lastDateTime;
             if (!System.DateTime.TryParse(lastTime, out lastDateTime))
             {
@@ -133,7 +133,7 @@ public class MainTimeHandler : MonoBehaviour {
                 //PlayerPrefs.SetInt("timesechelp", 59-sec);
                 //Debug.Log("minute" + minute+ "sec" + sec);
                 //Debug.Log(""+System.DateTime.Now.ToString());
-                PlayerPrefs.SetString ("TalkLastTime", System.DateTime.Now.ToString ());
+                PlayerPrefs.SetString ("TalkLastTime", System.DateTime.Now.ToString ("o"));
 				//talkTime_txt.text = "04:59";
 			} else {
 				string str = string.Format (@"{0:00}" + ":", minute) + string.Format (@"{0:00}", sec);

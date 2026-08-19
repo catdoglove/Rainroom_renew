@@ -253,7 +253,7 @@ public class MainTime : MonoBehaviour
 
         //신문시간
         nowGudog = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        lastGudog = PlayerPrefs.GetString("saveGudoc", nowGudog.ToString());
+        lastGudog = PlayerPrefs.GetString("saveGudoc", nowGudog.ToString("o"));
         if (!System.DateTime.TryParse(lastGudog, out lastDateGudog))
         {
             lastDateGudog = nowGudog;
@@ -286,7 +286,7 @@ public class MainTime : MonoBehaviour
         if (PlayerPrefs.GetInt("gudocgetonce", 1) == 1)
         {
             news_obj.SetActive(true);
-            PlayerPrefs.SetString("saveGudoc", System.DateTime.Now.ToString());
+            PlayerPrefs.SetString("saveGudoc", System.DateTime.Now.ToString("o"));
             h = PlayerPrefs.GetInt(str + "h", 0);
             r = PlayerPrefs.GetInt(str + "r", 0);
             h = h + 50;
@@ -309,7 +309,7 @@ public class MainTime : MonoBehaviour
 
         //시간
         nowPaper = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        lastPaper = PlayerPrefs.GetString("savePaper", nowPaper.ToString());
+        lastPaper = PlayerPrefs.GetString("savePaper", nowPaper.ToString("o"));
         if (!System.DateTime.TryParse(lastPaper, out lastDatePaper))
         {
             lastDatePaper = nowPaper; // 파싱 실패 시 1970년으로 폴백
@@ -355,7 +355,7 @@ public class MainTime : MonoBehaviour
                     like = like + 10;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
-                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString("o"));
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
                     heartpaperImg.SetActive(false);
@@ -377,7 +377,7 @@ public class MainTime : MonoBehaviour
                     like = like + 10;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
-                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString("o"));
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
                     heartpaperImg.SetActive(false);
@@ -399,7 +399,7 @@ public class MainTime : MonoBehaviour
                     like = like + 15;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
-                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString("o"));
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
                     heartpaperImg.SetActive(false);
@@ -421,7 +421,7 @@ public class MainTime : MonoBehaviour
                     like = like + 15;
                     PlayerPrefs.SetInt(str + "h", h);
                     PlayerPrefs.SetInt("likepoint", like);
-                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString());
+                    PlayerPrefs.SetString("savePaper", System.DateTime.Now.ToString("o"));
                     PlayerPrefs.Save();
                     heartpaperChoice.SetActive(false);
                     heartpaperImg.SetActive(false);
@@ -625,7 +625,7 @@ public class MainTime : MonoBehaviour
                 PlayerPrefs.SetInt("seedlv", fl + 1);
                 PlayerPrefs.SetInt(str + "r", r);
 
-                PlayerPrefs.SetString("seedLastTime", System.DateTime.Now.ToString());
+                PlayerPrefs.SetString("seedLastTime", System.DateTime.Now.ToString("o"));
 
                 PlayerPrefs.SetInt("like", PlayerPrefs.GetInt("like", 0) + 4);
             }
@@ -654,7 +654,7 @@ public class MainTime : MonoBehaviour
         now = PlayerPrefs.GetInt("seedlv", 0);
         grow = PlayerPrefs.GetInt("seedgrow", 1);
         System.DateTime d = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        seedlastTime = PlayerPrefs.GetString("seedLastTime", d.ToString());
+        seedlastTime = PlayerPrefs.GetString("seedLastTime", d.ToString("o"));
         System.DateTime lastDateTime;
         if (!System.DateTime.TryParse(seedlastTime, out lastDateTime))
         {
@@ -722,7 +722,7 @@ public class MainTime : MonoBehaviour
         int ac, acb;
         //외출시간
         now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        lastTime = PlayerPrefs.GetString("outtime", now.ToString());
+        lastTime = PlayerPrefs.GetString("outtime", now.ToString("o"));
         System.DateTime lastDateTime;
         if (!System.DateTime.TryParse(lastTime, out lastDateTime))
         {

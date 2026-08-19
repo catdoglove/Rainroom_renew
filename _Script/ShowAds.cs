@@ -44,7 +44,7 @@ public class ShowAds : MonoBehaviour
     {
         
         now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        lastTimem = PlayerPrefs.GetString("adtimes", now.ToString());
+        lastTimem = PlayerPrefs.GetString("adtimes", now.ToString("o"));
         Timechecker();
         System.DateTime lastDateTimem;
         if (!System.DateTime.TryParse(lastTimem, out lastDateTimem))
@@ -111,19 +111,19 @@ public class ShowAds : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("scene", 0) == 2)
         {
-            lastTimem = PlayerPrefs.GetString("adtimespark", now.ToString());
+            lastTimem = PlayerPrefs.GetString("adtimespark", now.ToString("o"));
         }
         else if (PlayerPrefs.GetInt("scene", 0) == 3)
         {
-            lastTimem = PlayerPrefs.GetString("adtimescity", now.ToString());
+            lastTimem = PlayerPrefs.GetString("adtimescity", now.ToString("o"));
         }
         else if (PlayerPrefs.GetInt("scene", 0) == 0)
         {
-            lastTimem = PlayerPrefs.GetString("adtimes", now.ToString());
+            lastTimem = PlayerPrefs.GetString("adtimes", now.ToString("o"));
         }
         else
         {
-            lastTimem = PlayerPrefs.GetString("adtimes", now.ToString());
+            lastTimem = PlayerPrefs.GetString("adtimes", now.ToString("o"));
         }
     }
 }

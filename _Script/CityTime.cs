@@ -76,7 +76,7 @@ public class CityTime : MonoBehaviour
         {
             Baquitrash();
 
-            PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString());
+            PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString("o"));
             yield return new WaitForSeconds(1f);
         }
     }

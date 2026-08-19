@@ -316,9 +316,9 @@ public class AdmobADS : MonoBehaviour
         lastDateTimenow = System.DateTime.Now;
         int sceneIndex = PlayerPrefs.GetInt("scene", 0);
 
-        if (sceneIndex == 2) PlayerPrefs.SetString("adtimespark", lastDateTimenow.ToString());
-        else if (sceneIndex == 3) PlayerPrefs.SetString("adtimescity", lastDateTimenow.ToString());
-        else PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString());
+        if (sceneIndex == 2) PlayerPrefs.SetString("adtimespark", lastDateTimenow.ToString("o"));
+        else if (sceneIndex == 3) PlayerPrefs.SetString("adtimescity", lastDateTimenow.ToString("o"));
+        else PlayerPrefs.SetString("adtimes", lastDateTimenow.ToString("o"));
 
         Toast_obj.SetActive(true);
         adPop_txt.text = "대화 횟수가 5로 리셋 되었다.";
