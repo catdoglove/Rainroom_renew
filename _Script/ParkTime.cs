@@ -154,7 +154,7 @@ public class ParkTime : MonoBehaviour
         {
             Baquitrash();
 
-            PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString("o"));
+            PlayerPrefs.SetString("outtime", System.DateTime.UtcNow.ToString("o"));
             //최대량 제한 빗물 마음
             if (PlayerPrefs.GetInt(str + "r", 0) > 999999)
             {

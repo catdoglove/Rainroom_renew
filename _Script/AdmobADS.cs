@@ -313,7 +313,7 @@ public class AdmobADS : MonoBehaviour
     // 메인 스레드에서 안전하게 실행될 첫 번째 보상 로직
     private void ExecuteFirstAdReward()
     {
-        lastDateTimenow = System.DateTime.Now;
+        lastDateTimenow = System.DateTime.UtcNow;
         int sceneIndex = PlayerPrefs.GetInt("scene", 0);
 
         if (sceneIndex == 2) PlayerPrefs.SetString("adtimespark", lastDateTimenow.ToString("o"));

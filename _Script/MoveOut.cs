@@ -31,7 +31,7 @@ public class MoveOut : MonoBehaviour
             h = h - 100;
             PlayerPrefs.SetInt(str_Code + "h", h);
             PlayerPrefs.SetInt("gocitysuccess", 1);
-            PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString("o"));
+            PlayerPrefs.SetString("outtime", System.DateTime.UtcNow.ToString("o"));
             PlayerPrefs.SetInt("scene", 3);
             SceneManager.LoadSceneAsync("Load");
         }
@@ -50,7 +50,7 @@ public class MoveOut : MonoBehaviour
             GameObject.Find("메뉴펼치기").transform.Find("메뉴목록").gameObject.SetActive(false);
             h = h - 100;
             PlayerPrefs.SetInt(str_Code + "h", h);
-            PlayerPrefs.SetString("outtime", System.DateTime.Now.ToString("o"));
+            PlayerPrefs.SetString("outtime", System.DateTime.UtcNow.ToString("o"));
             PlayerPrefs.SetInt("scene", 2);
             SceneManager.LoadSceneAsync("Load");
         }
@@ -76,11 +76,14 @@ public class MoveOut : MonoBehaviour
         now = new System.DateTime(1980, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         lastTime = PlayerPrefs.GetString("outtime", now.ToString("o"));
         System.DateTime lastDateTime;
-        if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+        if (!System.DateTime.TryParse(lastTime, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastDateTime))
         {
-            lastDateTime = now;
+            if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+            {
+                lastDateTime = now;
+            }
         }
-        System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
+        System.TimeSpan compareTime = System.DateTime.UtcNow - lastDateTime;
         ac = (int)compareTime.TotalMinutes;
         acb = (int)compareTime.TotalSeconds;
         acb = acb - (acb / 60) * 60;

@@ -30,7 +30,7 @@ public class MainTimeHandler : MonoBehaviour {
         //돈디스트로이로 씬을 넘어가도 다시 실행되지 않는다
         if (talk >= 5)
         {
-            PlayerPrefs.SetString("TalkLastTime", System.DateTime.Now.ToString("o"));
+            PlayerPrefs.SetString("TalkLastTime", System.DateTime.UtcNow.ToString("o"));
         }
     }
 
@@ -64,13 +64,13 @@ public class MainTimeHandler : MonoBehaviour {
 
 		//모인 빗물
 		//현재시간을가져옵니다
-		System.DateTime dateTimenow = System.DateTime.Now;
+		System.DateTime dateTimenow = System.DateTime.UtcNow;
 		//str로장되어있는과거접속시간을가져옵니다
 		string lastTimem = PlayerPrefs.GetString("lastTime",dateTimenow.ToString("o"));
 		//형변환을해줍니다
 		System.DateTime lastDateTimem = System.DateTime.Parse(lastTimem);
 		//계산
-		System.TimeSpan compareTimem =  System.DateTime.Now - lastDateTimem;
+		System.TimeSpan compareTimem =  System.DateTime.UtcNow - lastDateTimem;
 		//1분당1씩줍니다
 		getRain = (int)compareTimem .TotalMinutes;
         //최초실행
@@ -105,16 +105,19 @@ public class MainTimeHandler : MonoBehaviour {
 		int sec;
 		while (true) {
 			talk = PlayerPrefs.GetInt ("talk", 5);
-			lastTime = PlayerPrefs.GetString ("TalkLastTime", System.DateTime.Now.ToString ("o"));
+			lastTime = PlayerPrefs.GetString ("TalkLastTime", System.DateTime.UtcNow.ToString ("o"));
             System.DateTime lastDateTime;
-            if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+            if (!System.DateTime.TryParse(lastTime, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastDateTime))
             {
-                lastDateTime = System.DateTime.Now;
+                if (!System.DateTime.TryParse(lastTime, out lastDateTime))
+                {
+                    lastDateTime = System.DateTime.UtcNow;
+                }
             }
-            System.TimeSpan compareTime = System.DateTime.Now - lastDateTime;
+            System.TimeSpan compareTime = System.DateTime.UtcNow - lastDateTime;
             if ((int)compareTime.TotalSeconds < 0)
             {
-                compareTime = System.DateTime.Now - System.DateTime.Now;
+                compareTime = System.DateTime.UtcNow - System.DateTime.UtcNow;
             }
             minute = (int)compareTime.TotalMinutes;
 			sec = (int)compareTime.TotalSeconds;
@@ -133,7 +136,7 @@ public class MainTimeHandler : MonoBehaviour {
                 //PlayerPrefs.SetInt("timesechelp", 59-sec);
                 //Debug.Log("minute" + minute+ "sec" + sec);
                 //Debug.Log(""+System.DateTime.Now.ToString());
-                PlayerPrefs.SetString ("TalkLastTime", System.DateTime.Now.ToString ("o"));
+                PlayerPrefs.SetString ("TalkLastTime", System.DateTime.UtcNow.ToString ("o"));
 				//talkTime_txt.text = "04:59";
 			} else {
 				string str = string.Format (@"{0:00}" + ":", minute) + string.Format (@"{0:00}", sec);
