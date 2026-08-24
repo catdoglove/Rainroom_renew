@@ -56,42 +56,53 @@ public class MainTimeHandler : MonoBehaviour {
 
 
 	void collectRain(){
-
         string str = PlayerPrefs.GetString("code", "");
         coldRain_i = PlayerPrefs.GetInt(str + "r", 0);
         hotRain_i = PlayerPrefs.GetInt(str + "h", 0);
-        
-
-		//모인 빗물
-		//현재시간을가져옵니다
-		System.DateTime dateTimenow = System.DateTime.UtcNow;
-		//str로장되어있는과거접속시간을가져옵니다
-		string lastTimem = PlayerPrefs.GetString("lastTime",dateTimenow.ToString("o"));
-		//형변환을해줍니다
-		System.DateTime lastDateTimem = System.DateTime.Parse(lastTimem);
-		//계산
-		System.TimeSpan compareTimem =  System.DateTime.UtcNow - lastDateTimem;
-		//1분당1씩줍니다
-		getRain = (int)compareTimem .TotalMinutes;
+        //모인 빗물
+        //현재시간을가져옵니다
+        System.DateTime dateTimenow = System.DateTime.UtcNow;
+        //str로장되어있는과거접속시간을가져옵니다
+        string lastTimem = PlayerPrefs.GetString("lastTime", dateTimenow.ToString("o"));
+        //형변환을해줍니다
+        System.DateTime lastDateTimem;
+        if (!System.DateTime.TryParse(lastTimem, null, System.Globalization.DateTimeStyles.RoundtripKind, out lastDateTimem))
+        {
+            if (!System.DateTime.TryParse(lastTimem, out lastDateTimem))
+            {
+                lastDateTimem = dateTimenow;
+            }
+        }
+        //계산
+        System.TimeSpan compareTimem = System.DateTime.UtcNow - lastDateTimem;
+        //1분당1씩줍니다
+        getRain = (int)compareTimem.TotalMinutes;
         //최초실행
         //if(PlayerPrefs.GetInt("coin",-1)==-1&&getRain>20000){
         //	getRain = 0;
         //
-        getRain= getRain * 5;
+        getRain = getRain * 5;
         Warring();
         coldRain_i = coldRain_i + getRain;
-		PlayerPrefs.SetInt (str + "r", coldRain_i);
-		//rainNum.text = coldRain_i.ToString();
-		PlayerPrefs.SetString("lastTime",dateTimenow.ToString("o"));
-		PlayerPrefs.Save ();
-
+        PlayerPrefs.SetInt(str + "r", coldRain_i);
+        //rainNum.text = coldRain_i.ToString();
+        PlayerPrefs.SetString("lastTime", dateTimenow.ToString("o"));
+        PlayerPrefs.Save();
         //빗물이 마이너스일때
-        if (coldRain_i<0)
+        if (coldRain_i < 0)
         {
             PlayerPrefs.SetInt(str + "r", -9);
             PlayerPrefs.Save();
         }
-	}
+
+        if(PlayerPrefs.GetInt("d9fkd9fjue9", 0) == 0)
+        {
+            coldRain_i = PlayerPrefs.GetInt(str + "r", 0) + 10000;
+            PlayerPrefs.SetInt(str + "r", coldRain_i);
+            PlayerPrefs.SetInt("d9fkd9fjue9", 999);
+            PlayerPrefs.Save();
+        }
+    }
     public void closeWarring()
     {
         warring_obj.SetActive(false);

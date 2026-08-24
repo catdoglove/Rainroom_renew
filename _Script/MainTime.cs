@@ -92,7 +92,7 @@ public class MainTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("emergencyCODE4", 0) == 0)
+        if (PlayerPrefs.GetInt("emergencyCODE5", 0) == 0)
         {
             System.DateTime turnBackTime = System.DateTime.UtcNow.AddHours(-12);
             PlayerPrefs.SetString("saveGudoc", turnBackTime.ToString("o"));
@@ -124,7 +124,7 @@ public class MainTime : MonoBehaviour
             turnBackTime = System.DateTime.UtcNow.AddHours(-1);
             PlayerPrefs.SetString("adtimespark", turnBackTime.ToString("o"));
 
-            PlayerPrefs.SetInt("emergencyCODE4", 99);
+            PlayerPrefs.SetInt("emergencyCODE5", 99);
         }
 
         //구독확인
