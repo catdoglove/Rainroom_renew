@@ -171,6 +171,7 @@ public class SleepEvt : MonoBehaviour
         sleepBack_obj.SetActive(true);
         PlayerPrefs.SetInt("sleeping", 1);
         PlayerPrefs.SetInt("sleepdream", 1);
+        PlayerPrefs.Save();
         sleepMove();
 
         if (PlayerPrefs.GetInt("sleeptimeadsreward", 0) == 99)
